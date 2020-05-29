@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.example.fiscalcode_java.fiscalCode.computations.FunctionChecks.*;
 import static com.example.fiscalcode_java.fiscalCode.computations.NameAndSurnameComputations.*;
@@ -88,6 +90,20 @@ public class ComputeFiscalCode {
     public static String computeDateOfBirth(String dayString, String monthString, String yearString, String gender) {
         String yearError = "0", dateError = "0";
 
+        Map<Integer, String> monthMap = new HashMap<>();
+        monthMap.put(1, "A");
+        monthMap.put(2, "B");
+        monthMap.put(3, "C");
+        monthMap.put(4, "D");
+        monthMap.put(5, "E");
+        monthMap.put(6, "H");
+        monthMap.put(7, "L");
+        monthMap.put(8, "M");
+        monthMap.put(9, "P");
+        monthMap.put(10, "R");
+        monthMap.put(11, "S");
+        monthMap.put(12, "T");
+
         if (isYearValid(yearString)) {
             if (isDateValid(dayString, monthString, yearString)) {
                 String result = "";
@@ -104,56 +120,8 @@ public class ComputeFiscalCode {
                     }
 
                     // get the letter corresponding to the month
-                    switch (month) {
-                        case 1: {
-                            result += "A";
-                            break;
-                        }
-                        case 2: {
-                            result += "B";
-                            break;
-                        }
-                        case 3: {
-                            result += "C";
-                            break;
-                        }
-                        case 4: {
-                            result += "D";
-                            break;
-                        }
-                        case 5: {
-                            result += "E";
-                            break;
-                        }
-                        case 6: {
-                            result += "H";
-                            break;
-                        }
-                        case 7: {
-                            result += "L";
-                            break;
-                        }
-                        case 8: {
-                            result += "M";
-                            break;
-                        }
-                        case 9: {
-                            result += "P";
-                            break;
-                        }
-                        case 10: {
-                            result += "R";
-                            break;
-                        }
-                        case 11: {
-                            result += "S";
-                            break;
-                        }
-                        case 12: {
-                            result += "T";
-                            break;
-                        }
-                    }
+                    result += monthMap.get(month);
+
                     switch (gender) {
                         case "f": {
                             result += (day + 40);
@@ -211,6 +179,35 @@ public class ComputeFiscalCode {
     }
 
     public static String computeControlChar(String incompleteFiscalCode) throws InterruptedException {
+
+        Map<Integer, String> controlCharMap = new HashMap<>();
+        controlCharMap.put(0, "A");
+        controlCharMap.put(1, "B");
+        controlCharMap.put(2, "C");
+        controlCharMap.put(3, "D");
+        controlCharMap.put(4, "E");
+        controlCharMap.put(5, "F");
+        controlCharMap.put(6, "G");
+        controlCharMap.put(7, "H");
+        controlCharMap.put(8, "I");
+        controlCharMap.put(9, "J");
+        controlCharMap.put(10, "K");
+        controlCharMap.put(11, "L");
+        controlCharMap.put(12, "M");
+        controlCharMap.put(13, "N");
+        controlCharMap.put(14, "O");
+        controlCharMap.put(15, "P");
+        controlCharMap.put(16, "Q");
+        controlCharMap.put(17, "R");
+        controlCharMap.put(18, "S");
+        controlCharMap.put(19, "T");
+        controlCharMap.put(20, "U");
+        controlCharMap.put(21, "V");
+        controlCharMap.put(22, "W");
+        controlCharMap.put(23, "X");
+        controlCharMap.put(24, "Y");
+        controlCharMap.put(25, "Z");
+
         String control = "";
         int evenSum = 0, oddSum = 0;
         incompleteFiscalCode = incompleteFiscalCode.toUpperCase();
@@ -229,112 +226,7 @@ public class ComputeFiscalCode {
 
             // The remainder of the division is the control character
             int sum = (oddSum + evenSum) % 26;
-            switch (sum) {
-                case 0: {
-                    control = "A";
-                    break;
-                }
-                case 1: {
-                    control = "B";
-                    break;
-                }
-                case 2: {
-                    control = "C";
-                    break;
-                }
-                case 3: {
-                    control = "D";
-                    break;
-                }
-                case 4: {
-                    control = "E";
-                    break;
-                }
-                case 5: {
-                    control = "F";
-                    break;
-                }
-                case 6: {
-                    control = "G";
-                    break;
-                }
-                case 7: {
-                    control = "H";
-                    break;
-                }
-                case 8: {
-                    control = "I";
-                    break;
-                }
-                case 9: {
-                    control = "J";
-                    break;
-                }
-                case 10: {
-                    control = "K";
-                    break;
-                }
-                case 11: {
-                    control = "L";
-                    break;
-                }
-                case 12: {
-                    control = "M";
-                    break;
-                }
-                case 13: {
-                    control = "N";
-                    break;
-                }
-                case 14: {
-                    control = "O";
-                    break;
-                }
-                case 15: {
-                    control = "P";
-                    break;
-                }
-                case 16: {
-                    control = "Q";
-                    break;
-                }
-                case 17: {
-                    control = "R";
-                    break;
-                }
-                case 18: {
-                    control = "S";
-                    break;
-                }
-                case 19: {
-                    control = "T";
-                    break;
-                }
-                case 20: {
-                    control = "U";
-                    break;
-                }
-                case 21: {
-                    control = "V";
-                    break;
-                }
-                case 22: {
-                    control = "W";
-                    break;
-                }
-                case 23: {
-                    control = "X";
-                    break;
-                }
-                case 24: {
-                    control = "Y";
-                    break;
-                }
-                case 25: {
-                    control = "Z";
-                    break;
-                }
-            }
+            control = controlCharMap.get(sum);
         }
         return control;
     }

@@ -10,7 +10,7 @@ public class NameAndSurnameComputations {
     private static final Pattern COMPILE_WOVELS = Pattern.compile(VOWEL_PATTERN);
     private static final Pattern COMPILE_CONSONANTS = Pattern.compile(CONSONANT_PATTERN);
 
-    static String pickFirstThreeConsonants(String input) {
+    public static String pickFirstThreeConsonants(String input) {
         Matcher m = COMPILE_CONSONANTS.matcher(input);
         StringBuilder result = new StringBuilder();
         int cont = 1;
@@ -21,7 +21,7 @@ public class NameAndSurnameComputations {
         return result.toString();
     }
 
-    static String pickFirstTwoConsonantsAndFirstVowel(String input) {
+    public static String pickFirstTwoConsonantsAndFirstVowel(String input) {
         Matcher m = COMPILE_CONSONANTS.matcher(input);
         StringBuilder result = new StringBuilder();
         int cont = 1;
@@ -38,7 +38,7 @@ public class NameAndSurnameComputations {
         return result.toString();
     }
 
-    static String pickFirstConsonantAndFirstTwoVowels(String input) {
+    public static String pickFirstConsonantAndFirstTwoVowels(String input) {
         Matcher m = COMPILE_CONSONANTS.matcher(input);
         StringBuilder result = new StringBuilder();
         int cont = 1;
@@ -55,7 +55,7 @@ public class NameAndSurnameComputations {
         return result.toString();
     }
 
-    static String pickFirstThreeVowels(String input) {
+    public static String pickFirstThreeVowels(String input) {
         Matcher m = COMPILE_WOVELS.matcher(input);
         StringBuilder result = new StringBuilder();
         int cont = 1;
@@ -66,7 +66,7 @@ public class NameAndSurnameComputations {
         return result.toString();
     }
 
-    static String pickFirstThirdAndFourthConsonant(String inputName) {
+    public static String pickFirstThirdAndFourthConsonant(String inputName) {
         Matcher m = COMPILE_CONSONANTS.matcher(inputName);
         StringBuilder result = new StringBuilder();
         int cont = 1;
