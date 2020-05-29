@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "FiscalCode_Java"
