@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FiscalCode_Java</string>
+    <string name="app_name">Calcolo del Codice Fiscale</string>
     <string name="tab_compute">Calcola</string>
     <string name="tab_verify">Verifica</string>
     <string name="tab_extract">Estrai dati</string>

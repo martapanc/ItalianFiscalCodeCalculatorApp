@@ -1,4 +1,9 @@
 package com.example.fiscalcode_java.ui.main.compute;
 
-public class ComputeViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class ComputeViewModel extends ViewModel {
+
+    public ComputeViewModel() {
+    }
 }

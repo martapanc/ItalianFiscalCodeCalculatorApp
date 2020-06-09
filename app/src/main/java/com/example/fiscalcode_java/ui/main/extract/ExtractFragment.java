@@ -1,4 +1,6 @@
 package com.example.fiscalcode_java.ui.main.extract;
 
-public class ExtractFragment {
+import androidx.fragment.app.Fragment;
+
+public class ExtractFragment extends Fragment {
 }
