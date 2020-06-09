@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">FiscalCode_Java</string>
+    <string name="tab_compute">Calcola</string>
+    <string name="tab_verify">Verifica</string>
+    <string name="tab_extract">Estrai dati</string>
+    <string name="name_it">Nome</string>
+    <string name="surname_it">Cognome</string>
+    <string name="female_id">Femmina</string>
+    <string name="male_it">Maschio</string>
+    <string name="gender_it">Genere</string>
+    <string name="dob_it">Data di nascita</string>
+    <string name="placeOfBirth_it">Luogo di nascita</string>
+    <string name="computeBtn_it">Calcola</string>
+    <string name="autocomplete_it">Arezzo</string>
+    <string name="dateOfBirth_title">Data di nascita</string>
+    <string name="placeOfBirth_hint">Arezzo</string>
+    <string name="dateOfBirth_hint">15/03/1980</string>
+    <string name="surname_hint">Bianchi</string>
+    <string name="name_hint">Alessandro</string>
+    <string name="first_name_label">Nome</string>
+    <string name="first_name_example">Alessandro</string>
+    <string name="last_name_label">Cognome</string>
+    <string name="gender_label">Genere</string>
+    <string name="last_name_example">Bianchi</string>
+    <string name="dob_label">Data di nascita</string>
+    <string name="pob_label">Luogo di nascita</string>
 </resources>
