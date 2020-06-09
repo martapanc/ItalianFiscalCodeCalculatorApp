@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.fiscalcode_java.R;
+import com.example.fiscalcode_java.fiscalCode.utils.ReadTownList;
 
 import org.json.JSONObject;
 
@@ -81,13 +82,11 @@ public class ComputeFragment extends Fragment {
             }
         });
 
-        JSONObject jsonObject = new JSONObject("{}");
-
         AutoCompleteTextView autoCompleteTextView = root.findViewById(R.id.pob_autocompleteTextView);
 
-        String[] COUNTRIES = new String[]{"Belgium", "France", "Italy", "Italian", "Ithaca", "Germany", "Spain"};
+        String[] towns = ReadTownList.readTownNameList(getContext().getAssets().open("comuni.json"));
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, COUNTRIES);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, towns);
         autoCompleteTextView.setAdapter(arrayAdapter);
         return root;
     }

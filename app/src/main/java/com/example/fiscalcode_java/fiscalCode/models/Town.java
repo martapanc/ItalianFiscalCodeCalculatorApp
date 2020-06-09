@@ -11,4 +11,5 @@ public class Town {
 
     private String townName;
     private String townCode;
+    private String province;
 }

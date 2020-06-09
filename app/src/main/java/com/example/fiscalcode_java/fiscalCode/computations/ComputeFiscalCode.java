@@ -159,7 +159,7 @@ public class ComputeFiscalCode {
             String[] town;
             while (line != null) {
                 town = line.split(";");
-                townList.add(new Town(town[0], town[1]));
+                townList.add(new Town(town[0], town[1], town[2]));
                 line = read.readLine();
             }
             int i = 0;
