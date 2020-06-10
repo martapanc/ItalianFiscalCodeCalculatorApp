@@ -97,7 +97,15 @@ public class ComputeFragment extends Fragment {
                 allFieldsValid = validateField(allFieldsValid, pobTextView);
 
                 if (allFieldsValid) {
-                    Toast.makeText(getActivity().getApplicationContext(), R.string.first_name_label, Toast.LENGTH_LONG).show();
+                    String firstName = firstNameEditText.getText().toString();
+                    String lastName = lastNameEditText.getText().toString();
+                    String gender = maleRadioButton.isChecked() ? "m" : "f";
+                    String dob = dobEditText.getText().toString();
+                    String pob = pobTextView.getText().toString();
+
+                    String res = String.format("%s %s, %s, %s in %s", firstName, lastName, gender, dob, pob);
+
+                    Toast.makeText(getActivity().getApplicationContext(), res, Toast.LENGTH_LONG).show();
                     hideKeyboard();
                 }
             }
