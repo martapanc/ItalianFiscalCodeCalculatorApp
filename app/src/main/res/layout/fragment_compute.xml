@@ -88,14 +88,14 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/maleRadioButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/male_it" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/femaleRadioButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -154,6 +154,7 @@
     </AutoCompleteTextView>
 
     <Button
+        android:id="@+id/compute_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"

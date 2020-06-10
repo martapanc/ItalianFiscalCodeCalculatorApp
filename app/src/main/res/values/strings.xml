@@ -24,4 +24,5 @@
     <string name="last_name_example">Bianchi</string>
     <string name="dob_label">Data di nascita</string>
     <string name="pob_label">Luogo di nascita</string>
+    <string name="empty_field_error">Valore richiesto</string>
 </resources>
