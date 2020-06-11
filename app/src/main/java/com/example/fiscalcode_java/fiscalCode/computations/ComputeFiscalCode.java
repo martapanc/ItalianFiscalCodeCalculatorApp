@@ -170,8 +170,8 @@ public class ComputeFiscalCode {
             }
             int i = 0;
             while (i < townList.size()) {
-                if (townString.equals(townList.get(i).getTownName())) {
-                    townCode = townList.get(i).getTownCode();
+                if (townString.equals(townList.get(i).getName())) {
+                    townCode = townList.get(i).getCadastral_code();
                     break;
                 }
                 i++;
@@ -188,15 +188,15 @@ public class ComputeFiscalCode {
         String placeCode = "";
         String placeWithoutAreaCode = selectedPlace.substring(0, selectedPlace.length()-5);
         for (Town town : towns) {
-            if (placeWithoutAreaCode.equals(town.getTownName())) {
-                placeCode = town.getTownCode();
+            if (placeWithoutAreaCode.equals(town.getName())) {
+                placeCode = town.getCadastral_code();
                 break;
             }
         }
         if ("".equals(placeCode)) {
             for (Country country : countries) {
                 if (placeWithoutAreaCode.equals(country.getName())) {
-                    placeCode = country.getCode();
+                    placeCode = country.getCadastral_code();
                     break;
                 }
             }

@@ -11,7 +11,7 @@ public class Country {
 
     private String name;
     private String country_code;
-    private String code;
+    private String cadastral_code;
     private String continent;
     private String area;
 }

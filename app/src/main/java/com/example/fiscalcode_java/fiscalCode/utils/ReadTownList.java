@@ -43,7 +43,7 @@ public class ReadTownList {
         List<Country> countries = readCountries(countryPath);
         String[] placeNames = new String[towns.size() + countries.size()];
         for (int i = 0; i < towns.size(); i++) {
-            placeNames[i] = towns.get(i).getTownName() + " (" + towns.get(i).getProvince() + ")";
+            placeNames[i] = towns.get(i).getName() + " (" + towns.get(i).getProvince() + ")";
         }
         for (int i = 0; i < countries.size(); i++) {
             placeNames[i + towns.size()] = countries.get(i).getName() + " (" + countries.get(i).getCountry_code() + ")";
