@@ -3,7 +3,9 @@ package com.example.fiscalcode_java.ui.main.compute;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +33,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Objects;
 
 import lombok.SneakyThrows;
 
@@ -38,6 +41,7 @@ public class ComputeFragment extends Fragment {
 
     public static final String TOWNS_FILE = "comuni.json";
     private int year, month, day;
+    Calendar calendar = initCalendar();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,6 +58,7 @@ public class ComputeFragment extends Fragment {
         EditText dateOfBirth = root.findViewById(R.id.dateOfBirth_editText);
         dateOfBirth.setRawInputType(InputType.TYPE_NULL);
         dateOfBirth.setOnClickListener(dobOnClickListener());
+        dateOfBirth.addTextChangedListener(dobWatcher());
 
         AutoCompleteTextView autoCompleteTextView = root.findViewById(R.id.pob_autocompleteTextView);
         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -124,27 +129,12 @@ public class ComputeFragment extends Fragment {
         };
     }
 
-    private void hideVirtualKeyboard(View view) {
-        InputMethodManager inputManager = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputManager.hideSoftInputFromWindow(view.getApplicationWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-    }
-
-    private boolean validateField(boolean allFieldsValid, EditText firstNameEditText) {
-        if (firstNameEditText.getText().toString().equals("")) {
-            allFieldsValid = false;
-            firstNameEditText.setError(getString(R.string.empty_field_error));
-            firstNameEditText.requestFocus();
-        }
-        return allFieldsValid;
-    }
-
     private View.OnClickListener dobOnClickListener() {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Calendar cal = Calendar.getInstance();
-
-                cal.add(Calendar.YEAR, -30);
+                cal.setTime(calendar.getTime());
 
                 year = cal.get(Calendar.YEAR);
                 month = cal.get(Calendar.MONTH);
@@ -163,12 +153,48 @@ public class ComputeFragment extends Fragment {
                 }, year, month, day);
 
                 cal.add(Calendar.YEAR, -90);
-
                 datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
                 datePickerDialog.getDatePicker().setMinDate(cal.getTimeInMillis());
                 datePickerDialog.setTitle(getString(R.string.dob_label));
                 datePickerDialog.show();
             }
         };
+    }
+
+    private TextWatcher dobWatcher() {
+        return new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @SneakyThrows
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY);
+                calendar.setTime(Objects.requireNonNull(sdf.parse(charSequence.toString())));
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        };
+    }
+
+    private Calendar initCalendar() {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.YEAR, -30);
+        return cal;
+    }
+
+    private void hideVirtualKeyboard(View view) {
+        InputMethodManager inputManager = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(view.getApplicationWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+
+    private boolean validateField(boolean allFieldsValid, EditText firstNameEditText) {
+        if (firstNameEditText.getText().toString().equals("")) {
+            allFieldsValid = false;
+            firstNameEditText.setError(getString(R.string.empty_field_error));
+            firstNameEditText.requestFocus();
+        }
+        return allFieldsValid;
     }
 }
