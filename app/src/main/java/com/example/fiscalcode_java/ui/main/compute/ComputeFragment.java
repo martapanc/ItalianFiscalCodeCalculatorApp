@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -21,7 +22,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.example.fiscalcode_java.R;
 import com.example.fiscalcode_java.fiscalCode.computations.ComputeFiscalCode;
@@ -42,8 +42,6 @@ public class ComputeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        ComputeViewModel computeViewModel = ViewModelProviders.of((Fragment) this).get(ComputeViewModel.class);
     }
 
     @SneakyThrows
@@ -58,12 +56,17 @@ public class ComputeFragment extends Fragment {
         dateOfBirth.setOnClickListener(dobOnClickListener());
 
         AutoCompleteTextView autoCompleteTextView = root.findViewById(R.id.pob_autocompleteTextView);
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                hideVirtualKeyboard(adapterView);
+            }
+        });
 
         String[] towns = ReadTownList.readTownNameList(getContext().getAssets().open(TOWNS_FILE));
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, towns);
         autoCompleteTextView.setAdapter(arrayAdapter);
-
 
         Button computeButton = root.findViewById(R.id.compute_button);
         computeButton.setOnClickListener(validateFieldsAndCompute());
@@ -108,8 +111,8 @@ public class ComputeFragment extends Fragment {
 
                     try {
                         String fiscalCode = ComputeFiscalCode.compute(firstName, lastName, dob, gender, pob, ReadTownList.read(getActivity().getAssets().open(TOWNS_FILE)));
-                        Toast.makeText(getActivity().getApplicationContext(), fiscalCode, Toast.LENGTH_LONG).show();
-                        hideKeyboard();
+                        hideVirtualKeyboard(view);
+
                         TextView outputTextView = getActivity().findViewById(R.id.fiscalCodeOutput);
                         outputTextView.setPadding(10, 5, 10, 5);
                         outputTextView.setText(fiscalCode);
@@ -121,9 +124,9 @@ public class ComputeFragment extends Fragment {
         };
     }
 
-    private void hideKeyboard() {
-        InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+    private void hideVirtualKeyboard(View view) {
+        InputMethodManager inputManager = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(view.getApplicationWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
     private boolean validateField(boolean allFieldsValid, EditText firstNameEditText) {

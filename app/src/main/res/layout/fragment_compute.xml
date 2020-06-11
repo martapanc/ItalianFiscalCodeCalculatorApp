@@ -5,21 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="24dp"
+    android:padding="20dp"
     tools:context=".ui.main.compute.ComputeFragment">
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/compute_section_label"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginStart="@dimen/activity_horizontal_margin"-->
-    <!--        android:layout_marginTop="@dimen/activity_vertical_margin"-->
-    <!--        android:layout_marginEnd="@dimen/activity_horizontal_margin"-->
-    <!--        android:layout_marginBottom="36dp"-->
-    <!--        android:text="@string/tab_compute"-->
-    <!--        app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--        tools:layout_constraintLeft_creator="1"-->
-    <!--        tools:layout_constraintTop_creator="1" />-->
 
     <TextView
         android:id="@+id/first_name_label"
@@ -40,7 +27,9 @@
         android:ems="10"
         android:hint="@string/first_name_example"
         android:inputType="textPersonName"
-        android:paddingBottom="16dp" />
+        android:paddingBottom="10dp">
+        <requestFocus />
+    </EditText>
 
     <TextView
         android:id="@+id/last_name_label"
@@ -63,7 +52,7 @@
         android:ems="10"
         android:hint="@string/last_name_example"
         android:inputType="textPersonName"
-        android:paddingBottom="16dp" />
+        android:paddingBottom="10dp" />
 
     <TextView
         android:id="@+id/gender_label"
@@ -108,7 +97,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/gender_label"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="28dp"
         android:ems="7"
         android:text="@string/dob_label"
         android:textSize="18sp" />
@@ -118,7 +107,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/gender_label"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_toEndOf="@id/dob_label"
         android:autofillHints=""
         android:ems="10"
@@ -133,7 +122,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/dob_label"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="30dp"
         android:ems="7"
         android:text="@string/pob_label"
         android:textSize="18sp" />
@@ -143,15 +132,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/dateOfBirth_editText"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_toEndOf="@id/pob_label"
         android:ems="10"
         android:hint="@string/placeOfBirth_hint"
+        android:imeOptions="actionDone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0">
-
-        <requestFocus />
-    </AutoCompleteTextView>
+        app:layout_constraintHorizontal_bias="1.0" />
 
     <Button
         android:id="@+id/compute_button"
@@ -159,10 +146,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/pob_label"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="24dp"
         android:background="@color/button"
-        android:textColor="@color/white"
-        android:text="@string/computeBtn_it" />
+        android:text="@string/computeBtn_it"
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/fiscalCodeOutput"
@@ -175,6 +162,5 @@
         android:text=""
         android:textColor="@color/black"
         android:textSize="24sp" />
-
 
 </RelativeLayout>
