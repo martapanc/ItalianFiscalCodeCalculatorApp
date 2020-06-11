@@ -1,5 +1,6 @@
 package com.example.fiscalcode_java.fiscalCode.computations;
 
+import com.example.fiscalcode_java.fiscalCode.models.Country;
 import com.example.fiscalcode_java.fiscalCode.models.Town;
 
 import java.io.BufferedReader;
@@ -183,16 +184,24 @@ public class ComputeFiscalCode {
         return townCode;
     }
 
-    public static String getTownCode(List<Town> towns, String selectedTown) {
-        String townCode = "";
-        String townWithoutProvince = selectedTown.substring(0, selectedTown.length()-5);
+    public static String getPlaceCode(List<Town> towns, List<Country> countries, String selectedPlace) {
+        String placeCode = "";
+        String placeWithoutAreaCode = selectedPlace.substring(0, selectedPlace.length()-5);
         for (Town town : towns) {
-            if (townWithoutProvince.equals(town.getTownName())) {
-                townCode = town.getTownCode();
+            if (placeWithoutAreaCode.equals(town.getTownName())) {
+                placeCode = town.getTownCode();
                 break;
             }
         }
-        return townCode;
+        if ("".equals(placeCode)) {
+            for (Country country : countries) {
+                if (placeWithoutAreaCode.equals(country.getName())) {
+                    placeCode = country.getCode();
+                    break;
+                }
+            }
+        }
+        return placeCode;
     }
 
     public static String computeControlChar(String incompleteFiscalCode) throws InterruptedException {
@@ -248,12 +257,12 @@ public class ComputeFiscalCode {
         return control;
     }
 
-    public static String compute(String firstName, String lastName, String dateOfBirth, String gender, String townOfBirth, List<Town> towns) throws InterruptedException {
+    public static String compute(String firstName, String lastName, String dateOfBirth, String gender, String townOfBirth, List<Town> towns, List<Country> countries) throws InterruptedException {
         StringBuilder fiscalCode = new StringBuilder();
         fiscalCode.append(computeSurname(lastName));
         fiscalCode.append(computeName(firstName));
         fiscalCode.append(computeDateOfBirth(dateOfBirth, gender));
-        fiscalCode.append(getTownCode(towns, townOfBirth));
+        fiscalCode.append(getPlaceCode(towns, countries, townOfBirth));
         fiscalCode.append(computeControlChar(fiscalCode.toString()));
         return fiscalCode.toString();
     }

@@ -27,11 +27,14 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.example.fiscalcode_java.R;
 import com.example.fiscalcode_java.fiscalCode.computations.ComputeFiscalCode;
+import com.example.fiscalcode_java.fiscalCode.models.Country;
+import com.example.fiscalcode_java.fiscalCode.models.Town;
 import com.example.fiscalcode_java.fiscalCode.utils.ReadTownList;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -40,6 +43,7 @@ import lombok.SneakyThrows;
 public class ComputeFragment extends Fragment {
 
     public static final String TOWNS_FILE = "comuni.json";
+    private static final String COUNTRIES_FILE = "countries_it.json";
     private int year, month, day;
     Calendar calendar = initCalendar();
 
@@ -68,7 +72,10 @@ public class ComputeFragment extends Fragment {
             }
         });
 
-        String[] towns = ReadTownList.readTownNameList(getContext().getAssets().open(TOWNS_FILE));
+        String[] towns = ReadTownList.readTownNameList(
+                getContext().getAssets().open(TOWNS_FILE),
+                getContext().getAssets().open(COUNTRIES_FILE)
+        );
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, towns);
         autoCompleteTextView.setAdapter(arrayAdapter);
@@ -115,7 +122,9 @@ public class ComputeFragment extends Fragment {
                     String pob = pobTextView.getText().toString();
 
                     try {
-                        String fiscalCode = ComputeFiscalCode.compute(firstName, lastName, dob, gender, pob, ReadTownList.read(getActivity().getAssets().open(TOWNS_FILE)));
+                        List<Town> towns = ReadTownList.read(getActivity().getAssets().open(TOWNS_FILE));
+                        List<Country> countries = ReadTownList.readCountries(getActivity().getAssets().open(COUNTRIES_FILE));
+                        String fiscalCode = ComputeFiscalCode.compute(firstName, lastName, dob, gender, pob, towns, countries);
                         hideVirtualKeyboard(view);
 
                         TextView outputTextView = getActivity().findViewById(R.id.fiscalCodeOutput);
