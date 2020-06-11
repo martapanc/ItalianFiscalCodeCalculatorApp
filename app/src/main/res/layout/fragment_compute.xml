@@ -8,18 +8,18 @@
     android:padding="24dp"
     tools:context=".ui.main.compute.ComputeFragment">
 
-<!--    <TextView-->
-<!--        android:id="@+id/compute_section_label"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="@dimen/activity_horizontal_margin"-->
-<!--        android:layout_marginTop="@dimen/activity_vertical_margin"-->
-<!--        android:layout_marginEnd="@dimen/activity_horizontal_margin"-->
-<!--        android:layout_marginBottom="36dp"-->
-<!--        android:text="@string/tab_compute"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        tools:layout_constraintLeft_creator="1"-->
-<!--        tools:layout_constraintTop_creator="1" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/compute_section_label"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="@dimen/activity_horizontal_margin"-->
+    <!--        android:layout_marginTop="@dimen/activity_vertical_margin"-->
+    <!--        android:layout_marginEnd="@dimen/activity_horizontal_margin"-->
+    <!--        android:layout_marginBottom="36dp"-->
+    <!--        android:text="@string/tab_compute"-->
+    <!--        app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--        tools:layout_constraintLeft_creator="1"-->
+    <!--        tools:layout_constraintTop_creator="1" />-->
 
     <TextView
         android:id="@+id/first_name_label"
@@ -142,24 +142,39 @@
         android:id="@+id/pob_autocompleteTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:layout_below="@id/dateOfBirth_editText"
         android:layout_marginTop="15dp"
         android:layout_toEndOf="@id/pob_label"
+        android:ems="10"
         android:hint="@string/placeOfBirth_hint"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0" >
+        app:layout_constraintHorizontal_bias="1.0">
 
-        <requestFocus/>
+        <requestFocus />
     </AutoCompleteTextView>
 
     <Button
         android:id="@+id/compute_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:layout_below="@id/pob_label"
-        android:text="@string/computeBtn_it"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@color/button"
+        android:textColor="@color/white"
+        android:text="@string/computeBtn_it" />
+
+    <TextView
+        android:id="@+id/fiscalCodeOutput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/compute_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@color/textBackground"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
 
 </RelativeLayout>

@@ -24,8 +24,10 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.fiscalcode_java.R;
+import com.example.fiscalcode_java.fiscalCode.computations.ComputeFiscalCode;
 import com.example.fiscalcode_java.fiscalCode.utils.ReadTownList;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -34,6 +36,7 @@ import lombok.SneakyThrows;
 
 public class ComputeFragment extends Fragment {
 
+    public static final String TOWNS_FILE = "comuni.json";
     private int year, month, day;
 
     @Override
@@ -56,7 +59,7 @@ public class ComputeFragment extends Fragment {
 
         AutoCompleteTextView autoCompleteTextView = root.findViewById(R.id.pob_autocompleteTextView);
 
-        String[] towns = ReadTownList.readTownNameList(getContext().getAssets().open("comuni.json"));
+        String[] towns = ReadTownList.readTownNameList(getContext().getAssets().open(TOWNS_FILE));
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, towns);
         autoCompleteTextView.setAdapter(arrayAdapter);
@@ -103,10 +106,16 @@ public class ComputeFragment extends Fragment {
                     String dob = dobEditText.getText().toString();
                     String pob = pobTextView.getText().toString();
 
-                    String res = String.format("%s %s, %s, %s in %s", firstName, lastName, gender, dob, pob);
-
-                    Toast.makeText(getActivity().getApplicationContext(), res, Toast.LENGTH_LONG).show();
-                    hideKeyboard();
+                    try {
+                        String fiscalCode = ComputeFiscalCode.compute(firstName, lastName, dob, gender, pob, ReadTownList.read(getActivity().getAssets().open(TOWNS_FILE)));
+                        Toast.makeText(getActivity().getApplicationContext(), fiscalCode, Toast.LENGTH_LONG).show();
+                        hideKeyboard();
+                        TextView outputTextView = getActivity().findViewById(R.id.fiscalCodeOutput);
+                        outputTextView.setPadding(10, 5, 10, 5);
+                        outputTextView.setText(fiscalCode);
+                    } catch (IOException | InterruptedException e) {
+                        Toast.makeText(getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         };

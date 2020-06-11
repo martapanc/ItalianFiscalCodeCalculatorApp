@@ -3,6 +3,8 @@ package com.example.fiscalcode_java.fiscalCode.computations;
 import com.example.fiscalcode_java.fiscalCode.models.Town;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -87,8 +89,13 @@ public class ComputeFiscalCode {
         }
     }
 
-    public static String computeDateOfBirth(String dayString, String monthString, String yearString, String gender) {
+    public static String computeDateOfBirth(String dateString, String gender) {
         String yearError = "0", dateError = "0";
+
+        String[] dateValues = dateString.split("/");
+        String dayString = dateValues[0];
+        String monthString = dateValues[1];
+        String yearString = dateValues[2];
 
         Map<Integer, String> monthMap = new HashMap<>();
         monthMap.put(1, "A");
@@ -152,9 +159,7 @@ public class ComputeFiscalCode {
         List<Town> townList = new ArrayList<>();
         String townCode = "0";
         townString = townString.toUpperCase();
-        try (BufferedReader read =
-                     new BufferedReader(
-                             new InputStreamReader(ComputeFiscalCode.class.getResourceAsStream("/TownCodeList.txt")))) {
+        try (BufferedReader read = new BufferedReader(new InputStreamReader(new FileInputStream(new File("assets/comuni.json"))))) {
             String line = read.readLine();
             String[] town;
             while (line != null) {
@@ -174,6 +179,18 @@ public class ComputeFiscalCode {
         }
 
         if (townCode.equals("0")) {
+        }
+        return townCode;
+    }
+
+    public static String getTownCode(List<Town> towns, String selectedTown) {
+        String townCode = "";
+        String townWithoutProvince = selectedTown.substring(0, selectedTown.length()-5);
+        for (Town town : towns) {
+            if (townWithoutProvince.equals(town.getTownName())) {
+                townCode = town.getTownCode();
+                break;
+            }
         }
         return townCode;
     }
@@ -229,5 +246,15 @@ public class ComputeFiscalCode {
             control = controlCharMap.get(sum);
         }
         return control;
+    }
+
+    public static String compute(String firstName, String lastName, String dateOfBirth, String gender, String townOfBirth, List<Town> towns) throws InterruptedException {
+        StringBuilder fiscalCode = new StringBuilder();
+        fiscalCode.append(computeSurname(lastName));
+        fiscalCode.append(computeName(firstName));
+        fiscalCode.append(computeDateOfBirth(dateOfBirth, gender));
+        fiscalCode.append(getTownCode(towns, townOfBirth));
+        fiscalCode.append(computeControlChar(fiscalCode.toString()));
+        return fiscalCode.toString();
     }
 }
