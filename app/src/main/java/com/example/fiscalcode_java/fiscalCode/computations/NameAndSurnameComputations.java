@@ -11,70 +11,70 @@ public class NameAndSurnameComputations {
     private static final Pattern COMPILE_CONSONANTS = Pattern.compile(CONSONANT_PATTERN);
 
     public static String pickFirstThreeConsonants(String input) {
-        Matcher m = COMPILE_CONSONANTS.matcher(input);
+        Matcher matcher = COMPILE_CONSONANTS.matcher(input);
         StringBuilder result = new StringBuilder();
-        int cont = 1;
-        while (m.find() && cont <= 3) {
-            result.append(m.group());
-            cont++;
+        int count = 1;
+        while (matcher.find() && count <= 3) {
+            result.append(matcher.group());
+            count++;
         }
         return result.toString();
     }
 
     public static String pickFirstTwoConsonantsAndFirstVowel(String input) {
-        Matcher m = COMPILE_CONSONANTS.matcher(input);
+        Matcher matcher = COMPILE_CONSONANTS.matcher(input);
         StringBuilder result = new StringBuilder();
-        int cont = 1;
-        while (m.find() && cont <= 2) {
-            result.append(m.group());
-            cont++;
+        int count = 1;
+        while (matcher.find() && count <= 2) {
+            result.append(matcher.group());
+            count++;
         }
-        m = COMPILE_WOVELS.matcher(input);
-        cont = 1;
-        while (m.find() && cont <= 1) {
-            result.append(m.group());
-            cont++;
+        matcher = COMPILE_WOVELS.matcher(input);
+        count = 1;
+        while (matcher.find() && count <= 1) {
+            result.append(matcher.group());
+            count++;
         }
         return result.toString();
     }
 
     public static String pickFirstConsonantAndFirstTwoVowels(String input) {
-        Matcher m = COMPILE_CONSONANTS.matcher(input);
+        Matcher matcher = COMPILE_CONSONANTS.matcher(input);
         StringBuilder result = new StringBuilder();
-        int cont = 1;
-        while (m.find() && cont <= 1) {
-            result.append(m.group());
-            cont++;
+        int count = 1;
+        while (matcher.find() && count <= 1) {
+            result.append(matcher.group());
+            count++;
         }
-        m = COMPILE_WOVELS.matcher(input);
-        cont = 1;
-        while (m.find() && cont <= 2) {
-            result.append(m.group());
-            cont++;
+        matcher = COMPILE_WOVELS.matcher(input);
+        count = 1;
+        while (matcher.find() && count <= 2) {
+            result.append(matcher.group());
+            count++;
         }
         return result.toString();
     }
 
     public static String pickFirstThreeVowels(String input) {
-        Matcher m = COMPILE_WOVELS.matcher(input);
+        Matcher matcher = COMPILE_WOVELS.matcher(input);
         StringBuilder result = new StringBuilder();
-        int cont = 1;
-        while (m.find() && cont <= 3) {
-            result.append(m.group());
-            cont++;
+        int count = 1;
+        while (matcher.find() && count <= 3) {
+            result.append(matcher.group());
+            count++;
         }
         return result.toString();
     }
 
-    public static String pickFirstThirdAndFourthConsonant(String inputName) {
-        Matcher m = COMPILE_CONSONANTS.matcher(inputName);
+    public static String pickFirstAndThirdAndFourthConsonant(String inputName) {
+        Matcher matcher = COMPILE_CONSONANTS.matcher(inputName);
         StringBuilder result = new StringBuilder();
-        int cont = 1;
-        while (m.find() && cont <= 4) {
-            if (cont != 2) {
-                result.append(m.group());
+        int count = 1;
+        while (matcher.find() && count <= 4) {
+            if (count != 2) {
+                result.append(matcher.group());
             }
-            cont++;
+            count++;
         }
         return result.toString();
     }

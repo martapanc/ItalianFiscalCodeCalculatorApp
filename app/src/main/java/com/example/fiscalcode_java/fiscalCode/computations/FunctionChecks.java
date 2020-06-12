@@ -4,10 +4,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class FunctionChecks {
+
+    public static final String CONSONANTS = "[B-DF-HJ-NP-TV-Z]+";
+    public static final String VOWELS = "[AEIOU]+";
 
     public static boolean isAllLetters(String string) {
         return Pattern.matches("[a-zA-Z]+", string);
@@ -17,25 +21,12 @@ public class FunctionChecks {
         return Pattern.matches("[0-9]+", string);
     }
 
-    public static int howManyConsonants(String string) {
+    public static int howManyLettersOfType(String inputString, String letterType) {
         StringBuilder match = new StringBuilder();
-        if (isAllLetters(string)) {
-            string = string.toUpperCase();
-            Pattern pattern = Pattern.compile("[B-DF-HJ-NP-TV-Z]+");
-            Matcher matcher = pattern.matcher(string);
-            while (matcher.find()) {
-                match.append(matcher.group());
-            }
-        }
-        return match.length();
-    }
-
-    public static int howManyVowels(String string) {
-        StringBuilder match = new StringBuilder();
-        if (isAllLetters(string)) {
-            string = string.toUpperCase();
-            Pattern pattern = Pattern.compile("[AEIOU]+");
-            Matcher matcher = pattern.matcher(string);
+        if (isAllLetters(inputString)) {
+            inputString = inputString.toUpperCase();
+            Pattern pattern = Pattern.compile(letterType);
+            Matcher matcher = pattern.matcher(inputString);
             while (matcher.find()) {
                 match.append(matcher.group());
             }
@@ -58,13 +49,13 @@ public class FunctionChecks {
         if (isYearValid(year)) {
             String dateToCheck = day + "-" + month + "-" + year;
             Calendar.getInstance();
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy", Locale.ITALY);
             sdf.setLenient(false);
             try {
                 sdf.parse(dateToCheck);
                 Date date = sdf.parse(dateToCheck);
                 Date current = Calendar.getInstance().getTime();
-                if (date.after(current)) // You cannot calculate a fiscal code if the birthday is after the current day
+                if (current.before(date)) // You cannot calculate a fiscal code if the birthday is after the current day
                     return false;
             } catch (ParseException e) {
                 return false;
@@ -75,7 +66,8 @@ public class FunctionChecks {
     }
 
     public static String replaceSpecialChars(String input) {
-        //If the name or surname include stressed letters (à,è,ì...) or other special characters (ä,ç,ß,...), it replaces them with corresponding letter (e.g. à = a)
+        //If the name or surname include stressed letters (à,è,ì...) or other special characters (ä,ç,ß,...),
+        // this replaces them with corresponding letter (e.g. à = a)
         return input
                 .toUpperCase()
                 .replaceAll("[ÀÁÂÃÅĀ]", "A")

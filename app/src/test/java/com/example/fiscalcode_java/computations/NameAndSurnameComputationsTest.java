@@ -34,7 +34,7 @@ public class NameAndSurnameComputationsTest {
 
     @Test
     public void TestPickFirstThirdAndFourthConsonant() {
-        assertEquals("LBT", NameAndSurnameComputations.pickFirstThirdAndFourthConsonant("ELISABETTA"));
-        assertEquals("MRT", NameAndSurnameComputations.pickFirstThirdAndFourthConsonant("UMBERTO"));
+        assertEquals("LBT", NameAndSurnameComputations.pickFirstAndThirdAndFourthConsonant("ELISABETTA"));
+        assertEquals("MRT", NameAndSurnameComputations.pickFirstAndThirdAndFourthConsonant("UMBERTO"));
     }
 }

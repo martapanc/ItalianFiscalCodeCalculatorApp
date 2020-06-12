@@ -20,6 +20,8 @@ import static com.example.fiscalcode_java.fiscalCode.computations.NameAndSurname
 
 public class ComputeFiscalCode {
 
+    //TODO: add unit tests
+
     public static String computeSurname(String input) {
         String error = "0";
         input = replaceSpecialChars(input);
@@ -34,7 +36,7 @@ public class ComputeFiscalCode {
                     result.append("X");
                 }
             } else {
-                switch (howManyConsonants(input)) {
+                switch (howManyLettersOfType(input, CONSONANTS)) {
                     case 0:
                         result.append(pickFirstThreeVowels(input));
                         break;
@@ -51,6 +53,7 @@ public class ComputeFiscalCode {
             return result.toString();
         } else {
             return error;
+            // TODO: exception handling
         }
     }
 
@@ -66,7 +69,7 @@ public class ComputeFiscalCode {
                 while (result.length() < 3)
                     result.append("X");
             } else {
-                switch (howManyConsonants(inputName)) {
+                switch (howManyLettersOfType(inputName, CONSONANTS)) {
                     case 0:
                         result.append(pickFirstThreeVowels(inputName));
                         break;
@@ -80,13 +83,14 @@ public class ComputeFiscalCode {
                         result.append(pickFirstThreeConsonants(inputName));
                         break;
                     default:
-                        result.append(pickFirstThirdAndFourthConsonant(inputName));
+                        result.append(pickFirstAndThirdAndFourthConsonant(inputName));
                 }
             }
             return result.toString();
 
         } else {
             return error;
+            // TODO: exception handling
         }
     }
 
@@ -177,6 +181,7 @@ public class ComputeFiscalCode {
                 i++;
             }
         } catch (FileNotFoundException e) {
+            // TODO: exception handling
         }
 
         if (townCode.equals("0")) {
