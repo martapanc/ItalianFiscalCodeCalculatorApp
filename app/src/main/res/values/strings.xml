@@ -25,4 +25,5 @@
     <string name="dob_label">Data di nascita</string>
     <string name="pob_label">Luogo di nascita</string>
     <string name="empty_field_error">Valore richiesto</string>
+    <string name="invalid_input_error">Il valore inserito è invalido</string>
 </resources>

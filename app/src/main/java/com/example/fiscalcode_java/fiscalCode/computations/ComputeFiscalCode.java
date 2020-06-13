@@ -22,7 +22,7 @@ public class ComputeFiscalCode {
 
     public static String computeSurname(String input) {
         String error = "0";
-        input = replaceSpecialChars(input);
+        input = replaceSpecialChars(input.trim());
 
         if (isAllLetters(input)) {
             StringBuilder result = new StringBuilder();
@@ -57,7 +57,7 @@ public class ComputeFiscalCode {
 
     public static String computeName(String inputName) {
         String error = "0";
-        inputName = replaceSpecialChars(inputName);
+        inputName = replaceSpecialChars(inputName.trim());
         if (isAllLetters(inputName)) {
             StringBuilder result = new StringBuilder();
             inputName = inputName.toUpperCase();

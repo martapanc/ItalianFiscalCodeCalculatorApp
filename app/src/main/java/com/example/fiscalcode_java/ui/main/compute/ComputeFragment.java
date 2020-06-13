@@ -27,7 +27,9 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.example.fiscalcode_java.R;
 import com.example.fiscalcode_java.fiscalCode.computations.ComputeFiscalCode;
+import com.example.fiscalcode_java.fiscalCode.computations.FunctionChecks;
 import com.example.fiscalcode_java.fiscalCode.models.Country;
+import com.example.fiscalcode_java.fiscalCode.models.InputField;
 import com.example.fiscalcode_java.fiscalCode.models.Town;
 import com.example.fiscalcode_java.fiscalCode.utils.ReadTownList;
 
@@ -41,6 +43,8 @@ import java.util.Objects;
 import lombok.SneakyThrows;
 
 public class ComputeFragment extends Fragment {
+
+    //TODO: implement localisation
 
     public static final String TOWNS_FILE = "comuni.json";
     private static final String COUNTRIES_FILE = "countries_it.json";
@@ -72,12 +76,13 @@ public class ComputeFragment extends Fragment {
             }
         });
 
+        Context context = Objects.requireNonNull(getContext());
         String[] towns = ReadTownList.readTownNameList(
-                getContext().getAssets().open(TOWNS_FILE),
-                getContext().getAssets().open(COUNTRIES_FILE)
+                context.getAssets().open(TOWNS_FILE),
+                context.getAssets().open(COUNTRIES_FILE)
         );
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, towns);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(Objects.requireNonNull(getActivity()), android.R.layout.simple_list_item_1, towns);
         autoCompleteTextView.setAdapter(arrayAdapter);
 
         Button computeButton = root.findViewById(R.id.compute_button);
@@ -90,29 +95,27 @@ public class ComputeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 boolean allFieldsValid = true;
-                EditText firstNameEditText = getActivity().findViewById(R.id.first_name);
-                EditText lastNameEditText = getActivity().findViewById(R.id.last_name);
-                RadioButton maleRadioButton = getActivity().findViewById(R.id.maleRadioButton);
-                RadioButton femaleRadioButton = getActivity().findViewById(R.id.femaleRadioButton);
-                EditText dobEditText = getActivity().findViewById(R.id.dateOfBirth_editText);
-                AutoCompleteTextView pobTextView = getActivity().findViewById(R.id.pob_autocompleteTextView);
+                FragmentActivity activity = Objects.requireNonNull(getActivity());
 
-                allFieldsValid = validateField(allFieldsValid, firstNameEditText);
-                allFieldsValid = validateField(allFieldsValid, lastNameEditText);
+                EditText firstNameEditText = activity.findViewById(R.id.first_name);
+                EditText lastNameEditText = activity.findViewById(R.id.last_name);
+                RadioButton maleRadioButton = activity.findViewById(R.id.maleRadioButton);
+                RadioButton femaleRadioButton = activity.findViewById(R.id.femaleRadioButton);
+                EditText dobEditText = activity.findViewById(R.id.dateOfBirth_editText);
+                AutoCompleteTextView pobTextView = activity.findViewById(R.id.pob_autocompleteTextView);
+
+                allFieldsValid = validateField(allFieldsValid, firstNameEditText, InputField.FIRST_NAME);
+                allFieldsValid = validateField(allFieldsValid, lastNameEditText, InputField.LAST_NAME);
 
                 maleRadioButton.setError(null);
                 femaleRadioButton.setError(null);
-                if (!maleRadioButton.isChecked() && !femaleRadioButton.isChecked()) {
-                    allFieldsValid = false;
-                    femaleRadioButton.setError(getString(R.string.empty_field_error));
-                    femaleRadioButton.requestFocus();
-                }
+                allFieldsValid = validateField(allFieldsValid, maleRadioButton, femaleRadioButton);
 
                 dobEditText.setError(null);
-                allFieldsValid = validateField(allFieldsValid, dobEditText);
+                allFieldsValid = validateField(allFieldsValid, dobEditText, InputField.DATE_OF_BIRTH);
 
                 pobTextView.setError(null);
-                allFieldsValid = validateField(allFieldsValid, pobTextView);
+                allFieldsValid = validateField(allFieldsValid, pobTextView, InputField.PLACE_OF_BIRTH);
 
                 if (allFieldsValid) {
                     String firstName = firstNameEditText.getText().toString();
@@ -122,16 +125,16 @@ public class ComputeFragment extends Fragment {
                     String pob = pobTextView.getText().toString();
 
                     try {
-                        List<Town> towns = ReadTownList.read(getActivity().getAssets().open(TOWNS_FILE));
-                        List<Country> countries = ReadTownList.readCountries(getActivity().getAssets().open(COUNTRIES_FILE));
+                        List<Town> towns = ReadTownList.read(activity.getAssets().open(TOWNS_FILE));
+                        List<Country> countries = ReadTownList.readCountries(activity.getAssets().open(COUNTRIES_FILE));
                         String fiscalCode = ComputeFiscalCode.compute(firstName, lastName, dob, gender, pob, towns, countries);
                         hideVirtualKeyboard(view);
 
-                        TextView outputTextView = getActivity().findViewById(R.id.fiscalCodeOutput);
+                        TextView outputTextView = activity.findViewById(R.id.fiscalCodeOutput);
                         outputTextView.setPadding(10, 5, 10, 5);
                         outputTextView.setText(fiscalCode);
                     } catch (IOException | InterruptedException e) {
-                        Toast.makeText(getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(activity.getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -198,11 +201,25 @@ public class ComputeFragment extends Fragment {
         inputManager.hideSoftInputFromWindow(view.getApplicationWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
-    private boolean validateField(boolean allFieldsValid, EditText firstNameEditText) {
-        if (firstNameEditText.getText().toString().equals("")) {
+    private boolean validateField(boolean allFieldsValid, EditText editText, InputField type) {
+        String input = editText.getText().toString();
+        if (input.equals("")) {
             allFieldsValid = false;
-            firstNameEditText.setError(getString(R.string.empty_field_error));
-            firstNameEditText.requestFocus();
+            editText.setError(getString(R.string.empty_field_error));
+            editText.requestFocus();
+        } else if (!FunctionChecks.isFieldValid(input, type)) {
+            allFieldsValid = false;
+            editText.setError(getString(R.string.invalid_input_error));
+            editText.requestFocus();
+        }
+        return allFieldsValid;
+    }
+
+    private boolean validateField(boolean allFieldsValid, RadioButton maleRadioButton, RadioButton femaleRadioButton) {
+        if (!maleRadioButton.isChecked() && !femaleRadioButton.isChecked()) {
+            allFieldsValid = false;
+            femaleRadioButton.setError(getString(R.string.empty_field_error));
+            femaleRadioButton.requestFocus();
         }
         return allFieldsValid;
     }
