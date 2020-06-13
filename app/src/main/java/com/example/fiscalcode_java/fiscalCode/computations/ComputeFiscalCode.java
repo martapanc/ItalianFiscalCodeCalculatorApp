@@ -20,8 +20,6 @@ import static com.example.fiscalcode_java.fiscalCode.computations.NameAndSurname
 
 public class ComputeFiscalCode {
 
-    //TODO: add unit tests
-
     public static String computeSurname(String input) {
         String error = "0";
         input = replaceSpecialChars(input);
@@ -181,7 +179,7 @@ public class ComputeFiscalCode {
                 i++;
             }
         } catch (FileNotFoundException e) {
-            // TODO: exception handling
+            throw new FileNotFoundException();
         }
 
         if (townCode.equals("0")) {
