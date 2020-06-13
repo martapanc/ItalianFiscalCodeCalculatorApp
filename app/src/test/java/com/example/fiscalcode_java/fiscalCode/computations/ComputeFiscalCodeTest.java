@@ -2,26 +2,24 @@ package com.example.fiscalcode_java.fiscalCode.computations;
 
 import org.junit.Test;
 
-import java.io.IOException;
-
 import static org.junit.Assert.*;
 
 public class ComputeFiscalCodeTest {
 
     @Test
     public void computeSurname() {
-        assertEquals("PNC", ComputeFiscalCode.computeSurname("Pancaldi"));
-        assertEquals("MRN", ComputeFiscalCode.computeSurname("Morini"));
+        assertEquals("PNC", ComputeFiscalCode.computeLastName("Pancaldi"));
+        assertEquals("MRN", ComputeFiscalCode.computeLastName("Morini"));
     }
 
     @Test
     public void computeName() {
-        assertEquals("MRT", ComputeFiscalCode.computeName("Marta"));
-        assertEquals("MRT", ComputeFiscalCode.computeName("marta"));
-        assertEquals("MRT", ComputeFiscalCode.computeName("Umberto"));
-        assertEquals("LBT", ComputeFiscalCode.computeName("Elisabetta"));
-        assertEquals("MRA", ComputeFiscalCode.computeName("Maria"));
-        assertEquals("RTI", ComputeFiscalCode.computeName("Rita"));
+        assertEquals("MRT", ComputeFiscalCode.computeFirstName("Marta"));
+        assertEquals("MRT", ComputeFiscalCode.computeFirstName("marta"));
+        assertEquals("MRT", ComputeFiscalCode.computeFirstName("Umberto"));
+        assertEquals("LBT", ComputeFiscalCode.computeFirstName("Elisabetta"));
+        assertEquals("MRA", ComputeFiscalCode.computeFirstName("Maria"));
+        assertEquals("RTI", ComputeFiscalCode.computeFirstName("Rita"));
     }
 
     @Test

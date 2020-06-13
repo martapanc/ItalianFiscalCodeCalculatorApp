@@ -1,16 +1,9 @@
 package com.example.fiscalcode_java.fiscalCode.computations;
 
+import com.example.fiscalcode_java.exception.FiscalCodeComputationException;
 import com.example.fiscalcode_java.fiscalCode.models.Country;
 import com.example.fiscalcode_java.fiscalCode.models.Town;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,8 +13,7 @@ import static com.example.fiscalcode_java.fiscalCode.computations.NameAndSurname
 
 public class ComputeFiscalCode {
 
-    public static String computeSurname(String input) {
-        String error = "0";
+    public static String computeLastName(String input) throws FiscalCodeComputationException {
         input = replaceSpecialChars(input.trim());
 
         if (isAllLetters(input)) {
@@ -50,13 +42,12 @@ public class ComputeFiscalCode {
             }
             return result.toString();
         } else {
-            return error;
-            // TODO: exception handling
+            // TODO: these should be localised
+            throw new FiscalCodeComputationException("Error computing last name");
         }
     }
 
-    public static String computeName(String inputName) {
-        String error = "0";
+    public static String computeFirstName(String inputName) throws FiscalCodeComputationException {
         inputName = replaceSpecialChars(inputName.trim());
         if (isAllLetters(inputName)) {
             StringBuilder result = new StringBuilder();
@@ -87,12 +78,11 @@ public class ComputeFiscalCode {
             return result.toString();
 
         } else {
-            return error;
-            // TODO: exception handling
+            throw new FiscalCodeComputationException("Error computing first name");
         }
     }
 
-    public static String computeDateOfBirth(String dateString, String gender) {
+    public static String computeDateOfBirth(String dateString, String gender) throws FiscalCodeComputationException {
         String yearError = "0", dateError = "0";
 
         String[] dateValues = dateString.split("/");
@@ -142,49 +132,16 @@ public class ComputeFiscalCode {
                             break;
                         }
                     }
+                    return result;
                 } catch (NumberFormatException e) {
-                    System.out.println("Check numeric input.");
+                    throw new FiscalCodeComputationException("Error parsing date values");
                 }
-                return result;
             } else {
-                return dateError;
+                throw new FiscalCodeComputationException("Error: date is not valid");
             }
         } else {
-            String message =
-                    "Please insert a numeric value between 1900 and "
-                            + Calendar.getInstance().get(Calendar.YEAR)
-                            + " in \"Year\" field.";
-            return yearError;
+            throw new FiscalCodeComputationException("Error: year out of range");
         }
-    }
-
-    public static String computeTownOfBirth(String townString) throws IOException {
-        List<Town> townList = new ArrayList<>();
-        String townCode = "0";
-        townString = townString.toUpperCase();
-        try (BufferedReader read = new BufferedReader(new InputStreamReader(new FileInputStream(new File("assets/comuni.json"))))) {
-            String line = read.readLine();
-            String[] town;
-            while (line != null) {
-                town = line.split(";");
-                townList.add(new Town(town[0], town[1], town[2]));
-                line = read.readLine();
-            }
-            int i = 0;
-            while (i < townList.size()) {
-                if (townString.equals(townList.get(i).getName())) {
-                    townCode = townList.get(i).getCadastral_code();
-                    break;
-                }
-                i++;
-            }
-        } catch (FileNotFoundException e) {
-            throw new FileNotFoundException();
-        }
-
-        if (townCode.equals("0")) {
-        }
-        return townCode;
     }
 
     public static String getPlaceCode(List<Town> towns, List<Country> countries, String selectedPlace) {
@@ -207,7 +164,7 @@ public class ComputeFiscalCode {
         return placeCode;
     }
 
-    public static String computeControlChar(String incompleteFiscalCode) throws InterruptedException {
+    public static String computeControlChar(String incompleteFiscalCode) throws InterruptedException, FiscalCodeComputationException {
 
         Map<Integer, String> controlCharMap = new HashMap<>();
         controlCharMap.put(0, "A");
@@ -256,14 +213,16 @@ public class ComputeFiscalCode {
             // The remainder of the division is the control character
             int sum = (oddSum + evenSum) % 26;
             control = controlCharMap.get(sum);
+            return control;
+        } else {
+            throw new FiscalCodeComputationException("Computation failed, please check your input values and retry");
         }
-        return control;
     }
 
-    public static String compute(String firstName, String lastName, String dateOfBirth, String gender, String townOfBirth, List<Town> towns, List<Country> countries) throws InterruptedException {
+    public static String compute(String firstName, String lastName, String dateOfBirth, String gender, String townOfBirth, List<Town> towns, List<Country> countries) throws InterruptedException, FiscalCodeComputationException {
         StringBuilder fiscalCode = new StringBuilder();
-        fiscalCode.append(computeSurname(lastName));
-        fiscalCode.append(computeName(firstName));
+        fiscalCode.append(computeLastName(lastName));
+        fiscalCode.append(computeFirstName(firstName));
         fiscalCode.append(computeDateOfBirth(dateOfBirth, gender));
         fiscalCode.append(getPlaceCode(towns, countries, townOfBirth));
         fiscalCode.append(computeControlChar(fiscalCode.toString()));

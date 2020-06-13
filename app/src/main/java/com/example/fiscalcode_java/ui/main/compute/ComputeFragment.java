@@ -26,6 +26,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import com.example.fiscalcode_java.R;
+import com.example.fiscalcode_java.exception.FiscalCodeComputationException;
 import com.example.fiscalcode_java.fiscalCode.computations.ComputeFiscalCode;
 import com.example.fiscalcode_java.fiscalCode.computations.FunctionChecks;
 import com.example.fiscalcode_java.fiscalCode.models.Country;
@@ -133,7 +134,7 @@ public class ComputeFragment extends Fragment {
                         TextView outputTextView = activity.findViewById(R.id.fiscalCodeOutput);
                         outputTextView.setPadding(10, 5, 10, 5);
                         outputTextView.setText(fiscalCode);
-                    } catch (IOException | InterruptedException e) {
+                    } catch (IOException | InterruptedException | FiscalCodeComputationException e) {
                         Toast.makeText(activity.getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
