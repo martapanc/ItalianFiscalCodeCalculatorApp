@@ -12,13 +12,15 @@ public class FunctionChecks {
 
     public static final String CONSONANTS = "[B-DF-HJ-NP-TV-Z]+";
     public static final String VOWELS = "[AEIOU]+";
+    public static final String ALPHABET = "[a-zA-Z]+";
+    public static final String NUMBERS = "[0-9]+";
 
     public static boolean isAllLetters(String string) {
-        return Pattern.matches("[a-zA-Z]+", string);
+        return Pattern.matches(ALPHABET, string.toUpperCase());
     }
 
     public static boolean isAllDigits(String string) {
-        return Pattern.matches("[0-9]+", string);
+        return Pattern.matches(NUMBERS, string);
     }
 
     public static int howManyLettersOfType(String inputString, String letterType) {
@@ -63,6 +65,12 @@ public class FunctionChecks {
             return true;
         }
         return false;
+    }
+
+    public static boolean isDateValid(Calendar calendar) {
+        return isDateValid(Integer.toString(calendar.get(Calendar.DAY_OF_MONTH)),
+                Integer.toString(calendar.get(Calendar.MONTH)),
+                Integer.toString(calendar.get(Calendar.YEAR)));
     }
 
     public static String replaceSpecialChars(String input) {
