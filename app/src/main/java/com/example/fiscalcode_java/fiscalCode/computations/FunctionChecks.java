@@ -1,6 +1,6 @@
 package com.example.fiscalcode_java.fiscalCode.computations;
 
-import com.example.fiscalcode_java.fiscalCode.models.InputField;
+import com.example.fiscalcode_java.fiscalCode.constants.DateFormat;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -53,7 +53,8 @@ public class FunctionChecks {
         if (isYearValid(year)) {
             String dateToCheck = day + "-" + month + "-" + year;
             Calendar.getInstance();
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yy", Locale.ITALY);
+            //TODO: is YY correct?
+            SimpleDateFormat sdf = new SimpleDateFormat(DateFormat.DD_MM_YY, Locale.ITALY);
             sdf.setLenient(false);
             try {
                 sdf.parse(dateToCheck);
@@ -98,39 +99,5 @@ public class FunctionChecks {
                 .replaceAll(" ", "")
                 .replaceAll("-", "")
                 .replaceAll("[.']", "");
-    }
-
-    public static boolean isFieldValid(String input, InputField type) {
-        switch (type) {
-            case FIRST_NAME:
-            case LAST_NAME:
-                return validateName(input);
-            case DATE_OF_BIRTH:
-                return validateDateOfBirth(input);
-            case PLACE_OF_BIRTH:
-                return validatePlaceOfBirth(input);
-        }
-        return false;
-    }
-
-    private static boolean validateName(String input) {
-        input = replaceSpecialChars(input).trim();
-        return isAllLetters(input);
-    }
-
-    private static boolean validateDateOfBirth(String input){
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            Date date = sdf.parse(input);
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(date);
-            return isDateValid(cal);
-        } catch (ParseException e) {
-            return false;
-        }
-    }
-
-    private static boolean validatePlaceOfBirth(String input) {
-        return true;
     }
 }

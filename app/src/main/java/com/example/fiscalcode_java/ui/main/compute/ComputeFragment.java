@@ -28,7 +28,7 @@ import androidx.fragment.app.FragmentActivity;
 import com.example.fiscalcode_java.R;
 import com.example.fiscalcode_java.exception.FiscalCodeComputationException;
 import com.example.fiscalcode_java.fiscalCode.computations.ComputeFiscalCode;
-import com.example.fiscalcode_java.fiscalCode.computations.FunctionChecks;
+import com.example.fiscalcode_java.fiscalCode.computations.ValidateInputFields;
 import com.example.fiscalcode_java.fiscalCode.models.Country;
 import com.example.fiscalcode_java.fiscalCode.models.InputField;
 import com.example.fiscalcode_java.fiscalCode.models.Town;
@@ -43,9 +43,13 @@ import java.util.Objects;
 
 import lombok.SneakyThrows;
 
+import static com.example.fiscalcode_java.fiscalCode.constants.DateFormat.DD_MM_YYYY;
+
 public class ComputeFragment extends Fragment {
 
     //TODO: implement localisation
+    //TODO: extract methods
+    //TODO: unify validators
 
     public static final String TOWNS_FILE = "comuni.json";
     private static final String COUNTRIES_FILE = "countries_it.json";
@@ -158,7 +162,7 @@ public class ComputeFragment extends Fragment {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(fragmentActivity, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int y, int m, int d) {
-                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY);
+                        SimpleDateFormat sdf = new SimpleDateFormat(DD_MM_YYYY, Locale.ITALY);
                         Calendar c = Calendar.getInstance();
                         c.set(y, m, d);
                         dateTextView.setText(sdf.format(c.getTime()));
@@ -182,7 +186,7 @@ public class ComputeFragment extends Fragment {
             @SneakyThrows
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY);
+                SimpleDateFormat sdf = new SimpleDateFormat(DD_MM_YYYY, Locale.ITALY);
                 calendar.setTime(Objects.requireNonNull(sdf.parse(charSequence.toString())));
             }
 
@@ -208,7 +212,7 @@ public class ComputeFragment extends Fragment {
             allFieldsValid = false;
             editText.setError(getString(R.string.empty_field_error));
             editText.requestFocus();
-        } else if (!FunctionChecks.isFieldValid(input, type)) {
+        } else if (!ValidateInputFields.isFieldValid(input, type)) {
             allFieldsValid = false;
             editText.setError(getString(R.string.invalid_input_error));
             editText.requestFocus();
