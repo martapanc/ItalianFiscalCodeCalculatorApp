@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     env: 
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_TITLE: "Deployment success! ✅"
+        SLACK_MESSAGE: |
+          `${{ github.event.deployment.ref }}` was successfully deployed to `${{ github.event.deployment.environment }}`!
+            Click <${{ github.event.deployment_status.target_url }}|here> to access the deployed version or <${{ github.event.repository.html_url }}/commit/${{ github.event.deployment.sha }}/checks|here> to see the logs.:  
 
     steps:
     - uses: actions/checkout@v2
@@ -23,15 +27,9 @@ jobs:
       run: ./gradlew build
     - name: Send Slack notification
       uses: bryan-nice/slack-notification@master
-      if: success()
-        env:
-          SLACK_TITLE: "Deployment success! ✅"
-          SLACK_MESSAGE: |
-            `${{ github.event.deployment.ref }}` was successfully deployed to `${{ github.event.deployment.environment }}`!
-            Click <${{ github.event.deployment_status.target_url }}|here> to access the deployed version or <${{ github.event.repository.html_url }}/commit/${{ github.event.deployment.sha }}/checks|here> to see the logs.
       if: failure()
-        env:
-          SLACK_TITLE: "Deployment failed! 🔴"
-          SLACK_MESSAGE: |
-            `${{ github.event.deployment.ref }}` was not deployed to `${{ github.event.deployment.environment }}`.
-            Check the CI logs <${{ github.event.repository.html_url }}/commit/${{ github.event.deployment.sha }}/checks|here>.
+      env:
+        SLACK_TITLE: "Deployment failed! 🔴"
+        SLACK_MESSAGE: |
+          `${{ github.event.deployment.ref }}` was not deployed to `${{ github.event.deployment.environment }}`.
+          Check the CI logs <${{ github.event.repository.html_url }}/commit/${{ github.event.deployment.sha }}/checks|here>.
