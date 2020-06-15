@@ -177,7 +177,10 @@ public class ComputeFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 SimpleDateFormat sdf = new SimpleDateFormat(DD_MM_YYYY, Locale.ITALY);
-                calendar.setTime(Objects.requireNonNull(sdf.parse(charSequence.toString())));
+                //TODO: handle exceptions like this
+                if (charSequence != null && !charSequence.toString().isEmpty()) {
+                    calendar.setTime(Objects.requireNonNull(sdf.parse(charSequence.toString())));
+                }
             }
 
             @Override
