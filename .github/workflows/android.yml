@@ -29,7 +29,6 @@ jobs:
       uses: bryan-nice/slack-notification@master
       if: failure()
       env:
-        SLACK_TITLE: "Deployment failed! 🔴"
+        SLACK_TITLE: "Build failed! 🔴"
         SLACK_MESSAGE: |
-          `${{ github.event.deployment.ref }}` was not deployed to `${{ github.event.deployment.environment }}`.
-          Check the CI logs <${{ github.event.repository.html_url }}/commit/${{ github.event.deployment.sha }}/checks|here>.
+          Check the CI logs <https://github.com/martapanc/ItalianFiscalCodeCalculatorApp/actions/runs/136097932|here>.
