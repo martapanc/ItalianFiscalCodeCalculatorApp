@@ -13,8 +13,8 @@ public class ComputeViewModel extends ViewModel {
     public ComputeViewModel() {
     }
 
-    public static final String TOWNS_FILE = "comuni.json";
-    public static final String COUNTRIES_FILE = "countries_it.json";
+    public static final String TOWNS_FILE = "data/comuni.json";
+    public static final String COUNTRIES_FILE = "data/countries_it.json";
 
     public String[] getPlaceList(Context context) throws IOException {
         return ReadTownList.readTownNameList(
