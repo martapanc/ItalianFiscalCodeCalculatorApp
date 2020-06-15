@@ -1,0 +1,35 @@
+on: deployment_status
+
+name: Slack Notification
+
+jobs:
+    slackNotification:
+      name: Send Slack Notification
+      runs-on: ubuntu-latest
+      env: 
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      steps:
+        - name: Notify started
+          uses: bryan-nice/slack-notification@master
+          if: github.event.deployment_status.state == 'pending'
+          env:
+            SLACK_TITLE: "Deployment started... 🚀"
+            SLACK_MESSAGE: |
+              The deployment of `${{ github.event.deployment.ref }}` to `${{ github.event.deployment.environment }}` has started!
+              You can watch the CI logs <${{ github.event.repository.html_url }}/commit/${{ github.event.deployment.sha }}/checks|here>.
+        - name: Notify success
+          uses: bryan-nice/slack-notification@master
+          if: github.event.deployment_status.state == 'success'
+          env:
+            SLACK_TITLE: "Deployment success! ✅"
+            SLACK_MESSAGE: |
+              `${{ github.event.deployment.ref }}` was successfully deployed to `${{ github.event.deployment.environment }}`!
+              Click <${{ github.event.deployment_status.target_url }}|here> to access the deployed version or <${{ github.event.repository.html_url }}/commit/${{ github.event.deployment.sha }}/checks|here> to see the logs.
+        - name: Notify failure
+          uses: bryan-nice/slack-notification@master
+          if: github.event.deployment_status.state == 'failure'
+          env:
+            SLACK_TITLE: "Deployment failed! 🔴"
+            SLACK_MESSAGE: |
+              `${{ github.event.deployment.ref }}` was not deployed to `${{ github.event.deployment.environment }}`.
+              Check the CI logs <${{ github.event.repository.html_url }}/commit/${{ github.event.deployment.sha }}/checks|here>.
