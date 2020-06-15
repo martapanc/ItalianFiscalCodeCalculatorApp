@@ -8,8 +8,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.*;
-import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.*;
+import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.CONSONANTS;
+import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.howManyLettersOfType;
+import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.isAllLetters;
+import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.isDateValid;
+import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.isYearValid;
+import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.replaceSpecialChars;
+import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.pickFirstAndThirdAndFourthConsonant;
+import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.pickFirstConsonantAndFirstTwoVowels;
+import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.pickFirstThreeConsonants;
+import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.pickFirstThreeVowels;
+import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.pickFirstTwoConsonantsAndFirstVowel;
+
 
 public class ComputeFiscalCode {
 
