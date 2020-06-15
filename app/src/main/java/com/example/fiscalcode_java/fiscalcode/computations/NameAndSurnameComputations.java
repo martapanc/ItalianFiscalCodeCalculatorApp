@@ -1,4 +1,4 @@
-package com.example.fiscalcode_java.fiscalCode.computations;
+package com.example.fiscalcode_java.fiscalcode.computations;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

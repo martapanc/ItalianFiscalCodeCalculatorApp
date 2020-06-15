@@ -1,4 +1,4 @@
-package com.example.fiscalcode_java.fiscalCode.models;
+package com.example.fiscalcode_java.fiscalcode.models;
 
 public enum InputField {
 

@@ -1,7 +1,7 @@
-package com.example.fiscalcode_java.fiscalCode.computations;
+package com.example.fiscalcode_java.fiscalcode.computations;
 
-import com.example.fiscalcode_java.fiscalCode.constants.DateFormat;
-import com.example.fiscalcode_java.fiscalCode.models.InputField;
+import com.example.fiscalcode_java.fiscalcode.constants.DateFormat;
+import com.example.fiscalcode_java.fiscalcode.models.InputField;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,9 +9,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import static com.example.fiscalcode_java.fiscalCode.computations.FunctionChecks.isAllLetters;
-import static com.example.fiscalcode_java.fiscalCode.computations.FunctionChecks.isDateValid;
-import static com.example.fiscalcode_java.fiscalCode.computations.FunctionChecks.replaceSpecialChars;
+import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.isAllLetters;
+import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.isDateValid;
+import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.replaceSpecialChars;
 
 public class ValidateInputFields {
 

@@ -1,4 +1,4 @@
-package com.example.fiscalcode_java.fiscalCode.computations;
+package com.example.fiscalcode_java.fiscalcode.computations;
 
 import com.example.fiscalcode_java.exception.FiscalCodeComputationException;
 

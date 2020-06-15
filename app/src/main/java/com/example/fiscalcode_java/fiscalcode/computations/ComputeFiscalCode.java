@@ -1,15 +1,15 @@
-package com.example.fiscalcode_java.fiscalCode.computations;
+package com.example.fiscalcode_java.fiscalcode.computations;
 
 import com.example.fiscalcode_java.exception.FiscalCodeComputationException;
-import com.example.fiscalcode_java.fiscalCode.models.Country;
-import com.example.fiscalcode_java.fiscalCode.models.Town;
+import com.example.fiscalcode_java.fiscalcode.models.Country;
+import com.example.fiscalcode_java.fiscalcode.models.Town;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.example.fiscalcode_java.fiscalCode.computations.FunctionChecks.*;
-import static com.example.fiscalcode_java.fiscalCode.computations.NameAndSurnameComputations.*;
+import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.*;
+import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.*;
 
 public class ComputeFiscalCode {
 
@@ -83,8 +83,6 @@ public class ComputeFiscalCode {
     }
 
     public static String computeDateOfBirth(String dateString, String gender) throws FiscalCodeComputationException {
-        String yearError = "0", dateError = "0";
-
         String[] dateValues = dateString.split("/");
         String dayString = dateValues[0];
         String monthString = dateValues[1];
@@ -146,7 +144,7 @@ public class ComputeFiscalCode {
 
     public static String getPlaceCode(List<Town> towns, List<Country> countries, String selectedPlace) {
         String placeCode = "";
-        String placeWithoutAreaCode = selectedPlace.substring(0, selectedPlace.length()-5);
+        String placeWithoutAreaCode = selectedPlace.substring(0, selectedPlace.length() - 5);
         for (Town town : towns) {
             if (placeWithoutAreaCode.equals(town.getName())) {
                 placeCode = town.getCadastral_code();

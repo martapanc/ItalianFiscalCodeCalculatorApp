@@ -31,7 +31,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment = new Fragment();
+        Fragment fragment;
         switch (position) {
             case 0:
                 fragment = new ComputeFragment();
@@ -41,6 +41,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 break;
             case 2:
                 fragment = new ExtractFragment();
+                break;
+            default:
+                fragment = new Fragment();
         }
         return fragment;
     }

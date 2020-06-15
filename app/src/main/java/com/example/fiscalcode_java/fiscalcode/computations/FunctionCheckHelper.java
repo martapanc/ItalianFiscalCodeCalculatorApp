@@ -1,6 +1,6 @@
-package com.example.fiscalcode_java.fiscalCode.computations;
+package com.example.fiscalcode_java.fiscalcode.computations;
 
-import com.example.fiscalcode_java.fiscalCode.constants.DateFormat;
+import com.example.fiscalcode_java.fiscalcode.constants.DateFormat;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,7 +10,7 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class FunctionChecks {
+public class FunctionCheckHelper {
 
     public static final String CONSONANTS = "[B-DF-HJ-NP-TV-Z]+";
     public static final String VOWELS = "[AEIOU]+";

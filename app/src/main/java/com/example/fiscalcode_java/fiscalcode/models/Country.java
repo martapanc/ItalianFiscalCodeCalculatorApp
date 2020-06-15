@@ -1,4 +1,4 @@
-package com.example.fiscalcode_java.fiscalCode.models;
+package com.example.fiscalcode_java.fiscalcode.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,9 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Town {
+public class Country {
 
     private String name;
+    private String country_code;
     private String cadastral_code;
-    private String province;
+    private String continent;
+    private String area;
 }

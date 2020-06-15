@@ -4,14 +4,11 @@ import android.content.Context;
 
 import androidx.lifecycle.ViewModel;
 
-import com.example.fiscalcode_java.fiscalCode.utils.ReadTownList;
+import com.example.fiscalcode_java.fiscalcode.utils.ReadTownList;
 
 import java.io.IOException;
 
 public class ComputeViewModel extends ViewModel {
-
-    public ComputeViewModel() {
-    }
 
     public static final String TOWNS_FILE = "data/comuni.json";
     public static final String COUNTRIES_FILE = "data/countries_it.json";

@@ -16,10 +16,12 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.fiscalcode_java.R;
 import com.example.fiscalcode_java.exception.FiscalCodeComputationException;
-import com.example.fiscalcode_java.fiscalCode.computations.ComputeFiscalCode;
-import com.example.fiscalcode_java.fiscalCode.computations.ValidateInputFields;
-import com.example.fiscalcode_java.fiscalCode.models.*;
-import com.example.fiscalcode_java.fiscalCode.utils.ReadTownList;
+import com.example.fiscalcode_java.fiscalcode.computations.ComputeFiscalCode;
+import com.example.fiscalcode_java.fiscalcode.computations.ValidateInputFields;
+import com.example.fiscalcode_java.fiscalcode.models.Town;
+import com.example.fiscalcode_java.fiscalcode.models.Country;
+import com.example.fiscalcode_java.fiscalcode.models.InputField;
+import com.example.fiscalcode_java.fiscalcode.utils.ReadTownList;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -30,14 +32,14 @@ import java.util.Objects;
 
 import lombok.SneakyThrows;
 
-import static com.example.fiscalcode_java.fiscalCode.constants.DateFormat.DD_MM_YYYY;
+import static com.example.fiscalcode_java.fiscalcode.constants.DateFormat.DD_MM_YYYY;
 
 public class ComputeFragment extends Fragment {
 
     //TODO: implement localisation
 
     private int year, month, day;
-    Calendar calendar = initCalendar();
+    private Calendar calendar = initCalendar();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

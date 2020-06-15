@@ -1,7 +1,7 @@
-package com.example.fiscalcode_java.fiscalCode.utils;
+package com.example.fiscalcode_java.fiscalcode.utils;
 
-import com.example.fiscalcode_java.fiscalCode.models.Country;
-import com.example.fiscalcode_java.fiscalCode.models.Town;
+import com.example.fiscalcode_java.fiscalcode.models.Country;
+import com.example.fiscalcode_java.fiscalcode.models.Town;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
