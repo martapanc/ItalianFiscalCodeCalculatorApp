@@ -16,6 +16,7 @@ public class FunctionCheckHelper {
     public static final String VOWELS = "[AEIOU]+";
     public static final String ALPHABET = "[a-zA-Z]+";
     public static final String NUMBERS = "[0-9]+";
+    public static final String FISCAL_CODE = "[A-Z]{6}\\d{2}[A-EHLMPRST]\\d{2}[A-Z]\\d{3}[A-Z]";
 
     public static boolean isAllLetters(String string) {
         return Pattern.matches(ALPHABET, string.toUpperCase());
@@ -73,6 +74,10 @@ public class FunctionCheckHelper {
         return isDateValid(Integer.toString(calendar.get(Calendar.DAY_OF_MONTH)),
                 Integer.toString(calendar.get(Calendar.MONTH)),
                 Integer.toString(calendar.get(Calendar.YEAR)));
+    }
+
+    public static boolean isFiscalCodeValid(String fiscalCode) {
+        return Pattern.matches(FISCAL_CODE, fiscalCode.toUpperCase());
     }
 
     public static String replaceSpecialChars(String input) {

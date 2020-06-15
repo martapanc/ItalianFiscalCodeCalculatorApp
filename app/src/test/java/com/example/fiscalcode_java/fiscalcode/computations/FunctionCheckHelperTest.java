@@ -84,4 +84,14 @@ public class FunctionCheckHelperTest {
         assertEquals(FunctionCheckHelper.replaceSpecialChars("françois"), "FRANCOIS");
         assertEquals(FunctionCheckHelper.replaceSpecialChars("müllerstraße"), "MUELLERSTRASSE");
     }
+
+    @Test
+    public void testIsFiscalCodeValid() {
+        assertTrue(FunctionCheckHelper.isFiscalCodeValid("PNCMRT95L52E253R"));
+        assertTrue(FunctionCheckHelper.isFiscalCodeValid("pncmrt95L52E253R"));
+        assertFalse(FunctionCheckHelper.isFiscalCodeValid("PNCMRT95K52E253R"));
+        assertFalse(FunctionCheckHelper.isFiscalCodeValid("PNCMRT95K52E2534R"));
+        assertFalse(FunctionCheckHelper.isFiscalCodeValid("PNCMRT95K52E24R"));
+        assertFalse(FunctionCheckHelper.isFiscalCodeValid("PNCMRT9lK52E247R"));
+    }
 }

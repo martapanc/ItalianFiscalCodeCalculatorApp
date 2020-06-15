@@ -26,6 +26,7 @@
     <string name="pob_label">Luogo di nascita</string>
     <string name="empty_field_error">Valore richiesto</string>
     <string name="invalid_input_error">Il valore inserito è invalido</string>
+    <string name="invalid_fiscal_code_input_error">Il codice fiscale inserito non è nel formato richiesto</string>
     <string name="sample_fiscal_code">PNCMRA82C52E253Q</string>
     <string name="extract_prompt">Inserisci il tuo codice fiscale</string>
     <string name="extract_data_button">Estrai dati</string>

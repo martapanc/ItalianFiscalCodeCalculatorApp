@@ -11,6 +11,7 @@ import java.util.Locale;
 
 import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.isAllLetters;
 import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.isDateValid;
+import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.isFiscalCodeValid;
 import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.replaceSpecialChars;
 
 public class ValidateInputFields {
@@ -24,8 +25,14 @@ public class ValidateInputFields {
                 return validateDateOfBirth(input);
             case PLACE_OF_BIRTH:
                 return validatePlaceOfBirth(input, places);
+            case FISCAL_CODE:
+                return validateFiscalCode(input);
         }
         return false;
+    }
+
+    private static boolean validateFiscalCode(String input) {
+        return isFiscalCodeValid(input);
     }
 
     private static boolean validateName(String input) {
