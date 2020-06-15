@@ -19,6 +19,7 @@ import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurname
 import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.pickFirstThreeConsonants;
 import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.pickFirstThreeVowels;
 import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.pickFirstTwoConsonantsAndFirstVowel;
+import static com.example.fiscalcode_java.fiscalcode.constants.DateFormat.getMonthCodeMap;
 
 
 public class ComputeFiscalCode {
@@ -98,20 +99,6 @@ public class ComputeFiscalCode {
         String monthString = dateValues[1];
         String yearString = dateValues[2];
 
-        Map<Integer, String> monthMap = new HashMap<>();
-        monthMap.put(1, "A");
-        monthMap.put(2, "B");
-        monthMap.put(3, "C");
-        monthMap.put(4, "D");
-        monthMap.put(5, "E");
-        monthMap.put(6, "H");
-        monthMap.put(7, "L");
-        monthMap.put(8, "M");
-        monthMap.put(9, "P");
-        monthMap.put(10, "R");
-        monthMap.put(11, "S");
-        monthMap.put(12, "T");
-
         if (isYearValid(yearString)) {
             if (isDateValid(dayString, monthString, yearString)) {
                 String result = "";
@@ -128,7 +115,7 @@ public class ComputeFiscalCode {
                     }
 
                     // get the letter corresponding to the month
-                    result += monthMap.get(month);
+                    result += getMonthCodeMap().get(month);
 
                     switch (gender) {
                         case "f": {
