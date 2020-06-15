@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     env: 
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_ICON: "🚧"
         
     steps:
     - uses: actions/checkout@v2
