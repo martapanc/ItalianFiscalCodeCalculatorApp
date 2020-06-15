@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 public class ComputeFiscalCodeTest {
 
     @Test
-    public void computeSurname() throws FiscalCodeComputationException {
+    public void computeSurname() {
         assertEquals("PNC", ComputeFiscalCode.computeLastName("Pancaldi"));
         assertEquals("MRN", ComputeFiscalCode.computeLastName("Morini"));
     }
