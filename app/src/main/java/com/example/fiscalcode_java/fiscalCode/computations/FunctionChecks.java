@@ -51,10 +51,9 @@ public class FunctionChecks {
     public static boolean isDateValid(String day, String month, String year) {
         // Check whether a date is valid or not (e.g. 29/02/2001)
         if (isYearValid(year)) {
-            String dateToCheck = day + "-" + month + "-" + year;
+            String dateToCheck = day + "/" + month + "/" + year;
             Calendar.getInstance();
-            //TODO: is YY correct?
-            SimpleDateFormat sdf = new SimpleDateFormat(DateFormat.DD_MM_YY, Locale.ITALY);
+            SimpleDateFormat sdf = new SimpleDateFormat(DateFormat.DD_MM_YYYY, Locale.ITALY);
             sdf.setLenient(false);
             try {
                 sdf.parse(dateToCheck);

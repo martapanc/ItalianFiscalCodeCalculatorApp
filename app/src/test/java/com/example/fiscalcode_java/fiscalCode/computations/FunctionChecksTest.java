@@ -9,8 +9,6 @@ import static org.junit.Assert.*;
 public class FunctionChecksTest {
 
     private int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-    private int currentMonth = Calendar.getInstance().get(Calendar.MONTH);
-    private int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
 
     @Test
     public void testIsAllLetters() {
