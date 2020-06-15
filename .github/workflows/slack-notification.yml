@@ -1,0 +1,14 @@
+on: push
+name: Slack Notification Demo
+jobs:
+    slackNotification:
+      name: Slack Notification Demo
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@master
+      - name: Slack Notification Demo
+        uses: bryan-nice/slack-notification@master
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_TITLE: 'Slack Notification Demo'
+          SLACK_MESSAGE: 'Demo''ing the Slack Notification'
