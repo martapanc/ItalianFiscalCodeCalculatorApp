@@ -12,11 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     env: 
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_TITLE: "Deployment success! ✅"
-        SLACK_MESSAGE: |
-          `${{ github.event.deployment.ref }}` was successfully deployed to `${{ github.event.deployment.environment }}`!
-            Click <${{ github.event.deployment_status.target_url }}|here> to access the deployed version or <${{ github.event.repository.html_url }}/commit/${{ github.event.deployment.sha }}/checks|here> to see the logs.:  
-
+        SLACK_ICON: ":construction_worker:"
+        
     steps:
     - uses: actions/checkout@v2
     - name: set up JDK 1.8
@@ -25,10 +22,20 @@ jobs:
         java-version: 1.8
     - name: Build with Gradle
       run: ./gradlew build
-    - name: Send Slack notification
+    
+    - name: Build success
+      uses: bryan-nice/slack-notification@master
+      if: success()
+      env:
+        SLACK_TITLE: "Build succeeded! ✅"
+        SLACK_MESSAGE: |
+          Check the CI logs <https://github.com/martapanc/ItalianFiscalCodeCalculatorApp/actions|here>.
+    
+    - name: Build failure
       uses: bryan-nice/slack-notification@master
       if: failure()
       env:
         SLACK_TITLE: "Build failed! 🔴"
         SLACK_MESSAGE: |
-          Check the CI logs <https://github.com/martapanc/ItalianFiscalCodeCalculatorApp/actions/runs/136097932|here>.
+          Check the CI logs <https://github.com/martapanc/ItalianFiscalCodeCalculatorApp/actions|here>.
+
