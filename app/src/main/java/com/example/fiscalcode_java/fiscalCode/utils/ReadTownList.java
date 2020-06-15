@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ReadTownList {
 
-    public static List<Town> read(InputStream path) throws IOException {
+    public static List<Town> readTowns(InputStream path) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode obj = objectMapper.readValue(path, JsonNode.class);
         List<Town> towns = new ArrayList<>();
@@ -39,7 +39,7 @@ public class ReadTownList {
     }
 
     public static String[] readTownNameList(InputStream townPath, InputStream countryPath) throws IOException {
-        List<Town> towns = read(townPath);
+        List<Town> towns = readTowns(townPath);
         List<Country> countries = readCountries(countryPath);
         String[] placeNames = new String[towns.size() + countries.size()];
         for (int i = 0; i < towns.size(); i++) {

@@ -15,7 +15,7 @@ import static com.example.fiscalcode_java.fiscalCode.computations.FunctionChecks
 
 public class ValidateInputFields {
 
-    public static boolean isFieldValid(String input, InputField type) {
+    public static boolean isFieldValid(String input, InputField type, String[] places) {
         switch (type) {
             case FIRST_NAME:
             case LAST_NAME:
@@ -23,7 +23,7 @@ public class ValidateInputFields {
             case DATE_OF_BIRTH:
                 return validateDateOfBirth(input);
             case PLACE_OF_BIRTH:
-                return validatePlaceOfBirth(input);
+                return validatePlaceOfBirth(input, places);
         }
         return false;
     }
@@ -33,7 +33,7 @@ public class ValidateInputFields {
         return isAllLetters(input);
     }
 
-    private static boolean validateDateOfBirth(String input){
+    private static boolean validateDateOfBirth(String input) {
         SimpleDateFormat sdf = new SimpleDateFormat(DateFormat.DD_MM_YYYY, Locale.ITALY);
         try {
             Date date = sdf.parse(input);
@@ -45,8 +45,12 @@ public class ValidateInputFields {
         }
     }
 
-    private static boolean validatePlaceOfBirth(String input) {
-        // TODO: run a search here
-        return true;
+    private static boolean validatePlaceOfBirth(String input, String[] places) {
+        for (String place : places) {
+            if (place.equals(input)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
