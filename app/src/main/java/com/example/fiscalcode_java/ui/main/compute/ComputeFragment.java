@@ -76,12 +76,7 @@ public class ComputeFragment extends Fragment {
 
     private void setupPlaceOfBirth(View root, ArrayAdapter<String> pobArrayAdapter) {
         AutoCompleteTextView autoCompletePoBTextView = root.findViewById(R.id.pob_autocompleteTextView);
-        autoCompletePoBTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                hideVirtualKeyboard(adapterView);
-            }
-        });
+        autoCompletePoBTextView.setOnItemClickListener((adapterView, view, i, l) -> hideVirtualKeyboard(adapterView));
         autoCompletePoBTextView.setAdapter(pobArrayAdapter);
     }
 
@@ -93,78 +88,72 @@ public class ComputeFragment extends Fragment {
     }
 
     public View.OnClickListener validateFieldsAndCompute(final String[] placesOfBirth) {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                boolean allFieldsValid = true;
-                FragmentActivity activity = Objects.requireNonNull(getActivity());
+        return view -> {
+            boolean allFieldsValid = true;
+            FragmentActivity activity = Objects.requireNonNull(getActivity());
 
-                EditText firstNameEditText = activity.findViewById(R.id.first_name);
-                EditText lastNameEditText = activity.findViewById(R.id.last_name);
-                RadioButton maleRadioButton = activity.findViewById(R.id.maleRadioButton);
-                RadioButton femaleRadioButton = activity.findViewById(R.id.femaleRadioButton);
-                EditText dobEditText = activity.findViewById(R.id.dateOfBirth_editText);
-                AutoCompleteTextView pobTextView = activity.findViewById(R.id.pob_autocompleteTextView);
+            EditText firstNameEditText = activity.findViewById(R.id.first_name);
+            EditText lastNameEditText = activity.findViewById(R.id.last_name);
+            RadioButton maleRadioButton = activity.findViewById(R.id.maleRadioButton);
+            RadioButton femaleRadioButton = activity.findViewById(R.id.femaleRadioButton);
+            EditText dobEditText = activity.findViewById(R.id.dateOfBirth_editText);
+            AutoCompleteTextView pobTextView = activity.findViewById(R.id.pob_autocompleteTextView);
 
-                allFieldsValid = validateField(InputField.FIRST_NAME, firstNameEditText, allFieldsValid, placesOfBirth);
-                allFieldsValid = validateField(InputField.LAST_NAME, lastNameEditText, allFieldsValid, placesOfBirth);
-                allFieldsValid = validateField(femaleRadioButton, maleRadioButton, allFieldsValid);
-                allFieldsValid = validateField(InputField.DATE_OF_BIRTH, dobEditText, allFieldsValid, placesOfBirth);
-                allFieldsValid = validateField(InputField.PLACE_OF_BIRTH, pobTextView, allFieldsValid, placesOfBirth);
+            allFieldsValid = validateField(InputField.FIRST_NAME, firstNameEditText, allFieldsValid, placesOfBirth);
+            allFieldsValid = validateField(InputField.LAST_NAME, lastNameEditText, allFieldsValid, placesOfBirth);
+            allFieldsValid = validateField(femaleRadioButton, maleRadioButton, allFieldsValid);
+            allFieldsValid = validateField(InputField.DATE_OF_BIRTH, dobEditText, allFieldsValid, placesOfBirth);
+            allFieldsValid = validateField(InputField.PLACE_OF_BIRTH, pobTextView, allFieldsValid, placesOfBirth);
 
-                if (allFieldsValid) {
-                    String firstName = firstNameEditText.getText().toString();
-                    String lastName = lastNameEditText.getText().toString();
-                    String gender = maleRadioButton.isChecked() ? "m" : "f";
-                    String dob = dobEditText.getText().toString();
-                    String pob = pobTextView.getText().toString();
+            if (allFieldsValid) {
+                String firstName = firstNameEditText.getText().toString();
+                String lastName = lastNameEditText.getText().toString();
+                String gender = maleRadioButton.isChecked() ? "m" : "f";
+                String dob = dobEditText.getText().toString();
+                String pob = pobTextView.getText().toString();
 
-                    try {
-                        List<Town> towns = ReadTownList.readTowns(activity.getAssets().open(ComputeViewModel.TOWNS_FILE));
-                        List<Country> countries = ReadTownList.readCountries(activity.getAssets().open(ComputeViewModel.COUNTRIES_FILE));
-                        String fiscalCode = ComputeFiscalCode.compute(firstName, lastName, dob, gender, pob, towns, countries);
-                        hideVirtualKeyboard(view);
+                try {
+                    List<Town> towns = ReadTownList.readTowns(activity.getAssets().open(ComputeViewModel.TOWNS_FILE));
+                    List<Country> countries = ReadTownList.readCountries(activity.getAssets().open(ComputeViewModel.COUNTRIES_FILE));
+                    String fiscalCode = ComputeFiscalCode.compute(firstName, lastName, dob, gender, pob, towns, countries);
+                    hideVirtualKeyboard(view);
 
-                        TextView outputTextView = activity.findViewById(R.id.fiscalCodeOutput);
-                        outputTextView.setPadding(10, 5, 10, 5);
-                        outputTextView.setText(fiscalCode);
-                    } catch (IOException | InterruptedException | FiscalCodeComputationException e) {
-                        Toast.makeText(activity.getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
+                    TextView outputTextView = activity.findViewById(R.id.fiscalCodeOutput);
+                    outputTextView.setPadding(10, 5, 10, 5);
+                    outputTextView.setText(fiscalCode);
+                } catch (IOException | InterruptedException | FiscalCodeComputationException e) {
+                    Toast.makeText(activity.getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
         };
     }
 
     private View.OnClickListener dobOnClickListener() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Calendar cal = Calendar.getInstance();
-                cal.setTime(calendar.getTime());
+        return view -> {
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(calendar.getTime());
 
-                year = cal.get(Calendar.YEAR);
-                month = cal.get(Calendar.MONTH);
-                day = cal.get(Calendar.DAY_OF_MONTH);
+            year = cal.get(Calendar.YEAR);
+            month = cal.get(Calendar.MONTH);
+            day = cal.get(Calendar.DAY_OF_MONTH);
 
-                final TextView dateTextView = getActivity().findViewById(R.id.dateOfBirth_editText);
-                FragmentActivity fragmentActivity = ComputeFragment.this.getActivity();
-                DatePickerDialog datePickerDialog = new DatePickerDialog(fragmentActivity, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker datePicker, int y, int m, int d) {
-                        SimpleDateFormat sdf = new SimpleDateFormat(DD_MM_YYYY, Locale.ITALY);
-                        Calendar c = Calendar.getInstance();
-                        c.set(y, m, d);
-                        dateTextView.setText(sdf.format(c.getTime()));
-                    }
-                }, year, month, day);
+            final TextView dateTextView = getActivity().findViewById(R.id.dateOfBirth_editText);
+            FragmentActivity fragmentActivity = ComputeFragment.this.getActivity();
+            DatePickerDialog datePickerDialog = new DatePickerDialog(fragmentActivity, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker datePicker, int y, int m, int d) {
+                    SimpleDateFormat sdf = new SimpleDateFormat(DD_MM_YYYY, Locale.ITALY);
+                    Calendar c = Calendar.getInstance();
+                    c.set(y, m, d);
+                    dateTextView.setText(sdf.format(c.getTime()));
+                }
+            }, year, month, day);
 
-                cal.add(Calendar.YEAR, -90);
-                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
-                datePickerDialog.getDatePicker().setMinDate(cal.getTimeInMillis());
-                datePickerDialog.setTitle(getString(R.string.dob_label));
-                datePickerDialog.show();
-            }
+            cal.add(Calendar.YEAR, -90);
+            datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+            datePickerDialog.getDatePicker().setMinDate(cal.getTimeInMillis());
+            datePickerDialog.setTitle(getString(R.string.dob_label));
+            datePickerDialog.show();
         };
     }
 
