@@ -19,8 +19,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     private int[] TAB_TITLES = new int[]{
             R.string.tab_compute,
-            R.string.tab_verify,
-            R.string.tab_extract
+            R.string.tab_extract,
+            R.string.tab_verify
     };
 
     public SectionsPagerAdapter(@NonNull FragmentManager fm, int behavior, Context context) {
@@ -37,10 +37,10 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 fragment = new ComputeFragment();
                 break;
             case 1:
-                fragment = new VerifyFragment();
+                fragment = new ExtractFragment();
                 break;
             case 2:
-                fragment = new ExtractFragment();
+                fragment = new VerifyFragment();
                 break;
             default:
                 fragment = new Fragment();
