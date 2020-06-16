@@ -2,8 +2,12 @@ package com.example.fiscalcode_java.fiscalcode.computations;
 
 import com.example.fiscalcode_java.exception.FiscalCodeExtractionException;
 import com.example.fiscalcode_java.fiscalcode.constants.DateFormat;
+import com.example.fiscalcode_java.fiscalcode.models.Country;
+import com.example.fiscalcode_java.fiscalcode.models.FiscalCodeData;
 import com.example.fiscalcode_java.fiscalcode.models.Gender;
+import com.example.fiscalcode_java.fiscalcode.models.Town;
 
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -49,8 +53,18 @@ public class ExtractDataFromFiscalCode {
         }
     }
 
-    public static String extractPlaceOfBirth(String pobInput, String[] places) {
-        return "";
+    public static String extractPlaceOfBirth(String pobInput, List<Town> townList, List<Country> countryList) throws FiscalCodeExtractionException {
+        for (Town town : townList) {
+            if (pobInput.equals(town.getCadastral_code())) {
+                return town.getName() + " (" + town.getProvince() + ")";
+            }
+        }
+        for (Country country : countryList) {
+            if (pobInput.equals(country.getCadastral_code())) {
+                return country.getName();
+            }
+        }
+        throw new FiscalCodeExtractionException("Place of birth was not found");
     }
 
     private static String prependZero(Integer value) {
@@ -64,5 +78,22 @@ public class ExtractDataFromFiscalCode {
         } else {
             return day >= 1 && day <= 31;
         }
+    }
+
+    public static FiscalCodeData extractData(String inputFiscalCode, List<Town> townList, List<Country> countryList) throws FiscalCodeExtractionException {
+        String inputFirstName = inputFiscalCode.substring(0, 3);
+        String inputLastName = inputFiscalCode.substring(3, 6);
+        String inputGender = inputFiscalCode.substring(9, 11);
+        String inputDateOfBirth = inputFiscalCode.substring(6, 11);
+        String inputPlaceOfBirth = inputFiscalCode.substring(11, 15);
+        final Gender gender = extractGender(inputGender);
+
+        return FiscalCodeData.builder()
+                .firstNameCode(inputFirstName)
+                .lastNameCode(inputLastName)
+                .gender(gender)
+                .dateOfBirth(extractDateOfBirth(inputDateOfBirth, gender))
+                .placeOfBirth(extractPlaceOfBirth(inputPlaceOfBirth, townList, countryList))
+                .build();
     }
 }
