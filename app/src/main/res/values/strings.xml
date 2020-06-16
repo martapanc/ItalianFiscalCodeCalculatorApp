@@ -30,4 +30,6 @@
     <string name="sample_fiscal_code">PNCMRA82C52E253Q</string>
     <string name="extract_prompt">Inserisci il tuo codice fiscale</string>
     <string name="extract_data_button">Estrai dati</string>
+    <string name="fiscal_code_label">Codice fiscale</string>
+    <string name="verify_button">Verifica</string>
 </resources>

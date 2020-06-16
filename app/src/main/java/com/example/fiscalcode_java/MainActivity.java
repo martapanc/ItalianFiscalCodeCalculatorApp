@@ -29,14 +29,9 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace me", Snackbar.LENGTH_LONG)
-                        .setAction("action", null)
-                        .show();
-            }
-        });
+        fab.setOnClickListener(view -> Snackbar.make(view, "Replace me", Snackbar.LENGTH_LONG)
+                .setAction("action", null)
+                .show());
     }
 
 
