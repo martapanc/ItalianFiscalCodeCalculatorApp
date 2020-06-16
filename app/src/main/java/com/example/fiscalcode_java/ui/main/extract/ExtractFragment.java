@@ -2,16 +2,19 @@ package com.example.fiscalcode_java.ui.main.extract;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.fiscalcode_java.R;
@@ -45,6 +48,9 @@ public class ExtractFragment extends Fragment {
         final Context context = Objects.requireNonNull(getContext());
         ExtractViewModel viewModel = ViewModelProviders.of(requireActivity()).get(ExtractViewModel.class);
 
+        EditText fiscalCodeEditText = root.findViewById(R.id.fiscalCodeInputEditText);
+        fiscalCodeEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+
         List<Town> townList = viewModel.getTownList(context);
         List<Country> countryList = viewModel.getCountryList(context);
 
@@ -62,7 +68,9 @@ public class ExtractFragment extends Fragment {
                 if (ValidateInputFields.isFieldValid(fiscalCodeInput, InputField.FISCAL_CODE, null)) {
                     try {
                         FiscalCodeData fiscalCodeData = ExtractDataFromFiscalCode.extractData(fiscalCodeInput, townList, countryList);
-                        Toast.makeText(getActivity().getApplicationContext(), fiscalCodeData.toString(), Toast.LENGTH_LONG).show();
+                        FragmentActivity activity = Objects.requireNonNull(getActivity());
+
+                        showFiscalCodeData(activity, fiscalCodeData);
                     } catch (FiscalCodeExtractionException e) {
                         Toast.makeText(getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                     }
@@ -75,5 +83,32 @@ public class ExtractFragment extends Fragment {
                 fiscalCodeEditText.requestFocus();
             }
         };
+    }
+
+    private void showFiscalCodeData(FragmentActivity activity, FiscalCodeData fiscalCodeData) {
+        TextView firstNameLabel = activity.findViewById(R.id.first_name_label);
+        firstNameLabel.setVisibility(View.VISIBLE);
+        TextView firstNameText = activity.findViewById(R.id.first_name_text);
+        firstNameText.setText(fiscalCodeData.getFirstNameCode());
+
+        TextView lastNameLabel = activity.findViewById(R.id.last_name_label);
+        lastNameLabel.setVisibility(View.VISIBLE);
+        TextView lastNameText = activity.findViewById(R.id.last_name_text);
+        lastNameText.setText(fiscalCodeData.getLastNameCode());
+
+        TextView genderLabel = activity.findViewById(R.id.gender_label);
+        genderLabel.setVisibility(View.VISIBLE);
+        TextView genderText = activity.findViewById(R.id.gender_text);
+        genderText.setText(fiscalCodeData.getGender().toString());
+
+        TextView dobLabel = activity.findViewById(R.id.dob_label);
+        dobLabel.setVisibility(View.VISIBLE);
+        TextView dobText = activity.findViewById(R.id.dob_text);
+        dobText.setText(fiscalCodeData.getDateOfBirth());
+
+        TextView pobLabel = activity.findViewById(R.id.pob_label);
+        pobLabel.setVisibility(View.VISIBLE);
+        TextView pobText = activity.findViewById(R.id.pob_text);
+        pobText.setText(fiscalCodeData.getPlaceOfBirth());
     }
 }

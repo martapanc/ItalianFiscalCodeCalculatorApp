@@ -81,6 +81,7 @@ public class ExtractDataFromFiscalCode {
     }
 
     public static FiscalCodeData extractData(String inputFiscalCode, List<Town> townList, List<Country> countryList) throws FiscalCodeExtractionException {
+        inputFiscalCode = inputFiscalCode.toUpperCase();
         String inputFirstName = inputFiscalCode.substring(0, 3);
         String inputLastName = inputFiscalCode.substring(3, 6);
         String inputGender = inputFiscalCode.substring(9, 11);
