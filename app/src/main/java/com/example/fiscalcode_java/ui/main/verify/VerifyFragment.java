@@ -38,7 +38,7 @@ public class VerifyFragment extends Fragment {
         String[] placesOfBirth = model.getPlaceList(context);
         ArrayAdapter<String> pobArrayAdapter = new ArrayAdapter<>(Objects.requireNonNull(getActivity()), android.R.layout.simple_list_item_1, placesOfBirth);
 
-        Button extractButton = root.findViewById(R.id.extract_data_button);
+        Button extractButton = root.findViewById(R.id.verify_button);
         extractButton.setOnClickListener(validateFieldsAndCompute(placesOfBirth));
         return root;
     }
