@@ -32,4 +32,6 @@
     <string name="extract_data_button">Estrai dati</string>
     <string name="fiscal_code_label">Codice fiscale</string>
     <string name="verify_button">Verifica</string>
+    <string name="fiscal_code_is_correct">Il codice fiscale è stato calcolato correttamente</string>
+    <string name="fiscal_code_is_not_correct">Il codice fiscale inserito non coincide con i dati inseriti</string>
 </resources>
