@@ -58,7 +58,7 @@ public class ComputeFragment extends Fragment {
 
         String[] placesOfBirth = model.getPlaceList(context);
         ArrayAdapter<String> pobArrayAdapter = new ArrayAdapter<>(Objects.requireNonNull(getActivity()), android.R.layout.simple_list_item_1, placesOfBirth);
-        setupPlaceOfBirth(root, pobArrayAdapter, true);
+        setupPlaceOfBirth(root, pobArrayAdapter);
 
         Button computeButton = root.findViewById(R.id.compute_button);
         computeButton.setOnClickListener(validateFieldsAndCompute(placesOfBirth));

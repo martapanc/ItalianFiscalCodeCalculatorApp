@@ -40,11 +40,9 @@ public class FragmentHelper {
         femaleRadioButton.setOnCheckedChangeListener(getRadioButtonListener(femaleRadioButton));
     }
 
-    public static void setupPlaceOfBirth(View root, ArrayAdapter<String> pobArrayAdapter, boolean lastField) {
+    public static void setupPlaceOfBirth(View root, ArrayAdapter<String> pobArrayAdapter) {
         AutoCompleteTextView autoCompletePoBTextView = root.findViewById(R.id.pob_autocompleteTextView);
-        if (lastField) {
-            autoCompletePoBTextView.setOnItemClickListener((adapterView, view, i, l) -> hideVirtualKeyboard(adapterView));
-        }
+        autoCompletePoBTextView.setOnItemClickListener((adapterView, view, i, l) -> hideVirtualKeyboard(adapterView));
         autoCompletePoBTextView.setAdapter(pobArrayAdapter);
     }
 
@@ -53,10 +51,5 @@ public class FragmentHelper {
         dateOfBirth.setRawInputType(InputType.TYPE_NULL);
         dateOfBirth.setOnClickListener(new DateOfBirthOnClickListener(calendar));
         dateOfBirth.addTextChangedListener(new DateOfBirthWatcher(calendar, dateOfBirth));
-    }
-
-    public static void setupFiscalCode(View root) {
-        final EditText fiscalCode = root.findViewById(R.id.fiscalCodeInputEditText);
-        fiscalCode.setOnClickListener(FragmentHelper::hideVirtualKeyboard);
     }
 }

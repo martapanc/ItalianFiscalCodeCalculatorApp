@@ -2,6 +2,7 @@ package com.example.fiscalcode_java.ui.main.verify;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,6 @@ import static com.example.fiscalcode_java.fiscalcode.models.InputField.validateF
 import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.hideVirtualKeyboard;
 import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.initCalendar;
 import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.setupDateOfBirth;
-import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.setupFiscalCode;
 import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.setupGenderRadioButtons;
 import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.setupPlaceOfBirth;
 
@@ -66,11 +66,13 @@ public class VerifyFragment extends Fragment {
 
         setupGenderRadioButtons(root);
         setupDateOfBirth(root, verifyCalendar);
-        setupFiscalCode(root);
+
+        EditText fiscalCodeEditText = root.findViewById(R.id.fiscalCodeInput);
+        fiscalCodeEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
 
         String[] placesOfBirth = model.getPlaceList(context);
         ArrayAdapter<String> pobArrayAdapter = new ArrayAdapter<>(Objects.requireNonNull(getActivity()), android.R.layout.simple_list_item_1, placesOfBirth);
-        setupPlaceOfBirth(root, pobArrayAdapter, false);
+        setupPlaceOfBirth(root, pobArrayAdapter);
 
         Button extractButton = root.findViewById(R.id.verify_button);
         extractButton.setOnClickListener(validateFieldsAndCompute(placesOfBirth));
@@ -88,7 +90,7 @@ public class VerifyFragment extends Fragment {
             RadioButton femaleRadioButton = activity.findViewById(R.id.femaleRadioButton);
             EditText dobEditText = activity.findViewById(R.id.dateOfBirth_editText);
             AutoCompleteTextView pobTextView = activity.findViewById(R.id.pob_autocompleteTextView);
-            EditText fiscalCodeEditText = activity.findViewById(R.id.fiscalCodeInputEditText);
+            EditText fiscalCodeEditText = activity.findViewById(R.id.fiscalCodeInput);
 
             allFieldsValid = FIRST_NAME.validateField(firstNameEditText, allFieldsValid, placesOfBirth, this);
             allFieldsValid = LAST_NAME.validateField(lastNameEditText, allFieldsValid, placesOfBirth, this);
@@ -114,10 +116,15 @@ public class VerifyFragment extends Fragment {
                     TextView outputTextView = activity.findViewById(R.id.fiscalCodeOutput);
                     outputTextView.setPadding(10, 5, 10, 5);
 
-                    if (computedFiscalCode.equals(fiscalCode)) {
+                    if (computedFiscalCode.equals(fiscalCode.toUpperCase())) {
                         outputTextView.setText(R.string.fiscal_code_is_correct);
+                        outputTextView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_check_circle_outline_24px, 0, 0, 0);
+                        outputTextView.setCompoundDrawablePadding(activity.getResources().getDimensionPixelOffset(R.dimen.small_padding));
                     } else {
                         outputTextView.setText(R.string.fiscal_code_is_not_correct);
+                        outputTextView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_error_outline_24px, 0, 0, 0);
+                        outputTextView.setCompoundDrawablePadding(activity.getResources().getDimensionPixelOffset(R.dimen.small_padding));
+                        outputTextView.setTextSize(18);
                     }
                 } catch (IOException | InterruptedException | FiscalCodeComputationException e) {
                     Toast.makeText(activity.getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
