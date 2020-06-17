@@ -21,6 +21,7 @@ import com.example.fiscalcode_java.fiscalcode.models.Country;
 import com.example.fiscalcode_java.fiscalcode.models.InputField;
 import com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper;
 import com.example.fiscalcode_java.fiscalcode.utils.ReadTownList;
+import com.example.fiscalcode_java.ui.main.listener.DateOfBirthOnClickListener;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -37,7 +38,6 @@ public class ComputeFragment extends Fragment {
 
     //TODO: implement localisation
 
-    private int year, month, day;
     private Calendar calendar = initCalendar();
 
     @Override
@@ -66,10 +66,10 @@ public class ComputeFragment extends Fragment {
         return root;
     }
 
-    public static void setupDateOfBirth(ComputeFragment computeFragment, View root) {
+    public void setupDateOfBirth(ComputeFragment computeFragment, View root) {
         final EditText dateOfBirth = root.findViewById(R.id.dateOfBirth_editText);
         dateOfBirth.setRawInputType(InputType.TYPE_NULL);
-        dateOfBirth.setOnClickListener(computeFragment.dobOnClickListener());
+        dateOfBirth.setOnClickListener(new DateOfBirthOnClickListener(calendar));
         dateOfBirth.addTextChangedListener(computeFragment.getDobWatcher(dateOfBirth));
     }
 
@@ -111,35 +111,6 @@ public class ComputeFragment extends Fragment {
                     Toast.makeText(activity.getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
-        };
-    }
-
-    private View.OnClickListener dobOnClickListener() {
-        return view -> {
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(calendar.getTime());
-
-            year = cal.get(Calendar.YEAR);
-            month = cal.get(Calendar.MONTH);
-            day = cal.get(Calendar.DAY_OF_MONTH);
-
-            final TextView dateTextView = getActivity().findViewById(R.id.dateOfBirth_editText);
-            FragmentActivity fragmentActivity = ComputeFragment.this.getActivity();
-            DatePickerDialog datePickerDialog = new DatePickerDialog(fragmentActivity, new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker datePicker, int y, int m, int d) {
-                    SimpleDateFormat sdf = new SimpleDateFormat(DD_MM_YYYY, Locale.ITALY);
-                    Calendar c = Calendar.getInstance();
-                    c.set(y, m, d);
-                    dateTextView.setText(sdf.format(c.getTime()));
-                }
-            }, year, month, day);
-
-            cal.add(Calendar.YEAR, -90);
-            datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
-            datePickerDialog.getDatePicker().setMinDate(cal.getTimeInMillis());
-            datePickerDialog.setTitle(getString(R.string.dob_label));
-            datePickerDialog.show();
         };
     }
 
