@@ -86,28 +86,18 @@ public class ExtractFragment extends Fragment {
     }
 
     private void showFiscalCodeData(FragmentActivity activity, FiscalCodeData fiscalCodeData) {
-        TextView firstNameLabel = activity.findViewById(R.id.first_name_label);
-        firstNameLabel.setVisibility(View.VISIBLE);
         TextView firstNameText = activity.findViewById(R.id.first_name_text);
         firstNameText.setText(fiscalCodeData.getFirstNameCode());
 
-        TextView lastNameLabel = activity.findViewById(R.id.last_name_label);
-        lastNameLabel.setVisibility(View.VISIBLE);
         TextView lastNameText = activity.findViewById(R.id.last_name_text);
         lastNameText.setText(fiscalCodeData.getLastNameCode());
 
-        TextView genderLabel = activity.findViewById(R.id.gender_label);
-        genderLabel.setVisibility(View.VISIBLE);
         TextView genderText = activity.findViewById(R.id.gender_text);
         genderText.setText(fiscalCodeData.getGender().toString());
 
-        TextView dobLabel = activity.findViewById(R.id.dob_label);
-        dobLabel.setVisibility(View.VISIBLE);
         TextView dobText = activity.findViewById(R.id.dob_text);
         dobText.setText(fiscalCodeData.getDateOfBirth());
 
-        TextView pobLabel = activity.findViewById(R.id.pob_label);
-        pobLabel.setVisibility(View.VISIBLE);
         TextView pobText = activity.findViewById(R.id.pob_text);
         pobText.setText(fiscalCodeData.getPlaceOfBirth());
     }

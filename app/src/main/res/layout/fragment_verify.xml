@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginTop="10dp"
-        android:ems="6"
-        android:text="@string/fiscal_code_label"
+        android:ems="5"
+        android:text="@string/fiscal_code_short_label"
         android:textSize="18sp" />
 
     <EditText
@@ -26,15 +26,16 @@
         android:layout_centerHorizontal="true"
         android:layout_toEndOf="@id/fiscal_code_label"
         android:hint="@string/sample_fiscal_code"
-        android:textAlignment="center"
+        android:inputType="text"
+        android:autofillHints="@string/sample_fiscal_code"
         android:textAllCaps="true" />
 
     <TextView
         android:id="@+id/first_name_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_below="@id/fiscal_code_label"
+        android:layout_alignParentStart="true"
         android:layout_marginTop="24dp"
         android:ems="5"
         android:text="@string/first_name_label"
@@ -44,8 +45,8 @@
         android:id="@+id/first_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/first_name_label"
         android:layout_below="@id/fiscalCodeInput"
+        android:layout_toEndOf="@id/first_name_label"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/first_name_example"
@@ -181,10 +182,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/verify_button"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text=""
         android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="20sp" />
 

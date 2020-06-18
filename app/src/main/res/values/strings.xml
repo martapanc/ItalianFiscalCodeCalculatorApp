@@ -27,11 +27,17 @@
     <string name="empty_field_error">Valore richiesto</string>
     <string name="invalid_input_error">Il valore inserito è invalido</string>
     <string name="invalid_fiscal_code_input_error">Il codice fiscale inserito non è nel formato richiesto</string>
-    <string name="sample_fiscal_code">PNCMRA82C52E253Q</string>
+    <string name="sample_fiscal_code">BNCLSN90H06A462X</string>
     <string name="extract_prompt">Inserisci il tuo codice fiscale</string>
     <string name="extract_data_button">Estrai dati</string>
     <string name="fiscal_code_label">Codice fiscale</string>
     <string name="verify_button">Verifica</string>
     <string name="fiscal_code_is_correct">Il codice fiscale è corretto</string>
     <string name="fiscal_code_is_not_correct">Il codice fiscale non corrisponde ai dati inseriti</string>
+    <string name="gender_example">M</string>
+    <string name="dob_example">06/06/90</string>
+    <string name="placeOfBirth_hint_2">Ascoli Piceno (AP)</string>
+    <string name="name_code_hint">LSN</string>
+    <string name="last_name_code_example">BNC</string>
+    <string name="fiscal_code_short_label">C. Fiscale</string>
 </resources>
