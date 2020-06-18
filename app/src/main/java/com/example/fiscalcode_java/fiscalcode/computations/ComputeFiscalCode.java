@@ -117,15 +117,10 @@ public class ComputeFiscalCode {
                     // get the letter corresponding to the month
                     result += getMonthCodeMap().get(month);
 
-                    switch (gender) {
-                        case "f": {
-                            result += (day + 40);
-                            break;
-                        }
-                        case "m": {
-                            result += (day <= 10 ? "0" + day : day);
-                            break;
-                        }
+                    if ("f".equals(gender)) {
+                        result += (day + 40);
+                    } else if ("m".equals(gender)) {
+                        result += (day <= 10 ? "0" + day : day);
                     }
                     return result;
                 } catch (NumberFormatException e) {
@@ -160,7 +155,6 @@ public class ComputeFiscalCode {
     }
 
     public static String computeControlChar(String incompleteFiscalCode) throws InterruptedException, FiscalCodeComputationException {
-
         Map<Integer, String> controlCharMap = new HashMap<>();
         controlCharMap.put(0, "A");
         controlCharMap.put(1, "B");
@@ -189,7 +183,6 @@ public class ComputeFiscalCode {
         controlCharMap.put(24, "Y");
         controlCharMap.put(25, "Z");
 
-        String control = "";
         int evenSum = 0, oddSum = 0;
         incompleteFiscalCode = incompleteFiscalCode.toUpperCase();
         if (incompleteFiscalCode.length() == 15) {
@@ -207,8 +200,7 @@ public class ComputeFiscalCode {
 
             // The remainder of the division is the control character
             int sum = (oddSum + evenSum) % 26;
-            control = controlCharMap.get(sum);
-            return control;
+            return controlCharMap.get(sum);
         } else {
             throw new FiscalCodeComputationException("Computation failed, please check your input values and retry");
         }

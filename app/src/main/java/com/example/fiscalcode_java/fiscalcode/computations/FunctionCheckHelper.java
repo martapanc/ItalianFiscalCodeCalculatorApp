@@ -60,12 +60,11 @@ public class FunctionCheckHelper {
                 sdf.parse(dateToCheck);
                 Date date = sdf.parse(dateToCheck);
                 Date current = Calendar.getInstance().getTime();
-                if (current.before(date)) // You cannot calculate a fiscal code if the birthday is after the current day
-                    return false;
+                // You cannot calculate a fiscal code if the birthday is after the current day
+                return !current.before(date);
             } catch (ParseException e) {
                 return false;
             }
-            return true;
         }
         return false;
     }

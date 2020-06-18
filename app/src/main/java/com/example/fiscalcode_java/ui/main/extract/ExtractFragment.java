@@ -68,13 +68,10 @@ public class ExtractFragment extends Fragment {
                 if (ValidateInputFields.isFieldValid(fiscalCodeInput, InputField.FISCAL_CODE, null)) {
                     try {
                         FiscalCodeData fiscalCodeData = ExtractDataFromFiscalCode.extractData(fiscalCodeInput, townList, countryList);
-                        FragmentActivity activity = Objects.requireNonNull(getActivity());
-
-                        showFiscalCodeData(activity, fiscalCodeData);
+                        showFiscalCodeData(Objects.requireNonNull(getActivity()), fiscalCodeData);
                     } catch (FiscalCodeExtractionException e) {
                         Toast.makeText(getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                     }
-
                 } else {
                     fiscalCodeEditText.setError(getString(R.string.invalid_fiscal_code_input_error));
                 }

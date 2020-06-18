@@ -27,8 +27,9 @@ public class ValidateInputFields {
                 return validatePlaceOfBirth(input, places);
             case FISCAL_CODE:
                 return validateFiscalCode(input);
+            default:
+                return false;
         }
-        return false;
     }
 
     private static boolean validateFiscalCode(String input) {
