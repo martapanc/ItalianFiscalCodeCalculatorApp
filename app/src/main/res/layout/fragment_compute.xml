@@ -140,6 +140,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0" />
 
+    <ImageButton
+        android:id="@+id/compute_reset_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pob_autocompleteTextView"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toStartOf="@+id/compute_button"
+        android:src="@drawable/ic_replay_24px"
+        android:contentDescription="@string/reset_button" />
+
     <Button
         android:id="@+id/compute_button"
         android:layout_width="wrap_content"

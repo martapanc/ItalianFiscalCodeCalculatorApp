@@ -59,7 +59,10 @@ public class ExtractFragment extends Fragment {
         computeButton.setOnClickListener(getOnClickListener(townList, countryList));
 
         ImageButton resetButton = root.findViewById(R.id.extract_reset_button);
-        resetButton.setOnClickListener(view -> fiscalCodeEditText.setText(""));
+        resetButton.setOnClickListener(view -> {
+            fiscalCodeEditText.setText("");
+            fiscalCodeEditText.setError(null);
+        });
         return root;
     }
 
