@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -76,6 +77,9 @@ public class VerifyFragment extends Fragment {
 
         Button extractButton = root.findViewById(R.id.verify_button);
         extractButton.setOnClickListener(validateFieldsAndCompute(placesOfBirth));
+
+        ImageButton resetButton = root.findViewById(R.id.verify_reset_button);
+        resetButton.setOnClickListener(getResetListener());
         return root;
     }
 
@@ -130,6 +134,34 @@ public class VerifyFragment extends Fragment {
                     Toast.makeText(activity.getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
+        };
+    }
+
+    public View.OnClickListener getResetListener() {
+        return view -> {
+            FragmentActivity activity = Objects.requireNonNull(getActivity());
+
+            EditText fiscalCode = activity.findViewById(R.id.fiscalCodeInput);
+            fiscalCode.setText("");
+            fiscalCode.setError(null);
+            EditText firstName = activity.findViewById(R.id.first_name);
+            firstName.setText("");
+            firstName.setError(null);
+            EditText lastName = activity.findViewById(R.id.last_name);
+            lastName.setText("");
+            lastName.setError(null);
+            RadioButton maleRadio = activity.findViewById(R.id.maleRadioButton);
+            maleRadio.setChecked(false);
+            maleRadio.setError(null);
+            RadioButton femaleRadio = activity.findViewById(R.id.femaleRadioButton);
+            femaleRadio.setChecked(false);
+            femaleRadio.setError(null);
+            EditText dob = activity.findViewById(R.id.dateOfBirth_editText);
+            dob.setText("");
+            dob.setError(null);
+            AutoCompleteTextView pob = activity.findViewById(R.id.pob_autocompleteTextView);
+            pob.setText("");
+            pob.setError(null);
         };
     }
 }
