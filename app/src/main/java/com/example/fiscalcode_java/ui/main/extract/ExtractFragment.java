@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,6 +57,9 @@ public class ExtractFragment extends Fragment {
 
         Button computeButton = root.findViewById(R.id.extract_data_button);
         computeButton.setOnClickListener(getOnClickListener(townList, countryList));
+
+        ImageButton resetButton = root.findViewById(R.id.extract_reset_button);
+        resetButton.setOnClickListener(view -> fiscalCodeEditText.setText(""));
         return root;
     }
 

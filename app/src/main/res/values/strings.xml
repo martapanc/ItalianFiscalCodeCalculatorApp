@@ -40,4 +40,5 @@
     <string name="name_code_hint">LSN</string>
     <string name="last_name_code_example">BNC</string>
     <string name="fiscal_code_short_label">C. Fiscale</string>
+    <string name="reset_button">Reset button</string>
 </resources>
