@@ -81,14 +81,14 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/male_it" />
+            android:text="@string/gender_male" />
 
         <RadioButton
             android:id="@+id/femaleRadioButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/female_id" />
+            android:text="@string/gender_female" />
     </RadioGroup>
 
     <TextView
