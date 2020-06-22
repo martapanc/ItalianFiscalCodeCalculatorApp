@@ -25,10 +25,10 @@ public class ExtractDataFromFiscalCode {
             } else if (day >= 41 && day <= 71) {
                 return Gender.F;
             } else {
-                throw new FiscalCodeExtractionException("Day out of range for gender");
+                throw new FiscalCodeExtractionException("err_gender_day");
             }
         } else {
-            throw new FiscalCodeExtractionException("Error parsing gender");
+            throw new FiscalCodeExtractionException("err_gender_parse");
         }
     }
 
@@ -49,7 +49,7 @@ public class ExtractDataFromFiscalCode {
 
             return prependZero(day) + "/" + prependZero(month) + "/" + yearInput;
         } else {
-            throw new FiscalCodeExtractionException("Date of birth input has a wrong format");
+            throw new FiscalCodeExtractionException("err_dob_format");
         }
     }
 
@@ -64,7 +64,7 @@ public class ExtractDataFromFiscalCode {
                 return country.getName();
             }
         }
-        throw new FiscalCodeExtractionException("Place of birth was not found");
+        throw new FiscalCodeExtractionException("err_pob_not_found");
     }
 
     private static String prependZero(Integer value) {

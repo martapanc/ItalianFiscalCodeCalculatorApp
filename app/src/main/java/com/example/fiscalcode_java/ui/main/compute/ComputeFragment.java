@@ -28,6 +28,7 @@ import java.util.Objects;
 
 import lombok.SneakyThrows;
 
+import static com.example.fiscalcode_java.fiscalcode.constants.ErrorMap.getErrorMap;
 import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.initCalendar;
 import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.setupDateOfBirth;
 import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.setupGenderRadioButtons;
@@ -104,7 +105,13 @@ public class ComputeFragment extends Fragment {
                     outputTextView.setPadding(10, 5, 10, 5);
                     outputTextView.setText(fiscalCode);
                 } catch (IOException | InterruptedException | FiscalCodeComputationException e) {
-                    Toast.makeText(activity.getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    int errorMessageId;
+                    try {
+                        errorMessageId = getErrorMap().get(e.getMessage());
+                    } catch (NullPointerException npe) {
+                        errorMessageId = R.string.err_unknown;
+                    }
+                    Toast.makeText(activity.getApplicationContext(), errorMessageId, Toast.LENGTH_LONG).show();
                 }
             }
         };

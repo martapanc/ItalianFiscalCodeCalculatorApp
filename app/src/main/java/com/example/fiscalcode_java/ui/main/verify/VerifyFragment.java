@@ -36,6 +36,7 @@ import java.util.Objects;
 
 import lombok.SneakyThrows;
 
+import static com.example.fiscalcode_java.fiscalcode.constants.ErrorMap.getErrorMap;
 import static com.example.fiscalcode_java.fiscalcode.models.InputField.DATE_OF_BIRTH;
 import static com.example.fiscalcode_java.fiscalcode.models.InputField.FIRST_NAME;
 import static com.example.fiscalcode_java.fiscalcode.models.InputField.FISCAL_CODE;
@@ -131,7 +132,13 @@ public class VerifyFragment extends Fragment {
                         outputTextView.setTextSize(18);
                     }
                 } catch (IOException | InterruptedException | FiscalCodeComputationException e) {
-                    Toast.makeText(activity.getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    int errorMessageId;
+                    try {
+                        errorMessageId = getErrorMap().get(e.getMessage());
+                    } catch (NullPointerException npe) {
+                        errorMessageId = R.string.err_unknown;
+                    }
+                    Toast.makeText(activity.getApplicationContext(), errorMessageId, Toast.LENGTH_LONG).show();
                 }
             }
         };

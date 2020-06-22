@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="err_gender_day">
+        Error: day of birth is out of range (male: 1-31; female: 41-71)
+    </string>
+    <string name="err_last_name">Error computing last name</string>
+    <string name="err_first_name">Error computing first name</string>
+    <string name="err_unknown">Unknown error occurred</string>
+    <string name="err_gender_parse">Error: day format is not correct</string>
+    <string name="err_dob_format">Error: date of birth format is not correct</string>
+    <string name="err_pob_not_found">Error: place of birth was not found</string>
+    <string name="err_date_parse">Error parsing date of birth</string>
+    <string name="err_date_invalid">Error: invalid date of birth</string>
+    <string name="err_date_range">Error: year of birth is out of range (in the future, or too far in the past)</string>
+    <string name="err_fc_char">Error computing the control character</string>
+</resources>

@@ -54,7 +54,7 @@ public class ComputeFiscalCode {
             return result.toString();
         } else {
             // TODO: these should be localised
-            throw new FiscalCodeComputationException("Error computing last name");
+            throw new FiscalCodeComputationException("err_last_name");
         }
     }
 
@@ -89,11 +89,12 @@ public class ComputeFiscalCode {
             return result.toString();
 
         } else {
-            throw new FiscalCodeComputationException("Error computing first name");
+            throw new FiscalCodeComputationException("err_first_name");
         }
     }
 
     public static String computeDateOfBirth(String dateString, String gender) throws FiscalCodeComputationException {
+        //TODO: min year should be a static variable for the whole app
         String[] dateValues = dateString.split("/");
         String dayString = dateValues[0];
         String monthString = dateValues[1];
@@ -124,13 +125,13 @@ public class ComputeFiscalCode {
                     }
                     return result;
                 } catch (NumberFormatException e) {
-                    throw new FiscalCodeComputationException("Error parsing date values");
+                    throw new FiscalCodeComputationException("err_date_parse");
                 }
             } else {
-                throw new FiscalCodeComputationException("Error: date is not valid");
+                throw new FiscalCodeComputationException("err_date_invalid");
             }
         } else {
-            throw new FiscalCodeComputationException("Error: year out of range");
+            throw new FiscalCodeComputationException("err_date_range");
         }
     }
 
@@ -202,7 +203,7 @@ public class ComputeFiscalCode {
             int sum = (oddSum + evenSum) % 26;
             return controlCharMap.get(sum);
         } else {
-            throw new FiscalCodeComputationException("Computation failed, please check your input values and retry");
+            throw new FiscalCodeComputationException("err_fc_char");
         }
     }
 

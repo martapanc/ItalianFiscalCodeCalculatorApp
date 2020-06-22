@@ -33,6 +33,8 @@ import java.util.Objects;
 
 import lombok.SneakyThrows;
 
+import static com.example.fiscalcode_java.fiscalcode.constants.ErrorMap.getErrorMap;
+
 public class ExtractFragment extends Fragment {
 
     @Override
@@ -77,7 +79,13 @@ public class ExtractFragment extends Fragment {
                         FiscalCodeData fiscalCodeData = ExtractDataFromFiscalCode.extractData(fiscalCodeInput, townList, countryList);
                         showFiscalCodeData(Objects.requireNonNull(getActivity()), fiscalCodeData);
                     } catch (FiscalCodeExtractionException e) {
-                        Toast.makeText(getActivity().getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                        int errorMessageId;
+                        try {
+                            errorMessageId = getErrorMap().get(e.getMessage());
+                        } catch (NullPointerException npe) {
+                            errorMessageId = R.string.err_unknown;
+                        }
+                        Toast.makeText(getActivity().getApplicationContext(), errorMessageId, Toast.LENGTH_LONG).show();
                     }
                 } else {
                     fiscalCodeEditText.setError(getString(R.string.invalid_fiscal_code_input_error));
