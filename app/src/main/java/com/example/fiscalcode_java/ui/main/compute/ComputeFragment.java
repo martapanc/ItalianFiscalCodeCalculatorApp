@@ -19,6 +19,8 @@ import com.example.fiscalcode_java.fiscalcode.models.Country;
 import com.example.fiscalcode_java.fiscalcode.models.InputField;
 import com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper;
 import com.example.fiscalcode_java.fiscalcode.utils.ReadTownList;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -66,6 +68,11 @@ public class ComputeFragment extends Fragment {
 
         ImageButton resetButton = root.findViewById(R.id.compute_reset_button);
         resetButton.setOnClickListener(getResetListener());
+
+        FloatingActionButton fab = root.findViewById(R.id.compute_action_button);
+        fab.setOnClickListener(view -> Snackbar.make(view, "Replace me", Snackbar.LENGTH_LONG)
+                .setAction("action", null)
+                .show());
         return root;
     }
 
