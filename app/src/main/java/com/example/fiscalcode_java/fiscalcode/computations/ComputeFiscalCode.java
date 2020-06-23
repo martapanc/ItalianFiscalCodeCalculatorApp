@@ -53,7 +53,6 @@ public class ComputeFiscalCode {
             }
             return result.toString();
         } else {
-            // TODO: these should be localised
             throw new FiscalCodeComputationException("err_last_name");
         }
     }

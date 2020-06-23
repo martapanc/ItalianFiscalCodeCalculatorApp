@@ -36,7 +36,6 @@ import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.setupP
 
 public class ComputeFragment extends Fragment {
 
-    //TODO: implement localisation
     //TODO: Info button
 
     private static Calendar computeCalendar = initCalendar();
