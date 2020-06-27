@@ -19,8 +19,8 @@ import com.example.fiscalcode_java.fiscalcode.models.Country;
 import com.example.fiscalcode_java.fiscalcode.models.InputField;
 import com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper;
 import com.example.fiscalcode_java.fiscalcode.utils.ReadTownList;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.leinardi.android.speeddial.SpeedDialActionItem;
+import com.leinardi.android.speeddial.SpeedDialView;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -58,6 +58,7 @@ public class ComputeFragment extends Fragment {
 
         setupGenderRadioButtons(root);
         setupDateOfBirth(root, computeCalendar);
+        setupSpeedDial(root);
 
         String[] placesOfBirth = model.getPlaceList(context);
         ArrayAdapter<String> pobArrayAdapter = new ArrayAdapter<>(Objects.requireNonNull(getActivity()), android.R.layout.simple_list_item_1, placesOfBirth);
@@ -69,10 +70,6 @@ public class ComputeFragment extends Fragment {
         ImageButton resetButton = root.findViewById(R.id.compute_reset_button);
         resetButton.setOnClickListener(getResetListener());
 
-        FloatingActionButton fab = root.findViewById(R.id.compute_action_button);
-        fab.setOnClickListener(view -> Snackbar.make(view, "Replace me", Snackbar.LENGTH_LONG)
-                .setAction("action", null)
-                .show());
         return root;
     }
 
@@ -146,5 +143,16 @@ public class ComputeFragment extends Fragment {
             pob.setText("");
             pob.setError(null);
         };
+    }
+
+    public void setupSpeedDial(View root) {
+        SpeedDialView speedDialView = root.findViewById(R.id.speedDial);
+        final int color = root.getResources().getColor(R.color.colorAccent, null);
+        speedDialView.addActionItem(new SpeedDialActionItem.Builder(R.id.fab_copy, R.drawable.ic_content_copy_24px)
+                .setFabBackgroundColor(color)
+                .create());
+        speedDialView.addActionItem(new SpeedDialActionItem.Builder(R.id.fab_send, R.drawable.ic_share_24px)
+                .setFabBackgroundColor(color)
+                .create());
     }
 }
