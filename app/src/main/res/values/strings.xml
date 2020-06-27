@@ -5,7 +5,7 @@
     <string name="tab_extract">Estrai dati</string>
     <string name="gender_female">Femmina</string>
     <string name="gender_male">Maschio</string>
-    <string name="placeOfBirth_hint">Arezzo</string>
+    <string name="placeOfBirth_hint">Arezzo (AR)</string>
     <string name="dateOfBirth_hint">15/03/1980</string>
     <string name="computeBtn_it">Calcola</string>
     <string name="first_name_label">Nome</string>
@@ -32,4 +32,5 @@
     <string name="last_name_code_example">BNC</string>
     <string name="fiscal_code_short_label">C. Fiscale</string>
     <string name="reset_button">Reset</string>
+    <string name="copied_to_clipboard">"%1$s copiato negli appunti"</string>
 </resources>

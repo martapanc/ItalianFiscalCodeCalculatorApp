@@ -1,6 +1,9 @@
 package com.example.fiscalcode_java.ui.main.compute;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
@@ -19,6 +22,7 @@ import com.example.fiscalcode_java.fiscalcode.models.Country;
 import com.example.fiscalcode_java.fiscalcode.models.InputField;
 import com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper;
 import com.example.fiscalcode_java.fiscalcode.utils.ReadTownList;
+import com.google.android.material.snackbar.Snackbar;
 import com.leinardi.android.speeddial.SpeedDialActionItem;
 import com.leinardi.android.speeddial.SpeedDialView;
 
@@ -107,6 +111,8 @@ public class ComputeFragment extends Fragment {
                     TextView outputTextView = activity.findViewById(R.id.fiscalCodeOutput);
                     outputTextView.setPadding(10, 5, 10, 5);
                     outputTextView.setText(fiscalCode);
+
+                    enableSpeedDial(activity);
                 } catch (IOException | InterruptedException | FiscalCodeComputationException e) {
                     int errorMessageId;
                     try {
@@ -154,5 +160,46 @@ public class ComputeFragment extends Fragment {
         speedDialView.addActionItem(new SpeedDialActionItem.Builder(R.id.fab_send, R.drawable.ic_share_24px)
                 .setFabBackgroundColor(color)
                 .create());
+
+        TextView fiscalCode = root.findViewById(R.id.fiscalCodeOutput);
+
+        speedDialView.setOnActionSelectedListener(actionItem -> {
+            switch (actionItem.getId()) {
+                case R.id.fab_copy:
+                    copyFunction(root, fiscalCode.getText());
+                    break;
+                case R.id.fab_send:
+                    shareFunction(fiscalCode);
+                    break;
+            }
+            return false;
+        });
+    }
+
+    public void enableSpeedDial(FragmentActivity activity) {
+        SpeedDialView speedDialView = activity.findViewById(R.id.speedDial);
+        speedDialView.setMainFabClosedBackgroundColor(activity.getResources().getColor(R.color.colorAccent, null));
+        speedDialView.setEnabled(true);
+    }
+
+    public void copyFunction(View root, CharSequence fiscalCode) {
+        final Context context = getContext();
+        ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clipData = ClipData.newPlainText("Fiscal code", fiscalCode);
+        clipboard.setPrimaryClip(clipData);
+        String message = String.format(context.getResources().getString(R.string.copied_to_clipboard), fiscalCode);
+        Snackbar.make(root, message, Snackbar.LENGTH_LONG)
+                .setAction("action", null)
+                .show();
+    }
+
+    public void shareFunction(TextView fiscalCode) {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, fiscalCode.getText());
+        sendIntent.setType("text/plain");
+
+        Intent shareIntent = Intent.createChooser(sendIntent, null);
+        getContext().startActivity(shareIntent);
     }
 }
