@@ -1,5 +1,6 @@
 package com.example.fiscalcode_java.ui.main.compute;
 
+import android.animation.Animator;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.*;
@@ -17,6 +18,7 @@ import com.example.fiscalcode_java.fiscalcode.computations.ComputeFiscalCode;
 import com.example.fiscalcode_java.fiscalcode.models.Town;
 import com.example.fiscalcode_java.fiscalcode.models.Country;
 import com.example.fiscalcode_java.fiscalcode.models.InputField;
+import com.example.fiscalcode_java.fiscalcode.utils.FabAnimationUtil;
 import com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper;
 import com.example.fiscalcode_java.fiscalcode.utils.ReadTownList;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -69,11 +71,29 @@ public class ComputeFragment extends Fragment {
         ImageButton resetButton = root.findViewById(R.id.compute_reset_button);
         resetButton.setOnClickListener(getResetListener());
 
+        final View fabCopy = root.findViewById(R.id.fab_copy);
+        FabAnimationUtil.init(fabCopy);
+        final View fabSend = root.findViewById(R.id.fab_send);
+        FabAnimationUtil.init(fabSend);
+
         FloatingActionButton fab = root.findViewById(R.id.compute_action_button);
-        fab.setOnClickListener(view -> Snackbar.make(view, "Replace me", Snackbar.LENGTH_LONG)
-                .setAction("action", null)
-                .show());
+//        fab.setOnClickListener(view -> {
+//                FabAnimationUtil.showIn(fabCopy);
+//                FabAnimationUtil.showIn(fabSend);
+//        });
+
         return root;
+    }
+
+    private boolean toggle(boolean isClicked, View fabCopy, View fabSend) {
+        if (!isClicked) {
+            FabAnimationUtil.showIn(fabCopy);
+            FabAnimationUtil.showIn(fabSend);
+        } else {
+            FabAnimationUtil.showOut(fabCopy);
+            FabAnimationUtil.showOut(fabSend);
+        }
+        return !isClicked;
     }
 
     public View.OnClickListener validateFieldsAndCompute(final String[] placesOfBirth) {
