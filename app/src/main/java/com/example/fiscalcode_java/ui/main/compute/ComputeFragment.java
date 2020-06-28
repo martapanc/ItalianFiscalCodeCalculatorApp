@@ -183,7 +183,7 @@ public class ComputeFragment extends Fragment {
     public void enableSpeedDialToggle(FragmentActivity activity, int colorId, boolean enable) {
         SpeedDialView speedDialView = activity.findViewById(R.id.speedDial);
         speedDialView.setMainFabClosedBackgroundColor(activity.getResources().getColor(colorId, null));
-        speedDialView.setEnabled(enable);
+        speedDialView.getMainFab().setEnabled(enable);
     }
 
     public void copyFunction(View root, CharSequence fiscalCode) {

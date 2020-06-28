@@ -189,27 +189,13 @@
         android:id="@+id/fab_send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/speedDial"
-        android:layout_alignParentEnd="true"
-        android:layout_centerInParent="true"
-        android:layout_marginEnd="20dp"
-        android:visibility="invisible"
-        app:fabSize="mini"
-        app:rippleColor="@color/white"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:visibility="gone" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_copy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/fab_send"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/ic_content_copy_24px"
-        android:visibility="invisible"
-        app:fabSize="mini"
-        app:rippleColor="@color/white" />
+        android:visibility="gone"/>
 
     <com.leinardi.android.speeddial.SpeedDialView
         android:id="@+id/speedDial"
@@ -217,7 +203,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:enabled="false"
         app:sdMainFabClosedBackgroundColor="@color/colorAccentDisabled"
         app:sdMainFabClosedSrc="@drawable/ic_add_24px" />
 
