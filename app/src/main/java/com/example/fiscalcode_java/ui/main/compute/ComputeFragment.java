@@ -112,7 +112,7 @@ public class ComputeFragment extends Fragment {
                     outputTextView.setPadding(10, 5, 10, 5);
                     outputTextView.setText(fiscalCode);
 
-                    enableSpeedDial(activity);
+                    enableSpeedDialToggle(activity, R.color.colorAccent, true);
                 } catch (IOException | InterruptedException | FiscalCodeComputationException e) {
                     int errorMessageId;
                     try {
@@ -148,6 +148,10 @@ public class ComputeFragment extends Fragment {
             AutoCompleteTextView pob = activity.findViewById(R.id.pob_autocompleteTextView);
             pob.setText("");
             pob.setError(null);
+            TextView fiscalCodeOutput = activity.findViewById(R.id.fiscalCodeOutput);
+            fiscalCodeOutput.setText("");
+            fiscalCodeOutput.setPadding(0,0,0,0);
+            enableSpeedDialToggle(activity, R.color.colorAccentDisabled, false);
         };
     }
 
@@ -176,10 +180,10 @@ public class ComputeFragment extends Fragment {
         });
     }
 
-    public void enableSpeedDial(FragmentActivity activity) {
+    public void enableSpeedDialToggle(FragmentActivity activity, int colorId, boolean enable) {
         SpeedDialView speedDialView = activity.findViewById(R.id.speedDial);
-        speedDialView.setMainFabClosedBackgroundColor(activity.getResources().getColor(R.color.colorAccent, null));
-        speedDialView.setEnabled(true);
+        speedDialView.setMainFabClosedBackgroundColor(activity.getResources().getColor(colorId, null));
+        speedDialView.setEnabled(enable);
     }
 
     public void copyFunction(View root, CharSequence fiscalCode) {
