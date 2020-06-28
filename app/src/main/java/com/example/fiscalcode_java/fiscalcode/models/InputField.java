@@ -2,6 +2,7 @@ package com.example.fiscalcode_java.fiscalcode.models;
 
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -34,6 +35,21 @@ public enum InputField {
             allFieldsValid = false;
             editText.setError(computeFragment.getString(R.string.invalid_input_error));
             editText.requestFocus();
+        }
+        return allFieldsValid;
+    }
+
+    public boolean validateField(TextView textView, boolean allFieldsValid, Fragment computeFragment) {
+        textView.setError(null);
+        String input = textView.getText().toString();
+        if (input.equals("")) {
+            allFieldsValid = false;
+            textView.setError(computeFragment.getString(R.string.empty_field_error));
+            textView.requestFocus();
+        } else if (!ValidateInputFields.isFieldValid(input, this, null)) {
+            allFieldsValid = false;
+            textView.setError(computeFragment.getString(R.string.invalid_input_error));
+            textView.requestFocus();
         }
         return allFieldsValid;
     }

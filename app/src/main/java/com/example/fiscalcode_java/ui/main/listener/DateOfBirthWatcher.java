@@ -3,6 +3,7 @@ package com.example.fiscalcode_java.ui.main.listener;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -16,9 +17,9 @@ import static com.example.fiscalcode_java.fiscalcode.constants.DateFormat.DD_MM_
 public class DateOfBirthWatcher implements TextWatcher {
 
     private Calendar calendar;
-    private EditText dateOfBirth;
+    private TextView dateOfBirth;
 
-    public DateOfBirthWatcher(Calendar calendar, EditText dateOfBirth) {
+    public DateOfBirthWatcher(Calendar calendar, TextView dateOfBirth) {
         this.calendar = calendar;
         this.dateOfBirth = dateOfBirth;
     }

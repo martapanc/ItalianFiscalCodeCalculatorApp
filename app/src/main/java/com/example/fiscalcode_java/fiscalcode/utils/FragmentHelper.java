@@ -9,6 +9,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import com.example.fiscalcode_java.R;
 import com.example.fiscalcode_java.ui.main.listener.DateOfBirthOnClickListener;
@@ -47,7 +48,7 @@ public class FragmentHelper {
     }
 
     public static void setupDateOfBirth(View root, Calendar calendar) {
-        final EditText dateOfBirth = root.findViewById(R.id.dateOfBirth_editText);
+        final TextView dateOfBirth = root.findViewById(R.id.dateOfBirth_editText);
         dateOfBirth.setRawInputType(InputType.TYPE_NULL);
         dateOfBirth.setOnClickListener(new DateOfBirthOnClickListener(calendar));
         dateOfBirth.addTextChangedListener(new DateOfBirthWatcher(calendar, dateOfBirth));

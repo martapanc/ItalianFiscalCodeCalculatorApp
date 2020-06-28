@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
+    android:id="@+id/compute_fragment"
     tools:context=".ui.main.compute.ComputeFragment">
 
     <TextView
@@ -103,17 +104,17 @@
         android:text="@string/dob_label"
         android:textSize="18sp" />
 
-    <EditText
+    <TextView
         android:id="@+id/dateOfBirth_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/gender_label"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="26dp"
         android:layout_toEndOf="@id/dob_label"
         android:autofillHints=""
         android:ems="10"
+        android:textSize="20dp"
         android:hint="@string/dateOfBirth_hint"
-        android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0" />
 

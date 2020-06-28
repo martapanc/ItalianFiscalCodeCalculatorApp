@@ -43,7 +43,7 @@ import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.setupP
 public class ComputeFragment extends Fragment {
 
     //TODO: Info button
-
+    //TODO: replace DOB editText with TextView in remaining fragments
     private static Calendar computeCalendar = initCalendar();
 
     @Override
@@ -86,13 +86,13 @@ public class ComputeFragment extends Fragment {
             EditText lastNameEditText = activity.findViewById(R.id.last_name);
             RadioButton maleRadioButton = activity.findViewById(R.id.maleRadioButton);
             RadioButton femaleRadioButton = activity.findViewById(R.id.femaleRadioButton);
-            EditText dobEditText = activity.findViewById(R.id.dateOfBirth_editText);
+            TextView dobEditText = activity.findViewById(R.id.dateOfBirth_editText);
             AutoCompleteTextView pobTextView = activity.findViewById(R.id.pob_autocompleteTextView);
 
             allFieldsValid = InputField.FIRST_NAME.validateField(firstNameEditText, allFieldsValid, placesOfBirth, this);
             allFieldsValid = InputField.LAST_NAME.validateField(lastNameEditText, allFieldsValid, placesOfBirth, this);
             allFieldsValid = InputField.validateField(this, femaleRadioButton, maleRadioButton, allFieldsValid);
-            allFieldsValid = InputField.DATE_OF_BIRTH.validateField(dobEditText, allFieldsValid, placesOfBirth, this);
+            allFieldsValid = InputField.DATE_OF_BIRTH.validateField(dobEditText, allFieldsValid,this);
             allFieldsValid = InputField.PLACE_OF_BIRTH.validateField(pobTextView, allFieldsValid, placesOfBirth, this);
 
             if (allFieldsValid) {
@@ -142,7 +142,7 @@ public class ComputeFragment extends Fragment {
             maleRadio.setError(null);
             RadioButton femaleRadio = activity.findViewById(R.id.femaleRadioButton);
             femaleRadio.setError(null);
-            EditText dob = activity.findViewById(R.id.dateOfBirth_editText);
+            TextView dob = activity.findViewById(R.id.dateOfBirth_editText);
             dob.setText("");
             dob.setError(null);
             AutoCompleteTextView pob = activity.findViewById(R.id.pob_autocompleteTextView);
