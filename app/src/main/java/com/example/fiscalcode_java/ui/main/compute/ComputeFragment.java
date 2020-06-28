@@ -136,11 +136,11 @@ public class ComputeFragment extends Fragment {
             EditText lastName = activity.findViewById(R.id.last_name);
             lastName.setText("");
             lastName.setError(null);
+            RadioGroup radioGroup = activity.findViewById(R.id.radioGroup);
+            radioGroup.clearCheck();
             RadioButton maleRadio = activity.findViewById(R.id.maleRadioButton);
-            maleRadio.setChecked(false);
             maleRadio.setError(null);
             RadioButton femaleRadio = activity.findViewById(R.id.femaleRadioButton);
-            femaleRadio.setChecked(false);
             femaleRadio.setError(null);
             EditText dob = activity.findViewById(R.id.dateOfBirth_editText);
             dob.setText("");
