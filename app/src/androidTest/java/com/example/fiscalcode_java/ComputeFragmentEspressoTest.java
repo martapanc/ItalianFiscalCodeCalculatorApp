@@ -38,7 +38,7 @@ public class ComputeFragmentEspressoTest {
     public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void testFiscalCodeIsComputedSuccessfully() {
+    public void assertFiscalCodeIsComputedSuccessfully() {
         onView(withId(R.id.compute_fragment)).check(matches(isDisplayed()));
         onView(withId(R.id.first_name)).perform(typeText("Marta"));
         onView(withId(R.id.last_name)).perform(typeText("Pancaldi"));
@@ -52,7 +52,7 @@ public class ComputeFragmentEspressoTest {
     }
 
     @Test
-    public void testShowsEmptyValueErrorMessages() {
+    public void assertShowsEmptyValueErrorMessages() {
         onView(withId(R.id.compute_fragment)).check(matches(isDisplayed()));
         onView(withId(R.id.compute_button)).perform(click());
         onView(withId(R.id.first_name)).check(matches(hasErrorText("Valore richiesto")));
@@ -64,7 +64,7 @@ public class ComputeFragmentEspressoTest {
     }
 
     @Test
-    public void testShowsInvalidInputErrorMessages() {
+    public void assertShowsInvalidInputErrorMessages() {
         onView(withId(R.id.first_name)).perform(typeText("Marta$"));
         onView(withId(R.id.last_name)).perform(typeText("Panca1di"));
         onView(withId(R.id.dateOfBirth_editText)).perform(click());

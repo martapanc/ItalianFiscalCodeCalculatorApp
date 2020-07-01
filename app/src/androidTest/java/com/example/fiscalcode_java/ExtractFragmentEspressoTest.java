@@ -37,7 +37,7 @@ public class ExtractFragmentEspressoTest {
     public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void testDateIsExtractedSuccessfully() {
+    public void assertDateIsExtractedSuccessfully() {
         onView(withId(R.id.compute_fragment)).perform(swipeLeft());
         onView(withId(R.id.fiscalCodeInputEditText)).perform(typeText("PNCMRT95L52E253R"));
         onView(withId(R.id.extract_data_button)).perform(click());
@@ -49,7 +49,7 @@ public class ExtractFragmentEspressoTest {
     }
 
     @Test
-    public void testShowsEmptyValueErrorMessages() {
+    public void assertShowsEmptyValueErrorMessages() {
         onView(withId(R.id.compute_fragment)).perform(swipeLeft());
         onView(withId(R.id.extract_data_button)).perform(click());
         onView(withId(R.id.extract_data_button)).perform(click());
@@ -58,7 +58,7 @@ public class ExtractFragmentEspressoTest {
     }
 
     @Test
-    public void testShowsWrongFormatErrorMessage() {
+    public void assertShowsWrongFormatErrorMessage() {
         onView(withId(R.id.compute_fragment)).perform(swipeLeft());
         onView(withId(R.id.fiscalCodeInputEditText)).perform(typeText("PNCMRT95L52E253"));
         onView(withId(R.id.extract_data_button)).perform(click());
@@ -66,7 +66,7 @@ public class ExtractFragmentEspressoTest {
     }
 
     @Test
-    public void testShowsTownNotFoundErrorMessage() {
+    public void assertShowsTownNotFoundErrorMessage() {
         onView(withId(R.id.compute_fragment)).perform(swipeLeft());
         onView(withId(R.id.fiscalCodeInputEditText)).perform(typeText("PNCMRT95L52E000E"));
         onView(withId(R.id.extract_data_button)).perform(click());
@@ -74,7 +74,7 @@ public class ExtractFragmentEspressoTest {
     }
 
     @Test
-    public void testShowsDayOutOfRangeError() {
+    public void assertShowsDayOutOfRangeError() {
         final String dayRangeError = "Errore: il giorno di nascita inserito è fuori dal range (maschi: 1-31; femmine: 41-71)";
 
         onView(withId(R.id.compute_fragment)).perform(swipeLeft());
@@ -88,7 +88,7 @@ public class ExtractFragmentEspressoTest {
     }
 
     @Test
-    public void testShowsInvalidDayError() {
+    public void assertShowsInvalidDayError() {
         onView(withId(R.id.compute_fragment)).perform(swipeLeft());
         onView(withId(R.id.fiscalCodeInputEditText)).perform(typeText("PNCMRT95L5IE253R"));
         onView(withId(R.id.extract_data_button)).perform(click());
@@ -100,7 +100,7 @@ public class ExtractFragmentEspressoTest {
     }
 
     @Test
-    public void testShowsInvalidDateError() {
+    public void assertShowsInvalidDateError() {
         onView(withId(R.id.compute_fragment)).perform(swipeLeft());
         onView(withId(R.id.fiscalCodeInputEditText)).perform(typeText("PNCMRT95Z52E253R"));
         onView(withId(R.id.extract_data_button)).perform(click());
