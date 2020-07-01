@@ -5,12 +5,12 @@
     <string name="err_gender_day">
         Errore: il giorno di nascita inserito è fuori dal range (maschi: 1-31; femmine: 41-71)
     </string>
-    <string name="err_gender_parse">Errore sconosciuto</string>
+    <string name="err_gender_parse">Errore: il formato del giorno di nascita non è corretto</string>
     <string name="err_dob_format">Errore: il formato della data di nascita non è corretto</string>
     <string name="err_date_parse">Errore nella lettura della data di nascita</string>
     <string name="err_date_invalid">Errore: data di nascita invalida</string>
     <string name="err_date_range">Errore: l\'anno di nascita è nel futuro, o troppo lontana nel passato</string>
     <string name="err_pob_not_found">Errore: il luogo di nascita non è stato trovato</string>
     <string name="err_fc_char">Errore nel calcolo del carattere di controllo</string>
-    <string name="err_unknown">Errore: il formato del giorno non è corretto</string>
+    <string name="err_unknown">Si è verificato un errore sconosciuto</string>
 </resources>
