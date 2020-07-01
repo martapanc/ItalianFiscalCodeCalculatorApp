@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-import static com.example.fiscalcode_java.fiscalcode.constants.DateFormat.DD_MM_YYYY;
+import static com.example.fiscalcode_java.fiscalcode.constants.DateFormatConstants.DD_MM_YYYY;
 
 public class DateOfBirthOnClickListener implements View.OnClickListener {
 

@@ -20,7 +20,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.fiscalcode_java.R;
 import com.example.fiscalcode_java.exception.FiscalCodeExtractionException;
-import com.example.fiscalcode_java.fiscalcode.computations.ExtractDataFromFiscalCode;
+import com.example.fiscalcode_java.fiscalcode.computations.ExtractDataFromFiscalCodeHelper;
 import com.example.fiscalcode_java.fiscalcode.computations.ValidateInputFields;
 import com.example.fiscalcode_java.fiscalcode.models.Country;
 import com.example.fiscalcode_java.fiscalcode.models.FiscalCodeData;
@@ -33,7 +33,7 @@ import java.util.Objects;
 
 import lombok.SneakyThrows;
 
-import static com.example.fiscalcode_java.fiscalcode.constants.ErrorMap.getErrorMap;
+import static com.example.fiscalcode_java.fiscalcode.constants.ErrorMapConstants.getErrorMap;
 
 public class ExtractFragment extends Fragment {
 
@@ -76,7 +76,7 @@ public class ExtractFragment extends Fragment {
             if (!fiscalCodeInput.isEmpty()) {
                 if (ValidateInputFields.isFieldValid(fiscalCodeInput, InputField.FISCAL_CODE, null)) {
                     try {
-                        FiscalCodeData fiscalCodeData = ExtractDataFromFiscalCode.extractData(fiscalCodeInput, townList, countryList);
+                        FiscalCodeData fiscalCodeData = ExtractDataFromFiscalCodeHelper.extractData(fiscalCodeInput, townList, countryList);
                         showFiscalCodeData(Objects.requireNonNull(getActivity()), fiscalCodeData);
                     } catch (FiscalCodeExtractionException e) {
                         int errorMessageId;

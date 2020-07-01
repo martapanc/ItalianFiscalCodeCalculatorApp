@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadTownList {
+public class ReadTownListHelper {
 
     public static List<Town> readTowns(InputStream path) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();

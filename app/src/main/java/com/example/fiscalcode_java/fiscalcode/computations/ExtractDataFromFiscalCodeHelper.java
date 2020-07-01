@@ -1,7 +1,7 @@
 package com.example.fiscalcode_java.fiscalcode.computations;
 
 import com.example.fiscalcode_java.exception.FiscalCodeExtractionException;
-import com.example.fiscalcode_java.fiscalcode.constants.DateFormat;
+import com.example.fiscalcode_java.fiscalcode.constants.DateFormatConstants;
 import com.example.fiscalcode_java.fiscalcode.models.Country;
 import com.example.fiscalcode_java.fiscalcode.models.FiscalCodeData;
 import com.example.fiscalcode_java.fiscalcode.models.Gender;
@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class ExtractDataFromFiscalCode {
+public class ExtractDataFromFiscalCodeHelper {
 
     private final static String DOB_PATTERN = "[\\d]{2}[A-EHLMPRST][\\d]{2}";
     private final static String DAY_PATTERN = "[\\d]{1,2}";
@@ -38,7 +38,7 @@ public class ExtractDataFromFiscalCode {
             String monthInput = dobInput.substring(2, 3);
             String dayInput = dobInput.substring(3, 5);
 
-            Map<String, Integer> monthCodeInverseMap = DateFormat.getMonthCodeMap().entrySet().stream()
+            Map<String, Integer> monthCodeInverseMap = DateFormatConstants.getMonthCodeMap().entrySet().stream()
                     .collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey));
             final Integer month = monthCodeInverseMap.get(monthInput);
 

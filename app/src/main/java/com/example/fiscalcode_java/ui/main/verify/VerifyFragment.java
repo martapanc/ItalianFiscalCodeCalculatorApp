@@ -23,10 +23,10 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.fiscalcode_java.R;
 import com.example.fiscalcode_java.exception.FiscalCodeComputationException;
-import com.example.fiscalcode_java.fiscalcode.computations.ComputeFiscalCode;
+import com.example.fiscalcode_java.fiscalcode.computations.ComputeFiscalCodeHelper;
 import com.example.fiscalcode_java.fiscalcode.models.Country;
 import com.example.fiscalcode_java.fiscalcode.models.Town;
-import com.example.fiscalcode_java.fiscalcode.utils.ReadTownList;
+import com.example.fiscalcode_java.fiscalcode.utils.ReadTownListHelper;
 import com.example.fiscalcode_java.ui.main.compute.ComputeViewModel;
 
 import java.io.IOException;
@@ -36,7 +36,7 @@ import java.util.Objects;
 
 import lombok.SneakyThrows;
 
-import static com.example.fiscalcode_java.fiscalcode.constants.ErrorMap.getErrorMap;
+import static com.example.fiscalcode_java.fiscalcode.constants.ErrorMapConstants.getErrorMap;
 import static com.example.fiscalcode_java.fiscalcode.models.InputField.DATE_OF_BIRTH;
 import static com.example.fiscalcode_java.fiscalcode.models.InputField.FIRST_NAME;
 import static com.example.fiscalcode_java.fiscalcode.models.InputField.FISCAL_CODE;
@@ -113,9 +113,9 @@ public class VerifyFragment extends Fragment {
                 String fiscalCode = fiscalCodeEditText.getText().toString();
 
                 try {
-                    List<Town> towns = ReadTownList.readTowns(activity.getAssets().open(ComputeViewModel.TOWNS_FILE));
-                    List<Country> countries = ReadTownList.readCountries(activity.getAssets().open(ComputeViewModel.COUNTRIES_FILE));
-                    String computedFiscalCode = ComputeFiscalCode.compute(firstName, lastName, dob, gender, pob, towns, countries);
+                    List<Town> towns = ReadTownListHelper.readTowns(activity.getAssets().open(ComputeViewModel.TOWNS_FILE));
+                    List<Country> countries = ReadTownListHelper.readCountries(activity.getAssets().open(ComputeViewModel.COUNTRIES_FILE));
+                    String computedFiscalCode = ComputeFiscalCodeHelper.compute(firstName, lastName, dob, gender, pob, towns, countries);
 
                     hideVirtualKeyboard(view);
                     TextView outputTextView = activity.findViewById(R.id.fiscalCodeOutput);

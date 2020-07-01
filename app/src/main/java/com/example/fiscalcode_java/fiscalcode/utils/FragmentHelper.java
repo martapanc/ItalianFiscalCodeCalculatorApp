@@ -7,7 +7,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 

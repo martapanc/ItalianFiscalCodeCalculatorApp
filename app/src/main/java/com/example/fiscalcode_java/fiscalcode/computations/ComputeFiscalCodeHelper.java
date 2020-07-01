@@ -19,10 +19,10 @@ import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurname
 import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.pickFirstThreeConsonants;
 import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.pickFirstThreeVowels;
 import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.pickFirstTwoConsonantsAndFirstVowel;
-import static com.example.fiscalcode_java.fiscalcode.constants.DateFormat.getMonthCodeMap;
+import static com.example.fiscalcode_java.fiscalcode.constants.DateFormatConstants.getMonthCodeMap;
 
 
-public class ComputeFiscalCode {
+public class ComputeFiscalCodeHelper {
 
     public static String computeLastName(String input) throws FiscalCodeComputationException {
         input = replaceSpecialChars(input.trim());

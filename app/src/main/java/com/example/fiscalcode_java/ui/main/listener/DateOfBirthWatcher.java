@@ -2,7 +2,6 @@ package com.example.fiscalcode_java.ui.main.listener;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -12,7 +11,7 @@ import java.util.Objects;
 
 import lombok.SneakyThrows;
 
-import static com.example.fiscalcode_java.fiscalcode.constants.DateFormat.DD_MM_YYYY;
+import static com.example.fiscalcode_java.fiscalcode.constants.DateFormatConstants.DD_MM_YYYY;
 
 public class DateOfBirthWatcher implements TextWatcher {
 
@@ -25,7 +24,9 @@ public class DateOfBirthWatcher implements TextWatcher {
     }
 
     @Override
-    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        // Required
+    }
 
     @SneakyThrows
     @Override

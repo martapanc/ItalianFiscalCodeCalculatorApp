@@ -16,12 +16,12 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.fiscalcode_java.R;
 import com.example.fiscalcode_java.exception.FiscalCodeComputationException;
-import com.example.fiscalcode_java.fiscalcode.computations.ComputeFiscalCode;
+import com.example.fiscalcode_java.fiscalcode.computations.ComputeFiscalCodeHelper;
 import com.example.fiscalcode_java.fiscalcode.models.Town;
 import com.example.fiscalcode_java.fiscalcode.models.Country;
 import com.example.fiscalcode_java.fiscalcode.models.InputField;
 import com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper;
-import com.example.fiscalcode_java.fiscalcode.utils.ReadTownList;
+import com.example.fiscalcode_java.fiscalcode.utils.ReadTownListHelper;
 import com.google.android.material.snackbar.Snackbar;
 import com.leinardi.android.speeddial.SpeedDialActionItem;
 import com.leinardi.android.speeddial.SpeedDialView;
@@ -34,7 +34,7 @@ import java.util.Objects;
 
 import lombok.SneakyThrows;
 
-import static com.example.fiscalcode_java.fiscalcode.constants.ErrorMap.getErrorMap;
+import static com.example.fiscalcode_java.fiscalcode.constants.ErrorMapConstants.getErrorMap;
 import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.initCalendar;
 import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.setupDateOfBirth;
 import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.setupGenderRadioButtons;
@@ -103,9 +103,9 @@ public class ComputeFragment extends Fragment {
                 String pob = pobTextView.getText().toString();
 
                 try {
-                    List<Town> towns = ReadTownList.readTowns(activity.getAssets().open(ComputeViewModel.TOWNS_FILE));
-                    List<Country> countries = ReadTownList.readCountries(activity.getAssets().open(ComputeViewModel.COUNTRIES_FILE));
-                    String fiscalCode = ComputeFiscalCode.compute(firstName, lastName, dob, gender, pob, towns, countries);
+                    List<Town> towns = ReadTownListHelper.readTowns(activity.getAssets().open(ComputeViewModel.TOWNS_FILE));
+                    List<Country> countries = ReadTownListHelper.readCountries(activity.getAssets().open(ComputeViewModel.COUNTRIES_FILE));
+                    String fiscalCode = ComputeFiscalCodeHelper.compute(firstName, lastName, dob, gender, pob, towns, countries);
                     FragmentHelper.hideVirtualKeyboard(view);
 
                     TextView outputTextView = activity.findViewById(R.id.fiscalCodeOutput);
@@ -175,6 +175,8 @@ public class ComputeFragment extends Fragment {
                 case R.id.fab_send:
                     shareFunction(fiscalCode);
                     break;
+                default:
+                    return false;
             }
             return false;
         });

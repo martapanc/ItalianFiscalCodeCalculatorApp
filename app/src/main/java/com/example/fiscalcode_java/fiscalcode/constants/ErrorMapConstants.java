@@ -5,7 +5,7 @@ import com.example.fiscalcode_java.R;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ErrorMap {
+public class ErrorMapConstants {
 
     public static Map<String, Integer> getErrorMap() {
         Map<String, Integer> errorMap = new HashMap<>();

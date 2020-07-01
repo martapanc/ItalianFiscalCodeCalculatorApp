@@ -4,7 +4,7 @@ import android.content.Context;
 
 import androidx.lifecycle.ViewModel;
 
-import com.example.fiscalcode_java.fiscalcode.utils.ReadTownList;
+import com.example.fiscalcode_java.fiscalcode.utils.ReadTownListHelper;
 
 import java.io.IOException;
 
@@ -14,7 +14,7 @@ public class ComputeViewModel extends ViewModel {
     public static final String COUNTRIES_FILE = "data/countries_it.json";
 
     public String[] getPlaceList(Context context) throws IOException {
-        return ReadTownList.readTownNameList(
+        return ReadTownListHelper.readTownNameList(
                 context.getAssets().open(TOWNS_FILE),
                 context.getAssets().open(COUNTRIES_FILE)
         );

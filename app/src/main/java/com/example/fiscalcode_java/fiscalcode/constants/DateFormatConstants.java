@@ -3,7 +3,8 @@ package com.example.fiscalcode_java.fiscalcode.constants;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DateFormat {
+public class DateFormatConstants {
+
     public static final String DD_MM_YYYY = "dd/MM/yyyy";
     public static final String DD_MM_YY = "dd/MM/yy";
 
