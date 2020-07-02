@@ -60,17 +60,18 @@ public class ComputeFragment extends Fragment {
         Context context = Objects.requireNonNull(getContext());
         ComputeViewModel model = ViewModelProviders.of(requireActivity()).get(ComputeViewModel.class);
 
-        setupGenderRadioButtons(root);
-        setupDateOfBirth(root, computeCalendar);
+        setupGenderRadioButtons(root, R.id.com_maleRadioButton, R.id.com_femaleRadioButton);
+        setupDateOfBirth(root, computeCalendar, R.id.com_dob_input);
         setupSpeedDial(root);
 
         String[] placesOfBirth = model.getPlaceList(context);
         ArrayAdapter<String> pobArrayAdapter = new ArrayAdapter<>(Objects.requireNonNull(getActivity()), android.R.layout.simple_list_item_1, placesOfBirth);
-        setupPlaceOfBirth(root, pobArrayAdapter);
+        setupPlaceOfBirth(root, pobArrayAdapter, R.id.com_pob_input);
 
         Button computeButton = root.findViewById(R.id.compute_button);
         computeButton.setOnClickListener(validateFieldsAndCompute(placesOfBirth));
 
+        //TODO: bug
         ImageButton resetButton = root.findViewById(R.id.compute_reset_button);
         resetButton.setOnClickListener(getResetListener());
 
@@ -82,12 +83,12 @@ public class ComputeFragment extends Fragment {
             boolean allFieldsValid = true;
             FragmentActivity activity = Objects.requireNonNull(getActivity());
 
-            EditText firstNameEditText = activity.findViewById(R.id.first_name);
-            EditText lastNameEditText = activity.findViewById(R.id.last_name);
-            RadioButton maleRadioButton = activity.findViewById(R.id.maleRadioButton);
-            RadioButton femaleRadioButton = activity.findViewById(R.id.femaleRadioButton);
-            TextView dobEditText = activity.findViewById(R.id.dateOfBirth_editText);
-            AutoCompleteTextView pobTextView = activity.findViewById(R.id.pob_autocompleteTextView);
+            EditText firstNameEditText = activity.findViewById(R.id.com_first_name_input);
+            EditText lastNameEditText = activity.findViewById(R.id.com_last_name_input);
+            RadioButton maleRadioButton = activity.findViewById(R.id.com_maleRadioButton);
+            RadioButton femaleRadioButton = activity.findViewById(R.id.com_femaleRadioButton);
+            TextView dobEditText = activity.findViewById(R.id.com_dob_input);
+            AutoCompleteTextView pobTextView = activity.findViewById(R.id.com_pob_input);
 
             allFieldsValid = InputField.FIRST_NAME.validateField(firstNameEditText, allFieldsValid, placesOfBirth, this);
             allFieldsValid = InputField.LAST_NAME.validateField(lastNameEditText, allFieldsValid, placesOfBirth, this);
@@ -108,7 +109,7 @@ public class ComputeFragment extends Fragment {
                     String fiscalCode = ComputeFiscalCodeHelper.compute(firstName, lastName, dob, gender, pob, towns, countries);
                     FragmentHelper.hideVirtualKeyboard(view);
 
-                    TextView outputTextView = activity.findViewById(R.id.fiscalCodeOutput);
+                    TextView outputTextView = activity.findViewById(R.id.com_fiscalCodeOutput);
                     outputTextView.setPadding(10, 5, 10, 5);
                     outputTextView.setText(fiscalCode);
 
@@ -130,25 +131,25 @@ public class ComputeFragment extends Fragment {
         return view -> {
             FragmentActivity activity = Objects.requireNonNull(getActivity());
 
-            EditText firstName = activity.findViewById(R.id.first_name);
+            EditText firstName = activity.findViewById(R.id.com_first_name_input);
             firstName.setText("");
             firstName.setError(null);
-            EditText lastName = activity.findViewById(R.id.last_name);
+            EditText lastName = activity.findViewById(R.id.com_last_name_input);
             lastName.setText("");
             lastName.setError(null);
-            RadioGroup radioGroup = activity.findViewById(R.id.radioGroup);
+            RadioGroup radioGroup = activity.findViewById(R.id.com_radioGroup);
             radioGroup.clearCheck();
-            RadioButton maleRadio = activity.findViewById(R.id.maleRadioButton);
+            RadioButton maleRadio = activity.findViewById(R.id.com_maleRadioButton);
             maleRadio.setError(null);
-            RadioButton femaleRadio = activity.findViewById(R.id.femaleRadioButton);
+            RadioButton femaleRadio = activity.findViewById(R.id.com_femaleRadioButton);
             femaleRadio.setError(null);
-            TextView dob = activity.findViewById(R.id.dateOfBirth_editText);
+            TextView dob = activity.findViewById(R.id.com_dob_input);
             dob.setText("");
             dob.setError(null);
-            AutoCompleteTextView pob = activity.findViewById(R.id.pob_autocompleteTextView);
+            AutoCompleteTextView pob = activity.findViewById(R.id.com_pob_input);
             pob.setText("");
             pob.setError(null);
-            TextView fiscalCodeOutput = activity.findViewById(R.id.fiscalCodeOutput);
+            TextView fiscalCodeOutput = activity.findViewById(R.id.com_fiscalCodeOutput);
             fiscalCodeOutput.setText("");
             fiscalCodeOutput.setPadding(0,0,0,0);
             enableSpeedDialToggle(activity, R.color.colorAccentDisabled, false);
@@ -165,7 +166,7 @@ public class ComputeFragment extends Fragment {
                 .setFabBackgroundColor(color)
                 .create());
 
-        TextView fiscalCode = root.findViewById(R.id.fiscalCodeOutput);
+        TextView fiscalCode = root.findViewById(R.id.com_fiscalCodeOutput);
 
         speedDialView.setOnActionSelectedListener(actionItem -> {
             switch (actionItem.getId()) {

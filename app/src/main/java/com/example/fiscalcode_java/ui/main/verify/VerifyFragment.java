@@ -66,15 +66,15 @@ public class VerifyFragment extends Fragment {
         Context context = Objects.requireNonNull(getContext());
         ComputeViewModel model = ViewModelProviders.of(requireActivity()).get(ComputeViewModel.class);
 
-        setupGenderRadioButtons(root);
-        setupDateOfBirth(root, verifyCalendar);
+        setupGenderRadioButtons(root, R.id.ver_maleRadioButton, R.id.ver_femaleRadioButton);
+        setupDateOfBirth(root, verifyCalendar, R.id.ver_dob_input);
 
-        EditText fiscalCodeEditText = root.findViewById(R.id.fiscalCodeInput);
+        EditText fiscalCodeEditText = root.findViewById(R.id.ver_fiscalCodeInput_input);
         fiscalCodeEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
 
         String[] placesOfBirth = model.getPlaceList(context);
         ArrayAdapter<String> pobArrayAdapter = new ArrayAdapter<>(Objects.requireNonNull(getActivity()), android.R.layout.simple_list_item_1, placesOfBirth);
-        setupPlaceOfBirth(root, pobArrayAdapter);
+        setupPlaceOfBirth(root, pobArrayAdapter, R.id.ver_pob_input);
 
         Button extractButton = root.findViewById(R.id.verify_button);
         extractButton.setOnClickListener(validateFieldsAndCompute(placesOfBirth));
@@ -89,13 +89,13 @@ public class VerifyFragment extends Fragment {
             boolean allFieldsValid = true;
             FragmentActivity activity = Objects.requireNonNull(getActivity());
 
-            EditText firstNameEditText = activity.findViewById(R.id.first_name);
-            EditText lastNameEditText = activity.findViewById(R.id.last_name);
-            RadioButton maleRadioButton = activity.findViewById(R.id.maleRadioButton);
-            RadioButton femaleRadioButton = activity.findViewById(R.id.femaleRadioButton);
-            TextView dobEditText = activity.findViewById(R.id.dateOfBirth_editText);
-            AutoCompleteTextView pobTextView = activity.findViewById(R.id.pob_autocompleteTextView);
-            EditText fiscalCodeEditText = activity.findViewById(R.id.fiscalCodeInput);
+            EditText firstNameEditText = activity.findViewById(R.id.ver_first_name_input);
+            EditText lastNameEditText = activity.findViewById(R.id.ver_last_name_input);
+            RadioButton maleRadioButton = activity.findViewById(R.id.ver_maleRadioButton);
+            RadioButton femaleRadioButton = activity.findViewById(R.id.ver_femaleRadioButton);
+            TextView dobEditText = activity.findViewById(R.id.ver_dob_input);
+            AutoCompleteTextView pobTextView = activity.findViewById(R.id.ver_pob_input);
+            EditText fiscalCodeEditText = activity.findViewById(R.id.ver_fiscalCodeInput_input);
 
             allFieldsValid = FIRST_NAME.validateField(firstNameEditText, allFieldsValid, placesOfBirth, this);
             allFieldsValid = LAST_NAME.validateField(lastNameEditText, allFieldsValid, placesOfBirth, this);
@@ -118,7 +118,7 @@ public class VerifyFragment extends Fragment {
                     String computedFiscalCode = ComputeFiscalCodeHelper.compute(firstName, lastName, dob, gender, pob, towns, countries);
 
                     hideVirtualKeyboard(view);
-                    TextView outputTextView = activity.findViewById(R.id.fiscalCodeOutput);
+                    TextView outputTextView = activity.findViewById(R.id.ver_fiscalCodeOutput);
                     outputTextView.setPadding(10, 5, 10, 5);
 
                     if (computedFiscalCode.equals(fiscalCode.toUpperCase())) {
@@ -148,25 +148,25 @@ public class VerifyFragment extends Fragment {
         return view -> {
             FragmentActivity activity = Objects.requireNonNull(getActivity());
 
-            EditText fiscalCode = activity.findViewById(R.id.fiscalCodeInput);
+            EditText fiscalCode = activity.findViewById(R.id.ver_fiscalCodeInput_input);
             fiscalCode.setText("");
             fiscalCode.setError(null);
-            EditText firstName = activity.findViewById(R.id.first_name);
+            EditText firstName = activity.findViewById(R.id.ver_first_name_input);
             firstName.setText("");
             firstName.setError(null);
-            EditText lastName = activity.findViewById(R.id.last_name);
+            EditText lastName = activity.findViewById(R.id.ver_last_name_input);
             lastName.setText("");
             lastName.setError(null);
-            RadioButton maleRadio = activity.findViewById(R.id.maleRadioButton);
+            RadioButton maleRadio = activity.findViewById(R.id.ver_maleRadioButton);
             maleRadio.setChecked(false);
             maleRadio.setError(null);
-            RadioButton femaleRadio = activity.findViewById(R.id.femaleRadioButton);
+            RadioButton femaleRadio = activity.findViewById(R.id.ver_femaleRadioButton);
             femaleRadio.setChecked(false);
             femaleRadio.setError(null);
-            TextView dob = activity.findViewById(R.id.dateOfBirth_editText);
+            TextView dob = activity.findViewById(R.id.ver_dob_input);
             dob.setText("");
             dob.setError(null);
-            AutoCompleteTextView pob = activity.findViewById(R.id.pob_autocompleteTextView);
+            AutoCompleteTextView pob = activity.findViewById(R.id.ver_pob_input);
             pob.setText("");
             pob.setError(null);
         };

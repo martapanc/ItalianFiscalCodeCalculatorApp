@@ -40,42 +40,42 @@ public class ComputeFragmentEspressoTest {
     @Test
     public void assertFiscalCodeIsComputedSuccessfully() {
         onView(withId(R.id.compute_fragment)).check(matches(isDisplayed()));
-        onView(withId(R.id.first_name)).perform(typeText("Marta"));
-        onView(withId(R.id.last_name)).perform(typeText("Pancaldi"));
-        onView(withId(R.id.femaleRadioButton)).perform(click());
-        onView(withId(R.id.dateOfBirth_editText)).perform(click());
+        onView(withId(R.id.com_first_name_input)).perform(typeText("Marta"));
+        onView(withId(R.id.com_last_name_input)).perform(typeText("Pancaldi"));
+        onView(withId(R.id.com_femaleRadioButton)).perform(click());
+        onView(withId(R.id.com_dob_input)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(1995, 7, 12));
         onView(withText("OK")).perform(click());
-        onView(withId(R.id.pob_autocompleteTextView)).perform(typeText("Guastalla (RE)"));
+        onView(withId(R.id.com_pob_input)).perform(typeText("Guastalla (RE)"));
         onView(withId(R.id.compute_button)).perform(click());
-        onView(withId(R.id.fiscalCodeOutput)).check(matches(withText(containsString("PNCMRT95L52E253R"))));
+        onView(withId(R.id.com_fiscalCodeOutput)).check(matches(withText(containsString("PNCMRT95L52E253R"))));
     }
 
     @Test
     public void assertShowsEmptyValueErrorMessages() {
         onView(withId(R.id.compute_fragment)).check(matches(isDisplayed()));
         onView(withId(R.id.compute_button)).perform(click());
-        onView(withId(R.id.first_name)).check(matches(hasErrorText("Valore richiesto")));
-        onView(withId(R.id.last_name)).check(matches(hasErrorText("Valore richiesto")));
-        onView(withId(R.id.femaleRadioButton)).check(matches(isNotChecked()));
-        onView(withId(R.id.maleRadioButton)).check(matches(isNotChecked()));
-        onView(withId(R.id.dateOfBirth_editText)).check(matches(withText("")));
-        onView(withId(R.id.pob_autocompleteTextView)).check(matches(hasErrorText("Valore richiesto")));
+        onView(withId(R.id.com_first_name_input)).check(matches(hasErrorText("Valore richiesto")));
+        onView(withId(R.id.com_last_name_input)).check(matches(hasErrorText("Valore richiesto")));
+        onView(withId(R.id.com_femaleRadioButton)).check(matches(isNotChecked()));
+        onView(withId(R.id.com_maleRadioButton)).check(matches(isNotChecked()));
+        onView(withId(R.id.com_dob_input)).check(matches(withText("")));
+        onView(withId(R.id.com_pob_input)).check(matches(hasErrorText("Valore richiesto")));
     }
 
     @Test
     public void assertShowsInvalidInputErrorMessages() {
-        onView(withId(R.id.first_name)).perform(typeText("Marta$"));
-        onView(withId(R.id.last_name)).perform(typeText("Panca1di"));
-        onView(withId(R.id.dateOfBirth_editText)).perform(click());
+        onView(withId(R.id.com_first_name_input)).perform(typeText("Marta$"));
+        onView(withId(R.id.com_last_name_input)).perform(typeText("Panca1di"));
+        onView(withId(R.id.com_dob_input)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(1899, 1, 1));
         onView(withText("OK")).perform(click());
-        onView(withId(R.id.pob_autocompleteTextView)).perform(typeText("Guastalla"));
+        onView(withId(R.id.com_pob_input)).perform(typeText("Guastalla"));
         onView(withId(R.id.compute_button)).perform(click());
 
-        onView(withId(R.id.first_name)).check(matches(hasErrorText("Il valore inserito è invalido")));
-        onView(withId(R.id.last_name)).check(matches(hasErrorText("Il valore inserito è invalido")));
-        onView(withId(R.id.dateOfBirth_editText)).check(matches(withText("01/01/1899")));
-        onView(withId(R.id.pob_autocompleteTextView)).check(matches(hasErrorText("Il valore inserito è invalido")));
+        onView(withId(R.id.com_first_name_input)).check(matches(hasErrorText("Il valore inserito è invalido")));
+        onView(withId(R.id.com_last_name_input)).check(matches(hasErrorText("Il valore inserito è invalido")));
+        onView(withId(R.id.com_dob_input)).check(matches(withText("01/01/1899")));
+        onView(withId(R.id.com_pob_input)).check(matches(hasErrorText("Il valore inserito è invalido")));
     }
 }

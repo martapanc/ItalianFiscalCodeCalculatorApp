@@ -10,7 +10,7 @@
     tools:context=".ui.main.extract.ExtractFragment">
 
     <TextView
-        android:id="@+id/fiscalCodeInputLabel"
+        android:id="@+id/ext_fiscalCodeInput_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -21,10 +21,10 @@
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/fiscalCodeInputEditText"
+        android:id="@+id/ext_fiscalCodeInput_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/fiscalCodeInputLabel"
+        android:layout_below="@id/ext_fiscalCodeInput_label"
         android:layout_centerHorizontal="true"
         android:hint="@string/sample_fiscal_code"
         android:textAllCaps="true"
@@ -36,7 +36,7 @@
         android:id="@+id/extract_data_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/fiscalCodeInputEditText"
+        android:layout_below="@id/ext_fiscalCodeInput_input"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:background="@color/button"
@@ -49,7 +49,7 @@
         android:id="@+id/extract_reset_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/fiscalCodeInputEditText"
+        android:layout_below="@id/ext_fiscalCodeInput_input"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="20dp"
         android:layout_toStartOf="@+id/extract_data_button"
@@ -57,7 +57,7 @@
         android:contentDescription="@string/reset_button" />
 
     <TextView
-        android:id="@+id/first_name_label"
+        android:id="@+id/ext_first_name_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/extract_data_button"
@@ -68,20 +68,20 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/first_name_text"
+        android:id="@+id/ext_first_name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/extract_data_button"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="20dp"
         android:hint="@string/name_code_hint"
-        android:layout_toEndOf="@id/first_name_label" />
+        android:layout_toEndOf="@id/ext_first_name_label" />
 
     <TextView
-        android:id="@+id/last_name_label"
+        android:id="@+id/ext_last_name_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/first_name_label"
+        android:layout_below="@id/ext_first_name_label"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:ems="7"
@@ -89,20 +89,20 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/last_name_text"
+        android:id="@+id/ext_last_name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/first_name_text"
+        android:layout_below="@+id/ext_first_name_text"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="5dp"
         android:hint="@string/last_name_code_example"
-        android:layout_toEndOf="@id/last_name_label" />
+        android:layout_toEndOf="@id/ext_last_name_label" />
 
     <TextView
-        android:id="@+id/gender_label"
+        android:id="@+id/ext_gender_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/last_name_label"
+        android:layout_below="@id/ext_last_name_label"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:ems="7"
@@ -110,20 +110,20 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/gender_text"
+        android:id="@+id/ext_gender_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/last_name_text"
+        android:layout_below="@+id/ext_last_name_text"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="5dp"
         android:hint="@string/gender_example"
-        android:layout_toEndOf="@id/gender_label" />
+        android:layout_toEndOf="@id/ext_gender_label" />
 
     <TextView
-        android:id="@+id/dob_label"
+        android:id="@+id/ext_dob_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/gender_label"
+        android:layout_below="@id/ext_gender_label"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:ems="7"
@@ -131,20 +131,20 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/dob_text"
+        android:id="@+id/ext_dob_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/gender_text"
+        android:layout_below="@+id/ext_gender_text"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="5dp"
         android:hint="@string/dob_example"
-        android:layout_toEndOf="@id/dob_label" />
+        android:layout_toEndOf="@id/ext_dob_label" />
 
     <TextView
-        android:id="@+id/pob_label"
+        android:id="@+id/ext_pob_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/dob_label"
+        android:layout_below="@id/ext_dob_label"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:ems="7"
@@ -152,13 +152,13 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/pob_text"
+        android:id="@+id/ext_pob_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/dob_text"
+        android:layout_below="@+id/ext_dob_text"
         android:layout_alignParentEnd="true"
         android:hint="@string/placeOfBirth_hint_2"
         android:layout_marginTop="5dp"
-        android:layout_toEndOf="@id/pob_label" />
+        android:layout_toEndOf="@id/ext_pob_label" />
 
 </RelativeLayout>

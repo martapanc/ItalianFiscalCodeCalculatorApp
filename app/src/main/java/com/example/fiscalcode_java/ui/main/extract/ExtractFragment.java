@@ -51,7 +51,7 @@ public class ExtractFragment extends Fragment {
         final Context context = Objects.requireNonNull(getContext());
         ExtractViewModel viewModel = ViewModelProviders.of(requireActivity()).get(ExtractViewModel.class);
 
-        EditText fiscalCodeEditText = root.findViewById(R.id.fiscalCodeInputEditText);
+        EditText fiscalCodeEditText = root.findViewById(R.id.ext_fiscalCodeInput_input);
         fiscalCodeEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
 
         List<Town> townList = viewModel.getTownList(context);
@@ -70,7 +70,7 @@ public class ExtractFragment extends Fragment {
 
     private View.OnClickListener getOnClickListener(List<Town> townList, List<Country> countryList) {
         return view -> {
-            EditText fiscalCodeEditText = Objects.requireNonNull(getActivity()).findViewById(R.id.fiscalCodeInputEditText);
+            EditText fiscalCodeEditText = Objects.requireNonNull(getActivity()).findViewById(R.id.ext_fiscalCodeInput_input);
             String fiscalCodeInput = fiscalCodeEditText.getText().toString();
 
             if (!fiscalCodeInput.isEmpty()) {
@@ -98,19 +98,19 @@ public class ExtractFragment extends Fragment {
     }
 
     private void showFiscalCodeData(FragmentActivity activity, FiscalCodeData fiscalCodeData) {
-        TextView firstNameText = activity.findViewById(R.id.first_name_text);
+        TextView firstNameText = activity.findViewById(R.id.ext_first_name_text);
         firstNameText.setText(fiscalCodeData.getFirstNameCode());
 
-        TextView lastNameText = activity.findViewById(R.id.last_name_text);
+        TextView lastNameText = activity.findViewById(R.id.ext_last_name_text);
         lastNameText.setText(fiscalCodeData.getLastNameCode());
 
-        TextView genderText = activity.findViewById(R.id.gender_text);
+        TextView genderText = activity.findViewById(R.id.ext_gender_text);
         genderText.setText(fiscalCodeData.getGender().toString());
 
-        TextView dobText = activity.findViewById(R.id.dob_text);
+        TextView dobText = activity.findViewById(R.id.ext_dob_text);
         dobText.setText(fiscalCodeData.getDateOfBirth());
 
-        TextView pobText = activity.findViewById(R.id.pob_text);
+        TextView pobText = activity.findViewById(R.id.ext_pob_text);
         pobText.setText(fiscalCodeData.getPlaceOfBirth());
     }
 }

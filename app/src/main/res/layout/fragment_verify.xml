@@ -10,7 +10,7 @@
     tools:context=".ui.main.verify.VerifyFragment">
 
     <TextView
-        android:id="@+id/fiscal_code_label"
+        android:id="@+id/ver_fiscalCodeInput_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -20,11 +20,11 @@
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/fiscalCodeInput"
+        android:id="@+id/ver_fiscalCodeInput_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_toEndOf="@id/fiscal_code_label"
+        android:layout_toEndOf="@id/ver_fiscalCodeInput_label"
         android:hint="@string/sample_fiscal_code"
         android:inputType="text"
         android:autofillHints="@string/sample_fiscal_code"
@@ -34,10 +34,10 @@
     </EditText>
 
     <TextView
-        android:id="@+id/first_name_label"
+        android:id="@+id/ver_first_name_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/fiscal_code_label"
+        android:layout_below="@id/ver_fiscalCodeInput_label"
         android:layout_alignParentStart="true"
         android:layout_marginTop="24dp"
         android:ems="5"
@@ -45,11 +45,11 @@
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/first_name"
+        android:id="@+id/ver_first_name_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/fiscalCodeInput"
-        android:layout_toEndOf="@id/first_name_label"
+        android:layout_below="@id/ver_fiscalCodeInput_input"
+        android:layout_toEndOf="@id/ver_first_name_label"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/first_name_example"
@@ -57,10 +57,10 @@
         android:paddingBottom="10dp" />
 
     <TextView
-        android:id="@+id/last_name_label"
+        android:id="@+id/ver_last_name_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/first_name"
+        android:layout_below="@id/ver_first_name_input"
         android:layout_alignParentStart="true"
         android:layout_marginTop="16dp"
         android:ems="5"
@@ -68,11 +68,11 @@
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/last_name"
+        android:id="@+id/ver_last_name_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/first_name"
-        android:layout_toEndOf="@id/last_name_label"
+        android:layout_below="@id/ver_first_name_input"
+        android:layout_toEndOf="@id/ver_last_name_label"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/last_name_example"
@@ -80,10 +80,10 @@
         android:paddingBottom="10dp" />
 
     <TextView
-        android:id="@+id/gender_label"
+        android:id="@+id/ver_gender_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/last_name"
+        android:layout_below="@id/ver_last_name_input"
         android:layout_alignParentStart="true"
         android:layout_marginTop="24dp"
         android:ems="5"
@@ -91,25 +91,25 @@
         android:textSize="18sp" />
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/ver_radioGroup"
         android:layout_width="227dp"
         android:layout_height="34dp"
-        android:layout_below="@id/last_name"
+        android:layout_below="@id/ver_last_name_input"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_toEndOf="@id/gender_label"
+        android:layout_toEndOf="@id/ver_gender_label"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent">
 
         <RadioButton
-            android:id="@+id/maleRadioButton"
+            android:id="@+id/ver_maleRadioButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/gender_male" />
 
         <RadioButton
-            android:id="@+id/femaleRadioButton"
+            android:id="@+id/ver_femaleRadioButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -117,10 +117,10 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/dob_label"
+        android:id="@+id/ver_dob_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/gender_label"
+        android:layout_below="@id/ver_gender_label"
         android:layout_alignParentStart="true"
         android:layout_marginTop="28dp"
         android:ems="7"
@@ -128,12 +128,12 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/dateOfBirth_editText"
+        android:id="@+id/ver_dob_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/gender_label"
+        android:layout_below="@id/ver_gender_label"
         android:layout_marginTop="26dp"
-        android:layout_toEndOf="@id/dob_label"
+        android:layout_toEndOf="@id/ver_dob_label"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/dateOfBirth_hint"
@@ -142,10 +142,10 @@
         app:layout_constraintHorizontal_bias="1.0" />
 
     <TextView
-        android:id="@+id/pob_label"
+        android:id="@+id/ver_pob_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/dob_label"
+        android:layout_below="@id/ver_dob_label"
         android:layout_alignParentStart="true"
         android:layout_marginTop="30dp"
         android:ems="7"
@@ -153,12 +153,12 @@
         android:textSize="18sp" />
 
     <AutoCompleteTextView
-        android:id="@+id/pob_autocompleteTextView"
+        android:id="@+id/ver_pob_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/dateOfBirth_editText"
+        android:layout_below="@id/ver_dob_input"
         android:layout_marginTop="16dp"
-        android:layout_toEndOf="@id/pob_label"
+        android:layout_toEndOf="@id/ver_pob_label"
         android:ems="10"
         android:hint="@string/placeOfBirth_hint"
         android:imeOptions="actionDone"
@@ -169,7 +169,7 @@
         android:id="@+id/verify_reset_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/pob_autocompleteTextView"
+        android:layout_below="@id/ver_pob_input"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="20dp"
         android:layout_toStartOf="@+id/verify_button"
@@ -180,7 +180,7 @@
         android:id="@+id/verify_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/pob_autocompleteTextView"
+        android:layout_below="@id/ver_pob_input"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         android:background="@color/button"
@@ -188,7 +188,7 @@
         android:textColor="@color/white" />
 
     <TextView
-        android:id="@+id/fiscalCodeOutput"
+        android:id="@+id/ver_fiscalCodeOutput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/verify_button"

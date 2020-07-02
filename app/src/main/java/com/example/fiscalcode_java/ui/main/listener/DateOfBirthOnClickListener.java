@@ -17,9 +17,11 @@ import static com.example.fiscalcode_java.fiscalcode.constants.DateFormatConstan
 public class DateOfBirthOnClickListener implements View.OnClickListener {
 
     private Calendar calendar;
+    private int dobInputId;
 
-    public DateOfBirthOnClickListener(Calendar calendar) {
+    public DateOfBirthOnClickListener(Calendar calendar, int dobInputId) {
         this.calendar = calendar;
+        this.dobInputId = dobInputId;
     }
 
     @Override
@@ -33,7 +35,7 @@ public class DateOfBirthOnClickListener implements View.OnClickListener {
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
 
-        final TextView dateTextView = view.findViewById(R.id.dateOfBirth_editText);
+        final TextView dateTextView = view.findViewById(dobInputId);
         DatePickerDialog datePickerDialog = new DatePickerDialog(fragmentActivity,
                 (datePicker, y, m, d) -> {
                     SimpleDateFormat sdf = new SimpleDateFormat(DD_MM_YYYY, Locale.ITALY);

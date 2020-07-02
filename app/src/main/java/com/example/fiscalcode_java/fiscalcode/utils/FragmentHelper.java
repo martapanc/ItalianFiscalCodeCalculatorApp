@@ -10,7 +10,6 @@ import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import com.example.fiscalcode_java.R;
 import com.example.fiscalcode_java.ui.main.listener.DateOfBirthOnClickListener;
 import com.example.fiscalcode_java.ui.main.listener.DateOfBirthWatcher;
 
@@ -33,23 +32,23 @@ public class FragmentHelper {
         return cal;
     }
 
-    public static void setupGenderRadioButtons(View root) {
-        final RadioButton maleRadioButton = root.findViewById(R.id.maleRadioButton);
-        final RadioButton femaleRadioButton = root.findViewById(R.id.femaleRadioButton);
+    public static void setupGenderRadioButtons(View root, int maleRadioId, int femaleRadioId) {
+        final RadioButton maleRadioButton = root.findViewById(maleRadioId);
+        final RadioButton femaleRadioButton = root.findViewById(femaleRadioId);
         maleRadioButton.setOnCheckedChangeListener(getRadioButtonListener(maleRadioButton));
         femaleRadioButton.setOnCheckedChangeListener(getRadioButtonListener(femaleRadioButton));
     }
 
-    public static void setupPlaceOfBirth(View root, ArrayAdapter<String> pobArrayAdapter) {
-        AutoCompleteTextView autoCompletePoBTextView = root.findViewById(R.id.pob_autocompleteTextView);
+    public static void setupPlaceOfBirth(View root, ArrayAdapter<String> pobArrayAdapter, int pobInputId) {
+        AutoCompleteTextView autoCompletePoBTextView = root.findViewById(pobInputId);
         autoCompletePoBTextView.setOnItemClickListener((adapterView, view, i, l) -> hideVirtualKeyboard(adapterView));
         autoCompletePoBTextView.setAdapter(pobArrayAdapter);
     }
 
-    public static void setupDateOfBirth(View root, Calendar calendar) {
-        final TextView dateOfBirth = root.findViewById(R.id.dateOfBirth_editText);
+    public static void setupDateOfBirth(View root, Calendar calendar, int dobInputId) {
+        final TextView dateOfBirth = root.findViewById(dobInputId);
         dateOfBirth.setRawInputType(InputType.TYPE_NULL);
-        dateOfBirth.setOnClickListener(new DateOfBirthOnClickListener(calendar));
+        dateOfBirth.setOnClickListener(new DateOfBirthOnClickListener(calendar, dobInputId));
         dateOfBirth.addTextChangedListener(new DateOfBirthWatcher(calendar, dateOfBirth));
     }
 }
