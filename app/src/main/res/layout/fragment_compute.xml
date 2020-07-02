@@ -114,6 +114,7 @@
         android:autofillHints=""
         android:ems="10"
         android:textSize="20sp"
+        android:textColor="@color/black"
         android:hint="@string/dateOfBirth_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0" />

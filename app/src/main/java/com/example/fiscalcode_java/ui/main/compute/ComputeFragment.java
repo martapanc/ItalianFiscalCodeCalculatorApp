@@ -113,6 +113,7 @@ public class ComputeFragment extends Fragment {
                     outputTextView.setPadding(10, 5, 10, 5);
                     outputTextView.setText(fiscalCode);
 
+                    //TODO: fix this
                     enableSpeedDialToggle(activity, R.color.colorAccent, true);
                 } catch (IOException | InterruptedException | FiscalCodeComputationException e) {
                     int errorMessageId;
