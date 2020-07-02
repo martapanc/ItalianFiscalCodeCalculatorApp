@@ -93,14 +93,14 @@ public class VerifyFragment extends Fragment {
             EditText lastNameEditText = activity.findViewById(R.id.last_name);
             RadioButton maleRadioButton = activity.findViewById(R.id.maleRadioButton);
             RadioButton femaleRadioButton = activity.findViewById(R.id.femaleRadioButton);
-            EditText dobEditText = activity.findViewById(R.id.dateOfBirth_editText);
+            TextView dobEditText = activity.findViewById(R.id.dateOfBirth_editText);
             AutoCompleteTextView pobTextView = activity.findViewById(R.id.pob_autocompleteTextView);
             EditText fiscalCodeEditText = activity.findViewById(R.id.fiscalCodeInput);
 
             allFieldsValid = FIRST_NAME.validateField(firstNameEditText, allFieldsValid, placesOfBirth, this);
             allFieldsValid = LAST_NAME.validateField(lastNameEditText, allFieldsValid, placesOfBirth, this);
             allFieldsValid = validateField(this, femaleRadioButton, maleRadioButton, allFieldsValid);
-            allFieldsValid = DATE_OF_BIRTH.validateField(dobEditText, allFieldsValid, placesOfBirth, this);
+            allFieldsValid = DATE_OF_BIRTH.validateField(dobEditText, allFieldsValid, this);
             allFieldsValid = PLACE_OF_BIRTH.validateField(pobTextView, allFieldsValid, placesOfBirth, this);
             allFieldsValid = FISCAL_CODE.validateField(fiscalCodeEditText, allFieldsValid, placesOfBirth, this);
 
@@ -163,7 +163,7 @@ public class VerifyFragment extends Fragment {
             RadioButton femaleRadio = activity.findViewById(R.id.femaleRadioButton);
             femaleRadio.setChecked(false);
             femaleRadio.setError(null);
-            EditText dob = activity.findViewById(R.id.dateOfBirth_editText);
+            TextView dob = activity.findViewById(R.id.dateOfBirth_editText);
             dob.setText("");
             dob.setError(null);
             AutoCompleteTextView pob = activity.findViewById(R.id.pob_autocompleteTextView);

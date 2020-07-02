@@ -113,7 +113,7 @@
         android:layout_toEndOf="@id/dob_label"
         android:autofillHints=""
         android:ems="10"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:hint="@string/dateOfBirth_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0" />

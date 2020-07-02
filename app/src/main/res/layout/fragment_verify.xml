@@ -28,7 +28,10 @@
         android:hint="@string/sample_fiscal_code"
         android:inputType="text"
         android:autofillHints="@string/sample_fiscal_code"
-        android:textAllCaps="true" />
+        android:textAllCaps="true">
+
+        <requestFocus />
+    </EditText>
 
     <TextView
         android:id="@+id/first_name_label"
@@ -51,10 +54,7 @@
         android:ems="10"
         android:hint="@string/first_name_example"
         android:inputType="textPersonName"
-        android:paddingBottom="10dp">
-
-        <requestFocus />
-    </EditText>
+        android:paddingBottom="10dp" />
 
     <TextView
         android:id="@+id/last_name_label"
@@ -127,17 +127,17 @@
         android:text="@string/dob_label"
         android:textSize="18sp" />
 
-    <EditText
+    <TextView
         android:id="@+id/dateOfBirth_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/gender_label"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="26dp"
         android:layout_toEndOf="@id/dob_label"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/dateOfBirth_hint"
-        android:inputType="date"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0" />
 
@@ -157,7 +157,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/dateOfBirth_editText"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         android:layout_toEndOf="@id/pob_label"
         android:ems="10"
         android:hint="@string/placeOfBirth_hint"
