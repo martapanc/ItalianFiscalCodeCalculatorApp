@@ -22,6 +22,11 @@ import static androidx.test.espresso.matcher.ViewMatchers.hasErrorText;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static com.example.fiscalcode_java.TestConstants.DAY_RANGE_ERROR;
+import static com.example.fiscalcode_java.TestConstants.VALID_DOB_SHORT;
+import static com.example.fiscalcode_java.TestConstants.VALID_FISCAL_CODE;
+import static com.example.fiscalcode_java.TestConstants.VALID_TOWN;
+import static com.example.fiscalcode_java.TestConstants.WRONG_FORMAT;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
 
@@ -31,7 +36,6 @@ public class ExtractFragmentEspressoTest {
 
     @ClassRule
     public static final ForceLocaleRule localeTestRule = new ForceLocaleRule(Locale.ITALY);
-    public static final String WRONG_FORMAT = "Il codice fiscale inserito non è nel formato richiesto";
 
     @Rule
     public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
@@ -39,13 +43,13 @@ public class ExtractFragmentEspressoTest {
     @Test
     public void assertDateIsExtractedSuccessfully() {
         onView(withId(R.id.compute_fragment)).perform(swipeLeft());
-        onView(withId(R.id.ext_fiscalCodeInput_input)).perform(typeText("PNCMRT95L52E253R"));
+        onView(withId(R.id.ext_fiscalCodeInput_input)).perform(typeText(VALID_FISCAL_CODE));
         onView(withId(R.id.extract_data_button)).perform(click());
         onView(withId(R.id.ext_first_name_text)).check(matches(withText(containsString("MRT"))));
         onView(withId(R.id.ext_last_name_text)).check(matches(withText(containsString("PNC"))));
         onView(withId(R.id.ext_gender_text)).check(matches(withText(containsString("F"))));
-        onView(withId(R.id.ext_dob_text)).check(matches(withText(containsString("12/07/95"))));
-        onView(withId(R.id.ext_pob_text)).check(matches(withText(containsString("Guastalla (RE)"))));
+        onView(withId(R.id.ext_dob_text)).check(matches(withText(containsString(VALID_DOB_SHORT))));
+        onView(withId(R.id.ext_pob_text)).check(matches(withText(containsString(VALID_TOWN))));
     }
 
     @Test
@@ -75,16 +79,14 @@ public class ExtractFragmentEspressoTest {
 
     @Test
     public void assertShowsDayOutOfRangeError() {
-        final String dayRangeError = "Errore: il giorno di nascita inserito è fuori dal range (maschi: 1-31; femmine: 41-71)";
-
         onView(withId(R.id.compute_fragment)).perform(swipeLeft());
         onView(withId(R.id.ext_fiscalCodeInput_input)).perform(typeText("PNCMRT95L72E253R"));
         onView(withId(R.id.extract_data_button)).perform(click());
-        thenToastErrorMessageIs(dayRangeError);
+        thenToastErrorMessageIs(DAY_RANGE_ERROR);
 
         onView(withId(R.id.ext_fiscalCodeInput_input)).perform(clearText(), typeText("PNCMRT95L00E253R"));
         onView(withId(R.id.extract_data_button)).perform(click());
-        thenToastErrorMessageIs(dayRangeError);
+        thenToastErrorMessageIs(DAY_RANGE_ERROR);
     }
 
     @Test

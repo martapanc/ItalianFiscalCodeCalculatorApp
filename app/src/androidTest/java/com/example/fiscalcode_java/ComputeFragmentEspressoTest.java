@@ -25,6 +25,21 @@ import static androidx.test.espresso.matcher.ViewMatchers.isNotChecked;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static com.example.fiscalcode_java.TestConstants.INVALID_DOB;
+import static com.example.fiscalcode_java.TestConstants.INVALID_INPUT;
+import static com.example.fiscalcode_java.TestConstants.INVALID_LAST_NAME;
+import static com.example.fiscalcode_java.TestConstants.INVALID_NAME;
+import static com.example.fiscalcode_java.TestConstants.INVALID_TOWN;
+import static com.example.fiscalcode_java.TestConstants.INVALID_YEAR;
+import static com.example.fiscalcode_java.TestConstants.OK;
+import static com.example.fiscalcode_java.TestConstants.REQUIRED_VALUE;
+import static com.example.fiscalcode_java.TestConstants.VALID_DAY;
+import static com.example.fiscalcode_java.TestConstants.VALID_FISCAL_CODE;
+import static com.example.fiscalcode_java.TestConstants.VALID_LAST_NAME;
+import static com.example.fiscalcode_java.TestConstants.VALID_MONTH;
+import static com.example.fiscalcode_java.TestConstants.VALID_NAME;
+import static com.example.fiscalcode_java.TestConstants.VALID_TOWN;
+import static com.example.fiscalcode_java.TestConstants.VALID_YEAR;
 import static org.hamcrest.Matchers.containsString;
 
 @RunWith(AndroidJUnit4.class)
@@ -40,42 +55,42 @@ public class ComputeFragmentEspressoTest {
     @Test
     public void assertFiscalCodeIsComputedSuccessfully() {
         onView(withId(R.id.compute_fragment)).check(matches(isDisplayed()));
-        onView(withId(R.id.com_first_name_input)).perform(typeText("Marta"));
-        onView(withId(R.id.com_last_name_input)).perform(typeText("Pancaldi"));
+        onView(withId(R.id.com_first_name_input)).perform(typeText(VALID_NAME));
+        onView(withId(R.id.com_last_name_input)).perform(typeText(VALID_LAST_NAME));
         onView(withId(R.id.com_femaleRadioButton)).perform(click());
         onView(withId(R.id.com_dob_input)).perform(click());
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(1995, 7, 12));
-        onView(withText("OK")).perform(click());
-        onView(withId(R.id.com_pob_input)).perform(typeText("Guastalla (RE)"));
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(VALID_YEAR, VALID_MONTH, VALID_DAY));
+        onView(withText(OK)).perform(click());
+        onView(withId(R.id.com_pob_input)).perform(typeText(VALID_TOWN));
         onView(withId(R.id.compute_button)).perform(click());
-        onView(withId(R.id.com_fiscalCodeOutput)).check(matches(withText(containsString("PNCMRT95L52E253R"))));
+        onView(withId(R.id.com_fiscalCodeOutput)).check(matches(withText(containsString(VALID_FISCAL_CODE))));
     }
 
     @Test
     public void assertShowsEmptyValueErrorMessages() {
         onView(withId(R.id.compute_fragment)).check(matches(isDisplayed()));
         onView(withId(R.id.compute_button)).perform(click());
-        onView(withId(R.id.com_first_name_input)).check(matches(hasErrorText("Valore richiesto")));
-        onView(withId(R.id.com_last_name_input)).check(matches(hasErrorText("Valore richiesto")));
+        onView(withId(R.id.com_first_name_input)).check(matches(hasErrorText(REQUIRED_VALUE)));
+        onView(withId(R.id.com_last_name_input)).check(matches(hasErrorText(REQUIRED_VALUE)));
         onView(withId(R.id.com_femaleRadioButton)).check(matches(isNotChecked()));
         onView(withId(R.id.com_maleRadioButton)).check(matches(isNotChecked()));
         onView(withId(R.id.com_dob_input)).check(matches(withText("")));
-        onView(withId(R.id.com_pob_input)).check(matches(hasErrorText("Valore richiesto")));
+        onView(withId(R.id.com_pob_input)).check(matches(hasErrorText(REQUIRED_VALUE)));
     }
 
     @Test
     public void assertShowsInvalidInputErrorMessages() {
-        onView(withId(R.id.com_first_name_input)).perform(typeText("Marta$"));
-        onView(withId(R.id.com_last_name_input)).perform(typeText("Panca1di"));
+        onView(withId(R.id.com_first_name_input)).perform(typeText(INVALID_NAME));
+        onView(withId(R.id.com_last_name_input)).perform(typeText(INVALID_LAST_NAME));
         onView(withId(R.id.com_dob_input)).perform(click());
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(1899, 1, 1));
-        onView(withText("OK")).perform(click());
-        onView(withId(R.id.com_pob_input)).perform(typeText("Guastalla"));
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(INVALID_YEAR, VALID_MONTH, VALID_DAY));
+        onView(withText(OK)).perform(click());
+        onView(withId(R.id.com_pob_input)).perform(typeText(INVALID_TOWN));
         onView(withId(R.id.compute_button)).perform(click());
 
-        onView(withId(R.id.com_first_name_input)).check(matches(hasErrorText("Il valore inserito è invalido")));
-        onView(withId(R.id.com_last_name_input)).check(matches(hasErrorText("Il valore inserito è invalido")));
-        onView(withId(R.id.com_dob_input)).check(matches(withText("01/01/1899")));
-        onView(withId(R.id.com_pob_input)).check(matches(hasErrorText("Il valore inserito è invalido")));
+        onView(withId(R.id.com_first_name_input)).check(matches(hasErrorText(INVALID_INPUT)));
+        onView(withId(R.id.com_last_name_input)).check(matches(hasErrorText(INVALID_INPUT)));
+        onView(withId(R.id.com_dob_input)).check(matches(withText(INVALID_DOB)));
+        onView(withId(R.id.com_pob_input)).check(matches(hasErrorText(INVALID_INPUT)));
     }
 }
