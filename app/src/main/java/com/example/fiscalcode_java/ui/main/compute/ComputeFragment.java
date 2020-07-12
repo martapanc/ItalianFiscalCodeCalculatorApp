@@ -43,7 +43,6 @@ import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.setupP
 public class ComputeFragment extends Fragment {
 
     //TODO: Info button
-    //TODO: replace DOB editText with TextView in remaining fragments
     private static Calendar computeCalendar = initCalendar();
 
     @Override
