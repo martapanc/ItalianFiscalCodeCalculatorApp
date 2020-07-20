@@ -70,7 +70,6 @@ public class ComputeFragment extends Fragment {
         Button computeButton = root.findViewById(R.id.compute_button);
         computeButton.setOnClickListener(validateFieldsAndCompute(placesOfBirth));
 
-        //TODO: bug
         ImageButton resetButton = root.findViewById(R.id.compute_reset_button);
         resetButton.setOnClickListener(getResetListener());
 
@@ -92,7 +91,7 @@ public class ComputeFragment extends Fragment {
             allFieldsValid = InputField.FIRST_NAME.validateField(firstNameEditText, allFieldsValid, placesOfBirth, this);
             allFieldsValid = InputField.LAST_NAME.validateField(lastNameEditText, allFieldsValid, placesOfBirth, this);
             allFieldsValid = InputField.validateField(this, femaleRadioButton, maleRadioButton, allFieldsValid);
-            allFieldsValid = InputField.DATE_OF_BIRTH.validateField(dobEditText, allFieldsValid,this);
+            allFieldsValid = InputField.DATE_OF_BIRTH.validateField(dobEditText, allFieldsValid, this);
             allFieldsValid = InputField.PLACE_OF_BIRTH.validateField(pobTextView, allFieldsValid, placesOfBirth, this);
 
             if (allFieldsValid) {
@@ -111,9 +110,6 @@ public class ComputeFragment extends Fragment {
                     TextView outputTextView = activity.findViewById(R.id.com_fiscalCodeOutput);
                     outputTextView.setPadding(10, 5, 10, 5);
                     outputTextView.setText(fiscalCode);
-
-                    //TODO: fix this
-                    enableSpeedDialToggle(activity, R.color.colorAccent, true);
                 } catch (IOException | InterruptedException | FiscalCodeComputationException e) {
                     int errorMessageId;
                     try {
@@ -151,8 +147,7 @@ public class ComputeFragment extends Fragment {
             pob.setError(null);
             TextView fiscalCodeOutput = activity.findViewById(R.id.com_fiscalCodeOutput);
             fiscalCodeOutput.setText("");
-            fiscalCodeOutput.setPadding(0,0,0,0);
-            enableSpeedDialToggle(activity, R.color.colorAccentDisabled, false);
+            fiscalCodeOutput.setPadding(0, 0, 0, 0);
         };
     }
 
@@ -174,7 +169,7 @@ public class ComputeFragment extends Fragment {
                     copyFunction(root, fiscalCode.getText());
                     break;
                 case R.id.fab_send:
-                    shareFunction(fiscalCode);
+                    shareFunction(root, fiscalCode.getText());
                     break;
                 default:
                     return false;
@@ -183,30 +178,35 @@ public class ComputeFragment extends Fragment {
         });
     }
 
-    public void enableSpeedDialToggle(FragmentActivity activity, int colorId, boolean enable) {
-        SpeedDialView speedDialView = activity.findViewById(R.id.speedDial);
-        speedDialView.setMainFabClosedBackgroundColor(activity.getResources().getColor(colorId, null));
-        speedDialView.getMainFab().setEnabled(enable);
-    }
-
     public void copyFunction(View root, CharSequence fiscalCode) {
+        String message;
         final Context context = getContext();
-        ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clipData = ClipData.newPlainText("Fiscal code", fiscalCode);
-        clipboard.setPrimaryClip(clipData);
-        String message = String.format(context.getResources().getString(R.string.copied_to_clipboard), fiscalCode);
+        if (!fiscalCode.toString().isEmpty()) {
+            ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clipData = ClipData.newPlainText("Fiscal code", fiscalCode);
+            clipboard.setPrimaryClip(clipData);
+            message = String.format(context.getResources().getString(R.string.copied_to_clipboard), fiscalCode);
+        } else {
+            message = context.getResources().getString(R.string.nothing_to_copy);
+        }
         Snackbar.make(root, message, Snackbar.LENGTH_LONG)
                 .setAction("action", null)
                 .show();
     }
 
-    public void shareFunction(TextView fiscalCode) {
-        Intent sendIntent = new Intent();
-        sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, fiscalCode.getText());
-        sendIntent.setType("text/plain");
+    public void shareFunction(View root, CharSequence fiscalCode) {
+        if (!fiscalCode.toString().isEmpty()) {
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, fiscalCode);
+            sendIntent.setType("text/plain");
 
-        Intent shareIntent = Intent.createChooser(sendIntent, null);
-        getContext().startActivity(shareIntent);
+            Intent shareIntent = Intent.createChooser(sendIntent, null);
+            getContext().startActivity(shareIntent);
+        } else {
+            Snackbar.make(root, getContext().getResources().getString(R.string.nothing_to_copy), Snackbar.LENGTH_LONG)
+                    .setAction("action", null)
+                    .show();
+        }
     }
 }

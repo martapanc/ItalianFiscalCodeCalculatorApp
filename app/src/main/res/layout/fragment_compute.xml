@@ -195,7 +195,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        app:sdMainFabClosedBackgroundColor="@color/colorAccentDisabled"
+        app:sdMainFabClosedBackgroundColor="@color/colorAccent"
         app:sdMainFabClosedSrc="@drawable/ic_add_24px" />
 
 </RelativeLayout>
