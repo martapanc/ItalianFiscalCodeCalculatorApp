@@ -1,6 +1,10 @@
 package com.example.fiscalcode_java.ui.main.extract;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.view.LayoutInflater;
@@ -24,9 +28,14 @@ import com.example.fiscalcode_java.fiscalcode.computations.ExtractDataFromFiscal
 import com.example.fiscalcode_java.fiscalcode.computations.ValidateInputFields;
 import com.example.fiscalcode_java.fiscalcode.models.Country;
 import com.example.fiscalcode_java.fiscalcode.models.FiscalCodeData;
+import com.example.fiscalcode_java.fiscalcode.models.Gender;
 import com.example.fiscalcode_java.fiscalcode.models.InputField;
 import com.example.fiscalcode_java.fiscalcode.models.Town;
+import com.google.android.material.snackbar.Snackbar;
+import com.leinardi.android.speeddial.SpeedDialActionItem;
+import com.leinardi.android.speeddial.SpeedDialView;
 
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -65,6 +74,9 @@ public class ExtractFragment extends Fragment {
             fiscalCodeEditText.setText("");
             fiscalCodeEditText.setError(null);
         });
+
+        setupSpeedDial(root);
+
         return root;
     }
 
@@ -76,6 +88,7 @@ public class ExtractFragment extends Fragment {
             if (!fiscalCodeInput.isEmpty()) {
                 if (ValidateInputFields.isFieldValid(fiscalCodeInput, InputField.FISCAL_CODE, null)) {
                     try {
+                        //TODO: offer to edit first and last name
                         FiscalCodeData fiscalCodeData = ExtractDataFromFiscalCodeHelper.extractData(fiscalCodeInput, townList, countryList);
                         showFiscalCodeData(Objects.requireNonNull(getActivity()), fiscalCodeData);
                     } catch (FiscalCodeExtractionException e) {
@@ -112,5 +125,83 @@ public class ExtractFragment extends Fragment {
 
         TextView pobText = activity.findViewById(R.id.ext_pob_text);
         pobText.setText(fiscalCodeData.getPlaceOfBirth());
+    }
+
+    private void setupSpeedDial(View root) {
+        SpeedDialView speedDialView = root.findViewById(R.id.ext_speedDial);
+
+        final int color = root.getResources().getColor(R.color.colorAccent, null);
+        speedDialView.addActionItem(new SpeedDialActionItem.Builder(R.id.fab_copy, R.drawable.ic_content_copy_24px)
+                .setFabBackgroundColor(color)
+                .create());
+        speedDialView.addActionItem(new SpeedDialActionItem.Builder(R.id.fab_send, R.drawable.ic_share_24px)
+                .setFabBackgroundColor(color)
+                .create());
+
+        speedDialView.setOnActionSelectedListener(actionItem -> {
+            switch (actionItem.getId()) {
+                case R.id.fab_copy:
+                    copyFunction(root);
+                    break;
+                case R.id.fab_send:
+                    shareFunction(root);
+                    break;
+                default:
+                    return false;
+            }
+            return false;
+        });
+    }
+
+    private FiscalCodeData getData(View root) {
+        EditText fiscalCodeInput = root.findViewById(R.id.ext_fiscalCodeInput_input);
+        TextView firstName = root.findViewById(R.id.ext_first_name_text);
+        TextView lastName = root.findViewById(R.id.ext_last_name_text);
+        TextView gender = root.findViewById(R.id.ext_gender_text);
+        TextView dob = root.findViewById(R.id.ext_dob_text);
+        TextView pob = root.findViewById(R.id.ext_pob_text);
+        return FiscalCodeData.builder()
+                .fiscalCode(fiscalCodeInput.getText().toString())
+                .firstNameCode(firstName.getText().toString())
+                .lastNameCode(lastName.getText().toString())
+                .gender(gender.getText().toString().equals("F") ? Gender.F : Gender.M)
+                .dateOfBirth(dob.getText().toString())
+                .placeOfBirth(pob.getText().toString())
+                .build();
+    }
+
+    private void copyFunction(View root) {
+        FiscalCodeData fiscalCodeData = getData(root);
+        String message;
+        final Resources resources = getContext().getResources();
+        if (fiscalCodeData.areFieldsNotEmpty()) {
+            ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clipData = ClipData.newPlainText("Data", fiscalCodeData.formatData(resources));
+            clipboard.setPrimaryClip(clipData);
+            message = resources.getString(R.string.data_copied_to_clipboard);
+        } else {
+            message = resources.getString(R.string.nothing_to_copy);
+        }
+        Snackbar.make(root, message, Snackbar.LENGTH_LONG)
+                .setAction("action", null)
+                .show();
+    }
+
+    private void shareFunction(View root) {
+        FiscalCodeData fiscalCodeData = getData(root);
+        final Resources resources = getContext().getResources();
+        if (fiscalCodeData.areFieldsNotEmpty()) {
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, fiscalCodeData.formatData(resources));
+            sendIntent.setType("text/plain");
+
+            Intent shareIntent = Intent.createChooser(sendIntent, null);
+            getContext().startActivity(shareIntent);
+        } else {
+            Snackbar.make(root, resources.getString(R.string.nothing_to_copy), Snackbar.LENGTH_LONG)
+                    .setAction("action", null)
+                    .show();
+        }
     }
 }

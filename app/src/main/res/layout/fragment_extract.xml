@@ -161,4 +161,25 @@
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@id/ext_pob_label" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/ext_fab_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/ext_fab_copy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+    <com.leinardi.android.speeddial.SpeedDialView
+        android:id="@+id/ext_speedDial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        app:sdMainFabClosedBackgroundColor="@color/colorAccent"
+        app:sdMainFabClosedSrc="@drawable/ic_add_24px" />
+
 </RelativeLayout>

@@ -61,7 +61,6 @@ public class ComputeFragment extends Fragment {
 
         setupGenderRadioButtons(root, R.id.com_maleRadioButton, R.id.com_femaleRadioButton);
         setupDateOfBirth(root, computeCalendar, R.id.com_dob_input);
-        setupSpeedDial(root);
 
         String[] placesOfBirth = model.getPlaceList(context);
         ArrayAdapter<String> pobArrayAdapter = new ArrayAdapter<>(Objects.requireNonNull(getActivity()), android.R.layout.simple_list_item_1, placesOfBirth);
@@ -72,6 +71,8 @@ public class ComputeFragment extends Fragment {
 
         ImageButton resetButton = root.findViewById(R.id.compute_reset_button);
         resetButton.setOnClickListener(getResetListener());
+
+        setupSpeedDial(root);
 
         return root;
     }
@@ -151,7 +152,7 @@ public class ComputeFragment extends Fragment {
         };
     }
 
-    public void setupSpeedDial(View root) {
+    private void setupSpeedDial(View root) {
         SpeedDialView speedDialView = root.findViewById(R.id.speedDial);
         final int color = root.getResources().getColor(R.color.colorAccent, null);
         speedDialView.addActionItem(new SpeedDialActionItem.Builder(R.id.fab_copy, R.drawable.ic_content_copy_24px)
@@ -178,7 +179,7 @@ public class ComputeFragment extends Fragment {
         });
     }
 
-    public void copyFunction(View root, CharSequence fiscalCode) {
+    private void copyFunction(View root, CharSequence fiscalCode) {
         String message;
         final Context context = getContext();
         if (!fiscalCode.toString().isEmpty()) {
@@ -194,7 +195,7 @@ public class ComputeFragment extends Fragment {
                 .show();
     }
 
-    public void shareFunction(View root, CharSequence fiscalCode) {
+    private void shareFunction(View root, CharSequence fiscalCode) {
         if (!fiscalCode.toString().isEmpty()) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
