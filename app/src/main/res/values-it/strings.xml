@@ -36,4 +36,23 @@
     <string name="nothing_to_copy">Niente da copiare  🤷‍♂️</string>
     <string name="data_label">Dati</string>
     <string name="data_copied_to_clipboard">Dati copiati negli appunti</string>
+    <string name="title_activity_settings">Settings Activity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messaggi</string>
+    <string name="sync_header">Sincronizzata</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="settings">Impostazioni</string>
+    <string name="info">Info</string>
+    <string name="tcs">Licenza d\'uso</string>
 </resources>
