@@ -35,7 +35,6 @@ import com.google.android.material.snackbar.Snackbar;
 import com.leinardi.android.speeddial.SpeedDialActionItem;
 import com.leinardi.android.speeddial.SpeedDialView;
 
-import java.text.MessageFormat;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -43,6 +42,7 @@ import java.util.Objects;
 import lombok.SneakyThrows;
 
 import static com.example.fiscalcode_java.fiscalcode.constants.ErrorMapConstants.getErrorMap;
+import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.hideVirtualKeyboard;
 
 public class ExtractFragment extends Fragment {
 
@@ -83,7 +83,7 @@ public class ExtractFragment extends Fragment {
     private View.OnClickListener getOnClickListener(List<Town> townList, List<Country> countryList) {
         return view -> {
             EditText fiscalCodeEditText = Objects.requireNonNull(getActivity()).findViewById(R.id.ext_fiscalCodeInput_input);
-            String fiscalCodeInput = fiscalCodeEditText.getText().toString();
+            String fiscalCodeInput = fiscalCodeEditText.getText().toString().trim();
 
             if (!fiscalCodeInput.isEmpty()) {
                 if (ValidateInputFields.isFieldValid(fiscalCodeInput, InputField.FISCAL_CODE, null)) {
@@ -91,6 +91,7 @@ public class ExtractFragment extends Fragment {
                         //TODO: offer to edit first and last name
                         FiscalCodeData fiscalCodeData = ExtractDataFromFiscalCodeHelper.extractData(fiscalCodeInput, townList, countryList);
                         showFiscalCodeData(Objects.requireNonNull(getActivity()), fiscalCodeData);
+                        hideVirtualKeyboard(view);
                     } catch (FiscalCodeExtractionException e) {
                         int errorMessageId;
                         try {
