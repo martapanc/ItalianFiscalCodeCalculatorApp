@@ -64,4 +64,10 @@
     <string name="settings">Settings</string>
     <string name="info">Info</string>
     <string name="tcs">Terms &amp; Conditions</string>
+    <string name="enter_feedback">Enter feedback</string>
+    <string name="send">Send</string>
+    <string name="cancel">Cancel</string>
+    <string name="email">Email</string>
+    <string name="feedback_subtitle">Make sure you type a valid email address. We will send any follow up messages to this address.</string>
+    <string name="send_us_feedback">Send us feedback</string>
 </resources>

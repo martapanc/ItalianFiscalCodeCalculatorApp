@@ -19,6 +19,7 @@
 
         <Preference
             app:key="feedback"
+            app:icon="@drawable/ic_feedback_24px"
             app:title="@string/feedback_header"
             app:summary="@string/feedback_label"/>
 

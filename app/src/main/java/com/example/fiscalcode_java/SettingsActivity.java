@@ -1,19 +1,18 @@
 package com.example.fiscalcode_java;
 
-import android.content.res.Configuration;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.InsetDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.preference.ListPreference;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
-import java.util.Locale;
-
-import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -35,6 +34,19 @@ public class SettingsActivity extends AppCompatActivity {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
+
+            Preference feedbackPreference = findPreference("feedback");
+            feedbackPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    Dialog feedbackDialog = new Dialog(getContext());
+                    InsetDrawable inset = new InsetDrawable(new ColorDrawable(Color.WHITE), 25);
+                    feedbackDialog.getWindow().setBackgroundDrawable(inset);
+                    feedbackDialog.setContentView(R.layout.view_feedback);
+                    feedbackDialog.show();
+                    return true;
+                }
+            });
 //
 //            Locale currentLang = getContext().getResources().getConfiguration().getLocales().get(0);
 //            ListPreference listPreference = findPreference("language");
