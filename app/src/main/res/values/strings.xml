@@ -42,6 +42,15 @@
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
 
+    <string name="appearance_header">Appearance</string>
+    <string name="language_label">Language</string>
+
+    <string name="general_header">General</string>
+    <string name="dark_mode_label">Dark mode</string>
+
+    <string name="feedback_header">Send feedback</string>
+    <string name="feedback_label">Report technical issues or suggest new features</string>
+
     <!-- Messages Preferences -->
     <string name="signature_title">Your signature</string>
     <string name="reply_title">Default reply action</string>

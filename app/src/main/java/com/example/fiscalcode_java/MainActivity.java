@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,11 +15,14 @@ import android.widget.TextView;
 import com.example.fiscalcode_java.ui.main.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        setLocale();
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.menu_toolbar);
@@ -30,6 +34,15 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    private void setLocale() {
+        String currentLang = Locale.getDefault().getLanguage();
+        Locale locale = new Locale(currentLang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.setLocale(locale);
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
     }
 
     @Override

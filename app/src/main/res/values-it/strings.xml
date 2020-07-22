@@ -42,6 +42,14 @@
     <string name="messages_header">Messaggi</string>
     <string name="sync_header">Sincronizzata</string>
 
+    <string name="appearance_header">Aspetto</string>
+    <string name="language_label">Lingua</string>
+    <string name="general_header">Generale</string>
+    <string name="dark_mode_label">Modalità notturna</string>
+
+    <string name="feedback_header">Invia feedback</string>
+    <string name="feedback_label">Segnala un problema o suggerisci nuove funzionalità</string>
+
     <!-- Messages Preferences -->
     <string name="signature_title">Your signature</string>
     <string name="reply_title">Default reply action</string>
