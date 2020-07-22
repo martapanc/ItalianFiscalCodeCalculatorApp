@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private void openSettingsActivity() {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.enter, R.anim.exit);
+        overridePendingTransition(R.anim.enter, R.anim.nothing);
     }
 
     private void showTermsDialog() {

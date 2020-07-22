@@ -1,7 +1,9 @@
 package com.example.fiscalcode_java;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
@@ -30,7 +32,12 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == 16908332) {
+            finish();
+            overridePendingTransition(R.anim.nothing, R.anim.exit);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
