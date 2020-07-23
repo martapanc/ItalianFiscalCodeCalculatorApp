@@ -71,4 +71,7 @@ dependencies {
     androidTestImplementation 'androidx.test:rules:1.2.0'
 
     implementation "com.leinardi.android:speed-dial:3.1.1"
+
+    implementation 'com.sun.mail:android-mail:1.6.2'
+    implementation 'com.sun.mail:android-activation:1.6.2'
 }

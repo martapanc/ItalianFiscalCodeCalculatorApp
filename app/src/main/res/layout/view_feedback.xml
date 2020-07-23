@@ -42,9 +42,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
             android:autofillHints="Email"
-            android:hint="@string/email" />
+            android:hint="@string/email"
+            android:textSize="15sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -81,7 +81,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginStart="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:text="@string/send"></com.google.android.material.button.MaterialButton>
+        android:text="@string/send"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/feedback_cancel_button"
@@ -90,7 +90,7 @@
         android:layout_below="@id/feedback_input"
         android:layout_toStartOf="@id/feedback_send_button"
         android:backgroundTint="@color/colorAccentDisabled"
-        android:text="@string/cancel"></com.google.android.material.button.MaterialButton>
+        android:text="@string/cancel"/>
 
 
 </RelativeLayout>
