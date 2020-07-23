@@ -28,10 +28,16 @@
         <item name="android:windowIsFloating">false</item>
     </style>
 
-    <style name="FeedbackLabelTheme" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+    <style name="FeedbackLabelTheme" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="colorAccent">@color/black</item>  // Text Color
-        <item name="android:textColorHint">@color/colorPrimary</item>    // Hint Color
-        <item name="colorControlActivated">@color/colorPrimary</item>    //Floating label color
-        <item name="hintTextAppearance">@color/colorPrimary</item>    //Floating label color
+<!--        <item name="boxStrokeColor">@color/colorPrimary</item>-->
+        <item name="boxStrokeWidth">2dp</item>
+<!--        <item name="android:textColorHint">#9C27B0</item>    // Hint Color-->
+        <item name="colorControlActivated">@color/black</item>    //Floating label color
+<!--        <item name="hintTextAppearance">@color/colorAccentDisabled</item>    //Floating label color-->
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textSize">20sp</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+<!--        <item name="colorControlNormal">#AD6EF4</item>-->
     </style>
 </resources>
