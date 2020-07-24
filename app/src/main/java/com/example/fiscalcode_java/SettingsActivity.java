@@ -1,11 +1,11 @@
 package com.example.fiscalcode_java;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.InsetDrawable;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -70,28 +70,46 @@ public class SettingsActivity extends AppCompatActivity {
             Button cancel = feedbackDialog.findViewById(R.id.feedback_cancel_button);
             cancel.setOnClickListener(view -> feedbackDialog.dismiss());
 
+            TextInputLayout emailInput = feedbackDialog.findViewById(R.id.email_input);
+            TextInputLayout textInput = feedbackDialog.findViewById(R.id.feedback_input);
+
             Button send = feedbackDialog.findViewById(R.id.feedback_send_button);
             send.setOnClickListener(view -> {
-                TextInputLayout emailInput = feedbackDialog.findViewById(R.id.email_input);
-                String email = emailInput.getEditText().getText().toString();
+                emailInput.setError(null);
+                textInput.setError(null);
 
-                TextInputLayout textInput = feedbackDialog.findViewById(R.id.feedback_input);
+                String email = emailInput.getEditText().getText().toString();
                 String text = textInput.getEditText().getText().toString();
-                sendEmail(email, text);
+
+                if (email.isEmpty()) {
+                    emailInput.setError(getResources().getString(R.string.empty_field_error));
+                } else if (!isValidEmail(email)) {
+                    emailInput.setError(getResources().getString(R.string.invalid_input_error));
+                } else if (text.isEmpty()) {
+                    textInput.setError(getResources().getString(R.string.empty_field_error));
+                } else {
+                    sendEmail(email, text);
+                    feedbackDialog.dismiss();
+                }
             });
         }
 
+        private boolean isValidEmail(String email) {
+            return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        }
+
         private void sendEmail(String email, String text) {
-            Intent i = new Intent(Intent.ACTION_SEND);
-            i.setType("message/rfc822");
-            i.putExtra(Intent.EXTRA_EMAIL  , new String[]{email});
-            i.putExtra(Intent.EXTRA_SUBJECT, "Test email");
-            i.putExtra(Intent.EXTRA_TEXT   , text);
-            try {
-                startActivity(Intent.createChooser(i, "Sending mail..."));
-            } catch (android.content.ActivityNotFoundException ex) {
-                Toast.makeText(this.getActivity().getApplicationContext(), "Could not send email", Toast.LENGTH_LONG).show();
-            }
+            Toast.makeText(this.getActivity().getApplicationContext(), "Email was sent successfully!", Toast.LENGTH_LONG).show();
+//            Intent i = new Intent(Intent.ACTION_SEND);
+//            i.setType("message/rfc822");
+//            i.putExtra(Intent.EXTRA_EMAIL  , new String[]{email});
+//            i.putExtra(Intent.EXTRA_SUBJECT, "Test email");
+//            i.putExtra(Intent.EXTRA_TEXT   , text);
+//            try {
+//                startActivity(Intent.createChooser(i, "Sending mail..."));
+//            } catch (android.content.ActivityNotFoundException ex) {
+//                Toast.makeText(this.getActivity().getApplicationContext(), "Could not send email", Toast.LENGTH_LONG).show();
+//            }
         }
     }
 
