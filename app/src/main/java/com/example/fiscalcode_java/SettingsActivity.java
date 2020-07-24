@@ -81,17 +81,27 @@ public class SettingsActivity extends AppCompatActivity {
                 String email = emailInput.getEditText().getText().toString();
                 String text = textInput.getEditText().getText().toString();
 
-                if (email.isEmpty()) {
-                    emailInput.setError(getResources().getString(R.string.empty_field_error));
-                } else if (!isValidEmail(email)) {
-                    emailInput.setError(getResources().getString(R.string.invalid_input_error));
-                } else if (text.isEmpty()) {
-                    textInput.setError(getResources().getString(R.string.empty_field_error));
-                } else {
+                if (validateFields(emailInput, textInput, email, text)) {
                     sendEmail(email, text);
                     feedbackDialog.dismiss();
                 }
             });
+        }
+
+        public boolean validateFields(TextInputLayout emailInput, TextInputLayout textInput, String email, String text) {
+            boolean validFields = true;
+            if (email.isEmpty()) {
+                validFields = false;
+                emailInput.setError(getResources().getString(R.string.empty_field_error));
+            } else if (!isValidEmail(email)) {
+                validFields = false;
+                emailInput.setError(getResources().getString(R.string.invalid_input_error));
+            }
+            if (text.isEmpty()) {
+                validFields = false;
+                textInput.setError(getResources().getString(R.string.empty_field_error));
+            }
+            return validFields;
         }
 
         private boolean isValidEmail(String email) {
