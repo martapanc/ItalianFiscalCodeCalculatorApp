@@ -17,6 +17,7 @@
     <string name="pob_label">Place of birth</string>
     <string name="empty_field_error">Required value</string>
     <string name="invalid_input_error">Value is invalid</string>
+    <string name="invalid_email_error">Invalid email</string>
     <string name="invalid_fiscal_code_input_error">The fiscal code inserted is in the wrong format</string>
     <string name="sample_fiscal_code">BNCLSN90H06A462X</string>
     <string name="extract_prompt">Type your fiscal code</string>
@@ -70,4 +71,5 @@
     <string name="email">Email</string>
     <string name="feedback_subtitle">Make sure you type a valid email address. We will send any follow up messages to this address.</string>
     <string name="send_us_feedback">Send us feedback</string>
+    <string name="email_sent_successfully">Email was sent successfully</string>
 </resources>

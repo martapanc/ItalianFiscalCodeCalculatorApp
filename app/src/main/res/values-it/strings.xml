@@ -17,6 +17,7 @@
     <string name="pob_label">Luogo di nascita</string>
     <string name="empty_field_error">Valore richiesto</string>
     <string name="invalid_input_error">Il valore inserito è invalido</string>
+    <string name="invalid_email_error">L\'email inserita non è valida</string>
     <string name="invalid_fiscal_code_input_error">Il codice fiscale inserito non è nel formato richiesto</string>
     <string name="sample_fiscal_code">BNCLSN90H06A462X</string>
     <string name="extract_prompt">Inserisci il tuo codice fiscale</string>
@@ -70,4 +71,5 @@
     <string name="email">Email</string>
     <string name="feedback_subtitle">Controlla di aver inserito un\'email valida. Riceverai una risposta all\'indirizzo specificato.</string>
     <string name="send_us_feedback">Mandaci un feedback</string>
+    <string name="email_sent_successfully">Email inviata con successo</string>
 </resources>

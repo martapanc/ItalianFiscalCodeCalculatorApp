@@ -95,7 +95,7 @@ public class SettingsActivity extends AppCompatActivity {
                 emailInput.setError(getResources().getString(R.string.empty_field_error));
             } else if (!isValidEmail(email)) {
                 validFields = false;
-                emailInput.setError(getResources().getString(R.string.invalid_input_error));
+                emailInput.setError(getResources().getString(R.string.invalid_email_error));
             }
             if (text.isEmpty()) {
                 validFields = false;
@@ -109,7 +109,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         private void sendEmail(String email, String text) {
-            Toast.makeText(this.getActivity().getApplicationContext(), "Email was sent successfully!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this.getActivity().getApplicationContext(), this.getResources().getString(R.string.email_sent_successfully), Toast.LENGTH_LONG).show();
 //            Intent i = new Intent(Intent.ACTION_SEND);
 //            i.setType("message/rfc822");
 //            i.putExtra(Intent.EXTRA_EMAIL  , new String[]{email});
