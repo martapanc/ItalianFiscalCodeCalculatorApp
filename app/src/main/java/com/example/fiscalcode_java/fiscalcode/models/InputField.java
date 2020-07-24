@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.fiscalcode_java.R;
 import com.example.fiscalcode_java.fiscalcode.computations.ValidateInputFields;
-import com.google.android.material.textfield.TextInputLayout;
 
 public enum InputField {
 
