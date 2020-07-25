@@ -7,7 +7,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.InsetDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,9 +24,14 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import com.example.fiscalcode_java.fiscalcode.utils.FirebaseHelper;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+
+import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
 
 public class SettingsActivity extends AppCompatActivity {
+
+    private static FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            mAuth = FirebaseAuth.getInstance();
             Preference feedbackPreference = findPreference("feedback");
             feedbackPreference.setOnPreferenceClickListener(preference -> {
                 Dialog feedbackDialog = setupFeedbackDialog();
@@ -69,7 +74,7 @@ public class SettingsActivity extends AppCompatActivity {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 TextView feedbackSubtitle = feedbackDialog.findViewById(R.id.feedback_subtitle);
-                feedbackSubtitle.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
+                feedbackSubtitle.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
             }
 
             feedbackDialog.show();
@@ -79,18 +84,14 @@ public class SettingsActivity extends AppCompatActivity {
         public void setupFeedbackViewButtons(Dialog feedbackDialog) {
             Button cancel = feedbackDialog.findViewById(R.id.feedback_cancel_button);
             cancel.setOnClickListener(view -> feedbackDialog.dismiss());
-
             TextInputLayout textInput = feedbackDialog.findViewById(R.id.feedback_input);
 
             Button send = feedbackDialog.findViewById(R.id.feedback_send_button);
             send.setOnClickListener(view -> {
                 textInput.setError(null);
-
                 String text = textInput.getEditText().getText().toString();
-
                 if (validateFields(textInput, text)) {
-                    sendEmail(text);
-                    feedbackDialog.dismiss();
+                    performAnonymousSignIn(feedbackDialog, text);
                 }
             });
         }
@@ -102,6 +103,18 @@ public class SettingsActivity extends AppCompatActivity {
                 textInput.setError(getResources().getString(R.string.empty_field_error));
             }
             return validFields;
+        }
+
+        public void performAnonymousSignIn(Dialog feedbackDialog, String text) {
+            mAuth.signInAnonymously().addOnCompleteListener(getActivity(), task -> {
+                if (task.isSuccessful()) {
+                    System.out.println("signInAnonymously:success");
+                    sendEmail(text);
+                    feedbackDialog.dismiss();
+                } else {
+                    Toast.makeText(this.getActivity().getApplicationContext(), this.getResources().getString(R.string.email_sent_successfully), Toast.LENGTH_LONG).show();
+                }
+            });
         }
 
         private void sendEmail(String text) {
