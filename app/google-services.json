@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "416093682276",
+    "firebase_url": "https://appmessages-69d41.firebaseio.com",
+    "project_id": "appmessages-69d41",
+    "storage_bucket": "appmessages-69d41.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:416093682276:android:12b6b367c0529b214d3d71",
+        "android_client_info": {
+          "package_name": "com.example.fiscalcode_java"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "416093682276-26guf20hpqvjlr4i10st5684j8h3a4a1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0fqet08H7UwS4kvOYmweZmcQT1LW-ejA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "416093682276-26guf20hpqvjlr4i10st5684j8h3a4a1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

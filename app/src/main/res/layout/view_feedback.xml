@@ -29,30 +29,11 @@
         android:textSize="12sp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/email_input"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/feedback_subtitle"
-        android:layout_marginBottom="15dp"
-        android:theme="@style/FeedbackLabelTheme"
-        app:boxStrokeColor="@color/colorPrimary"
-        app:hintTextColor="@color/colorPrimaryDark">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints="Email"
-            android:hint="@string/email"
-            android:textSize="15sp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/feedback_input"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/email_input"
+        android:layout_below="@id/feedback_subtitle"
         android:layout_marginBottom="15dp"
         android:theme="@style/FeedbackLabelTheme"
         app:boxStrokeColor="@color/colorPrimary"

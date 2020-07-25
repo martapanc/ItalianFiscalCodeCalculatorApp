@@ -1,10 +1,13 @@
 package com.example.fiscalcode_java;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.InsetDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -15,12 +18,31 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
+import com.example.fiscalcode_java.fiscalcode.utils.EmailSender;
+import com.example.fiscalcode_java.fiscalcode.utils.FirebaseHelper;
+import com.example.fiscalcode_java.fiscalcode.utils.GmailSender;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.time.LocalDateTime;
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
+import static com.example.fiscalcode_java.fiscalcode.utils.EmailSender.EMAIL;
+import static com.example.fiscalcode_java.fiscalcode.utils.EmailSender.KEY;
 
 
 public class SettingsActivity extends AppCompatActivity {
@@ -70,33 +92,23 @@ public class SettingsActivity extends AppCompatActivity {
             Button cancel = feedbackDialog.findViewById(R.id.feedback_cancel_button);
             cancel.setOnClickListener(view -> feedbackDialog.dismiss());
 
-            TextInputLayout emailInput = feedbackDialog.findViewById(R.id.email_input);
             TextInputLayout textInput = feedbackDialog.findViewById(R.id.feedback_input);
 
             Button send = feedbackDialog.findViewById(R.id.feedback_send_button);
             send.setOnClickListener(view -> {
-                emailInput.setError(null);
                 textInput.setError(null);
 
-                String email = emailInput.getEditText().getText().toString();
                 String text = textInput.getEditText().getText().toString();
 
-                if (validateFields(emailInput, textInput, email, text)) {
-                    sendEmail(email, text);
+                if (validateFields(textInput, text)) {
+                    sendEmail(text);
                     feedbackDialog.dismiss();
                 }
             });
         }
 
-        public boolean validateFields(TextInputLayout emailInput, TextInputLayout textInput, String email, String text) {
+        public boolean validateFields(TextInputLayout textInput, String text) {
             boolean validFields = true;
-            if (email.isEmpty()) {
-                validFields = false;
-                emailInput.setError(getResources().getString(R.string.empty_field_error));
-            } else if (!isValidEmail(email)) {
-                validFields = false;
-                emailInput.setError(getResources().getString(R.string.invalid_email_error));
-            }
             if (text.isEmpty()) {
                 validFields = false;
                 textInput.setError(getResources().getString(R.string.empty_field_error));
@@ -104,21 +116,33 @@ public class SettingsActivity extends AppCompatActivity {
             return validFields;
         }
 
-        private boolean isValidEmail(String email) {
-            return Patterns.EMAIL_ADDRESS.matcher(email).matches();
-        }
+        private void sendEmail(String text) {
+            final Context context = this.getActivity().getApplicationContext();
+            Toast.makeText(context, this.getResources().getString(R.string.email_sent_successfully), Toast.LENGTH_LONG).show();
 
-        private void sendEmail(String email, String text) {
-            Toast.makeText(this.getActivity().getApplicationContext(), this.getResources().getString(R.string.email_sent_successfully), Toast.LENGTH_LONG).show();
-//            Intent i = new Intent(Intent.ACTION_SEND);
-//            i.setType("message/rfc822");
-//            i.putExtra(Intent.EXTRA_EMAIL  , new String[]{email});
-//            i.putExtra(Intent.EXTRA_SUBJECT, "Test email");
-//            i.putExtra(Intent.EXTRA_TEXT   , text);
+            String instanceId = "1234567";
+
+            FirebaseHelper firebaseHelper = new FirebaseHelper();
+            firebaseHelper.addMessage(text, instanceId);
+//            EmailSender emailSender = new EmailSender(context, email, "[User feedback]", text);
+//            emailSender.execute();
+
+//            Properties properties = new Properties();
+//            properties.put("mail.smtp.host", "smtp.gmail.com");
+//            properties.put("mail.smtp.socketFactory.port", "465");
+//            properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+//            properties.put("mail.smtp.auth", "true");
+//            properties.put("mail.smtp.port", "465");
+//
+//            //Creating a new session
 //            try {
-//                startActivity(Intent.createChooser(i, "Sending mail..."));
-//            } catch (android.content.ActivityNotFoundException ex) {
-//                Toast.makeText(this.getActivity().getApplicationContext(), "Could not send email", Toast.LENGTH_LONG).show();
+//                GmailSender sender = new GmailSender(EMAIL, KEY);
+//                sender.sendMail("This is Subject",
+//                        text,
+//                        email,
+//                        email);
+//            } catch (Exception e) {
+//                Log.e("SendMail", e.getMessage(), e);
 //            }
         }
     }

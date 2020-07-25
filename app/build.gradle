@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'de.mannodermaus.android-junit5'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 29
@@ -34,6 +35,10 @@ android {
     useLibrary 'android.test.runner'
     useLibrary 'android.test.base'
     useLibrary 'android.test.mock'
+
+    packagingOptions {
+        pickFirst 'META-INF/LICENSE.txt' // picks the JavaMail license file
+    }
 }
 
 dependencies {
@@ -72,6 +77,12 @@ dependencies {
 
     implementation "com.leinardi.android:speed-dial:3.1.1"
 
+//    implementation group: 'javax.mail', name: 'mail', version: '1.4.7'
     implementation 'com.sun.mail:android-mail:1.6.2'
     implementation 'com.sun.mail:android-activation:1.6.2'
+
+    implementation 'com.google.firebase:firebase-auth:19.3.2'
+    implementation 'com.google.firebase:firebase-analytics:17.4.4'
+    implementation 'com.google.firebase:firebase-firestore:21.5.0'
+//    implementation 'com.google.firebase:firebase-database:19.3.1'
 }

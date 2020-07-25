@@ -269,6 +269,7 @@ gradle-app.setting
 *.ipr
 *~
 *.swp
+email.properties
 
 # Android Patch
 
