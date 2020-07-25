@@ -88,6 +88,18 @@
     <string name="disclaimer_3">The use for illegal purposes of a tax code is severely punished by law,
         therefore we decline any responsibility for any misuse of the code calculated with <i>Fiscal Code Calculator</i>.
     </string>
+    <string name="privacy_1">The data related to the generation or decoding of the fiscal code, that is\n
+        \n -  first name
+        \n -  last name
+        \n -  gender
+        \n -  date of birth
+        \n -  place of birth
+        \n -  tax code
+        \n\nare not collected
+        or stored, and are used exclusively to provide the service.
+    </string>
     <string name="copyright">© Fiscal Code Calculator\nCopyright 2020</string>
+    <string name="privacy">Privacy</string>
+    <string name="privacy_ul"><u>Privacy Policy</u></string>
 
 </resources>

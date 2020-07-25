@@ -14,6 +14,10 @@
         android:icon="@drawable/ic_copyright_24px"
         android:title="@string/tcs_title" />
     <item
+        android:id="@+id/action_privacy"
+        android:icon="@drawable/ic_privacy_tip_24px"
+        android:title="@string/privacy" />
+    <item
         android:id="@+id/action_info"
         android:icon="@drawable/ic_info_24px"
         android:title="@string/info" />

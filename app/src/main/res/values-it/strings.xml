@@ -86,6 +86,17 @@
     <string name="disclaimer_3">L\'uso per scopi illegali di un codice fiscale è vietato e severamente punito dalla legge.
         \nSi declina ogni responsabilità per qualsiasi uso improprio del codice ottenuto tramite <i>Calcolo del Codice Fiscale</i>.
     </string>
+    <string name="privacy_1">I dati relativi alla generazione o decodifica del codice fiscale, ovvero:\n
+        \n -  nome
+        \n -  cognome
+        \n -  sesso
+        \n -  data di nascita
+        \n -  luogo di nascita
+        \n -  codice fiscale
+        \n\nnon vengono raccolti né conservati ma sono utilizzati esclusivamente per fornire il servizio.
+    </string>
     <string name="copyright">© Calcolo del Codice Fiscale\nCopyright 2020</string>
+    <string name="privacy">Privacy</string>
+    <string name="privacy_ul"><u>Informativa sulla Privacy</u></string>
 
 </resources>

@@ -56,10 +56,13 @@ public class MainActivity extends AppCompatActivity {
                 openSettingsActivity();
                 break;
             case R.id.action_terms:
-                showTermsDialog();
+                showDialogView(R.layout.view_terms);
                 break;
             case R.id.action_info:
-                showInfoDialog();
+                showDialogView(R.layout.view_info);
+                break;
+            case R.id.action_privacy:
+                showDialogView(R.layout.view_privacy);
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -73,15 +76,9 @@ public class MainActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.enter, R.anim.nothing);
     }
 
-    private void showTermsDialog() {
+    private void showDialogView(int contentView) {
         Dialog infoDialog = new Dialog(this);
-        infoDialog.setContentView(R.layout.view_terms);
-        infoDialog.show();
-    }
-
-    public void showInfoDialog() {
-        Dialog infoDialog = new Dialog(this);
-        infoDialog.setContentView(R.layout.view_info);
+        infoDialog.setContentView(contentView);
         infoDialog.show();
     }
 }
