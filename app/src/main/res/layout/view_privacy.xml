@@ -20,6 +20,5 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/privacy_title"
         android:layout_marginBottom="15dp"
-        android:justificationMode="inter_word"
         android:text="@string/privacy_1" />
 </RelativeLayout>
