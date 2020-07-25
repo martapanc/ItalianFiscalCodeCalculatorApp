@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.InsetDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,8 +25,6 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import com.example.fiscalcode_java.fiscalcode.utils.FirebaseHelper;
 import com.google.android.material.textfield.TextInputLayout;
-
-import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
 
 public class SettingsActivity extends AppCompatActivity {
@@ -70,7 +69,7 @@ public class SettingsActivity extends AppCompatActivity {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 TextView feedbackSubtitle = feedbackDialog.findViewById(R.id.feedback_subtitle);
-                feedbackSubtitle.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+                feedbackSubtitle.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
             }
 
             feedbackDialog.show();
