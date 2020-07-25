@@ -69,7 +69,10 @@
     <string name="send">Send</string>
     <string name="cancel">Cancel</string>
     <string name="email">Email</string>
-    <string name="feedback_subtitle">Make sure you type a valid email address. We will send any follow up messages to this address.</string>
+    <string name="feedback_subtitle">please describe the problem as accurately as possible.
+        Your feedback is anonymous and will only be used to improve the app. If you wish to message us
+    directly instead, you may find our details in the Info section or on the app\'s page on Play Store.
+    Thank you for your help!</string>
     <string name="send_us_feedback">Send us feedback</string>
     <string name="email_sent_successfully">Email was sent successfully</string>
 </resources>

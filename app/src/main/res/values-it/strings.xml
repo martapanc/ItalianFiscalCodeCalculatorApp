@@ -69,7 +69,10 @@
     <string name="send">Invia</string>
     <string name="cancel">Cancella</string>
     <string name="email">Email</string>
-    <string name="feedback_subtitle">Controlla di aver inserito un\'email valida. Riceverai una risposta all\'indirizzo specificato.</string>
+    <string name="feedback_subtitle">Sii il più preciso possibile nella descrizione del problema.
+        \nIl feedback è anonimo, e utilizzeremo queste informazioni esclusivamente per migliorare l\'app.
+        Se desiderassi scriverci direttamente, trovi i dettagli nelle Info, o nella nostra pagina su Play Store.
+        \nGrazie per il contributo! </string>
     <string name="send_us_feedback">Mandaci un feedback</string>
     <string name="email_sent_successfully">Email inviata con successo</string>
 </resources>

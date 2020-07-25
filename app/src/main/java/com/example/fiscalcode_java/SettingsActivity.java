@@ -7,42 +7,25 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.InsetDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
-import com.example.fiscalcode_java.fiscalcode.utils.EmailSender;
 import com.example.fiscalcode_java.fiscalcode.utils.FirebaseHelper;
-import com.example.fiscalcode_java.fiscalcode.utils.GmailSender;
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.time.LocalDateTime;
-import java.util.Properties;
-
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-
-import static com.example.fiscalcode_java.fiscalcode.utils.EmailSender.EMAIL;
-import static com.example.fiscalcode_java.fiscalcode.utils.EmailSender.KEY;
+import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
 
 public class SettingsActivity extends AppCompatActivity {
@@ -84,6 +67,12 @@ public class SettingsActivity extends AppCompatActivity {
             InsetDrawable inset = new InsetDrawable(new ColorDrawable(Color.WHITE), 25);
             feedbackDialog.getWindow().setBackgroundDrawable(inset);
             feedbackDialog.setContentView(R.layout.view_feedback);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                TextView feedbackSubtitle = feedbackDialog.findViewById(R.id.feedback_subtitle);
+                feedbackSubtitle.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+            }
+
             feedbackDialog.show();
             return feedbackDialog;
         }
@@ -124,26 +113,6 @@ public class SettingsActivity extends AppCompatActivity {
 
             FirebaseHelper firebaseHelper = new FirebaseHelper();
             firebaseHelper.addMessage(text, instanceId);
-//            EmailSender emailSender = new EmailSender(context, email, "[User feedback]", text);
-//            emailSender.execute();
-
-//            Properties properties = new Properties();
-//            properties.put("mail.smtp.host", "smtp.gmail.com");
-//            properties.put("mail.smtp.socketFactory.port", "465");
-//            properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-//            properties.put("mail.smtp.auth", "true");
-//            properties.put("mail.smtp.port", "465");
-//
-//            //Creating a new session
-//            try {
-//                GmailSender sender = new GmailSender(EMAIL, KEY);
-//                sender.sendMail("This is Subject",
-//                        text,
-//                        email,
-//                        email);
-//            } catch (Exception e) {
-//                Log.e("SendMail", e.getMessage(), e);
-//            }
         }
     }
 
