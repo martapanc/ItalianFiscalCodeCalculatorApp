@@ -12,7 +12,7 @@
     <item
         android:id="@+id/action_terms"
         android:icon="@drawable/ic_copyright_24px"
-        android:title="@string/tcs" />
+        android:title="@string/tcs_title" />
     <item
         android:id="@+id/action_info"
         android:icon="@drawable/ic_info_24px"

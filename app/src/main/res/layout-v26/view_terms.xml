@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/terms_title"
         android:layout_marginBottom="15dp"
+        android:justificationMode="inter_word"
         android:text="@string/disclaimer_1"
         android:textStyle="bold" />
 
@@ -29,6 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/terms_1"
         android:layout_marginBottom="15dp"
+        android:justificationMode="inter_word"
         android:text="@string/disclaimer_2" />
 
     <TextView
@@ -37,6 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/terms_2"
         android:layout_marginBottom="20dp"
+        android:justificationMode="inter_word"
         android:text="@string/disclaimer_3" />
 
     <TextView

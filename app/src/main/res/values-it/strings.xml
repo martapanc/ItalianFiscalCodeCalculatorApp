@@ -63,7 +63,8 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="settings">Impostazioni</string>
     <string name="info">Info</string>
-    <string name="tcs">Licenza d\'uso</string>
+    <string name="tcs_title">Condizioni d\'uso</string>
+    <string name="tcs_title_ul"><u>Condizioni d\'uso</u></string>
 
     <string name="enter_feedback">Testo del feedback</string>
     <string name="send">Invia</string>
@@ -75,4 +76,16 @@
         \nGrazie per il contributo! </string>
     <string name="send_us_feedback">Mandaci un feedback</string>
     <string name="email_sent_successfully">Email inviata con successo</string>
+
+    <string name="disclaimer_1">L\'unico codice fiscale valido è quello rilasciato dall\'Agenzia delle Entrate.</string>
+    <string name="disclaimer_2">Il codice fiscale generato tramite questa app è da considerarsi esemplificativo,
+        poiché in rari casi di omonimia e coincidenza dei dati personali inseriti, il sistema genera un codice non univoco.
+        Nella realtà dei casi, ciò non avviene in quanto l\'Agenzia delle Entrate sostituisce uno dei caratteri
+        con una lettera per rendere unici tutti i codici assegnati.
+    </string>
+    <string name="disclaimer_3">L\'uso per scopi illegali di un codice fiscale è vietato e severamente punito dalla legge.
+        \nSi declina ogni responsabilità per qualsiasi uso improprio del codice ottenuto tramite <i>Calcolo del Codice Fiscale</i>.
+    </string>
+    <string name="copyright">© Calcolo del Codice Fiscale\nCopyright 2020</string>
+
 </resources>

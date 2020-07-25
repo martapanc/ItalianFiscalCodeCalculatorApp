@@ -10,7 +10,6 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.example.fiscalcode_java.ui.main.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
@@ -77,16 +76,12 @@ public class MainActivity extends AppCompatActivity {
     private void showTermsDialog() {
         Dialog infoDialog = new Dialog(this);
         infoDialog.setContentView(R.layout.view_terms);
-        TextView textView = infoDialog.findViewById(R.id.terms_text);
-        textView.setText(this.getResources().getString(R.string.tcs));
         infoDialog.show();
     }
 
     public void showInfoDialog() {
         Dialog infoDialog = new Dialog(this);
         infoDialog.setContentView(R.layout.view_info);
-        TextView textView = infoDialog.findViewById(R.id.info_text);
-        textView.setText(this.getResources().getString(R.string.info));
         infoDialog.show();
     }
 }
