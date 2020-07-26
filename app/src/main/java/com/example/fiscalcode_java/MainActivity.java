@@ -58,11 +58,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_terms:
                 showDialogView(R.layout.view_terms);
                 break;
-            case R.id.action_info:
-                showDialogView(R.layout.view_info);
-                break;
             case R.id.action_privacy:
                 showDialogView(R.layout.view_privacy);
+                break;
+            case R.id.action_info:
+                showDialogView(R.layout.view_info);
                 break;
             default:
                 return super.onOptionsItemSelected(item);

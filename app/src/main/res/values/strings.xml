@@ -1,8 +1,11 @@
 <resources>
+    <!-- Main -->
     <string name="app_name">Compute your Fiscal Code</string>
     <string name="tab_compute">Compute</string>
     <string name="tab_verify">Verify</string>
     <string name="tab_extract">Estract data</string>
+
+    <!-- Compute, Extract, Verify -->
     <string name="gender_female">Female</string>
     <string name="gender_male">Male</string>
     <string name="placeOfBirth_hint">Arezzo (AR)</string>
@@ -15,10 +18,6 @@
     <string name="last_name_example">Bianchi</string>
     <string name="dob_label">Date of birth</string>
     <string name="pob_label">Place of birth</string>
-    <string name="empty_field_error">Required value</string>
-    <string name="invalid_input_error">Value is invalid</string>
-    <string name="invalid_email_error">Invalid email</string>
-    <string name="invalid_fiscal_code_input_error">The fiscal code inserted is in the wrong format</string>
     <string name="sample_fiscal_code">BNCLSN90H06A462X</string>
     <string name="extract_prompt">Type your fiscal code</string>
     <string name="extract_data_button">Extract data</string>
@@ -37,7 +36,12 @@
     <string name="nothing_to_copy">Nothing to copy  🤷‍♂️</string>
     <string name="data_label">Data</string>
     <string name="data_copied_to_clipboard">Data copied to clipboard</string>
-    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Errors -->
+    <string name="empty_field_error">Required value</string>
+    <string name="invalid_input_error">Value is invalid</string>
+    <string name="invalid_email_error">Invalid email</string>
+    <string name="invalid_fiscal_code_input_error">The fiscal code inserted is in the wrong format</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
@@ -45,7 +49,6 @@
 
     <string name="appearance_header">Appearance</string>
     <string name="language_label">Language</string>
-
     <string name="general_header">General</string>
     <string name="dark_mode_label">Dark mode</string>
 
@@ -67,6 +70,7 @@
     <string name="tcs_title"><u>Terms &amp; Conditions</u></string>
     <string name="tcs_title_ul"><u>Terms &amp; Conditions</u></string>
 
+    <!-- Feedback view -->
     <string name="enter_feedback">Enter feedback</string>
     <string name="send">Send</string>
     <string name="cancel">Cancel</string>
@@ -78,8 +82,8 @@
     <string name="send_us_feedback">Send us feedback</string>
     <string name="email_sent_successfully">Email was sent successfully</string>
 
+    <!-- T&Cs View -->
     <string name="disclaimer_1">The only valid tax code is the one issued by the Revenue Service.</string>
-
     <string name="disclaimer_2">The fiscal code generated is to be considered an example,
         because in rare cases of homonymity and coincidence of personal data, the system generates
         a non-univocal code. In the reality of the cases, this does not happen because the Italian
@@ -88,6 +92,11 @@
     <string name="disclaimer_3">The use for illegal purposes of a tax code is severely punished by law,
         therefore we decline any responsibility for any misuse of the code calculated with <i>Fiscal Code Calculator</i>.
     </string>
+    <string name="copyright">© Fiscal Code Calculator\nCopyright 2020</string>
+
+    <!-- Privacy View -->
+    <string name="privacy">Privacy</string>
+    <string name="privacy_ul"><u>Privacy Policy</u></string>
     <string name="privacy_1">The data related to the generation or decoding of the fiscal code, that is\n
         \n -  first name
         \n -  last name
@@ -95,11 +104,6 @@
         \n -  date of birth
         \n -  place of birth
         \n -  tax code
-        \n\nare not collected
-        or stored, and are used exclusively to provide the service.
+        \n\nare not collected or stored, and are used exclusively to provide the service.
     </string>
-    <string name="copyright">© Fiscal Code Calculator\nCopyright 2020</string>
-    <string name="privacy">Privacy</string>
-    <string name="privacy_ul"><u>Privacy Policy</u></string>
-
 </resources>
