@@ -71,7 +71,7 @@ public class FunctionCheckHelper {
 
     public static boolean isDateValid(Calendar calendar) {
         return isDateValid(Integer.toString(calendar.get(Calendar.DAY_OF_MONTH)),
-                Integer.toString(calendar.get(Calendar.MONTH)),
+                Integer.toString(calendar.get(Calendar.MONTH) + 1),
                 Integer.toString(calendar.get(Calendar.YEAR)));
     }
 
