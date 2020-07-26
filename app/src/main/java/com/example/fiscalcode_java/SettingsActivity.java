@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.InsetDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,8 +32,6 @@ import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private static FirebaseAuth mAuth;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +46,18 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == 16908332) {
+            finish();
+            overridePendingTransition(R.anim.nothing, R.anim.exit);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public static class SettingsFragment extends PreferenceFragmentCompat {
+
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
@@ -55,15 +65,45 @@ public class SettingsActivity extends AppCompatActivity {
 
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            mAuth = FirebaseAuth.getInstance();
+            setupInfoPreference();
+            setupFeedbackPreference();
+            setupLegalPreference(findPreference("privacy"), R.layout.view_privacy);
+            setupLegalPreference(findPreference("tcs"), R.layout.view_terms);
+
+            return super.onCreateView(inflater, container, savedInstanceState);
+        }
+
+        private void setupLegalPreference(Preference legalPreference, int view) {
+            legalPreference.setOnPreferenceClickListener(preference -> {
+                Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(view);
+                dialog.show();
+                return true;
+            });
+        }
+
+        public void setupInfoPreference() {
+            Preference infoPreference = findPreference("info");
+            infoPreference.setOnPreferenceClickListener(preference -> {
+                Dialog infoDialog = new Dialog(getContext());
+                infoDialog.setContentView(R.layout.view_info);
+
+                // Make the link clickable
+                TextView t2 = infoDialog.findViewById(R.id.info_dev);
+                t2.setMovementMethod(LinkMovementMethod.getInstance());
+
+                infoDialog.show();
+                return true;
+            });
+        }
+
+        public void setupFeedbackPreference() {
             Preference feedbackPreference = findPreference("feedback");
             feedbackPreference.setOnPreferenceClickListener(preference -> {
                 Dialog feedbackDialog = setupFeedbackDialog();
                 setupFeedbackViewButtons(feedbackDialog);
                 return true;
             });
-
-            return super.onCreateView(inflater, container, savedInstanceState);
         }
 
         public Dialog setupFeedbackDialog() {
@@ -106,6 +146,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         public void performAnonymousSignIn(Dialog feedbackDialog, String text) {
+            FirebaseAuth mAuth = FirebaseAuth.getInstance();
             mAuth.signInAnonymously().addOnCompleteListener(getActivity(), task -> {
                 if (task.isSuccessful()) {
                     System.out.println("signInAnonymously:success");
@@ -121,20 +162,11 @@ public class SettingsActivity extends AppCompatActivity {
             final Context context = this.getActivity().getApplicationContext();
             Toast.makeText(context, this.getResources().getString(R.string.email_sent_successfully), Toast.LENGTH_LONG).show();
 
+            // TODO: add real instance id
             String instanceId = "1234567";
 
             FirebaseHelper firebaseHelper = new FirebaseHelper();
             firebaseHelper.addMessage(text, instanceId);
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == 16908332) {
-            finish();
-            overridePendingTransition(R.anim.nothing, R.anim.exit);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

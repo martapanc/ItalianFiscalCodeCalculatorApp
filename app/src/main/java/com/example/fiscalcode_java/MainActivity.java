@@ -4,14 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.example.fiscalcode_java.ui.main.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
@@ -56,14 +53,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_settings:
                 openSettingsActivity();
                 break;
-            case R.id.action_terms:
-                showDialogView(R.layout.view_terms);
-                break;
-            case R.id.action_privacy:
-                showDialogView(R.layout.view_privacy);
-                break;
             case R.id.action_info:
-                showDialogView(R.layout.view_info);
+                openInfoActivity();
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -77,16 +68,6 @@ public class MainActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.enter, R.anim.nothing);
     }
 
-    private void showDialogView(int contentView) {
-        Dialog infoDialog = new Dialog(this);
-        infoDialog.setContentView(contentView);
-
-        // Make the link clickable
-        if (contentView == R.layout.view_info) {
-            TextView t2 = infoDialog.findViewById(R.id.info_dev);
-            t2.setMovementMethod(LinkMovementMethod.getInstance());
-        }
-
-        infoDialog.show();
+    private void openInfoActivity() {
     }
 }

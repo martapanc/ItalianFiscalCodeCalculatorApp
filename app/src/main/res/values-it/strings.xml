@@ -50,10 +50,9 @@
     <string name="appearance_header">Aspetto</string>
     <string name="language_label">Lingua</string>
     <string name="general_header">Generale</string>
+    <string name="legal_header">Legale</string>
+    <string name="legal_summary">Visualizza Condizioni d\'uso e Informativa sulla Privacy</string>
     <string name="dark_mode_label">Modalità notturna</string>
-
-    <string name="feedback_header">Invia feedback</string>
-    <string name="feedback_label">Segnala un problema o suggerisci nuove funzionalità</string>
 
     <!-- Messages Preferences -->
     <string name="signature_title">Your signature</string>
@@ -66,8 +65,11 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="settings">Impostazioni</string>
+    <string name="fc_info">Info sul Codice Fiscale</string>
 
     <!-- Feedback view -->
+    <string name="feedback_header">Invia feedback</string>
+    <string name="feedback_summary">Segnala un problema o suggerisci nuove funzionalità</string>
     <string name="enter_feedback">Testo del feedback</string>
     <string name="send">Invia</string>
     <string name="cancel">Cancella</string>
@@ -82,6 +84,7 @@
     <!-- T&Cs View -->
     <string name="tcs_title">Condizioni d\'uso</string>
     <string name="tcs_title_ul"><u>Condizioni d\'uso</u></string>
+    <string name="tcs_summary">Visualizza le condizioni d\'uso</string>
     <string name="disclaimer_1">L\'unico codice fiscale valido è quello rilasciato dall\'Agenzia delle Entrate.</string>
     <string name="disclaimer_2">Il codice fiscale generato tramite questa app è da considerarsi esemplificativo,
         poiché in rari casi di omonimia e coincidenza dei dati personali inseriti, il sistema genera un codice non univoco.
@@ -96,6 +99,7 @@
     <!-- Privacy View -->
     <string name="privacy">Privacy</string>
     <string name="privacy_ul"><u>Informativa sulla Privacy</u></string>
+    <string name="privacy_summary">Come i tuoi dati verranno utilizzati</string>
     <string name="privacy_1">I dati relativi alla generazione o decodifica del codice fiscale, ovvero:\n
         \n -  nome
         \n -  cognome
@@ -109,8 +113,10 @@
     <!-- Info View -->
     <string name="info">Info</string>
     <string name="info_ul"><u>Informazioni</u></string>
+    <string name="info_summary">Informazioni sull\'app</string>
     <string name="version">Versione 1.0</string>
     <string name="developed_by">Creato e sviluppato da <a href="https://mpancaldi.netlify.app/">Marta Pancaldi</a></string>
     <string name="review">Se ti piace questa app, mandami un feedback (Impostazioni > Invia feedback) o scrivi una recensione su Play Store!</string>
     <string name="app_icon">Icona app</string>
+
 </resources>
