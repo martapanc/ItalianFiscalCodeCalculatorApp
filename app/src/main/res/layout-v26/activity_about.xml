@@ -14,6 +14,7 @@
             android:id="@+id/intro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
             android:paddingBottom="20dp"
             android:text="@string/intro" />
 
@@ -27,6 +28,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
             android:paddingBottom="15dp"
             android:text="@string/ch1_text" />
 
@@ -41,6 +43,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
             android:text="@string/ch_surname_text" />
 
         <TextView
@@ -60,6 +63,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
             android:text="@string/ch_name_text" />
 
         <TextView
@@ -79,6 +83,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
             android:text="@string/ch_year_month_text" />
 
         <TextView
@@ -103,6 +108,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
             android:paddingBottom="15dp"
             android:text="@string/ch_day_gender_text" />
 
@@ -110,7 +116,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
             android:paddingBottom="5dp"
             android:text="@string/ch_pob_title"
             android:textSize="16sp" />
@@ -118,6 +123,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
             android:text="@string/ch_pob_text" />
 
         <TextView
@@ -137,6 +143,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
             android:text="@string/ch_control_text_1" />
 
         <WebView
@@ -152,6 +159,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
             android:paddingBottom="5dp"
             android:text="@string/ch_control_text_2" />
 
@@ -178,6 +186,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
             android:paddingBottom="15dp"
             android:text="@string/ch_omo_text" />
 

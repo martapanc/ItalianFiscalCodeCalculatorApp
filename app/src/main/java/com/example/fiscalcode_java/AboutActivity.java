@@ -19,6 +19,8 @@ import java.util.Locale;
 
 public class AboutActivity extends AppCompatActivity {
 
+    private String LANGUAGE = Locale.getDefault().getLanguage();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,19 +29,40 @@ public class AboutActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_about);
 
-        WebView webView = findViewById(R.id.table_months);
-        webView.loadDataWithBaseURL(null, getDoBTable(),
-                "text/html", "UTF-8", null);
+        WebView dobWebView = findViewById(R.id.table_months);
+        dobWebView.loadDataWithBaseURL(null, getDoBTable(), "text/html", "UTF-8", null);
 
+        WebView oddWebView = findViewById(R.id.control_table_odd);
+        oddWebView.loadDataWithBaseURL(null, getOddTable(), "text/html", "UTF-8", null);
+
+        WebView evenWebView = findViewById(R.id.control_table_even);
+        evenWebView.loadDataWithBaseURL(null, getEvenTable(), "text/html", "UTF-8", null);
+
+        WebView controlWebView = findViewById(R.id.control_table);
+        controlWebView.loadDataWithBaseURL(null, getControlTable(), "text/html", "UTF-8", null);
+
+        WebView omoWebView = findViewById(R.id.omo_table);
+        omoWebView.loadDataWithBaseURL(null, getOmoTable(), "text/html", "UTF-8", null);
     }
 
     private String getDoBTable() {
-        String language = Locale.getDefault().getLanguage();
-        if ("EN".equalsIgnoreCase(language)) {
-            return Tables_en.TABLE_DOB;
-        } else {
-            return Tables_it.TABLE_DOB;
-        }
+        return ("EN".equalsIgnoreCase(LANGUAGE) ? Tables_en.TABLE_DOB : Tables_it.TABLE_DOB);
+    }
+
+    private String getOddTable() {
+        return ("EN".equalsIgnoreCase(LANGUAGE) ? Tables_en.TABLE_ODD : Tables_it.TABLE_ODD);
+    }
+
+    private String getEvenTable() {
+        return ("EN".equalsIgnoreCase(LANGUAGE) ? Tables_en.TABLE_EVEN : Tables_it.TABLE_EVEN);
+    }
+
+    private String getControlTable() {
+        return ("EN".equalsIgnoreCase(LANGUAGE) ? Tables_en.TABLE_CONTROL : Tables_it.TABLE_CONTROL);
+    }
+
+    private String getOmoTable() {
+        return ("EN".equalsIgnoreCase(LANGUAGE) ? Tables_en.TABLE_OMO : Tables_it.TABLE_OMO);
     }
 
     @Nullable
