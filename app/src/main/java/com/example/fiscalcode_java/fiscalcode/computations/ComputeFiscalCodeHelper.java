@@ -12,8 +12,10 @@ import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckH
 import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.howManyLettersOfType;
 import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.isAllLetters;
 import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.isDateValid;
+import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.isTwoLettersAndVowelBeforeConsonant;
 import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.isYearValid;
 import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.replaceSpecialChars;
+import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.swapIfVowelBeforeConsonant;
 import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.pickFirstAndThirdAndFourthConsonant;
 import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.pickFirstConsonantAndFirstTwoVowels;
 import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.pickFirstThreeConsonants;
@@ -32,9 +34,13 @@ public class ComputeFiscalCodeHelper {
             input = input.toUpperCase();
 
             if (input.length() < 3) {
-                result = new StringBuilder(input);
-                while (result.length() < 3) {
-                    result.append("X");
+                if (isTwoLettersAndVowelBeforeConsonant(input)) {
+                    result = swapIfVowelBeforeConsonant(input);
+                } else {
+                    result = new StringBuilder(input);
+                    while (result.length() < 3) {
+                        result.append("X");
+                    }
                 }
             } else {
                 switch (howManyLettersOfType(input, CONSONANTS)) {
@@ -64,9 +70,14 @@ public class ComputeFiscalCodeHelper {
             inputName = inputName.toUpperCase();
 
             if (inputName.length() < 3) {
-                result = new StringBuilder(inputName);
-                while (result.length() < 3)
-                    result.append("X");
+                if (isTwoLettersAndVowelBeforeConsonant(inputName)) {
+                    result = swapIfVowelBeforeConsonant(inputName);
+                } else {
+                    result = new StringBuilder(inputName);
+                    while (result.length() < 3) {
+                        result.append("X");
+                    }
+                }
             } else {
                 switch (howManyLettersOfType(inputName, CONSONANTS)) {
                     case 0:

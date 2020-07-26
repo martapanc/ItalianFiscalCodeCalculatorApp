@@ -103,4 +103,21 @@ public class FunctionCheckHelper {
                 .replaceAll("-", "")
                 .replaceAll("[.']", "");
     }
+
+    public static boolean isTwoLettersAndVowelBeforeConsonant(String input) {
+        if (input.length() != 2) {
+            return false;
+        }
+        return Pattern.matches(VOWELS, String.valueOf(input.charAt(0)))
+                && Pattern.matches(CONSONANTS, String.valueOf(input.charAt(1)));
+    }
+
+    // Consonants are added before vowels. E.g. Ed -> DEX
+    public static StringBuilder swapIfVowelBeforeConsonant(String input) {
+        StringBuilder result = new StringBuilder();
+        result.append(input.charAt(1));
+        result.append(input.charAt(0));
+        result.append("X");
+        return result;
+    }
 }

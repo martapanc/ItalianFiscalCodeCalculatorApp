@@ -94,4 +94,15 @@ public class FunctionCheckHelperTest {
         assertFalse(FunctionCheckHelper.isFiscalCodeValid("PNCMRT95K52E24R"));
         assertFalse(FunctionCheckHelper.isFiscalCodeValid("PNCMRT9lK52E247R"));
     }
+
+    @Test
+    public void isTwoLettersAndVowelBeforeConsonant() {
+        assertTrue(FunctionCheckHelper.isTwoLettersAndVowelBeforeConsonant("AL"));
+        assertTrue(FunctionCheckHelper.isTwoLettersAndVowelBeforeConsonant("ED"));
+        assertFalse(FunctionCheckHelper.isTwoLettersAndVowelBeforeConsonant("LI"));
+        assertFalse(FunctionCheckHelper.isTwoLettersAndVowelBeforeConsonant("NG"));
+        assertFalse(FunctionCheckHelper.isTwoLettersAndVowelBeforeConsonant("AE"));
+        assertFalse(FunctionCheckHelper.isTwoLettersAndVowelBeforeConsonant("ALI"));
+        assertFalse(FunctionCheckHelper.isTwoLettersAndVowelBeforeConsonant("A"));
+    }
 }

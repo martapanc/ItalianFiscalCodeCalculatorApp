@@ -12,6 +12,12 @@ public class ComputeFiscalCodeHelperTest {
     public void computeSurname() throws FiscalCodeComputationException {
         assertEquals("PNC", ComputeFiscalCodeHelper.computeLastName("Pancaldi"));
         assertEquals("MRN", ComputeFiscalCodeHelper.computeLastName("Morini"));
+        assertEquals("RSS", ComputeFiscalCodeHelper.computeLastName("Rossi"));
+        assertEquals("RSO", ComputeFiscalCodeHelper.computeLastName("Rosi"));
+        assertEquals("HUX", ComputeFiscalCodeHelper.computeLastName("Hu"));
+        assertEquals("LAX", ComputeFiscalCodeHelper.computeLastName("Al"));
+        assertEquals("AXX", ComputeFiscalCodeHelper.computeLastName("A"));
+        assertEquals("NXX", ComputeFiscalCodeHelper.computeLastName("N"));
     }
 
     @Test
@@ -22,6 +28,12 @@ public class ComputeFiscalCodeHelperTest {
         assertEquals("LBT", ComputeFiscalCodeHelper.computeFirstName("Elisabetta"));
         assertEquals("MRA", ComputeFiscalCodeHelper.computeFirstName("Maria"));
         assertEquals("RTI", ComputeFiscalCodeHelper.computeFirstName("Rita"));
+        assertEquals("DEX", ComputeFiscalCodeHelper.computeFirstName("Ed"));
+        assertEquals("LAX", ComputeFiscalCodeHelper.computeFirstName("Al"));
+        assertEquals("LIX", ComputeFiscalCodeHelper.computeFirstName("Li"));
+        assertEquals("JAX", ComputeFiscalCodeHelper.computeFirstName("AJ"));
+        assertEquals("JXA", ComputeFiscalCodeHelper.computeFirstName("JAx"));
+        assertEquals("EXX", ComputeFiscalCodeHelper.computeFirstName("E"));
     }
 
     @Test
