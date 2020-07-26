@@ -7,7 +7,7 @@
         Serve a identificare inequivocabilmente le persone fisiche residenti in Italia indipendentemente dallo status di residenza.
         \nCreato dall\'ufficio delle imposte italiano, è attualmente utilizzato per diversi altri scopi, ad esempio per identificare
         in modo univoco gli individui del sistema sanitario, o le persone fisiche che agiscono come parti in causa in contratti privati.
-        \nIl codice è rilasciato dall'Agenzia delle Entrate.
+        \nIl codice è rilasciato dall\'Agenzia delle Entrate.
     </string>
 
     <string name="ch1_title"><b>Generazione del codice fiscale</b></string>
@@ -22,7 +22,7 @@
         per le donne, si considera solo il cognome da nubile). Se il cognome contiene più di tre consonanti,
         vengono prese nell\'ordine in cui appaiono. Se le consonanti non sono sufficienti, si prendono le vocali
         e si posizionano dopo le consonanti. Infine, se il cognome ha meno di tre lettere, la parte di codice
-        viene completata con l'aggiunta della lettera X.
+        viene completata con l\'aggiunta della lettera X.
     </string>
     <string name="ch_surname_eg">
         - Rossi → RSS\n
@@ -352,7 +352,7 @@
 
     <string name="ch_control_text_2">
             - I valori ottenuti vanno sommati tra di loro, e il risultato va diviso per 26. Il resto della
-        divisione sarà l\'indice della lettera dell'alfabeto corrispondente, che rappresenta il carattere di controllo:
+        divisione sarà l\'indice della lettera dell\'alfabeto corrispondente, che rappresenta il carattere di controllo:
     </string>
     <string name="ch_control_eg">
         - 0 → A\n
