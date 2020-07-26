@@ -66,16 +66,13 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="settings">Impostazioni</string>
-    <string name="info">Info</string>
-    <string name="tcs_title">Condizioni d\'uso</string>
-    <string name="tcs_title_ul"><u>Condizioni d\'uso</u></string>
 
     <!-- Feedback view -->
     <string name="enter_feedback">Testo del feedback</string>
     <string name="send">Invia</string>
     <string name="cancel">Cancella</string>
     <string name="email">Email</string>
-    <string name="feedback_subtitle">Sii il più preciso possibile nella descrizione del problema.
+    <string name="feedback_subtitle">Per favore, sii il più preciso possibile nella descrizione del problema.
         \nIl feedback è anonimo, e utilizzeremo queste informazioni esclusivamente per migliorare l\'app.
         Se desiderassi scriverci direttamente, trovi i dettagli nelle Info, o nella nostra pagina su Play Store.
         \nGrazie per il contributo! </string>
@@ -83,6 +80,8 @@
     <string name="email_sent_successfully">Email inviata con successo</string>
 
     <!-- T&Cs View -->
+    <string name="tcs_title">Condizioni d\'uso</string>
+    <string name="tcs_title_ul"><u>Condizioni d\'uso</u></string>
     <string name="disclaimer_1">L\'unico codice fiscale valido è quello rilasciato dall\'Agenzia delle Entrate.</string>
     <string name="disclaimer_2">Il codice fiscale generato tramite questa app è da considerarsi esemplificativo,
         poiché in rari casi di omonimia e coincidenza dei dati personali inseriti, il sistema genera un codice non univoco.
@@ -106,4 +105,12 @@
         \n -  codice fiscale
         \n\nnon vengono raccolti né conservati ma sono utilizzati esclusivamente per fornire il servizio.
     </string>
+
+    <!-- Info View -->
+    <string name="info">Info</string>
+    <string name="info_ul"><u>Informazioni</u></string>
+    <string name="version">Versione 1.0</string>
+    <string name="developed_by">Creato e sviluppato da <a href="https://mpancaldi.netlify.app/">Marta Pancaldi</a></string>
+    <string name="review">Se ti piace questa app, mandami un feedback (Impostazioni > Invia feedback) o scrivi una recensione su Play Store!</string>
+    <string name="app_icon">Icona app</string>
 </resources>

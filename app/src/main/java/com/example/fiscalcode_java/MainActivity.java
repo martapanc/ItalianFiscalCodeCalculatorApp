@@ -8,8 +8,10 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.fiscalcode_java.ui.main.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
@@ -21,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setLocale();
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.menu_toolbar);
@@ -79,6 +80,13 @@ public class MainActivity extends AppCompatActivity {
     private void showDialogView(int contentView) {
         Dialog infoDialog = new Dialog(this);
         infoDialog.setContentView(contentView);
+
+        // Make the link clickable
+        if (contentView == R.layout.view_info) {
+            TextView t2 = infoDialog.findViewById(R.id.info_dev);
+            t2.setMovementMethod(LinkMovementMethod.getInstance());
+        }
+
         infoDialog.show();
     }
 }
