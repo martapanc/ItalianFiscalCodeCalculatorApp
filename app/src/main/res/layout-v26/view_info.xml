@@ -63,5 +63,5 @@
         android:layout_below="@id/info_dev"
         android:justificationMode="inter_word"
         android:text="@string/review" />
-    s
+    
 </RelativeLayout>

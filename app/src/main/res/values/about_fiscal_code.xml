@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="intro">
-        The Italian fiscal code ("Codice Fiscale"), similar to the Social Security Number (SSN) in the United States
+    <string name="intro">The Italian fiscal code (\"Codice Fiscale\"), similar to the Social Security Number (SSN) in the United States
         or the National Insurance Number issued in the United Kingdom, is a 16-character alphanumeric code.
         It serves to unequivocally identify natural persons resident in Italy regardless of their residence status.
         \Created by the Italian tax office, it is currently used for a number of other purposes, such as identifying
@@ -22,7 +21,7 @@
         If the consonants are not sufficient, the vowels are taken and positioned after the consonants.
         Finally, if the surname has less than three letters, the letter X is appended to the code generated.
     </string>
-    <string name="ch_surname_eg">
+    <string name="ch_surname_eg">\n
         - Rossi → RSS\n
         - Mori → MRO\n
         - Al → LAX\n
@@ -35,7 +34,7 @@
         in which they appear. If there are not enough consonants, the vowels, always positioned after
         the consonants. If the name has less than three letters, the code is completed by adding the letter X.
     </string>
-    <string name="ch_name_eg">
+    <string name="ch_name_eg">\n
         - Martha → MRT\n
         - Gabriel→ GRL\n
         - Marie → MRA\n
@@ -49,57 +48,10 @@
         Year (two digits): last two digits of the year of birth.
         \nMonth (one letter): letter corresponding to the month according to the table below.
     </string>
-    <string name="ch_year_month_eg">
+    <string name="ch_year_month_eg">\n
         - January 1999 → 99A\n
         - August 2005 → 05M\n
         - April 1983 → 83D\n
-    </string>
-
-    <string name="table_dob">
-        <table style="font-size:90%; border-collapse:collapse; text-align:center; margin:auto" border="1" cellpadding="6" cellspacing="2">
-        <tbody>
-            <tr bgcolor="#123456">
-                <td><b>Letter</b></td>
-                <td><b>Month</b></td>
-                <td><b>Letter</b></td>
-                <td><b>Month</b></td>
-                <td><b>Letter</b></td>
-                <td><b>Month</b></td>
-            </tr>
-            <tr>
-                <td><b>A</b></td>
-                <td>January</td>
-                <td><b>E</b></td>
-                <td>May</td>
-                <td><b>P</b></td>
-                <td>September</td>
-            </tr>
-            <tr>
-                <td><b>B</b></td>
-                <td>February</td>
-                <td><b>H</b></td>
-                <td>June</td>
-                <td><b>R</b></td>
-                <td>October</td>
-            </tr>
-            <tr>
-                <td><b>C</b></td>
-                <td>March</td>
-                <td><b>L</b></td>
-                <td>July</td>
-                <td><b>S</b></td>
-                <td>November</td>
-            </tr>
-            <tr>
-                <td><b>D</b></td>
-                <td>April</td>
-                <td><b>M</b></td>
-                <td>August</td>
-                <td><b>T</b></td>
-                <td>December</td>
-            </tr>
-        </tbody>
-        </table>
     </string>
 
     <string name="ch_day_gender_title"><b>Date of Birth and Gender (2 digits)</b></string>
