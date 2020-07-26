@@ -69,5 +69,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openInfoActivity() {
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.enter, R.anim.nothing);
     }
 }
