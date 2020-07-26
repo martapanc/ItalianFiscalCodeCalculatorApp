@@ -2,27 +2,25 @@
 <resources>
 
     <string name="intro">
-        Il codice fiscale italiano, simile al Social Security Number (SSN) negli Stati Uniti
-        o al National Insurance Number rilasciato nel Regno Unito, è un codice alfanumerico di 16 caratteri.
-        Serve a identificare inequivocabilmente le persone fisiche residenti in Italia indipendentemente dallo status di residenza.
-        \nCreato dall\'ufficio delle imposte italiano, è attualmente utilizzato per diversi altri scopi, ad esempio per identificare
-        in modo univoco gli individui del sistema sanitario, o le persone fisiche che agiscono come parti in causa in contratti privati.
-        \nIl codice è rilasciato dall\'Agenzia delle Entrate.
+        The Italian fiscal code ("Codice Fiscale"), similar to the Social Security Number (SSN) in the United States
+        or the National Insurance Number issued in the United Kingdom, is a 16-character alphanumeric code.
+        It serves to unequivocally identify natural persons resident in Italy regardless of their residence status.
+        \Created by the Italian tax office, it is currently used for a number of other purposes, such as identifying
+        unambiguously individuals in the health care system, or natural persons acting as parties to private contracts.
+        \The code is issued by the Italian Inland Revenue, the <i>Agenzia delle Entrate</i>.
     </string>
 
-    <string name="ch1_title"><b>Generazione del codice fiscale</b></string>
+    <string name="ch1_title"><b>Computation of the fiscal code</b></string>
     <string name="ch1_text">
-        Per le persone fisiche, il codice è composto da 16 caratteri alfanumerici,
-        e viene generato tramite il seguente algoritmo.
+        For natural persons, the code consists of 16 alphanumeric characters, and is generated using the following algorithm.
     </string>
 
-    <string name="ch_surname_title"><b>Cognome (3 lettere)</b></string>
+    <string name="ch_surname_title"><b>Last name (3 letters)</b></string>
     <string name="ch_surname_text">
-        Si considerano le consonanti presenti nel cognome (o nei cognomi;
-        per le donne, si considera solo il cognome da nubile). Se il cognome contiene più di tre consonanti,
-        vengono prese nell\'ordine in cui appaiono. Se le consonanti non sono sufficienti, si prendono le vocali
-        e si posizionano dopo le consonanti. Infine, se il cognome ha meno di tre lettere, la parte di codice
-        viene completata con l\'aggiunta della lettera X.
+        Consonants present in the surname(s) are considered (for women, only the maiden name is considered).
+        If the surname contains more than three consonants, they are taken in the order in which they appear.
+        If the consonants are not sufficient, the vowels are taken and positioned after the consonants.
+        Finally, if the surname has less than three letters, the letter X is appended to the code generated.
     </string>
     <string name="ch_surname_eg">
         - Rossi → RSS\n
@@ -30,121 +28,121 @@
         - Al → LAX\n
     </string>
 
-    <string name="ch_name_title"><b>Nome (3 lettere)</b></string>
+    <string name="ch_name_title"><b>First name (3 letters)</b></string>
     <string name="ch_name_text">
-        Vengono prese le consonanti del nome (o dei nomi). Se il nome contiene quattro
-        o più consonanti, si prendono la prima, la terza e la quarta, altrimenti le prime tre nell\'ordine
-        in cui appaiono. Se non vi sono abbastanza consonanti, si scelgono le vocali, sempre posizionate dopo
-        le consonanti. In caso il nome abbia meno di tre lettere, il codice si completa aggiungendo la lettera X.
+        The consonants of the name(s) are taken. If the name contains four or more consonants,
+        the first, the third and the fourth are taken, otherwise the first three in the order
+        in which they appear. If there are not enough consonants, the vowels, always positioned after
+        the consonants. If the name has less than three letters, the code is completed by adding the letter X.
     </string>
     <string name="ch_name_eg">
-        - Marta → MRT\n
-        - Gabriele → GRL\n
-        - Maria → MRA\n
-        - Ugo → GUO\n
+        - Martha → MRT\n
+        - Gabriel→ GRL\n
+        - Marie → MRA\n
+        - Eli → LEI\n
         - Ed → DEX\n
         - Li → LIX\n
     </string>
 
-    <string name="ch_year_month_title">Anno e mese di nascita (3 caratteri)</string>
+    <string name="ch_year_month_title"><b>Year and month of birth (3 characters)</b></string>
     <string name="ch_year_month_text">
-        Anno (due cifre): ultime due cifre dell\'anno di nascita.
-        \nMese (una lettera): lettera corrispondente al mese in base alla tabella di seguito.)
+        Year (two digits): last two digits of the year of birth.
+        \nMonth (one letter): letter corresponding to the month according to the table below.
     </string>
     <string name="ch_year_month_eg">
-        - Gennaio 1999 → 99A\n
-        - Agosto 2005 → 05M\n
-        - Aprile 1983 → 83D\n
+        - January 1999 → 99A\n
+        - August 2005 → 05M\n
+        - April 1983 → 83D\n
     </string>
 
     <string name="table_dob">
         <table style="font-size:90%; border-collapse:collapse; text-align:center; margin:auto" border="1" cellpadding="6" cellspacing="2">
         <tbody>
             <tr bgcolor="#123456">
-                <td><b>Lettera</b></td>
-                <td><b>Mese</b></td>
-                <td><b>Lettera</b></td>
-                <td><b>Mese</b></td>
-                <td><b>Lettera</b></td>
-                <td><b>Mese</b></td>
+                <td><b>Letter</b></td>
+                <td><b>Month</b></td>
+                <td><b>Letter</b></td>
+                <td><b>Month</b></td>
+                <td><b>Letter</b></td>
+                <td><b>Month</b></td>
             </tr>
             <tr>
                 <td><b>A</b></td>
-                <td>gennaio</td>
+                <td>January</td>
                 <td><b>E</b></td>
-                <td>maggio</td>
+                <td>May</td>
                 <td><b>P</b></td>
-                <td>settembre</td>
+                <td>September</td>
             </tr>
             <tr>
                 <td><b>B</b></td>
-                <td>febbraio</td>
+                <td>February</td>
                 <td><b>H</b></td>
-                <td>giugno</td>
+                <td>June</td>
                 <td><b>R</b></td>
-                <td>ottobre</td>
+                <td>October</td>
             </tr>
             <tr>
                 <td><b>C</b></td>
-                <td>marzo</td>
+                <td>March</td>
                 <td><b>L</b></td>
-                <td>luglio</td>
+                <td>July</td>
                 <td><b>S</b></td>
-                <td>novembre</td>
+                <td>November</td>
             </tr>
             <tr>
                 <td><b>D</b></td>
-                <td>aprile</td>
+                <td>April</td>
                 <td><b>M</b></td>
-                <td>agosto</td>
+                <td>August</td>
                 <td><b>T</b></td>
-                <td>dicembre</td>
+                <td>December</td>
             </tr>
         </tbody>
         </table>
     </string>
 
-    <string name="ch_day_gender_title">Giorno di nascita e sesso (2 cifre):</string>
+    <string name="ch_day_gender_title"><b>Date of Birth and Gender (2 digits)</b></string>
     <string name="ch_day_gender_text">
-        Per i maschi si prendono le cifre del giorno di nascita, anteponendo
-        uno 0 qualora il giorno fosse minore di 10 (il numero va quindi da 01 a 31). Per le donne,
-        si aggiunge 40 al giorno di nascita (41-71).</string>
+        For Men, the digits of the day of birth are taken, prepending a 0 if the day is less than 10
+        (the number therefore ranges from 01 to 31). For women, 40 is added to the day of birth (41-71).
+    </string>
 
-    <string name="ch_pob_title">Luogo di nascita (4 caratteri, di cui una lettera e tre cifre)</string>
+    <string name="ch_pob_title"><b>Place of Birth (4 characters, one letter and 3 digits)</b></string>
     <string name="ch_pob_text">
-        A ogni comune italiano corrisponde un codice, composto da una lettera seguita da tre cifre,
-        detto Codice catastale. Per i nati fuori dal territorio italiano (cittadini italiani o stranieri
-        nati all\'estero, o nati in Italia ma di origine straniera) si utilizza un codice riferito
-        alla nazione di nascita, che inizia con la lettera Z.
+        Each Italian municipality ("comune") corresponds to a code, composed of a letter followed by three digits,
+        called the Cadastral Code or Land Registry Code. For those born outside the Italian territory
+        (Italian citizens or foreigners born abroad, or born in Italy but of foreign origin) a code is used to refer
+        to the country of birth. The codes for foreign countries begin with the letter Z.
     </string>
     <string name="ch_pob_eg">
         - Abano Terme → A001\n
         - Trento → L378\n
-        - Francia → Z110\n
+        - France → Z110\n
     </string>
 
-    <string name="ch_control_title">Carattere di controllo (una lettera)</string>
+    <string name="ch_control_title"><b>Control character (one letter)</b></string>
     <string name="ch_control_text_1">
-        Il carattere di controllo è si calcola a partire dai quindici caratteri alfanumerici calcolati
-        fino a questo punto, seguendo questo algoritmo:\n
-            - Si separano i caratteri che si trovano in posizione pari da quelli in posizione dispari.\n
-            - Ogni carattere viene convertito in un valore numerico seguendo queste tabelle:\n
+        The control character is calculated from the fifteen alphanumeric characters obtained
+        up to this point, following this algorithm:\n
+            - Separate the characters that are in even positions from those in odd positions;\n
+            - Each character is converted into a numerical value by following these tables:\n
     </string>
     <string name="ch_control_table_1">
         <table border="1" cellspacing="2" cellpadding="6" style="font-size:90%; border-collapse:collapse; text-align:center; margin:auto">
         <tbody>
-            <tr bgcolor="lightgreen">
-                <td colspan="8"><b>CARATTERI ALFANUMERICI DISPARI</b></td>
+            <tr bgcolor="#004FEE">
+                <td colspan="8"><b>ODD ALPHANUMERIC CHARACTERS</b></td>
             </tr>
             <tr bgcolor="#efefef">
-                <td><b>Carattere</b></td>
-                <td><b>Valore</b></td>
-                <td><b>Carattere</b></td>
-                <td><b>Valore</b></td>
-                <td><b>Carattere</b></td>
-                <td><b>Valore</b></td>
-                <td><b>Carattere</b></td>
-                <td><b>Valore</b></td>
+                <td><b>Character</b></td>
+                <td><b>Value</b></td>
+                <td><b>Character</b></td>
+                <td><b>Value</b></td>
+                <td><b>Character</b></td>
+                <td><b>Value</b></td>
+                <td><b>Character</b></td>
+                <td><b>Value</b></td>
             </tr>
             <tr>
                 <td><b>0</b></td>
@@ -243,18 +241,18 @@
     <string name="ch_control_table_2">
         <table border="1" cellspacing="2" cellpadding="6" style="font-size:90%; border-collapse:collapse; text-align:center; margin:auto">
         <tbody>
-            <tr bgcolor="lightgreen">
-                <td colspan="8"><b>CARATTERI ALFANUMERICI PARI</b></td>
+            <tr bgcolor="#004FEE">
+                <td colspan="8"><b>EVEN ALPHANUMERIC CHARACTERS</b></td>
             </tr>
             <tr bgcolor="#efefef">
-                <td><b>Carattere</b></td>
-                <td><b>Valore</b></td>
-                <td><b>Carattere</b></td>
-                <td><b>Valore</b></td>
-                <td><b>Carattere</b></td>
-                <td><b>Valore</b></td>
-                <td><b>Carattere</b></td>
-                <td><b>Valore</b></td>
+                <td><b>Character</b></td>
+                <td><b>Value</b></td>
+                <td><b>Character</b></td>
+                <td><b>Value</b></td>
+                <td><b>Character</b></td>
+                <td><b>Value</b></td>
+                <td><b>Character</b></td>
+                <td><b>Value</b></td>
             </tr>
             <tr>
                 <td><b>0</b></td>
@@ -351,8 +349,8 @@
     </string>
 
     <string name="ch_control_text_2">
-            - I valori ottenuti vanno sommati tra di loro, e il risultato va diviso per 26. Il resto della
-        divisione sarà l\'indice della lettera dell\'alfabeto corrispondente, che rappresenta il carattere di controllo:
+            - The values obtained must be added together, and the result should be divided by 26. The remainder of the
+        division will be the index of the letter of the alphabet, which represents the control character:
     </string>
     <string name="ch_control_eg">
         - 0 → A\n
@@ -363,18 +361,18 @@
     <string name="ch_control_table">
         <table border="1" cellspacing="2" cellpadding="6" style="font-size:90%; border-collapse:collapse; text-align:center; margin:auto">
             <tbody>
-                <tr bgcolor="lightgreen">
-                    <td colspan="8"><b>RESTO</b></td>
+                <tr bgcolor="#004FEE">
+                    <td colspan="8"><b>REMAINDER</b></td>
                 </tr>
                 <tr align="center" bgcolor="#efefef">
-                    <td><b>Resto</b></td>
-                    <td><b>Lettera</b></td>
-                    <td><b>Resto</b></td>
-                    <td><b>Lettera</b></td>
-                    <td><b>Resto</b></td>
-                    <td><b>Lettera</b></td>
-                    <td><b>Resto</b></td>
-                    <td><b>Lettera</b></td>
+                    <td><b>Remainder</b></td>
+                    <td><b>Letter</b></td>
+                    <td><b>Remainder</b></td>
+                    <td><b>Letter</b></td>
+                    <td><b>Remainder</b></td>
+                    <td><b>Letter</b></td>
+                    <td><b>Remainder</b></td>
+                    <td><b>Letter</b></td>
                 </tr>
                 <tr>
                     <td><b>0</b></td>
@@ -433,8 +431,8 @@
                     <td>M</td>
                     <td><b>19</b></td>
                     <td>T</td>
-                    <td></td>
-                    <td></td>
+                    <td/>
+                    <td/>
                 </tr>
                 <tr>
                     <td><b>6</b></td>
@@ -443,24 +441,24 @@
                     <td>N</td>
                     <td><b>20</b></td>
                     <td>U</td>
-                    <td></td>
-                    <td></td>
+                    <td/>
+                    <td/>
                 </tr>
             </tbody>
         </table>
     </string>
 
-    <string name="ch_omo_title"><b>Omocodia</b></string>
+    <string name="ch_omo_title"><b>Identical codes</b></string>
     <string name="ch_omo_text">
-        Nei rari casi in cui due persone risultino avere lo stesso codice fiscale (es. due soggetti con nomi
-        e cognomi molto simili, nati lo stesso giorno e nella stessa città), l\'Agenzia delle Entrate
-        provvede a sostituire i caratteri numerici a partire da destra, secondo la tabella di seguito.
-        Il carattere di controllo andrà poi ricalcolato.
+        In the rare cases in which two people are found to have the same fiscal code
+        (e.g. two people with very similar first and last names, born on the same day and in the same town),
+        the Revenue Agency replaces the numeric characters from the right, according to the table below.
+        \nThe control character will then be recalculated.
     </string>
     <string name="ch_omo_table">
         <table border="1" cellspacing="2" cellpadding="6" style="font-size:90%; border-collapse:collapse; text-align:center; margin:auto">
         <tbody>
-            <tr bgcolor="lightgreen">
+            <tr bgcolor="#004FEE">
                 <td><b>Cifra</b></td>
                 <td><b>Lettera</b></td>
                 <td><b>Cifra</b></td>
@@ -489,18 +487,16 @@
                 <td>N</td>
                 <td><b>6</b></td>
                 <td>S</td>
-                <td></td>
-                <td></td>
+                <td/>
+                <td/>
             </tr>
             <tr>
                 <td><b>3</b></td>
                 <td>P</td>
                 <td><b>7</b></td>
                 <td>T</td>
-                <td>
-                </td>
-                <td>
-                </td>
+                <td/>
+                <td/>
             </tr>
         </tbody>
         </table>

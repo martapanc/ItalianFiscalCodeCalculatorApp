@@ -46,7 +46,7 @@
         - Li → LIX\n
     </string>
 
-    <string name="ch_year_month_title">Anno e mese di nascita (3 caratteri)</string>
+    <string name="ch_year_month_title"><b>Anno e mese di nascita (3 caratteri)</b></string>
     <string name="ch_year_month_text">
         Anno (due cifre): ultime due cifre dell\'anno di nascita.
         \nMese (una lettera): lettera corrispondente al mese in base alla tabella di seguito.)
@@ -60,7 +60,7 @@
     <string name="table_dob">
         <table style="font-size:90%; border-collapse:collapse; text-align:center; margin:auto" border="1" cellpadding="6" cellspacing="2">
         <tbody>
-            <tr bgcolor="#123456">
+            <tr bgcolor="#004FEE">
                 <td><b>Lettera</b></td>
                 <td><b>Mese</b></td>
                 <td><b>Lettera</b></td>
@@ -104,13 +104,13 @@
         </table>
     </string>
 
-    <string name="ch_day_gender_title">Giorno di nascita e sesso (2 cifre):</string>
+    <string name="ch_day_gender_title"><b>Giorno di nascita e sesso (2 cifre)</b></string>
     <string name="ch_day_gender_text">
         Per i maschi si prendono le cifre del giorno di nascita, anteponendo
         uno 0 qualora il giorno fosse minore di 10 (il numero va quindi da 01 a 31). Per le donne,
         si aggiunge 40 al giorno di nascita (41-71).</string>
 
-    <string name="ch_pob_title">Luogo di nascita (4 caratteri, di cui una lettera e tre cifre)</string>
+    <string name="ch_pob_title"><b>Luogo di nascita (4 caratteri, di cui una lettera e tre cifre)</b></string>
     <string name="ch_pob_text">
         A ogni comune italiano corrisponde un codice, composto da una lettera seguita da tre cifre,
         detto Codice catastale. Per i nati fuori dal territorio italiano (cittadini italiani o stranieri
@@ -123,7 +123,7 @@
         - Francia → Z110\n
     </string>
 
-    <string name="ch_control_title">Carattere di controllo (una lettera)</string>
+    <string name="ch_control_title"><b>Carattere di controllo (una lettera)</b></string>
     <string name="ch_control_text_1">
         Il carattere di controllo è si calcola a partire dai quindici caratteri alfanumerici calcolati
         fino a questo punto, seguendo questo algoritmo:\n
@@ -133,7 +133,7 @@
     <string name="ch_control_table_1">
         <table border="1" cellspacing="2" cellpadding="6" style="font-size:90%; border-collapse:collapse; text-align:center; margin:auto">
         <tbody>
-            <tr bgcolor="lightgreen">
+            <tr bgcolor="#004FEE">
                 <td colspan="8"><b>CARATTERI ALFANUMERICI DISPARI</b></td>
             </tr>
             <tr bgcolor="#efefef">
@@ -243,7 +243,7 @@
     <string name="ch_control_table_2">
         <table border="1" cellspacing="2" cellpadding="6" style="font-size:90%; border-collapse:collapse; text-align:center; margin:auto">
         <tbody>
-            <tr bgcolor="lightgreen">
+            <tr bgcolor="#004FEE">
                 <td colspan="8"><b>CARATTERI ALFANUMERICI PARI</b></td>
             </tr>
             <tr bgcolor="#efefef">
@@ -363,7 +363,7 @@
     <string name="ch_control_table">
         <table border="1" cellspacing="2" cellpadding="6" style="font-size:90%; border-collapse:collapse; text-align:center; margin:auto">
             <tbody>
-                <tr bgcolor="lightgreen">
+                <tr bgcolor="#004FEE">
                     <td colspan="8"><b>RESTO</b></td>
                 </tr>
                 <tr align="center" bgcolor="#efefef">
@@ -433,8 +433,8 @@
                     <td>M</td>
                     <td><b>19</b></td>
                     <td>T</td>
-                    <td></td>
-                    <td></td>
+                    <td/>
+                    <td/>
                 </tr>
                 <tr>
                     <td><b>6</b></td>
@@ -443,8 +443,8 @@
                     <td>N</td>
                     <td><b>20</b></td>
                     <td>U</td>
-                    <td></td>
-                    <td></td>
+                    <td/>
+                    <td/>
                 </tr>
             </tbody>
         </table>
@@ -460,7 +460,7 @@
     <string name="ch_omo_table">
         <table border="1" cellspacing="2" cellpadding="6" style="font-size:90%; border-collapse:collapse; text-align:center; margin:auto">
         <tbody>
-            <tr bgcolor="lightgreen">
+            <tr bgcolor="#004FEE">
                 <td><b>Cifra</b></td>
                 <td><b>Lettera</b></td>
                 <td><b>Cifra</b></td>
@@ -489,18 +489,16 @@
                 <td>N</td>
                 <td><b>6</b></td>
                 <td>S</td>
-                <td></td>
-                <td></td>
+                <td/>
+                <td/>
             </tr>
             <tr>
                 <td><b>3</b></td>
                 <td>P</td>
                 <td><b>7</b></td>
                 <td>T</td>
-                <td>
-                </td>
-                <td>
-                </td>
+                <td/>
+                <td/>
             </tr>
         </tbody>
         </table>
