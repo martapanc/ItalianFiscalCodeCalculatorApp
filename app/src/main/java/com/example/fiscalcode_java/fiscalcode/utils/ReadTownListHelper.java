@@ -16,8 +16,8 @@ public class ReadTownListHelper {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode obj = objectMapper.readValue(path, JsonNode.class);
         List<Town> towns = new ArrayList<>();
-        for (JsonNode town : obj.get("comuni")) {
-            towns.add(new Town(town.get("nome").asText(), town.get("codice").asText(), town.get("provincia").asText()));
+        for (JsonNode town : obj.get("towns")) {
+            towns.add(new Town(town.get("id").asText(), town.get("cc").asText(), town.get("p").asText()));
         }
 
         return towns;
