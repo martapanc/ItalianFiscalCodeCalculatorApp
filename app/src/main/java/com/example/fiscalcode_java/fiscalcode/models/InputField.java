@@ -13,7 +13,8 @@ public enum InputField {
 
     FIRST_NAME, LAST_NAME, DATE_OF_BIRTH, PLACE_OF_BIRTH, FISCAL_CODE;
 
-    public static boolean validateField(Fragment computeFragment, RadioButton femaleRadioButton, RadioButton maleRadioButton, boolean allFieldsValid) {
+    public static boolean validateField(Fragment computeFragment, RadioButton femaleRadioButton, RadioButton maleRadioButton) {
+        boolean allFieldsValid = true;
         maleRadioButton.setError(null);
         femaleRadioButton.setError(null);
         if (!maleRadioButton.isChecked() && !femaleRadioButton.isChecked()) {
@@ -24,9 +25,10 @@ public enum InputField {
         return allFieldsValid;
     }
 
-    public boolean validateField(EditText editText, boolean allFieldsValid, String[] places, Fragment computeFragment) {
+    public boolean validateField(EditText editText, String[] places, Fragment computeFragment) {
         editText.setError(null);
         String input = editText.getText().toString();
+        boolean allFieldsValid = true;
         if (input.equals("")) {
             allFieldsValid = false;
             editText.setError(computeFragment.getString(R.string.empty_field_error));
@@ -39,7 +41,8 @@ public enum InputField {
         return allFieldsValid;
     }
 
-    public boolean validateField(TextView textView, boolean allFieldsValid, Fragment computeFragment) {
+    public boolean validateField(TextView textView, Fragment computeFragment) {
+        boolean allFieldsValid = true;
         textView.setError(null);
         String input = textView.getText().toString();
         if (input.equals("")) {

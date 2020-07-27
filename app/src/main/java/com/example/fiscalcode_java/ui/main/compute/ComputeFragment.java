@@ -87,7 +87,6 @@ public class ComputeFragment extends Fragment {
 
     public View.OnClickListener validateFieldsAndCompute(final String[] placesOfBirth) {
         return view -> {
-            boolean allFieldsValid = true;
             FragmentActivity activity = requireActivity();
 
             EditText firstNameEditText = activity.findViewById(R.id.com_first_name_input);
@@ -97,11 +96,11 @@ public class ComputeFragment extends Fragment {
             TextView dobEditText = activity.findViewById(R.id.com_dob_input);
             AutoCompleteTextView pobTextView = activity.findViewById(R.id.com_pob_input);
 
-            allFieldsValid = InputField.FIRST_NAME.validateField(firstNameEditText, allFieldsValid, placesOfBirth, this);
-            allFieldsValid = InputField.LAST_NAME.validateField(lastNameEditText, allFieldsValid, placesOfBirth, this);
-            allFieldsValid = InputField.validateField(this, femaleRadioButton, maleRadioButton, allFieldsValid);
-            allFieldsValid = InputField.DATE_OF_BIRTH.validateField(dobEditText, allFieldsValid, this);
-            allFieldsValid = InputField.PLACE_OF_BIRTH.validateField(pobTextView, allFieldsValid, placesOfBirth, this);
+            boolean allFieldsValid = InputField.FIRST_NAME.validateField(firstNameEditText, placesOfBirth, this)
+                    && InputField.LAST_NAME.validateField(lastNameEditText, placesOfBirth, this)
+                    && InputField.validateField(this, femaleRadioButton, maleRadioButton)
+                    && InputField.DATE_OF_BIRTH.validateField(dobEditText, this)
+                    && InputField.PLACE_OF_BIRTH.validateField(pobTextView, placesOfBirth, this);
 
             if (allFieldsValid) {
                 String firstName = firstNameEditText.getText().toString();
