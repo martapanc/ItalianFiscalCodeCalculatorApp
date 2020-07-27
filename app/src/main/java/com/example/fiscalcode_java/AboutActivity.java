@@ -13,8 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.fiscalcode_java.fiscalcode.constants.Tables_en;
-import com.example.fiscalcode_java.fiscalcode.constants.Tables_it;
+import com.example.fiscalcode_java.fiscalcode.constants.TableConstants;
+import com.example.fiscalcode_java.fiscalcode.constants.TableConstants_it;
 
 import java.util.Locale;
 
@@ -59,23 +59,23 @@ public class AboutActivity extends AppCompatActivity {
     }
 
     private String getDoBTable() {
-        return ("EN".equalsIgnoreCase(LANGUAGE) ? Tables_en.TABLE_DOB : Tables_it.TABLE_DOB);
+        return ("EN".equalsIgnoreCase(LANGUAGE) ? TableConstants.TABLE_DOB : TableConstants_it.TABLE_DOB);
     }
 
     private String getOddTable() {
-        return ("EN".equalsIgnoreCase(LANGUAGE) ? Tables_en.TABLE_ODD : Tables_it.TABLE_ODD);
+        return ("EN".equalsIgnoreCase(LANGUAGE) ? TableConstants.TABLE_ODD : TableConstants_it.TABLE_ODD);
     }
 
     private String getEvenTable() {
-        return ("EN".equalsIgnoreCase(LANGUAGE) ? Tables_en.TABLE_EVEN : Tables_it.TABLE_EVEN);
+        return ("EN".equalsIgnoreCase(LANGUAGE) ? TableConstants.TABLE_EVEN : TableConstants_it.TABLE_EVEN);
     }
 
     private String getControlTable() {
-        return ("EN".equalsIgnoreCase(LANGUAGE) ? Tables_en.TABLE_CONTROL : Tables_it.TABLE_CONTROL);
+        return ("EN".equalsIgnoreCase(LANGUAGE) ? TableConstants.TABLE_CONTROL : TableConstants_it.TABLE_CONTROL);
     }
 
     private String getOmoTable() {
-        return ("EN".equalsIgnoreCase(LANGUAGE) ? Tables_en.TABLE_OMO : Tables_it.TABLE_OMO);
+        return ("EN".equalsIgnoreCase(LANGUAGE) ? TableConstants.TABLE_OMO : TableConstants_it.TABLE_OMO);
     }
 
     @Nullable

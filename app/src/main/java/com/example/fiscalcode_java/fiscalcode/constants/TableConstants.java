@@ -1,8 +1,8 @@
 package com.example.fiscalcode_java.fiscalcode.constants;
 
-import static com.example.fiscalcode_java.fiscalcode.constants.Tables_it.HEADER_COLOR;
+public class TableConstants {
 
-public class Tables_en {
+    public static String HEADER_COLOR = "#8ab1ff";
 
     public static String TABLE_DOB = "" +
             "<table style=\"font-size:83%; border-collapse:collapse; text-align:center; margin:auto\" border=\"1\" cellpadding=\"6\" cellspacing=\"2\">\n" +
