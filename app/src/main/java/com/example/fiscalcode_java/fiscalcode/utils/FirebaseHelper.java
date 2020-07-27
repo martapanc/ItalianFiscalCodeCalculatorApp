@@ -1,9 +1,13 @@
 package com.example.fiscalcode_java.fiscalcode.utils;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.jakewharton.threetenabp.AndroidThreeTen;
+
+import org.threeten.bp.LocalDateTime;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,10 +19,12 @@ public class FirebaseHelper {
     private static final String MESSAGES = "messages";
     private static final String MESSAGE = "message";
     private static final String INSTANCE_ID = "instanceId";
+    private static final String TIMESTAMP = "timestamp";
 
     private final FirebaseFirestore db;
 
-    public FirebaseHelper() {
+    public FirebaseHelper(Context context) {
+        AndroidThreeTen.init(context);
         this.db = FirebaseFirestore.getInstance();
     }
 
@@ -27,6 +33,8 @@ public class FirebaseHelper {
         Map<String, String> messageMap = new HashMap<>();
         messageMap.put(MESSAGE, message);
         messageMap.put(INSTANCE_ID, instanceId);
+        messageMap.put(TIMESTAMP, LocalDateTime.now().toString());
+
         try {
             newMessage.set(messageMap)
                     .addOnCompleteListener(res -> Log.d(TAG, "Message added: " + res.getResult()))
