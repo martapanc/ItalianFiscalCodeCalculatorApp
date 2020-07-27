@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.isAllLetters;
 import static com.example.fiscalcode_java.fiscalcode.computations.FunctionCheckHelper.isDateValid;
@@ -46,7 +47,7 @@ public class ValidateInputFields {
         try {
             Date date = sdf.parse(input);
             Calendar cal = Calendar.getInstance();
-            cal.setTime(date);
+            cal.setTime(Objects.requireNonNull(date));
             return isDateValid(cal);
         } catch (ParseException e) {
             return false;

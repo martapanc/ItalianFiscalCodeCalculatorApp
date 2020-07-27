@@ -17,6 +17,7 @@ import com.example.fiscalcode_java.fiscalcode.constants.TableConstants;
 import com.example.fiscalcode_java.fiscalcode.constants.TableConstants_it;
 
 import java.util.Locale;
+import java.util.Objects;
 
 public class AboutActivity extends AppCompatActivity {
 
@@ -29,7 +30,7 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(actionBar).setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_about);
 
         setupImagesAndTables();

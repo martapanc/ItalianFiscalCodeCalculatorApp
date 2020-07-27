@@ -14,12 +14,13 @@ import com.example.fiscalcode_java.ui.main.listener.DateOfBirthOnClickListener;
 import com.example.fiscalcode_java.ui.main.listener.DateOfBirthWatcher;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 public class FragmentHelper {
 
     public static void hideVirtualKeyboard(View view) {
         InputMethodManager inputManager = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputManager.hideSoftInputFromWindow(view.getApplicationWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        Objects.requireNonNull(inputManager).hideSoftInputFromWindow(view.getApplicationWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
     public static CompoundButton.OnCheckedChangeListener getRadioButtonListener(final RadioButton maleRadioButton) {

@@ -51,6 +51,7 @@ import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.setupP
 public class VerifyFragment extends Fragment {
 
     private static final Calendar verifyCalendar = initCalendar();
+    private static final String EMPTY = "";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -147,13 +148,13 @@ public class VerifyFragment extends Fragment {
             FragmentActivity activity = requireActivity();
 
             EditText fiscalCode = activity.findViewById(R.id.ver_fiscalCodeInput_input);
-            fiscalCode.setText("");
+            fiscalCode.setText(EMPTY);
             fiscalCode.setError(null);
             EditText firstName = activity.findViewById(R.id.ver_first_name_input);
-            firstName.setText("");
+            firstName.setText(EMPTY);
             firstName.setError(null);
             EditText lastName = activity.findViewById(R.id.ver_last_name_input);
-            lastName.setText("");
+            lastName.setText(EMPTY);
             lastName.setError(null);
             RadioButton maleRadio = activity.findViewById(R.id.ver_maleRadioButton);
             maleRadio.setChecked(false);
@@ -162,10 +163,10 @@ public class VerifyFragment extends Fragment {
             femaleRadio.setChecked(false);
             femaleRadio.setError(null);
             TextView dob = activity.findViewById(R.id.ver_dob_input);
-            dob.setText("");
+            dob.setText(EMPTY);
             dob.setError(null);
             AutoCompleteTextView pob = activity.findViewById(R.id.ver_pob_input);
-            pob.setText("");
+            pob.setText(EMPTY);
             pob.setError(null);
         };
     }

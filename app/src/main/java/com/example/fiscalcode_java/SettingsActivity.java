@@ -43,9 +43,7 @@ public class SettingsActivity extends AppCompatActivity {
                 .replace(R.id.settings, new SettingsFragment())
                 .commit();
         ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        Objects.requireNonNull(actionBar).setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -60,6 +58,11 @@ public class SettingsActivity extends AppCompatActivity {
 
     public static class SettingsFragment extends PreferenceFragmentCompat {
 
+        private static final String PRIVACY = "privacy";
+        private static final String TCS = "tcs";
+        private static final String INFO = "info";
+        private static final String FEEDBACK = "feedback";
+
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
@@ -69,25 +72,25 @@ public class SettingsActivity extends AppCompatActivity {
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             setupInfoPreference();
             setupFeedbackPreference();
-            setupLegalPreference(findPreference("privacy"), R.layout.view_privacy);
-            setupLegalPreference(findPreference("tcs"), R.layout.view_terms);
+            setupLegalPreference(Objects.requireNonNull(findPreference(PRIVACY)), R.layout.view_privacy);
+            setupLegalPreference(Objects.requireNonNull(findPreference(TCS)), R.layout.view_terms);
 
             return super.onCreateView(inflater, container, savedInstanceState);
         }
 
         private void setupLegalPreference(Preference legalPreference, int view) {
             legalPreference.setOnPreferenceClickListener(preference -> {
-                Dialog dialog = new Dialog(getContext());
+                Dialog dialog = new Dialog(requireContext());
                 dialog.setContentView(view);
                 dialog.show();
                 return true;
             });
         }
 
-        public void setupInfoPreference() {
-            Preference infoPreference = findPreference("info");
-            infoPreference.setOnPreferenceClickListener(preference -> {
-                Dialog infoDialog = new Dialog(getContext());
+        private void setupInfoPreference() {
+            Preference infoPreference = findPreference(INFO);
+            Objects.requireNonNull(infoPreference).setOnPreferenceClickListener(preference -> {
+                Dialog infoDialog = new Dialog(requireContext());
                 infoDialog.setContentView(R.layout.view_info);
 
                 // Make the link clickable
@@ -99,19 +102,19 @@ public class SettingsActivity extends AppCompatActivity {
             });
         }
 
-        public void setupFeedbackPreference() {
-            Preference feedbackPreference = findPreference("feedback");
-            feedbackPreference.setOnPreferenceClickListener(preference -> {
+        private void setupFeedbackPreference() {
+            Preference feedbackPreference = findPreference(FEEDBACK);
+            Objects.requireNonNull(feedbackPreference).setOnPreferenceClickListener(preference -> {
                 Dialog feedbackDialog = setupFeedbackDialog();
                 setupFeedbackViewButtons(feedbackDialog);
                 return true;
             });
         }
 
-        public Dialog setupFeedbackDialog() {
+        private Dialog setupFeedbackDialog() {
             Dialog feedbackDialog = new Dialog(requireContext());
             InsetDrawable inset = new InsetDrawable(new ColorDrawable(Color.WHITE), 25);
-            feedbackDialog.getWindow().setBackgroundDrawable(inset);
+            Objects.requireNonNull(feedbackDialog.getWindow()).setBackgroundDrawable(inset);
             feedbackDialog.setContentView(R.layout.view_feedback);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -123,7 +126,7 @@ public class SettingsActivity extends AppCompatActivity {
             return feedbackDialog;
         }
 
-        public void setupFeedbackViewButtons(Dialog feedbackDialog) {
+        private void setupFeedbackViewButtons(Dialog feedbackDialog) {
             Button cancel = feedbackDialog.findViewById(R.id.feedback_cancel_button);
             cancel.setOnClickListener(view -> feedbackDialog.dismiss());
             TextInputLayout textInput = feedbackDialog.findViewById(R.id.feedback_input);
@@ -131,23 +134,22 @@ public class SettingsActivity extends AppCompatActivity {
             Button send = feedbackDialog.findViewById(R.id.feedback_send_button);
             send.setOnClickListener(view -> {
                 textInput.setError(null);
-                String text = textInput.getEditText().getText().toString();
+                String text = Objects.requireNonNull(textInput.getEditText()).getText().toString();
                 if (validateFields(textInput, text)) {
                     performAnonymousSignIn(feedbackDialog, text);
                 }
             });
         }
 
-        public boolean validateFields(TextInputLayout textInput, String text) {
-            boolean validFields = true;
+        private boolean validateFields(TextInputLayout textInput, String text) {
             if (text.isEmpty()) {
-                validFields = false;
                 textInput.setError(getResources().getString(R.string.empty_field_error));
+                return false;
             }
-            return validFields;
+            return true;
         }
 
-        public void performAnonymousSignIn(Dialog feedbackDialog, String text) {
+        private void performAnonymousSignIn(Dialog feedbackDialog, String text) {
             FirebaseAuth mAuth = FirebaseAuth.getInstance();
             mAuth.signInAnonymously().addOnCompleteListener(requireActivity(), task -> {
                 if (task.isSuccessful()) {

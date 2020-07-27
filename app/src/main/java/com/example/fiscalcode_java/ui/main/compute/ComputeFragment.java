@@ -40,6 +40,7 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 import lombok.SneakyThrows;
 
@@ -52,6 +53,7 @@ import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.setupP
 public class ComputeFragment extends Fragment {
 
     private static final Calendar computeCalendar = initCalendar();
+    private static final String EMPTY = "";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -136,10 +138,10 @@ public class ComputeFragment extends Fragment {
             FragmentActivity activity = requireActivity();
 
             EditText firstName = activity.findViewById(R.id.com_first_name_input);
-            firstName.setText("");
+            firstName.setText(EMPTY);
             firstName.setError(null);
             EditText lastName = activity.findViewById(R.id.com_last_name_input);
-            lastName.setText("");
+            lastName.setText(EMPTY);
             lastName.setError(null);
             RadioGroup radioGroup = activity.findViewById(R.id.com_radioGroup);
             radioGroup.clearCheck();
@@ -148,13 +150,13 @@ public class ComputeFragment extends Fragment {
             RadioButton femaleRadio = activity.findViewById(R.id.com_femaleRadioButton);
             femaleRadio.setError(null);
             TextView dob = activity.findViewById(R.id.com_dob_input);
-            dob.setText("");
+            dob.setText(EMPTY);
             dob.setError(null);
             AutoCompleteTextView pob = activity.findViewById(R.id.com_pob_input);
-            pob.setText("");
+            pob.setText(EMPTY);
             pob.setError(null);
             TextView fiscalCodeOutput = activity.findViewById(R.id.com_fiscalCodeOutput);
-            fiscalCodeOutput.setText("");
+            fiscalCodeOutput.setText(EMPTY);
             fiscalCodeOutput.setPadding(0, 0, 0, 0);
         };
     }
@@ -190,12 +192,12 @@ public class ComputeFragment extends Fragment {
         String message;
         final Context context = getContext();
         if (!fiscalCode.toString().isEmpty()) {
-            ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipboardManager clipboard = (ClipboardManager) Objects.requireNonNull(context).getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData clipData = ClipData.newPlainText("Fiscal code", fiscalCode);
-            clipboard.setPrimaryClip(clipData);
+            Objects.requireNonNull(clipboard).setPrimaryClip(clipData);
             message = String.format(context.getResources().getString(R.string.copied_to_clipboard), fiscalCode);
         } else {
-            message = context.getResources().getString(R.string.nothing_to_copy);
+            message = Objects.requireNonNull(context).getResources().getString(R.string.nothing_to_copy);
         }
         Snackbar.make(root, message, Snackbar.LENGTH_LONG)
                 .setAction("action", null)
@@ -210,9 +212,9 @@ public class ComputeFragment extends Fragment {
             sendIntent.setType("text/plain");
 
             Intent shareIntent = Intent.createChooser(sendIntent, null);
-            getContext().startActivity(shareIntent);
+            requireContext().startActivity(shareIntent);
         } else {
-            Snackbar.make(root, getContext().getResources().getString(R.string.nothing_to_copy), Snackbar.LENGTH_LONG)
+            Snackbar.make(root, requireContext().getResources().getString(R.string.nothing_to_copy), Snackbar.LENGTH_LONG)
                     .setAction("action", null)
                     .show();
         }

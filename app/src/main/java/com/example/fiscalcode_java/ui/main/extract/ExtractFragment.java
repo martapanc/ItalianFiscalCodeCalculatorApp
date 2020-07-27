@@ -37,6 +37,7 @@ import com.leinardi.android.speeddial.SpeedDialView;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 import lombok.SneakyThrows;
 
@@ -98,7 +99,7 @@ public class ExtractFragment extends Fragment {
                         } catch (NullPointerException npe) {
                             errorMessageId = R.string.err_unknown;
                         }
-                        Toast.makeText(getActivity().getApplicationContext(), errorMessageId, Toast.LENGTH_LONG).show();
+                        Toast.makeText(requireActivity().getApplicationContext(), errorMessageId, Toast.LENGTH_LONG).show();
                     }
                 } else {
                     fiscalCodeEditText.setError(getString(R.string.invalid_fiscal_code_input_error));
@@ -173,11 +174,11 @@ public class ExtractFragment extends Fragment {
     private void copyFunction(View root) {
         FiscalCodeData fiscalCodeData = getData(root);
         String message;
-        final Resources resources = getContext().getResources();
+        final Resources resources = requireContext().getResources();
         if (fiscalCodeData.areFieldsNotEmpty()) {
-            ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipboardManager clipboard = (ClipboardManager) requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData clipData = ClipData.newPlainText("Data", fiscalCodeData.formatData(resources));
-            clipboard.setPrimaryClip(clipData);
+            Objects.requireNonNull(clipboard).setPrimaryClip(clipData);
             message = resources.getString(R.string.data_copied_to_clipboard);
         } else {
             message = resources.getString(R.string.nothing_to_copy);
@@ -189,7 +190,7 @@ public class ExtractFragment extends Fragment {
 
     private void shareFunction(View root) {
         FiscalCodeData fiscalCodeData = getData(root);
-        final Resources resources = getContext().getResources();
+        final Resources resources = requireContext().getResources();
         if (fiscalCodeData.areFieldsNotEmpty()) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
@@ -197,7 +198,7 @@ public class ExtractFragment extends Fragment {
             sendIntent.setType("text/plain");
 
             Intent shareIntent = Intent.createChooser(sendIntent, null);
-            getContext().startActivity(shareIntent);
+            requireContext().startActivity(shareIntent);
         } else {
             Snackbar.make(root, resources.getString(R.string.nothing_to_copy), Snackbar.LENGTH_LONG)
                     .setAction("action", null)
