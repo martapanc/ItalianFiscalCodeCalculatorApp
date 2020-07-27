@@ -10,6 +10,8 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static org.apache.commons.lang3.StringUtils.EMPTY;
+
 public class FunctionCheckHelper {
 
     public static final String CONSONANTS = "[B-DF-HJ-NP-TV-Z]+";
@@ -99,9 +101,9 @@ public class FunctionCheckHelper {
                 .replaceAll("ß", "SS")
                 .replaceAll("Ł", "L")
                 .replaceAll("Ÿ", "Y")
-                .replaceAll(" ", "")
-                .replaceAll("-", "")
-                .replaceAll("[.']", "");
+                .replaceAll(" ", EMPTY)
+                .replaceAll("-", EMPTY)
+                .replaceAll("[.']", EMPTY);
     }
 
     public static boolean isTwoLettersAndVowelBeforeConsonant(String input) {

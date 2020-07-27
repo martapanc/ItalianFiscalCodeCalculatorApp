@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment;
 import com.example.fiscalcode_java.R;
 import com.example.fiscalcode_java.fiscalcode.computations.ValidateInputFields;
 
+import static org.apache.commons.lang3.StringUtils.EMPTY;
+
 public enum InputField {
 
     FIRST_NAME, LAST_NAME, DATE_OF_BIRTH, PLACE_OF_BIRTH, FISCAL_CODE;
@@ -29,7 +31,7 @@ public enum InputField {
         editText.setError(null);
         String input = editText.getText().toString();
         boolean allFieldsValid = true;
-        if (input.equals("")) {
+        if (EMPTY.equals(input)) {
             allFieldsValid = false;
             editText.setError(computeFragment.getString(R.string.empty_field_error));
             editText.requestFocus();
@@ -45,7 +47,7 @@ public enum InputField {
         boolean allFieldsValid = true;
         textView.setError(null);
         String input = textView.getText().toString();
-        if (input.equals("")) {
+        if (EMPTY.equals(input)) {
             allFieldsValid = false;
             textView.setError(computeFragment.getString(R.string.empty_field_error));
             textView.requestFocus();

@@ -22,6 +22,7 @@ import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurname
 import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.pickFirstThreeVowels;
 import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.pickFirstTwoConsonantsAndFirstVowel;
 import static com.example.fiscalcode_java.fiscalcode.constants.DateFormatConstants.getMonthCodeMap;
+import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 
 public class ComputeFiscalCodeHelper {
@@ -112,7 +113,7 @@ public class ComputeFiscalCodeHelper {
 
         if (isYearValid(yearString)) {
             if (isDateValid(dayString, monthString, yearString)) {
-                String result = "";
+                String result = EMPTY;
                 try {
                     int day = Integer.parseInt(dayString);
                     int month = Integer.parseInt(monthString);
@@ -146,7 +147,7 @@ public class ComputeFiscalCodeHelper {
     }
 
     public static String getPlaceCode(List<Town> towns, List<Country> countries, String selectedPlace) {
-        String placeCode = "";
+        String placeCode = EMPTY;
         String placeWithoutAreaCode = selectedPlace.substring(0, selectedPlace.length() - 5);
         for (Town town : towns) {
             if (placeWithoutAreaCode.equals(town.getName())) {
@@ -154,7 +155,7 @@ public class ComputeFiscalCodeHelper {
                 break;
             }
         }
-        if ("".equals(placeCode)) {
+        if (EMPTY.equals(placeCode)) {
             for (Country country : countries) {
                 if (placeWithoutAreaCode.equals(country.getName())) {
                     placeCode = country.getCadastral_code();

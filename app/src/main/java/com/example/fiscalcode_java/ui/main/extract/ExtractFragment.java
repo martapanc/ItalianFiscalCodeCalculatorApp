@@ -43,6 +43,7 @@ import lombok.SneakyThrows;
 
 import static com.example.fiscalcode_java.fiscalcode.constants.ErrorMapConstants.getErrorMap;
 import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.hideVirtualKeyboard;
+import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 public class ExtractFragment extends Fragment {
 
@@ -71,7 +72,7 @@ public class ExtractFragment extends Fragment {
 
         ImageButton resetButton = root.findViewById(R.id.extract_reset_button);
         resetButton.setOnClickListener(view -> {
-            fiscalCodeEditText.setText("");
+            fiscalCodeEditText.setText(EMPTY);
             fiscalCodeEditText.setError(null);
         });
 

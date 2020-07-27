@@ -47,11 +47,11 @@ import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.initCa
 import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.setupDateOfBirth;
 import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.setupGenderRadioButtons;
 import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.setupPlaceOfBirth;
+import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 public class VerifyFragment extends Fragment {
 
     private static final Calendar verifyCalendar = initCalendar();
-    private static final String EMPTY = "";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

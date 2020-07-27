@@ -95,5 +95,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.4.4'
     implementation 'com.google.firebase:firebase-firestore:21.5.0'
 
-    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.1'
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.1'    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+
 }

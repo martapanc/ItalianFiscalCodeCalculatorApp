@@ -5,6 +5,7 @@ import com.example.fiscalcode_java.fiscalcode.models.Gender;
 
 import org.junit.Test;
 
+import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -12,7 +13,7 @@ public class ExtractDataFromFiscalCodeHelperTest {
 
     @Test
     public void testExtractDateOfBirth() throws FiscalCodeExtractionException {
-        assertThrows(FiscalCodeExtractionException.class, () -> ExtractDataFromFiscalCodeHelper.extractDateOfBirth("", Gender.F),
+        assertThrows(FiscalCodeExtractionException.class, () -> ExtractDataFromFiscalCodeHelper.extractDateOfBirth(EMPTY, Gender.F),
                 "Date of birth input has a wrong format");
         assertThrows(FiscalCodeExtractionException.class, () -> ExtractDataFromFiscalCodeHelper.extractDateOfBirth("95L5S", Gender.F));
         assertThrows(FiscalCodeExtractionException.class, () -> ExtractDataFromFiscalCodeHelper.extractDateOfBirth("95K52", Gender.F));
@@ -40,7 +41,7 @@ public class ExtractDataFromFiscalCodeHelperTest {
         assertThrows(FiscalCodeExtractionException.class, () -> ExtractDataFromFiscalCodeHelper.extractGender("0"),
                 "Day out of range for gender");
         assertThrows(FiscalCodeExtractionException.class, () -> ExtractDataFromFiscalCodeHelper.extractGender("72"));
-        assertThrows(FiscalCodeExtractionException.class, () -> ExtractDataFromFiscalCodeHelper.extractGender(""),
+        assertThrows(FiscalCodeExtractionException.class, () -> ExtractDataFromFiscalCodeHelper.extractGender(EMPTY),
                 "Error parsing gender");
         assertThrows(FiscalCodeExtractionException.class, () -> ExtractDataFromFiscalCodeHelper.extractGender("A"));
         assertThrows(FiscalCodeExtractionException.class, () -> ExtractDataFromFiscalCodeHelper.extractGender("-1"));

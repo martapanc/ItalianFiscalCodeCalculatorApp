@@ -12,6 +12,8 @@ import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import static org.apache.commons.lang3.StringUtils.EMPTY;
+
 public class ExtractDataFromFiscalCodeHelper {
 
     private final static String DOB_PATTERN = "[\\d]{2}[A-EHLMPRST][\\d]{2}";
@@ -68,7 +70,7 @@ public class ExtractDataFromFiscalCodeHelper {
     }
 
     private static String prependZero(Integer value) {
-        return (value < 10 ? "0" : "") + value;
+        return (value < 10 ? "0" : EMPTY) + value;
     }
 
     private static boolean validateDayBasedOnGender(String dayString, Gender gender) {

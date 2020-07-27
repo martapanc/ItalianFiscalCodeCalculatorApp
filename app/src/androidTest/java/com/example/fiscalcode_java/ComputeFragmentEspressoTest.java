@@ -40,6 +40,7 @@ import static com.example.fiscalcode_java.TestConstants.VALID_MONTH;
 import static com.example.fiscalcode_java.TestConstants.VALID_NAME;
 import static com.example.fiscalcode_java.TestConstants.VALID_TOWN;
 import static com.example.fiscalcode_java.TestConstants.VALID_YEAR;
+import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.hamcrest.Matchers.containsString;
 
 @RunWith(AndroidJUnit4.class)
@@ -74,7 +75,7 @@ public class ComputeFragmentEspressoTest {
         onView(withId(R.id.com_last_name_input)).check(matches(hasErrorText(REQUIRED_VALUE)));
         onView(withId(R.id.com_femaleRadioButton)).check(matches(isNotChecked()));
         onView(withId(R.id.com_maleRadioButton)).check(matches(isNotChecked()));
-        onView(withId(R.id.com_dob_input)).check(matches(withText("")));
+        onView(withId(R.id.com_dob_input)).check(matches(withText(EMPTY)));
         onView(withId(R.id.com_pob_input)).check(matches(hasErrorText(REQUIRED_VALUE)));
     }
 

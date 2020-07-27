@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.Calendar;
 
+import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
@@ -18,7 +19,7 @@ public class FunctionCheckHelperTest {
         assertTrue(FunctionCheckHelper.isAllLetters("a"));
         assertTrue(FunctionCheckHelper.isAllLetters("AbCd"));
         assertTrue(FunctionCheckHelper.isAllLetters("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"));
-        assertFalse(FunctionCheckHelper.isAllLetters(""));
+        assertFalse(FunctionCheckHelper.isAllLetters(EMPTY));
         assertFalse(FunctionCheckHelper.isAllLetters("al1"));
         assertFalse(FunctionCheckHelper.isAllLetters("aa-aa"));
         assertFalse(FunctionCheckHelper.isAllLetters("1"));
@@ -31,7 +32,7 @@ public class FunctionCheckHelperTest {
     public void testIsAllDigits() {
         assertTrue(FunctionCheckHelper.isAllDigits("1"));
         assertTrue(FunctionCheckHelper.isAllDigits("1234567890"));
-        assertFalse(FunctionCheckHelper.isAllDigits(""));
+        assertFalse(FunctionCheckHelper.isAllDigits(EMPTY));
         assertFalse(FunctionCheckHelper.isAllDigits("1.2"));
         assertFalse(FunctionCheckHelper.isAllDigits("3r"));
         assertFalse(FunctionCheckHelper.isAllDigits("3!"));
