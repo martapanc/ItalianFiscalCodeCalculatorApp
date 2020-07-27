@@ -19,7 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.fiscalcode_java.R;
 import com.example.fiscalcode_java.exception.FiscalCodeComputationException;
@@ -32,7 +32,6 @@ import com.example.fiscalcode_java.ui.main.compute.ComputeViewModel;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Objects;
 
 import lombok.SneakyThrows;
 
@@ -51,7 +50,7 @@ import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.setupP
 
 public class VerifyFragment extends Fragment {
 
-    private static Calendar verifyCalendar = initCalendar();
+    private static final Calendar verifyCalendar = initCalendar();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,17 +62,17 @@ public class VerifyFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_verify, container, false);
-        Context context = Objects.requireNonNull(getContext());
-        ComputeViewModel model = ViewModelProviders.of(requireActivity()).get(ComputeViewModel.class);
+        Context context = requireContext();
+        ComputeViewModel model = new ViewModelProvider(requireActivity()).get(ComputeViewModel.class);
 
         setupGenderRadioButtons(root, R.id.ver_maleRadioButton, R.id.ver_femaleRadioButton);
         setupDateOfBirth(root, verifyCalendar, R.id.ver_dob_input);
 
         EditText fiscalCodeEditText = root.findViewById(R.id.ver_fiscalCodeInput_input);
-        fiscalCodeEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+        fiscalCodeEditText.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
 
         String[] placesOfBirth = model.getPlaceList(context);
-        ArrayAdapter<String> pobArrayAdapter = new ArrayAdapter<>(Objects.requireNonNull(getActivity()), android.R.layout.simple_list_item_1, placesOfBirth);
+        ArrayAdapter<String> pobArrayAdapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_list_item_1, placesOfBirth);
         setupPlaceOfBirth(root, pobArrayAdapter, R.id.ver_pob_input);
 
         Button extractButton = root.findViewById(R.id.verify_button);
@@ -86,8 +85,7 @@ public class VerifyFragment extends Fragment {
 
     private View.OnClickListener validateFieldsAndCompute(String[] placesOfBirth) {
         return view -> {
-            boolean allFieldsValid = true;
-            FragmentActivity activity = Objects.requireNonNull(getActivity());
+            FragmentActivity activity = requireActivity();
 
             EditText firstNameEditText = activity.findViewById(R.id.ver_first_name_input);
             EditText lastNameEditText = activity.findViewById(R.id.ver_last_name_input);
@@ -97,12 +95,12 @@ public class VerifyFragment extends Fragment {
             AutoCompleteTextView pobTextView = activity.findViewById(R.id.ver_pob_input);
             EditText fiscalCodeEditText = activity.findViewById(R.id.ver_fiscalCodeInput_input);
 
-            allFieldsValid = FIRST_NAME.validateField(firstNameEditText, allFieldsValid, placesOfBirth, this);
-            allFieldsValid = LAST_NAME.validateField(lastNameEditText, allFieldsValid, placesOfBirth, this);
-            allFieldsValid = validateField(this, femaleRadioButton, maleRadioButton, allFieldsValid);
-            allFieldsValid = DATE_OF_BIRTH.validateField(dobEditText, allFieldsValid, this);
-            allFieldsValid = PLACE_OF_BIRTH.validateField(pobTextView, allFieldsValid, placesOfBirth, this);
-            allFieldsValid = FISCAL_CODE.validateField(fiscalCodeEditText, allFieldsValid, placesOfBirth, this);
+            boolean allFieldsValid = FIRST_NAME.validateField(firstNameEditText, placesOfBirth, this)
+                    && LAST_NAME.validateField(lastNameEditText, placesOfBirth, this)
+                    && validateField(this, femaleRadioButton, maleRadioButton)
+                    && DATE_OF_BIRTH.validateField(dobEditText, this)
+                    && PLACE_OF_BIRTH.validateField(pobTextView, placesOfBirth, this)
+                    && FISCAL_CODE.validateField(fiscalCodeEditText, placesOfBirth, this);
 
             if (allFieldsValid) {
                 String firstName = firstNameEditText.getText().toString();
@@ -146,7 +144,7 @@ public class VerifyFragment extends Fragment {
 
     public View.OnClickListener getResetListener() {
         return view -> {
-            FragmentActivity activity = Objects.requireNonNull(getActivity());
+            FragmentActivity activity = requireActivity();
 
             EditText fiscalCode = activity.findViewById(R.id.ver_fiscalCodeInput_input);
             fiscalCode.setText("");

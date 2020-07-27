@@ -34,36 +34,18 @@
     <string name="reset_button">Reset button</string>
     <string name="copied_to_clipboard">%1$s copied to clipboard</string>
     <string name="nothing_to_copy">Nothing to copy  🤷‍♂️</string>
-    <string name="data_label">Data</string>
     <string name="data_copied_to_clipboard">Data copied to clipboard</string>
 
     <!-- Errors -->
     <string name="empty_field_error">Required value</string>
     <string name="invalid_input_error">Value is invalid</string>
-    <string name="invalid_email_error">Invalid email</string>
     <string name="invalid_fiscal_code_input_error">The fiscal code inserted is in the wrong format</string>
 
     <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-
-    <string name="appearance_header">Appearance</string>
-    <string name="language_label">Language</string>
     <string name="general_header">General</string>
     <string name="legal_header">Legal</string>
-    <string name="legal_summary">View the app\'s T&amp;Cs and Privacy Policy</string>
-    <string name="dark_mode_label">Dark mode</string>
-
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
 
     <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="settings">Settings</string>
     <string name="fc_info">About the Fiscal Code</string>
 
@@ -73,7 +55,6 @@
     <string name="enter_feedback">Enter feedback</string>
     <string name="send">Send</string>
     <string name="cancel">Cancel</string>
-    <string name="email">Email</string>
     <string name="feedback_subtitle">Please describe the problem as accurately as possible.
         Your feedback is anonymous and will only be used to improve the app. If you wish to message us
     directly instead, you may find our details in the Info section or on the app\'s page on Play Store.
@@ -82,7 +63,7 @@
     <string name="email_sent_successfully">Email was sent successfully</string>
 
     <!-- T&Cs View -->
-    <string name="tcs_title"><u>Terms &amp; Conditions</u></string>
+    <string name="tcs_title">Terms &amp; Conditions</string>
     <string name="tcs_title_ul"><u>Terms &amp; Conditions</u></string>
     <string name="tcs_summary">View the app\'s T&amp;Cs</string>
     <string name="disclaimer_1">The only valid tax code is the one issued by the Revenue Service.</string>

@@ -17,7 +17,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     private final Context context;
 
-    private int[] TAB_TITLES = new int[]{
+    private final int[] TAB_TITLES = new int[]{
             R.string.tab_compute,
             R.string.tab_extract,
             R.string.tab_verify

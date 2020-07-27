@@ -20,5 +20,5 @@ public class ErrorMapConstants {
         errorMap.put("err_pob_not_found", R.string.err_pob_not_found);
         errorMap.put("err_fc_char", R.string.err_fc_char);
         return errorMap;
-    };
+    }
 }

@@ -1,19 +1,16 @@
 package com.example.fiscalcode_java;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
+
 import com.example.fiscalcode_java.ui.main.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,15 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-    }
-
-    private void setLocale() {
-        String currentLang = Locale.getDefault().getLanguage();
-        Locale locale = new Locale(currentLang);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.setLocale(locale);
-        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
     }
 
     @Override

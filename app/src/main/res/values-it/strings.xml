@@ -34,36 +34,18 @@
     <string name="reset_button">Reset</string>
     <string name="copied_to_clipboard">"%1$s copiato negli appunti"</string>
     <string name="nothing_to_copy">Niente da copiare  🤷‍♂️</string>
-    <string name="data_label">Dati</string>
     <string name="data_copied_to_clipboard">Dati copiati negli appunti</string>
 
     <!-- Errors -->
     <string name="empty_field_error">Valore richiesto</string>
     <string name="invalid_input_error">Il valore inserito è invalido</string>
-    <string name="invalid_email_error">L\'email inserita non è valida</string>
     <string name="invalid_fiscal_code_input_error">Il codice fiscale inserito non è nel formato richiesto</string>
 
     <!-- Preference Titles -->
-    <string name="messages_header">Messaggi</string>
-    <string name="sync_header">Sincronizzata</string>
-
-    <string name="appearance_header">Aspetto</string>
-    <string name="language_label">Lingua</string>
     <string name="general_header">Generale</string>
     <string name="legal_header">Legale</string>
-    <string name="legal_summary">Visualizza Condizioni d\'uso e Informativa sulla Privacy</string>
-    <string name="dark_mode_label">Modalità notturna</string>
-
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
 
     <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="settings">Impostazioni</string>
     <string name="fc_info">Info sul Codice Fiscale</string>
 
@@ -73,7 +55,6 @@
     <string name="enter_feedback">Testo del feedback</string>
     <string name="send">Invia</string>
     <string name="cancel">Cancella</string>
-    <string name="email">Email</string>
     <string name="feedback_subtitle">Per favore, sii il più preciso possibile nella descrizione del problema.
         \nIl feedback è anonimo, e utilizzeremo queste informazioni esclusivamente per migliorare l\'app.
         Se desiderassi scriverci direttamente, trovi i dettagli nelle Info, o nella nostra pagina su Play Store.

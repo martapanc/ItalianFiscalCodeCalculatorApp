@@ -22,7 +22,7 @@ public class AboutActivity extends AppCompatActivity {
 
     private static final String UTF_8 = "UTF-8";
     private static final String TEXT_HTML = "text/html";
-    private String LANGUAGE = Locale.getDefault().getLanguage();
+    private final String LANGUAGE = Locale.getDefault().getLanguage();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

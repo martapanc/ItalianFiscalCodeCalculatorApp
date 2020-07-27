@@ -6,7 +6,7 @@ import java.util.Map;
 
 class EvenThread implements Runnable {
 
-    private String fisCode;
+    private final String fisCode;
     private int evenSum;
 
     public EvenThread(String fisCode, int evenSum) {
@@ -67,7 +67,7 @@ class EvenThread implements Runnable {
 
 class OddThread implements Runnable {
 
-    private String fisCode;
+    private final String fisCode;
     private int oddSum;
 
     public OddThread(String fisCode, int oddSum) {

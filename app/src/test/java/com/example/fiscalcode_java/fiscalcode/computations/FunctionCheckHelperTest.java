@@ -10,7 +10,7 @@ import static org.junit.Assert.assertFalse;
 
 public class FunctionCheckHelperTest {
 
-    private int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+    private final int currentYear = Calendar.getInstance().get(Calendar.YEAR);
 
     @Test
     public void testIsAllLetters() {
