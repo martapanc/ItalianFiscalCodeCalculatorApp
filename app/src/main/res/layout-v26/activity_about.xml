@@ -15,8 +15,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:justificationMode="inter_word"
-            android:paddingBottom="20dp"
+            android:paddingBottom="15dp"
             android:text="@string/intro" />
+
+        <ImageView
+            android:id="@+id/fc_card"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="15dp"
+            android:contentDescription="@string/fiscal_code_card"
+            android:scaleType="fitCenter" />
 
         <TextView
             android:layout_width="match_parent"
@@ -31,6 +39,13 @@
             android:justificationMode="inter_word"
             android:paddingBottom="15dp"
             android:text="@string/ch1_text" />
+
+        <ImageView
+            android:id="@+id/fc_parts"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginBottom="15dp"
+            android:contentDescription="@string/fiscal_code_parts" />
 
         <!-- Last name -->
         <TextView

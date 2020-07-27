@@ -118,5 +118,7 @@
     <string name="developed_by">Creato e sviluppato da <a href="https://mpancaldi.netlify.app/">Marta Pancaldi</a></string>
     <string name="review">Se ti piace questa app, mandami un feedback (Impostazioni > Invia feedback) o scrivi una recensione su Play Store!</string>
     <string name="app_icon">Icona app</string>
+    <string name="fiscal_code_card">Fac-simile tessera sanitaria</string>
+    <string name="fiscal_code_parts">Parti del Codice Fiscale</string>
 
 </resources>

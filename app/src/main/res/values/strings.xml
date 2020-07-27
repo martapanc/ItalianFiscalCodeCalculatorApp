@@ -118,5 +118,7 @@
     <string name="developed_by">App designed and developed by <a href="https://mpancaldi.netlify.app/">Marta Pancaldi</a></string>
     <string name="review">If you like this app, send me a feedback (Settings > Send feedback) or leave a review on Play Store!</string>
     <string name="app_icon">App icon</string>
+    <string name="fiscal_code_card">Fiscal Code card</string>
+    <string name="fiscal_code_parts">Parts of the Fiscal Code</string>
 
 </resources>

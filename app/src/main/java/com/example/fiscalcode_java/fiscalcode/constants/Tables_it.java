@@ -50,20 +50,20 @@ public class Tables_it {
             "</table>";
 
     public static String TABLE_ODD = "" +
-            "<table border=\"1\" cellspacing=\"2\" cellpadding=\"6\" style=\"font-size:90%; border-collapse:collapse; text-align:center; margin:auto\">\n" +
+            "<table border=\"1\" cellspacing=\"2\" cellpadding=\"6\" style=\"font-size:85%; border-collapse:collapse; text-align:center; margin:auto\">\n" +
             "<tbody>\n" +
             "    <tr bgcolor=\"" + HEADER_COLOR + "\">\n" +
             "        <td colspan=\"8\"><b>CARATTERI ALFANUMERICI DISPARI</b></td>\n" +
             "    </tr>\n" +
             "    <tr bgcolor=\"#efefef\">\n" +
-            "        <td><b>Carattere</b></td>\n" +
-            "        <td><b>Valore</b></td>\n" +
-            "        <td><b>Carattere</b></td>\n" +
-            "        <td><b>Valore</b></td>\n" +
-            "        <td><b>Carattere</b></td>\n" +
-            "        <td><b>Valore</b></td>\n" +
-            "        <td><b>Carattere</b></td>\n" +
-            "        <td><b>Valore</b></td>\n" +
+            "        <td><b>Car.</b></td>\n" +
+            "        <td><b>Val.</b></td>\n" +
+            "        <td><b>Car.</b></td>\n" +
+            "        <td><b>Val.</b></td>\n" +
+            "        <td><b>Car.</b></td>\n" +
+            "        <td><b>Val.</b></td>\n" +
+            "        <td><b>Car.</b></td>\n" +
+            "        <td><b>Val.</b></td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
             "        <td><b>0</b></td>\n" +
@@ -159,20 +159,20 @@ public class Tables_it {
             "</table>";
 
     public static String TABLE_EVEN = "" +
-            "<table border=\"1\" cellspacing=\"2\" cellpadding=\"6\" style=\"font-size:90%; border-collapse:collapse; text-align:center; margin:auto\">\n" +
+            "<table border=\"1\" cellspacing=\"2\" cellpadding=\"6\" style=\"font-size:87%; border-collapse:collapse; text-align:center; margin:auto\">\n" +
             "<tbody>\n" +
             "    <tr bgcolor=\"" + HEADER_COLOR + "\">\n" +
             "        <td colspan=\"8\"><b>CARATTERI ALFANUMERICI PARI</b></td>\n" +
             "    </tr>\n" +
             "    <tr bgcolor=\"#efefef\">\n" +
-            "        <td><b>Carattere</b></td>\n" +
-            "        <td><b>Valore</b></td>\n" +
-            "        <td><b>Carattere</b></td>\n" +
-            "        <td><b>Valore</b></td>\n" +
-            "        <td><b>Carattere</b></td>\n" +
-            "        <td><b>Valore</b></td>\n" +
-            "        <td><b>Carattere</b></td>\n" +
-            "        <td><b>Valore</b></td>\n" +
+            "        <td><b>Car.</b></td>\n" +
+            "        <td><b>Val.</b></td>\n" +
+            "        <td><b>Car.</b></td>\n" +
+            "        <td><b>Val.</b></td>\n" +
+            "        <td><b>Car.</b></td>\n" +
+            "        <td><b>Val.</b></td>\n" +
+            "        <td><b>Car.</b></td>\n" +
+            "        <td><b>Val.</b></td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
             "        <td><b>0</b></td>\n" +
@@ -268,20 +268,20 @@ public class Tables_it {
             "</table>";
 
     public static String TABLE_CONTROL = "" +
-            "<table border=\"1\" cellspacing=\"2\" cellpadding=\"6\" style=\"font-size:90%; border-collapse:collapse; text-align:center; margin:auto\">\n" +
+            "<table border=\"1\" cellspacing=\"2\" cellpadding=\"6\" style=\"font-size:82%; border-collapse:collapse; text-align:center; margin:auto\">\n" +
             "<tbody>\n" +
             "    <tr bgcolor=\"" + HEADER_COLOR + "\">\n" +
             "        <td colspan=\"8\"><b>RESTO</b></td>\n" +
             "    </tr>\n" +
             "    <tr align=\"center\" bgcolor=\"#efefef\">\n" +
             "        <td><b>Resto</b></td>\n" +
-            "        <td><b>Lettera</b></td>\n" +
-            "        <td><b>Resto</b></td>\n" +
-            "        <td><b>Lettera</b></td>\n" +
-            "        <td><b>Resto</b></td>\n" +
-            "        <td><b>Lettera</b></td>\n" +
-            "        <td><b>Resto</b></td>\n" +
-            "        <td><b>Lettera</b></td>\n" +
+            "        <td><b>Lett.</b></td>\n" +
+            "        <td><b>R.</b></td>\n" +
+            "        <td><b>Lett.</b></td>\n" +
+            "        <td><b>R.</b></td>\n" +
+            "        <td><b>Lett.</b></td>\n" +
+            "        <td><b>R.</b></td>\n" +
+            "        <td><b>Lett.</b></td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
             "        <td><b>0</b></td>\n" +

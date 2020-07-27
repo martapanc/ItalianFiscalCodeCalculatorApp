@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +30,12 @@ public class AboutActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_about);
 
+        ImageView fcCardImageView = findViewById(R.id.fc_card);
+        setImageResource(fcCardImageView, "card");
+
+        ImageView fcPartsImageView = findViewById(R.id.fc_parts);
+        setImageResource(fcPartsImageView, "parts");
+
         WebView dobWebView = findViewById(R.id.table_months);
         dobWebView.loadDataWithBaseURL(null, getDoBTable(), "text/html", "UTF-8", null);
 
@@ -43,6 +50,16 @@ public class AboutActivity extends AppCompatActivity {
 
         WebView omoWebView = findViewById(R.id.omo_table);
         omoWebView.loadDataWithBaseURL(null, getOmoTable(), "text/html", "UTF-8", null);
+    }
+
+    private void setImageResource(ImageView imageView, String type) {
+        switch (type) {
+            case "card":
+                imageView.setImageResource("EN".equalsIgnoreCase(LANGUAGE) ? R.drawable.fc_card_en : R.drawable.fc_card_it);
+                break;
+            case "parts":
+                imageView.setImageResource("EN".equalsIgnoreCase(LANGUAGE) ? R.drawable.fc_parts_en : R.drawable.fc_parts_it);
+        }
     }
 
     private String getDoBTable() {
