@@ -63,7 +63,7 @@ public class VerifyFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_verify, container, false);
-        Context context = Objects.requireNonNull(getContext());
+        Context context = requireContext();
         ComputeViewModel model = ViewModelProviders.of(requireActivity()).get(ComputeViewModel.class);
 
         setupGenderRadioButtons(root, R.id.ver_maleRadioButton, R.id.ver_femaleRadioButton);
@@ -73,7 +73,7 @@ public class VerifyFragment extends Fragment {
         fiscalCodeEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
 
         String[] placesOfBirth = model.getPlaceList(context);
-        ArrayAdapter<String> pobArrayAdapter = new ArrayAdapter<>(Objects.requireNonNull(getActivity()), android.R.layout.simple_list_item_1, placesOfBirth);
+        ArrayAdapter<String> pobArrayAdapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_list_item_1, placesOfBirth);
         setupPlaceOfBirth(root, pobArrayAdapter, R.id.ver_pob_input);
 
         Button extractButton = root.findViewById(R.id.verify_button);
@@ -87,7 +87,7 @@ public class VerifyFragment extends Fragment {
     private View.OnClickListener validateFieldsAndCompute(String[] placesOfBirth) {
         return view -> {
             boolean allFieldsValid = true;
-            FragmentActivity activity = Objects.requireNonNull(getActivity());
+            FragmentActivity activity = requireActivity();
 
             EditText firstNameEditText = activity.findViewById(R.id.ver_first_name_input);
             EditText lastNameEditText = activity.findViewById(R.id.ver_last_name_input);
@@ -146,7 +146,7 @@ public class VerifyFragment extends Fragment {
 
     public View.OnClickListener getResetListener() {
         return view -> {
-            FragmentActivity activity = Objects.requireNonNull(getActivity());
+            FragmentActivity activity = requireActivity();
 
             EditText fiscalCode = activity.findViewById(R.id.ver_fiscalCodeInput_input);
             fiscalCode.setText("");

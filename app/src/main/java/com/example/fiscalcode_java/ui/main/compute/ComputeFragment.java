@@ -42,7 +42,6 @@ import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.setupP
 
 public class ComputeFragment extends Fragment {
 
-    //TODO: Info button
     private static Calendar computeCalendar = initCalendar();
 
     @Override
@@ -56,14 +55,14 @@ public class ComputeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Locale.setDefault(Locale.ITALY);
         View root = inflater.inflate(R.layout.fragment_compute, container, false);
-        Context context = Objects.requireNonNull(getContext());
+        Context context = requireContext();
         ComputeViewModel model = ViewModelProviders.of(requireActivity()).get(ComputeViewModel.class);
 
         setupGenderRadioButtons(root, R.id.com_maleRadioButton, R.id.com_femaleRadioButton);
         setupDateOfBirth(root, computeCalendar, R.id.com_dob_input);
 
         String[] placesOfBirth = model.getPlaceList(context);
-        ArrayAdapter<String> pobArrayAdapter = new ArrayAdapter<>(Objects.requireNonNull(getActivity()), android.R.layout.simple_list_item_1, placesOfBirth);
+        ArrayAdapter<String> pobArrayAdapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_list_item_1, placesOfBirth);
         setupPlaceOfBirth(root, pobArrayAdapter, R.id.com_pob_input);
 
         Button computeButton = root.findViewById(R.id.compute_button);
@@ -80,7 +79,7 @@ public class ComputeFragment extends Fragment {
     public View.OnClickListener validateFieldsAndCompute(final String[] placesOfBirth) {
         return view -> {
             boolean allFieldsValid = true;
-            FragmentActivity activity = Objects.requireNonNull(getActivity());
+            FragmentActivity activity = requireActivity();
 
             EditText firstNameEditText = activity.findViewById(R.id.com_first_name_input);
             EditText lastNameEditText = activity.findViewById(R.id.com_last_name_input);
@@ -126,7 +125,7 @@ public class ComputeFragment extends Fragment {
 
     public View.OnClickListener getResetListener() {
         return view -> {
-            FragmentActivity activity = Objects.requireNonNull(getActivity());
+            FragmentActivity activity = requireActivity();
 
             EditText firstName = activity.findViewById(R.id.com_first_name_input);
             firstName.setText("");

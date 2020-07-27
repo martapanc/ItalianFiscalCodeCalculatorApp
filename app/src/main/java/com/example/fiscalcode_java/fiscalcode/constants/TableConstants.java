@@ -2,9 +2,9 @@ package com.example.fiscalcode_java.fiscalcode.constants;
 
 public class TableConstants {
 
-    public static String HEADER_COLOR = "#8ab1ff";
+    public static final String HEADER_COLOR = "#8ab1ff";
 
-    public static String TABLE_DOB = "" +
+    public static final String TABLE_DOB = "" +
             "<table style=\"font-size:83%; border-collapse:collapse; text-align:center; margin:auto\" border=\"1\" cellpadding=\"6\" cellspacing=\"2\">\n" +
             "<tbody>\n" +
             "    <tr bgcolor=\"" + HEADER_COLOR + "\">\n" +
@@ -50,7 +50,7 @@ public class TableConstants {
             "</tbody>\n" +
             "</table>";
 
-    public static String TABLE_ODD = "" +
+    public static final String TABLE_ODD = "" +
             "<table border=\"1\" cellspacing=\"2\" cellpadding=\"6\" style=\"font-size:80%; border-collapse:collapse; text-align:center; margin:auto\">\n" +
             "<tbody>\n" +
             "    <tr bgcolor=\"" + HEADER_COLOR + "\">\n" +
@@ -159,7 +159,7 @@ public class TableConstants {
             "</tbody>\n" +
             "</table>";
 
-    public static String TABLE_EVEN = "" +
+    public static final String TABLE_EVEN = "" +
             "<table border=\"1\" cellspacing=\"2\" cellpadding=\"6\" style=\"font-size:80%; border-collapse:collapse; text-align:center; margin:auto\">\n" +
             "<tbody>\n" +
             "    <tr bgcolor=\"" + HEADER_COLOR + "\">\n" +
@@ -268,7 +268,7 @@ public class TableConstants {
             "</tbody>\n" +
             "</table>";
 
-    public static String TABLE_CONTROL = "" +
+    public static final String TABLE_CONTROL = "" +
             "<table border=\"1\" cellspacing=\"2\" cellpadding=\"6\" style=\"font-size:77%; border-collapse:collapse; text-align:center; margin:auto\">\n" +
             "<tbody>\n" +
             "    <tr bgcolor=\"" + HEADER_COLOR + "\">\n" +
@@ -357,7 +357,7 @@ public class TableConstants {
             "</tbody>\n" +
             "</table>";
 
-    public static String TABLE_OMO = "" +
+    public static final String TABLE_OMO = "" +
             "<table border=\"1\" cellspacing=\"2\" cellpadding=\"6\" style=\"font-size:90%; border-collapse:collapse; text-align:center; margin:auto\">\n" +
             "<tbody>\n" +
             "    <tr bgcolor=\"" + HEADER_COLOR + "\">\n" +

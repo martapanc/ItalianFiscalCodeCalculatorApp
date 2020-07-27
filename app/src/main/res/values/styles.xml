@@ -16,18 +16,6 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="CustomDialogTheme" parent="android:Theme.Dialog">
-        <!-- Fill the screen -->
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">fill_parent</item>
-        <item name="android:layout_margin">10dp</item>
-
-        <!-- No backgrounds, titles or window float -->
-        <item name="android:windowBackground">@null</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">false</item>
-    </style>
-
     <style name="FeedbackLabelTheme" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="colorAccent">@color/black</item>  // Text Color
 <!--        <item name="boxStrokeColor">@color/colorPrimary</item>-->

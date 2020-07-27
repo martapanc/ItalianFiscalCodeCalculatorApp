@@ -57,7 +57,7 @@ public class ExtractFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Locale.setDefault(Locale.ITALY);
         View root = inflater.inflate(R.layout.fragment_extract, container, false);
-        final Context context = Objects.requireNonNull(getContext());
+        final Context context = requireContext();
         ExtractViewModel viewModel = ViewModelProviders.of(requireActivity()).get(ExtractViewModel.class);
 
         EditText fiscalCodeEditText = root.findViewById(R.id.ext_fiscalCodeInput_input);
@@ -82,7 +82,7 @@ public class ExtractFragment extends Fragment {
 
     private View.OnClickListener getOnClickListener(List<Town> townList, List<Country> countryList) {
         return view -> {
-            EditText fiscalCodeEditText = Objects.requireNonNull(getActivity()).findViewById(R.id.ext_fiscalCodeInput_input);
+            EditText fiscalCodeEditText = requireActivity().findViewById(R.id.ext_fiscalCodeInput_input);
             String fiscalCodeInput = fiscalCodeEditText.getText().toString().trim();
 
             if (!fiscalCodeInput.isEmpty()) {
@@ -90,7 +90,7 @@ public class ExtractFragment extends Fragment {
                     try {
                         //TODO: offer to edit first and last name
                         FiscalCodeData fiscalCodeData = ExtractDataFromFiscalCodeHelper.extractData(fiscalCodeInput, townList, countryList);
-                        showFiscalCodeData(Objects.requireNonNull(getActivity()), fiscalCodeData);
+                        showFiscalCodeData(requireActivity(), fiscalCodeData);
                         hideVirtualKeyboard(view);
                     } catch (FiscalCodeExtractionException e) {
                         int errorMessageId;

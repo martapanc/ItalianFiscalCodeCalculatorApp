@@ -6,7 +6,6 @@ import java.util.Map;
 public class DateFormatConstants {
 
     public static final String DD_MM_YYYY = "dd/MM/yyyy";
-    public static final String DD_MM_YY = "dd/MM/yy";
 
     public static Map<Integer, String> getMonthCodeMap() {
         Map<Integer, String> monthMap = new HashMap<>();

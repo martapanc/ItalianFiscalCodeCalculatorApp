@@ -38,7 +38,7 @@ public class ExtractFragmentEspressoTest {
     public static final ForceLocaleRule localeTestRule = new ForceLocaleRule(Locale.ITALY);
 
     @Rule
-    public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
+    public final ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
     public void assertDateIsExtractedSuccessfully() {
@@ -58,7 +58,6 @@ public class ExtractFragmentEspressoTest {
         onView(withId(R.id.extract_data_button)).perform(click());
         onView(withId(R.id.extract_data_button)).perform(click());
         thenInputErrorMessageIs("Valore richiesto");
-        System.out.println("");
     }
 
     @Test

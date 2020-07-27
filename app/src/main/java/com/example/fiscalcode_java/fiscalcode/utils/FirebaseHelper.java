@@ -16,7 +16,7 @@ public class FirebaseHelper {
     private static final String MESSAGE = "message";
     private static final String INSTANCE_ID = "instanceId";
 
-    FirebaseFirestore db;
+    private final FirebaseFirestore db;
 
     public FirebaseHelper() {
         this.db = FirebaseFirestore.getInstance();
