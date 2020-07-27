@@ -63,7 +63,7 @@
     <string name="email_sent_successfully">Email was sent successfully</string>
 
     <!-- T&Cs View -->
-    <string name="tcs_title"><u>Terms &amp; Conditions</u></string>
+    <string name="tcs_title">Terms &amp; Conditions</string>
     <string name="tcs_title_ul"><u>Terms &amp; Conditions</u></string>
     <string name="tcs_summary">View the app\'s T&amp;Cs</string>
     <string name="disclaimer_1">The only valid tax code is the one issued by the Revenue Service.</string>
