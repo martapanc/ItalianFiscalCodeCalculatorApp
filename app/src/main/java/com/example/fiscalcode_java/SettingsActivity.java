@@ -27,6 +27,8 @@ import com.example.fiscalcode_java.fiscalcode.utils.FirebaseHelper;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Objects;
+
 import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
 
 
@@ -107,7 +109,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         public Dialog setupFeedbackDialog() {
-            Dialog feedbackDialog = new Dialog(getContext());
+            Dialog feedbackDialog = new Dialog(requireContext());
             InsetDrawable inset = new InsetDrawable(new ColorDrawable(Color.WHITE), 25);
             feedbackDialog.getWindow().setBackgroundDrawable(inset);
             feedbackDialog.setContentView(R.layout.view_feedback);
@@ -147,26 +149,21 @@ public class SettingsActivity extends AppCompatActivity {
 
         public void performAnonymousSignIn(Dialog feedbackDialog, String text) {
             FirebaseAuth mAuth = FirebaseAuth.getInstance();
-            mAuth.signInAnonymously().addOnCompleteListener(getActivity(), task -> {
+            mAuth.signInAnonymously().addOnCompleteListener(requireActivity(), task -> {
                 if (task.isSuccessful()) {
                     System.out.println("signInAnonymously:success");
-                    sendEmail(text);
-                    feedbackDialog.dismiss();
+                    sendEmail(text, mAuth.getUid());
                 } else {
-                    Toast.makeText(this.getActivity().getApplicationContext(), this.getResources().getString(R.string.email_sent_successfully), Toast.LENGTH_LONG).show();
+                    Toast.makeText(requireActivity().getApplicationContext(), this.getResources().getString(R.string.email_sent_successfully), Toast.LENGTH_LONG).show();
                 }
+                feedbackDialog.dismiss();
             });
         }
 
-        private void sendEmail(String text) {
-            final Context context = this.getActivity().getApplicationContext();
+        private void sendEmail(String text, String uid) {
+            final Context context = this.requireActivity().getApplicationContext();
             Toast.makeText(context, this.getResources().getString(R.string.email_sent_successfully), Toast.LENGTH_LONG).show();
-
-            // TODO: add real instance id
-            String instanceId = "1234567";
-
-            FirebaseHelper firebaseHelper = new FirebaseHelper();
-            firebaseHelper.addMessage(text, instanceId);
+            new FirebaseHelper(context).addMessage(text, uid);
         }
     }
 }
