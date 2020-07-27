@@ -20,6 +20,8 @@ import java.util.Locale;
 
 public class AboutActivity extends AppCompatActivity {
 
+    private static final String UTF_8 = "UTF-8";
+    private static final String TEXT_HTML = "text/html";
     private String LANGUAGE = Locale.getDefault().getLanguage();
 
     @Override
@@ -30,36 +32,30 @@ public class AboutActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_about);
 
-        ImageView fcCardImageView = findViewById(R.id.fc_card);
-        setImageResource(fcCardImageView, "card");
-
-        ImageView fcPartsImageView = findViewById(R.id.fc_parts);
-        setImageResource(fcPartsImageView, "parts");
-
-        WebView dobWebView = findViewById(R.id.table_months);
-        dobWebView.loadDataWithBaseURL(null, getDoBTable(), "text/html", "UTF-8", null);
-
-        WebView oddWebView = findViewById(R.id.control_table_odd);
-        oddWebView.loadDataWithBaseURL(null, getOddTable(), "text/html", "UTF-8", null);
-
-        WebView evenWebView = findViewById(R.id.control_table_even);
-        evenWebView.loadDataWithBaseURL(null, getEvenTable(), "text/html", "UTF-8", null);
-
-        WebView controlWebView = findViewById(R.id.control_table);
-        controlWebView.loadDataWithBaseURL(null, getControlTable(), "text/html", "UTF-8", null);
-
-        WebView omoWebView = findViewById(R.id.omo_table);
-        omoWebView.loadDataWithBaseURL(null, getOmoTable(), "text/html", "UTF-8", null);
+        setupImagesAndTables();
     }
 
-    private void setImageResource(ImageView imageView, String type) {
-        switch (type) {
-            case "card":
-                imageView.setImageResource("EN".equalsIgnoreCase(LANGUAGE) ? R.drawable.fc_card_en : R.drawable.fc_card_it);
-                break;
-            case "parts":
-                imageView.setImageResource("EN".equalsIgnoreCase(LANGUAGE) ? R.drawable.fc_parts_en : R.drawable.fc_parts_it);
-        }
+    private void setupImagesAndTables() {
+        ImageView fcCardImageView = findViewById(R.id.fc_card);
+        fcCardImageView.setImageResource("EN".equalsIgnoreCase(LANGUAGE) ? R.drawable.fc_card_en : R.drawable.fc_card_it);
+
+        ImageView fcPartsImageView = findViewById(R.id.fc_parts);
+        fcPartsImageView.setImageResource("EN".equalsIgnoreCase(LANGUAGE) ? R.drawable.fc_parts_en : R.drawable.fc_parts_it);
+
+        WebView dobWebView = findViewById(R.id.table_months);
+        dobWebView.loadDataWithBaseURL(null, getDoBTable(), TEXT_HTML, UTF_8, null);
+
+        WebView oddWebView = findViewById(R.id.control_table_odd);
+        oddWebView.loadDataWithBaseURL(null, getOddTable(), TEXT_HTML, UTF_8, null);
+
+        WebView evenWebView = findViewById(R.id.control_table_even);
+        evenWebView.loadDataWithBaseURL(null, getEvenTable(), TEXT_HTML, UTF_8, null);
+
+        WebView controlWebView = findViewById(R.id.control_table);
+        controlWebView.loadDataWithBaseURL(null, getControlTable(), TEXT_HTML, UTF_8, null);
+
+        WebView omoWebView = findViewById(R.id.omo_table);
+        omoWebView.loadDataWithBaseURL(null, getOmoTable(), TEXT_HTML, UTF_8, null);
     }
 
     private String getDoBTable() {
