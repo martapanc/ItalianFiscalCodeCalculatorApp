@@ -19,7 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.fiscalcode_java.R;
 import com.example.fiscalcode_java.exception.FiscalCodeComputationException;
@@ -32,7 +32,6 @@ import com.example.fiscalcode_java.ui.main.compute.ComputeViewModel;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Objects;
 
 import lombok.SneakyThrows;
 
@@ -51,7 +50,7 @@ import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.setupP
 
 public class VerifyFragment extends Fragment {
 
-    private static Calendar verifyCalendar = initCalendar();
+    private static final Calendar verifyCalendar = initCalendar();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,13 +63,13 @@ public class VerifyFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_verify, container, false);
         Context context = requireContext();
-        ComputeViewModel model = ViewModelProviders.of(requireActivity()).get(ComputeViewModel.class);
+        ComputeViewModel model = new ViewModelProvider(requireActivity()).get(ComputeViewModel.class);
 
         setupGenderRadioButtons(root, R.id.ver_maleRadioButton, R.id.ver_femaleRadioButton);
         setupDateOfBirth(root, verifyCalendar, R.id.ver_dob_input);
 
         EditText fiscalCodeEditText = root.findViewById(R.id.ver_fiscalCodeInput_input);
-        fiscalCodeEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+        fiscalCodeEditText.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
 
         String[] placesOfBirth = model.getPlaceList(context);
         ArrayAdapter<String> pobArrayAdapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_list_item_1, placesOfBirth);

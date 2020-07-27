@@ -34,7 +34,6 @@
     <string name="reset_button">Reset button</string>
     <string name="copied_to_clipboard">%1$s copied to clipboard</string>
     <string name="nothing_to_copy">Nothing to copy  🤷‍♂️</string>
-    <string name="data_label">Data</string>
     <string name="data_copied_to_clipboard">Data copied to clipboard</string>
 
     <!-- Errors -->
@@ -43,10 +42,8 @@
     <string name="invalid_fiscal_code_input_error">The fiscal code inserted is in the wrong format</string>
 
     <!-- Preference Titles -->
-    <string name="language_label">Language</string>
     <string name="general_header">General</string>
     <string name="legal_header">Legal</string>
-    <string name="dark_mode_label">Dark mode</string>
 
     <!-- Sync Preferences -->
     <string name="settings">Settings</string>

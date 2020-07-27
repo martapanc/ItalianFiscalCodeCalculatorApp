@@ -44,7 +44,7 @@ public class ForceLocaleRule implements TestRule {
         Resources resources = InstrumentationRegistry.getTargetContext().getResources();
         Locale.setDefault(locale);
         Configuration config = resources.getConfiguration();
-        config.locale = locale;
+        config.setLocale(locale);
         resources.updateConfiguration(config, resources.getDisplayMetrics());
     }
 

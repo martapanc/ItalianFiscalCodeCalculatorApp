@@ -20,7 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.fiscalcode_java.R;
 import com.example.fiscalcode_java.exception.FiscalCodeExtractionException;
@@ -37,7 +37,6 @@ import com.leinardi.android.speeddial.SpeedDialView;
 
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 
 import lombok.SneakyThrows;
 
@@ -58,10 +57,10 @@ public class ExtractFragment extends Fragment {
         Locale.setDefault(Locale.ITALY);
         View root = inflater.inflate(R.layout.fragment_extract, container, false);
         final Context context = requireContext();
-        ExtractViewModel viewModel = ViewModelProviders.of(requireActivity()).get(ExtractViewModel.class);
+        ExtractViewModel viewModel = new ViewModelProvider(requireActivity()).get(ExtractViewModel.class);
 
         EditText fiscalCodeEditText = root.findViewById(R.id.ext_fiscalCodeInput_input);
-        fiscalCodeEditText.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+        fiscalCodeEditText.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
 
         List<Town> townList = viewModel.getTownList(context);
         List<Country> countryList = viewModel.getCountryList(context);

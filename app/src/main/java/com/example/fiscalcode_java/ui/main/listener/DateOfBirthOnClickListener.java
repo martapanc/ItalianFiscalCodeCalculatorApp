@@ -16,8 +16,8 @@ import static com.example.fiscalcode_java.fiscalcode.constants.DateFormatConstan
 
 public class DateOfBirthOnClickListener implements View.OnClickListener {
 
-    private Calendar calendar;
-    private int dobInputId;
+    private final Calendar calendar;
+    private final int dobInputId;
 
     public DateOfBirthOnClickListener(Calendar calendar, int dobInputId) {
         this.calendar = calendar;

@@ -5,21 +5,31 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.*;
-import android.widget.*;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.fiscalcode_java.R;
 import com.example.fiscalcode_java.exception.FiscalCodeComputationException;
 import com.example.fiscalcode_java.fiscalcode.computations.ComputeFiscalCodeHelper;
-import com.example.fiscalcode_java.fiscalcode.models.Town;
 import com.example.fiscalcode_java.fiscalcode.models.Country;
 import com.example.fiscalcode_java.fiscalcode.models.InputField;
+import com.example.fiscalcode_java.fiscalcode.models.Town;
 import com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper;
 import com.example.fiscalcode_java.fiscalcode.utils.ReadTownListHelper;
 import com.google.android.material.snackbar.Snackbar;
@@ -30,7 +40,6 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 
 import lombok.SneakyThrows;
 
@@ -42,7 +51,7 @@ import static com.example.fiscalcode_java.fiscalcode.utils.FragmentHelper.setupP
 
 public class ComputeFragment extends Fragment {
 
-    private static Calendar computeCalendar = initCalendar();
+    private static final Calendar computeCalendar = initCalendar();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,7 +65,7 @@ public class ComputeFragment extends Fragment {
         Locale.setDefault(Locale.ITALY);
         View root = inflater.inflate(R.layout.fragment_compute, container, false);
         Context context = requireContext();
-        ComputeViewModel model = ViewModelProviders.of(requireActivity()).get(ComputeViewModel.class);
+        ComputeViewModel model = new ViewModelProvider(requireActivity()).get(ComputeViewModel.class);
 
         setupGenderRadioButtons(root, R.id.com_maleRadioButton, R.id.com_femaleRadioButton);
         setupDateOfBirth(root, computeCalendar, R.id.com_dob_input);

@@ -15,8 +15,8 @@ import static com.example.fiscalcode_java.fiscalcode.constants.DateFormatConstan
 
 public class DateOfBirthWatcher implements TextWatcher {
 
-    private Calendar calendar;
-    private TextView dateOfBirth;
+    private final Calendar calendar;
+    private final TextView dateOfBirth;
 
     public DateOfBirthWatcher(Calendar calendar, TextView dateOfBirth) {
         this.calendar = calendar;

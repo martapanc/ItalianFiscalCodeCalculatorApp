@@ -34,7 +34,6 @@
     <string name="reset_button">Reset</string>
     <string name="copied_to_clipboard">"%1$s copiato negli appunti"</string>
     <string name="nothing_to_copy">Niente da copiare  🤷‍♂️</string>
-    <string name="data_label">Dati</string>
     <string name="data_copied_to_clipboard">Dati copiati negli appunti</string>
 
     <!-- Errors -->
@@ -43,10 +42,8 @@
     <string name="invalid_fiscal_code_input_error">Il codice fiscale inserito non è nel formato richiesto</string>
 
     <!-- Preference Titles -->
-    <string name="language_label">Lingua</string>
     <string name="general_header">Generale</string>
     <string name="legal_header">Legale</string>
-    <string name="dark_mode_label">Modalità notturna</string>
 
     <!-- Sync Preferences -->
     <string name="settings">Impostazioni</string>
