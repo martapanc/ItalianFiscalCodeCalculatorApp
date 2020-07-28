@@ -55,18 +55,19 @@
     <string name="enter_feedback">Enter feedback</string>
     <string name="send">Send</string>
     <string name="cancel">Cancel</string>
-    <string name="feedback_subtitle">Please describe the problem as accurately as possible.
-        Your feedback is anonymous and will only be used to improve the app. If you wish to message us
-    directly instead, you may find our details in the Info section or on the app\'s page on Play Store.
-    Thank you for your help!</string>
+    <string name="feedback_subtitle">Please describe any problem as accurately as possible.
+        Your feedback is anonymous and will only be used to improve the app.\n If you wish to message us
+        directly instead, you may find our details in the Info section or on the app\'s page on Play Store.\n
+        Thank you for your help!</string>
     <string name="send_us_feedback">Send us feedback</string>
-    <string name="email_sent_successfully">Email was sent successfully</string>
+    <string name="email_sent_successfully">Feedback was sent successfully</string>
 
     <!-- T&Cs View -->
     <string name="tcs_title">Terms &amp; Conditions</string>
     <string name="tcs_title_ul"><u>Terms &amp; Conditions</u></string>
     <string name="tcs_summary">View the app\'s T&amp;Cs</string>
-    <string name="disclaimer_1">The only valid tax code is the one issued by the Revenue Service.</string>
+    <string name="disclaimer_1">The only valid tax code is the one issued by the <i>Agenzia delle Entrate</i>,
+        the Italian Revenue Service.</string>
     <string name="disclaimer_2">The fiscal code generated is to be considered an example,
         because in rare cases of homonymity and coincidence of personal data, the system generates
         a non-univocal code. In the reality of the cases, this does not happen because the Italian
