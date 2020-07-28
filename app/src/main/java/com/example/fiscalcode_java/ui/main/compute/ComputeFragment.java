@@ -123,6 +123,7 @@ public class ComputeFragment extends Fragment {
                     TextView outputTextView = activity.findViewById(R.id.com_fiscalCodeOutput);
                     outputTextView.setPadding(10, 5, 10, 5);
                     outputTextView.setText(fiscalCode);
+                    outputTextView.setOnClickListener(view1 -> copyFunction(view1, fiscalCode));
                 } catch (IOException | InterruptedException | FiscalCodeComputationException e) {
                     int errorMessageId;
                     try {
