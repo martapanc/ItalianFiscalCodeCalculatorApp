@@ -18,6 +18,7 @@ import java.util.Locale;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.swipeLeft;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -56,7 +57,7 @@ public class VerifyFragmentEspressoTest {
         onView(withId(R.id.ver_dob_input)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(VALID_YEAR, VALID_MONTH, VALID_DAY));
         onView(withText(OK)).perform(click());
-        onView(withId(R.id.ver_pob_input)).perform(typeText(VALID_TOWN));
+        onView(withId(R.id.ver_pob_input)).perform(typeText(VALID_TOWN)).perform(closeSoftKeyboard());
         onView(withText(VALID_TOWN)).inRoot(RootMatchers.isPlatformPopup()).perform(click());
         onView(withId(R.id.verify_button)).perform(click());
         onView(withId(R.id.ver_fiscalCodeOutput)).check(matches(withText(containsString(CORRECT_FC))));
@@ -72,7 +73,7 @@ public class VerifyFragmentEspressoTest {
         onView(withId(R.id.ver_dob_input)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(VALID_YEAR, VALID_MONTH, VALID_DAY));
         onView(withText(OK)).perform(click());
-        onView(withId(R.id.ver_pob_input)).perform(typeText(VALID_TOWN));
+        onView(withId(R.id.ver_pob_input)).perform(typeText(VALID_TOWN)).perform(closeSoftKeyboard());
         onView(withText(VALID_TOWN)).inRoot(RootMatchers.isPlatformPopup()).perform(click());
         onView(withId(R.id.verify_button)).perform(click());
         onView(withId(R.id.ver_fiscalCodeOutput)).check(matches(withText(containsString(INCORRECT_FC))));

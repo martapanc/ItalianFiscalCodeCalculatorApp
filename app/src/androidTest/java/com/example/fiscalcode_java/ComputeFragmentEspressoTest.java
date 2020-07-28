@@ -17,6 +17,7 @@ import java.util.Locale;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.hasErrorText;
@@ -54,7 +55,7 @@ public class ComputeFragmentEspressoTest {
     public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void assertFiscalCodeIsComputedSuccessfully() {
+    public void assertFiscalCodeIsComputedSuccessfully() throws InterruptedException {
         onView(withId(R.id.compute_fragment)).check(matches(isDisplayed()));
         onView(withId(R.id.com_first_name_input)).perform(typeText(VALID_NAME));
         onView(withId(R.id.com_last_name_input)).perform(typeText(VALID_LAST_NAME));
@@ -62,14 +63,14 @@ public class ComputeFragmentEspressoTest {
         onView(withId(R.id.com_dob_input)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(VALID_YEAR, VALID_MONTH, VALID_DAY));
         onView(withText(OK)).perform(click());
-        onView(withId(R.id.com_pob_input)).perform(typeText(VALID_TOWN));
+        onView(withId(R.id.com_pob_input)).perform(typeText(VALID_TOWN)).perform(closeSoftKeyboard());
         onView(withId(R.id.compute_button)).perform(click());
         onView(withId(R.id.com_fiscalCodeOutput)).check(matches(withText(containsString(VALID_FISCAL_CODE))));
     }
 
     @Test
     public void assertShowsEmptyValueErrorMessages() {
-        onView(withId(R.id.compute_fragment)).check(matches(isDisplayed()));
+        onView(withId(R.id.compute_fragment)).check(matches(isDisplayed())).perform(closeSoftKeyboard());
         onView(withId(R.id.compute_button)).perform(click());
         onView(withId(R.id.com_first_name_input)).check(matches(hasErrorText(REQUIRED_VALUE)));
         onView(withId(R.id.com_last_name_input)).check(matches(hasErrorText(REQUIRED_VALUE)));
@@ -86,7 +87,7 @@ public class ComputeFragmentEspressoTest {
         onView(withId(R.id.com_dob_input)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(INVALID_YEAR, VALID_MONTH, VALID_DAY));
         onView(withText(OK)).perform(click());
-        onView(withId(R.id.com_pob_input)).perform(typeText(INVALID_TOWN));
+        onView(withId(R.id.com_pob_input)).perform(typeText(INVALID_TOWN)).perform(closeSoftKeyboard());
         onView(withId(R.id.compute_button)).perform(click());
 
         onView(withId(R.id.com_first_name_input)).check(matches(hasErrorText(INVALID_INPUT)));

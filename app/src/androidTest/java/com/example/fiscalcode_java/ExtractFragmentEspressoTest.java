@@ -14,6 +14,7 @@ import java.util.Locale;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.swipeLeft;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -43,7 +44,8 @@ public class ExtractFragmentEspressoTest {
     @Test
     public void assertDateIsExtractedSuccessfully() {
         onView(withId(R.id.compute_fragment)).perform(swipeLeft());
-        onView(withId(R.id.ext_fiscalCodeInput_input)).perform(typeText(VALID_FISCAL_CODE));
+        onView(withId(R.id.ext_fiscalCodeInput_input)).perform(typeText(VALID_FISCAL_CODE))
+                .perform(closeSoftKeyboard());
         onView(withId(R.id.extract_data_button)).perform(click());
         onView(withId(R.id.ext_first_name_text)).check(matches(withText(containsString("MRT"))));
         onView(withId(R.id.ext_last_name_text)).check(matches(withText(containsString("PNC"))));
@@ -63,7 +65,8 @@ public class ExtractFragmentEspressoTest {
     @Test
     public void assertShowsWrongFormatErrorMessage() {
         onView(withId(R.id.compute_fragment)).perform(swipeLeft());
-        onView(withId(R.id.ext_fiscalCodeInput_input)).perform(typeText("PNCMRT95L52E253"));
+        onView(withId(R.id.ext_fiscalCodeInput_input)).perform(typeText("PNCMRT95L52E253"))
+                .perform(closeSoftKeyboard());
         onView(withId(R.id.extract_data_button)).perform(click());
         thenInputErrorMessageIs(WRONG_FORMAT);
     }
@@ -71,7 +74,8 @@ public class ExtractFragmentEspressoTest {
     @Test
     public void assertShowsTownNotFoundErrorMessage() {
         onView(withId(R.id.compute_fragment)).perform(swipeLeft());
-        onView(withId(R.id.ext_fiscalCodeInput_input)).perform(typeText("PNCMRT95L52E000E"));
+        onView(withId(R.id.ext_fiscalCodeInput_input)).perform(typeText("PNCMRT95L52E000E"))
+                .perform(closeSoftKeyboard());
         onView(withId(R.id.extract_data_button)).perform(click());
         thenToastErrorMessageIs("Errore: il luogo di nascita non è stato trovato");
     }
@@ -91,7 +95,8 @@ public class ExtractFragmentEspressoTest {
     @Test
     public void assertShowsInvalidDayError() {
         onView(withId(R.id.compute_fragment)).perform(swipeLeft());
-        onView(withId(R.id.ext_fiscalCodeInput_input)).perform(typeText("PNCMRT95L5IE253R"));
+        onView(withId(R.id.ext_fiscalCodeInput_input)).perform(typeText("PNCMRT95L5IE253R"))
+                .perform(closeSoftKeyboard());
         onView(withId(R.id.extract_data_button)).perform(click());
         thenInputErrorMessageIs(WRONG_FORMAT);
 
@@ -103,11 +108,13 @@ public class ExtractFragmentEspressoTest {
     @Test
     public void assertShowsInvalidDateError() {
         onView(withId(R.id.compute_fragment)).perform(swipeLeft());
-        onView(withId(R.id.ext_fiscalCodeInput_input)).perform(typeText("PNCMRT95Z52E253R"));
+        onView(withId(R.id.ext_fiscalCodeInput_input)).perform(typeText("PNCMRT95Z52E253R"))
+                .perform(closeSoftKeyboard());
         onView(withId(R.id.extract_data_button)).perform(click());
         thenInputErrorMessageIs(WRONG_FORMAT);
 
-        onView(withId(R.id.ext_fiscalCodeInput_input)).perform(clearText(), typeText("PNCMRT95952E253R"));
+        onView(withId(R.id.ext_fiscalCodeInput_input)).perform(clearText(), typeText("PNCMRT95952E253R"))
+                .perform(closeSoftKeyboard());
         onView(withId(R.id.extract_data_button)).perform(click());
         thenInputErrorMessageIs(WRONG_FORMAT);
     }
