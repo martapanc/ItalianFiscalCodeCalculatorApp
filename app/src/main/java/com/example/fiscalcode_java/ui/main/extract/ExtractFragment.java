@@ -36,7 +36,6 @@ import com.leinardi.android.speeddial.SpeedDialActionItem;
 import com.leinardi.android.speeddial.SpeedDialView;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 
 import lombok.SneakyThrows;
@@ -56,7 +55,6 @@ public class ExtractFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Locale.setDefault(Locale.ITALY);
         View root = inflater.inflate(R.layout.fragment_extract, container, false);
         final Context context = requireContext();
         ExtractViewModel viewModel = new ViewModelProvider(requireActivity()).get(ExtractViewModel.class);

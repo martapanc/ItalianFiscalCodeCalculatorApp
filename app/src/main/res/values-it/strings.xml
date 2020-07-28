@@ -60,7 +60,7 @@
         \nIl feedback è anonimo, e utilizzeremo queste informazioni esclusivamente per migliorare l\'app.
         Se desiderassi scriverci direttamente, trovi i dettagli nelle Info, o nella nostra pagina su Play Store.
         \nGrazie per il contributo! </string>
-    <string name="send_us_feedback">Mandaci un feedback</string>
+    <string name="send_us_feedback"><u>Mandaci un feedback</u></string>
     <string name="email_sent_successfully">Messaggio inviato con successo</string>
 
     <!-- T&Cs View -->
@@ -102,5 +102,9 @@
     <string name="app_icon">Icona app</string>
     <string name="fiscal_code_card">Fac-simile tessera sanitaria</string>
     <string name="fiscal_code_parts">Parti del Codice Fiscale</string>
+
+    <string name="place_of_birth_info">Informazioni sul Luogo di nascita</string>
+    <string name="pob_info_text">Inserisci il tuo comune di nascita, oppure il paese estero in cui sei nato.</string>
+    <string name="pob_info_close">Ok</string>
 
 </resources>

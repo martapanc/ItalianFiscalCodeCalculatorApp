@@ -1,5 +1,6 @@
 package com.example.fiscalcode_java.ui.main.compute;
 
+import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -13,6 +14,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -64,7 +66,6 @@ public class ComputeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Locale.setDefault(Locale.ITALY);
         View root = inflater.inflate(R.layout.fragment_compute, container, false);
         Context context = requireContext();
         ComputeViewModel model = new ViewModelProvider(requireActivity()).get(ComputeViewModel.class);
@@ -82,6 +83,7 @@ public class ComputeFragment extends Fragment {
         ImageButton resetButton = root.findViewById(R.id.compute_reset_button);
         resetButton.setOnClickListener(getResetListener());
 
+        setupPobInfoDialog(root);
         setupSpeedDial(root);
 
         return root;
@@ -121,6 +123,7 @@ public class ComputeFragment extends Fragment {
                     TextView outputTextView = activity.findViewById(R.id.com_fiscalCodeOutput);
                     outputTextView.setPadding(10, 5, 10, 5);
                     outputTextView.setText(fiscalCode);
+                    outputTextView.setOnClickListener(view1 -> copyFunction(view1, fiscalCode));
                 } catch (IOException | InterruptedException | FiscalCodeComputationException e) {
                     int errorMessageId;
                     try {
@@ -160,6 +163,17 @@ public class ComputeFragment extends Fragment {
             fiscalCodeOutput.setText(EMPTY);
             fiscalCodeOutput.setPadding(0, 0, 0, 0);
         };
+    }
+
+    public void setupPobInfoDialog(View root) {
+        ImageView pobInfoButton = root.findViewById(R.id.com_pob_info);
+        pobInfoButton.setOnClickListener(view -> {
+            Dialog dialog = new Dialog(requireContext());
+            dialog.setContentView(R.layout.view_pob_info);
+            Button closeDialog = dialog.findViewById(R.id.pob_info_close);
+            closeDialog.setOnClickListener(v -> dialog.dismiss());
+            dialog.show();
+        });
     }
 
     private void setupSpeedDial(View root) {

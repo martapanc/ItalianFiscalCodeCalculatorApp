@@ -17,7 +17,8 @@
         android:layout_marginTop="10dp"
         android:ems="5"
         android:text="@string/fiscal_code_short_label"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/ver_fiscalCodeInput_input"
@@ -42,7 +43,8 @@
         android:layout_marginTop="24dp"
         android:ems="5"
         android:text="@string/first_name_label"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/ver_first_name_input"
@@ -65,7 +67,8 @@
         android:layout_marginTop="16dp"
         android:ems="5"
         android:text="@string/last_name_label"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/ver_last_name_input"
@@ -88,7 +91,8 @@
         android:layout_marginTop="24dp"
         android:ems="5"
         android:text="@string/gender_label"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <RadioGroup
         android:id="@+id/ver_radioGroup"
@@ -125,7 +129,8 @@
         android:layout_marginTop="28dp"
         android:ems="7"
         android:text="@string/dob_label"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/ver_dob_input"
@@ -151,7 +156,8 @@
         android:layout_marginTop="30dp"
         android:ems="7"
         android:text="@string/pob_label"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <AutoCompleteTextView
         android:id="@+id/ver_pob_input"
