@@ -97,11 +97,11 @@ public class VerifyFragment extends Fragment {
             EditText fiscalCodeEditText = activity.findViewById(R.id.ver_fiscalCodeInput_input);
 
             boolean allFieldsValid = FIRST_NAME.validateField(firstNameEditText, placesOfBirth, this)
-                    && LAST_NAME.validateField(lastNameEditText, placesOfBirth, this)
-                    && validateField(this, femaleRadioButton, maleRadioButton)
-                    && DATE_OF_BIRTH.validateField(dobEditText, this)
-                    && PLACE_OF_BIRTH.validateField(pobTextView, placesOfBirth, this)
-                    && FISCAL_CODE.validateField(fiscalCodeEditText, placesOfBirth, this);
+                    & LAST_NAME.validateField(lastNameEditText, placesOfBirth, this)
+                    & validateField(this, femaleRadioButton, maleRadioButton)
+                    & DATE_OF_BIRTH.validateField(dobEditText, this)
+                    & PLACE_OF_BIRTH.validateField(pobTextView, placesOfBirth, this)
+                    & FISCAL_CODE.validateField(fiscalCodeEditText, placesOfBirth, this);
 
             if (allFieldsValid) {
                 String firstName = firstNameEditText.getText().toString();

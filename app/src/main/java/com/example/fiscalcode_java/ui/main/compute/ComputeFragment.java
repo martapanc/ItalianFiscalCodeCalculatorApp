@@ -98,11 +98,12 @@ public class ComputeFragment extends Fragment {
             TextView dobEditText = activity.findViewById(R.id.com_dob_input);
             AutoCompleteTextView pobTextView = activity.findViewById(R.id.com_pob_input);
 
+            // Validate all fields (eager-loading) and display error if not valid on each field
             boolean allFieldsValid = InputField.FIRST_NAME.validateField(firstNameEditText, placesOfBirth, this)
-                    && InputField.LAST_NAME.validateField(lastNameEditText, placesOfBirth, this)
-                    && InputField.validateField(this, femaleRadioButton, maleRadioButton)
-                    && InputField.DATE_OF_BIRTH.validateField(dobEditText, this)
-                    && InputField.PLACE_OF_BIRTH.validateField(pobTextView, placesOfBirth, this);
+                    & InputField.LAST_NAME.validateField(lastNameEditText, placesOfBirth, this)
+                    & InputField.validateField(this, femaleRadioButton, maleRadioButton)
+                    & InputField.DATE_OF_BIRTH.validateField(dobEditText, this)
+                    & InputField.PLACE_OF_BIRTH.validateField(pobTextView, placesOfBirth, this);
 
             if (allFieldsValid) {
                 String firstName = firstNameEditText.getText().toString();
