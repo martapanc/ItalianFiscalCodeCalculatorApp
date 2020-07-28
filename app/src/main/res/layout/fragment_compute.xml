@@ -2,11 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/compute_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    android:id="@+id/compute_fragment"
     tools:context=".ui.main.compute.ComputeFragment">
 
     <TextView
@@ -14,10 +14,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:ems="5"
         android:text="@string/first_name_label"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/com_first_name_input"
@@ -28,7 +29,7 @@
         android:ems="10"
         android:hint="@string/first_name_example"
         android:inputType="textPersonName"
-        android:paddingBottom="10dp">
+        android:paddingBottom="6dp">
 
         <requestFocus />
     </EditText>
@@ -42,7 +43,8 @@
         android:layout_marginTop="16dp"
         android:ems="5"
         android:text="@string/last_name_label"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/com_last_name_input"
@@ -65,7 +67,8 @@
         android:layout_marginTop="24dp"
         android:ems="5"
         android:text="@string/gender_label"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <RadioGroup
         android:id="@+id/com_radioGroup"
@@ -99,45 +102,56 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/com_gender_label"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:ems="7"
         android:text="@string/dob_label"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/com_dob_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/com_gender_label"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="18dp"
         android:layout_toEndOf="@id/com_dob_label"
         android:autofillHints=""
         android:ems="10"
-        android:textSize="20sp"
-        android:textColor="@color/black"
         android:hint="@string/dateOfBirth_hint"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0" />
 
     <TextView
-        android:id="@+id/com_pob_label"
+        android:id="@+id/com_pob_label_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/com_dob_label"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp"
-        android:ems="7"
+        android:layout_below="@id/com_dob_input"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
         android:text="@string/pob_label"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/com_pob_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/com_dob_input"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@id/com_pob_label_text"
+        android:contentDescription="@string/place_of_birth_info"
+        android:src="@drawable/ic_info_24px_color" />
 
     <AutoCompleteTextView
         android:id="@+id/com_pob_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/com_dob_input"
-        android:layout_marginTop="10dp"
-        android:layout_toEndOf="@id/com_pob_label"
+        android:layout_below="@id/com_pob_label_text"
         android:ems="10"
+        android:gravity="center_horizontal"
         android:hint="@string/placeOfBirth_hint"
         android:imeOptions="actionDone"
         app:layout_constraintEnd_toEndOf="parent"
@@ -147,8 +161,8 @@
         android:id="@+id/compute_reset_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/com_pob_label"
-        android:layout_marginTop="32dp"
+        android:layout_below="@id/com_pob_input"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_toStartOf="@+id/compute_button"
         android:contentDescription="@string/reset_button"
@@ -158,9 +172,9 @@
         android:id="@+id/compute_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/com_pob_label"
+        android:layout_below="@id/com_pob_input"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:background="@color/button"
         android:text="@string/computeBtn_it"
         android:textColor="@color/white" />
@@ -187,7 +201,7 @@
         android:id="@+id/fab_copy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <com.leinardi.android.speeddial.SpeedDialView
         android:id="@+id/speedDial"

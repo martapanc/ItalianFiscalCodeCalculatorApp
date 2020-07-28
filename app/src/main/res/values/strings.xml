@@ -102,5 +102,8 @@
     <string name="app_icon">App icon</string>
     <string name="fiscal_code_card">Fiscal Code card</string>
     <string name="fiscal_code_parts">Parts of the Fiscal Code</string>
+    <string name="place_of_birth_info">Place of birth info</string>
+    <string name="pob_info_text">Enter your Italian town of birth, or the foreign country you were born in.</string>
+    <string name="pob_info_close">Got it</string>
 
 </resources>

@@ -103,4 +103,8 @@
     <string name="fiscal_code_card">Fac-simile tessera sanitaria</string>
     <string name="fiscal_code_parts">Parti del Codice Fiscale</string>
 
+    <string name="place_of_birth_info">Informazioni sul Luogo di nascita</string>
+    <string name="pob_info_text">Inserisci il tuo comune di nascita, oppure il paese estero in cui sei nato.</string>
+    <string name="pob_info_close">Ok</string>
+
 </resources>
