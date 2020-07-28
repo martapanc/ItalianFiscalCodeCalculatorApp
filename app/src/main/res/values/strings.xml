@@ -56,10 +56,10 @@
     <string name="send">Send</string>
     <string name="cancel">Cancel</string>
     <string name="feedback_subtitle">Please describe any problem as accurately as possible.
-        Your feedback is anonymous and will only be used to improve the app.\n If you wish to message us
-        directly instead, you may find our details in the Info section or on the app\'s page on Play Store.\n
-        Thank you for your help!</string>
-    <string name="send_us_feedback">Send us feedback</string>
+        Your feedback is anonymous and will only be used to improve the app.\nIf you wish to message us
+        directly instead, you may find our details in the Info section or on the app\'s page on Play Store.
+        \nThank you for your help!</string>
+    <string name="send_us_feedback"><u>Send us feedback</u></string>
     <string name="email_sent_successfully">Feedback was sent successfully</string>
 
     <!-- T&Cs View -->

@@ -18,7 +18,8 @@
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
         android:text="@string/extract_prompt"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/ext_fiscalCodeInput_input"
@@ -26,11 +27,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ext_fiscalCodeInput_label"
         android:layout_centerHorizontal="true"
+        android:autofillHints=""
         android:hint="@string/sample_fiscal_code"
-        android:textAllCaps="true"
         android:inputType="text"
         android:textAlignment="center"
-        android:autofillHints="" />
+        android:textAllCaps="true" />
 
     <Button
         android:id="@+id/extract_data_button"
@@ -40,10 +41,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:background="@color/button"
-        android:textColor="@color/white"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
-        android:text="@string/extract_data_button" />
+        android:text="@string/extract_data_button"
+        android:textColor="@color/white" />
 
     <ImageButton
         android:id="@+id/extract_reset_button"
@@ -53,8 +54,8 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="20dp"
         android:layout_toStartOf="@+id/extract_data_button"
-        android:src="@drawable/ic_replay_24px"
-        android:contentDescription="@string/reset_button" />
+        android:contentDescription="@string/reset_button"
+        android:src="@drawable/ic_replay_24px" />
 
     <TextView
         android:id="@+id/ext_first_name_label"
@@ -74,8 +75,8 @@
         android:layout_below="@+id/extract_data_button"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="20dp"
-        android:hint="@string/name_code_hint"
-        android:layout_toEndOf="@id/ext_first_name_label" />
+        android:layout_toEndOf="@id/ext_first_name_label"
+        android:hint="@string/name_code_hint" />
 
     <TextView
         android:id="@+id/ext_last_name_label"
@@ -95,8 +96,8 @@
         android:layout_below="@+id/ext_first_name_text"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="5dp"
-        android:hint="@string/last_name_code_example"
-        android:layout_toEndOf="@id/ext_last_name_label" />
+        android:layout_toEndOf="@id/ext_last_name_label"
+        android:hint="@string/last_name_code_example" />
 
     <TextView
         android:id="@+id/ext_gender_label"
@@ -116,8 +117,8 @@
         android:layout_below="@+id/ext_last_name_text"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="5dp"
-        android:hint="@string/gender_example"
-        android:layout_toEndOf="@id/ext_gender_label" />
+        android:layout_toEndOf="@id/ext_gender_label"
+        android:hint="@string/gender_example" />
 
     <TextView
         android:id="@+id/ext_dob_label"
@@ -137,8 +138,8 @@
         android:layout_below="@+id/ext_gender_text"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="5dp"
-        android:hint="@string/dob_example"
-        android:layout_toEndOf="@id/ext_dob_label" />
+        android:layout_toEndOf="@id/ext_dob_label"
+        android:hint="@string/dob_example" />
 
     <TextView
         android:id="@+id/ext_pob_label"
@@ -157,9 +158,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/ext_dob_text"
         android:layout_alignParentEnd="true"
-        android:hint="@string/placeOfBirth_hint_2"
         android:layout_marginTop="5dp"
-        android:layout_toEndOf="@id/ext_pob_label" />
+        android:layout_toEndOf="@id/ext_pob_label"
+        android:hint="@string/placeOfBirth_hint_2" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/ext_fab_send"
@@ -171,7 +172,7 @@
         android:id="@+id/ext_fab_copy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <com.leinardi.android.speeddial.SpeedDialView
         android:id="@+id/ext_speedDial"

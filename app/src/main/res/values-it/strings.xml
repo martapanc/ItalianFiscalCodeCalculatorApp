@@ -60,7 +60,7 @@
         \nIl feedback è anonimo, e utilizzeremo queste informazioni esclusivamente per migliorare l\'app.
         Se desiderassi scriverci direttamente, trovi i dettagli nelle Info, o nella nostra pagina su Play Store.
         \nGrazie per il contributo! </string>
-    <string name="send_us_feedback">Mandaci un feedback</string>
+    <string name="send_us_feedback"><u>Mandaci un feedback</u></string>
     <string name="email_sent_successfully">Messaggio inviato con successo</string>
 
     <!-- T&Cs View -->
