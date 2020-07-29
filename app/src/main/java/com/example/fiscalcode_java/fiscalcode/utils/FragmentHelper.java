@@ -36,6 +36,9 @@ public class FragmentHelper {
     public static void setupGenderRadioButtons(View root, int maleRadioId, int femaleRadioId) {
         final RadioButton maleRadioButton = root.findViewById(maleRadioId);
         final RadioButton femaleRadioButton = root.findViewById(femaleRadioId);
+        maleRadioButton.setOnClickListener(view -> hideVirtualKeyboard(root));
+        femaleRadioButton.setOnClickListener(view -> hideVirtualKeyboard(root));
+
         maleRadioButton.setOnCheckedChangeListener(getRadioButtonListener(maleRadioButton));
         femaleRadioButton.setOnCheckedChangeListener(getRadioButtonListener(femaleRadioButton));
     }
