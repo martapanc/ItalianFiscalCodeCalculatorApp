@@ -1,11 +1,17 @@
 package com.example.fiscalcode_java.fiscalcode.constants;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
-public class DateFormatConstants {
+public class DateFormatAndLocaleConstants {
 
     public static final String DD_MM_YYYY = "dd/MM/yyyy";
+    public static final int minYear = 1900;
+
+    public static String getLanguage() {
+        return Locale.getDefault().getLanguage();
+    }
 
     public static Map<Integer, String> getMonthCodeMap() {
         Map<Integer, String> monthMap = new HashMap<>();

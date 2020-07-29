@@ -16,14 +16,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.fiscalcode_java.fiscalcode.constants.TableConstants;
 import com.example.fiscalcode_java.fiscalcode.constants.TableConstants_it;
 
-import java.util.Locale;
 import java.util.Objects;
+
+import static com.example.fiscalcode_java.fiscalcode.constants.DateFormatAndLocaleConstants.getLanguage;
 
 public class AboutActivity extends AppCompatActivity {
 
     private static final String UTF_8 = "UTF-8";
     private static final String TEXT_HTML = "text/html";
-    private final String LANGUAGE = Locale.getDefault().getLanguage();
+    private final String LANGUAGE = getLanguage();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

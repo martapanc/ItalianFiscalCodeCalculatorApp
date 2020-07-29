@@ -21,7 +21,7 @@ import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurname
 import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.pickFirstThreeConsonants;
 import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.pickFirstThreeVowels;
 import static com.example.fiscalcode_java.fiscalcode.computations.NameAndSurnameComputations.pickFirstTwoConsonantsAndFirstVowel;
-import static com.example.fiscalcode_java.fiscalcode.constants.DateFormatConstants.getMonthCodeMap;
+import static com.example.fiscalcode_java.fiscalcode.constants.DateFormatAndLocaleConstants.getMonthCodeMap;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 

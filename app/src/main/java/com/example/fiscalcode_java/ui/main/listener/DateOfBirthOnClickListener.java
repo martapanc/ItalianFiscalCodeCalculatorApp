@@ -12,7 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-import static com.example.fiscalcode_java.fiscalcode.constants.DateFormatConstants.DD_MM_YYYY;
+import static com.example.fiscalcode_java.fiscalcode.constants.DateFormatAndLocaleConstants.DD_MM_YYYY;
+import static com.example.fiscalcode_java.fiscalcode.constants.DateFormatAndLocaleConstants.minYear;
 
 public class DateOfBirthOnClickListener implements View.OnClickListener {
 
@@ -44,7 +45,7 @@ public class DateOfBirthOnClickListener implements View.OnClickListener {
                     dateTextView.setText(sdf.format(c.getTime()));
                 }, year, month, day);
 
-        cal.add(Calendar.YEAR, -90);
+        cal.set(minYear, 0, 1);
         datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
         datePickerDialog.getDatePicker().setMinDate(cal.getTimeInMillis());
         datePickerDialog.setTitle(view.getContext().getString(R.string.dob_label));

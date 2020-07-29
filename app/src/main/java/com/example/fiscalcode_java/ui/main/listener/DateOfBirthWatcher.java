@@ -11,7 +11,7 @@ import java.util.Objects;
 
 import lombok.SneakyThrows;
 
-import static com.example.fiscalcode_java.fiscalcode.constants.DateFormatConstants.DD_MM_YYYY;
+import static com.example.fiscalcode_java.fiscalcode.constants.DateFormatAndLocaleConstants.DD_MM_YYYY;
 
 public class DateOfBirthWatcher implements TextWatcher {
 

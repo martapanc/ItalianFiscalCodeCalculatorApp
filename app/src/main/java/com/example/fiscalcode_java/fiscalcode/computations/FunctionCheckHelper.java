@@ -1,6 +1,6 @@
 package com.example.fiscalcode_java.fiscalcode.computations;
 
-import com.example.fiscalcode_java.fiscalcode.constants.DateFormatConstants;
+import com.example.fiscalcode_java.fiscalcode.constants.DateFormatAndLocaleConstants;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -57,7 +57,7 @@ public class FunctionCheckHelper {
         if (isYearValid(year)) {
             String dateToCheck = day + "/" + month + "/" + year;
             Calendar.getInstance();
-            SimpleDateFormat sdf = new SimpleDateFormat(DateFormatConstants.DD_MM_YYYY, Locale.ITALY);
+            SimpleDateFormat sdf = new SimpleDateFormat(DateFormatAndLocaleConstants.DD_MM_YYYY, Locale.ITALY);
             sdf.setLenient(false);
             try {
                 sdf.parse(dateToCheck);

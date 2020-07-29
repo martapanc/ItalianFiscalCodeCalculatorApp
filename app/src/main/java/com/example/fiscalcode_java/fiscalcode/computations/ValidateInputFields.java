@@ -1,6 +1,6 @@
 package com.example.fiscalcode_java.fiscalcode.computations;
 
-import com.example.fiscalcode_java.fiscalcode.constants.DateFormatConstants;
+import com.example.fiscalcode_java.fiscalcode.constants.DateFormatAndLocaleConstants;
 import com.example.fiscalcode_java.fiscalcode.models.InputField;
 
 import java.text.ParseException;
@@ -43,7 +43,7 @@ public class ValidateInputFields {
     }
 
     private static boolean validateDateOfBirth(String input) {
-        SimpleDateFormat sdf = new SimpleDateFormat(DateFormatConstants.DD_MM_YYYY, Locale.ITALY);
+        SimpleDateFormat sdf = new SimpleDateFormat(DateFormatAndLocaleConstants.DD_MM_YYYY, Locale.ITALY);
         try {
             Date date = sdf.parse(input);
             Calendar cal = Calendar.getInstance();
