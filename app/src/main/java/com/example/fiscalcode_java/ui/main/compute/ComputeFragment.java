@@ -41,7 +41,6 @@ import com.leinardi.android.speeddial.SpeedDialView;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 
 import lombok.SneakyThrows;

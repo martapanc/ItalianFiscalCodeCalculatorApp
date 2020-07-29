@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -156,11 +157,11 @@ public class VerifyFragment extends Fragment {
             EditText lastName = activity.findViewById(R.id.ver_last_name_input);
             lastName.setText(EMPTY);
             lastName.setError(null);
+            RadioGroup radioGroup = activity.findViewById(R.id.ver_radioGroup);
+            radioGroup.clearCheck();
             RadioButton maleRadio = activity.findViewById(R.id.ver_maleRadioButton);
-            maleRadio.setChecked(false);
             maleRadio.setError(null);
             RadioButton femaleRadio = activity.findViewById(R.id.ver_femaleRadioButton);
-            femaleRadio.setChecked(false);
             femaleRadio.setError(null);
             TextView dob = activity.findViewById(R.id.ver_dob_input);
             dob.setText(EMPTY);
