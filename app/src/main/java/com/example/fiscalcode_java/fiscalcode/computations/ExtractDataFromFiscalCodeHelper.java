@@ -1,5 +1,9 @@
 package com.example.fiscalcode_java.fiscalcode.computations;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import com.example.fiscalcode_java.exception.FiscalCodeExtractionException;
 import com.example.fiscalcode_java.fiscalcode.constants.DateFormatAndLocaleConstants;
 import com.example.fiscalcode_java.fiscalcode.models.Country;
@@ -7,6 +11,7 @@ import com.example.fiscalcode_java.fiscalcode.models.FiscalCodeData;
 import com.example.fiscalcode_java.fiscalcode.models.Gender;
 import com.example.fiscalcode_java.fiscalcode.models.Town;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -40,8 +45,12 @@ public class ExtractDataFromFiscalCodeHelper {
             String monthInput = dobInput.substring(2, 3);
             String dayInput = dobInput.substring(3, 5);
 
-            Map<String, Integer> monthCodeInverseMap = DateFormatAndLocaleConstants.getMonthCodeMap().entrySet().stream()
-                    .collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey));
+            Map<String, Integer> monthCodeInverseMap = new HashMap<>();
+            for (Map.Entry<Integer, String> integerStringEntry : DateFormatAndLocaleConstants.getMonthCodeMap().entrySet()) {
+                if (monthCodeInverseMap.put(integerStringEntry.getValue(), integerStringEntry.getKey()) != null) {
+                    throw new IllegalStateException("Duplicate key");
+                }
+            }
             final Integer month = monthCodeInverseMap.get(monthInput);
 
             if (!validateDayBasedOnGender(dayInput, gender)) {
