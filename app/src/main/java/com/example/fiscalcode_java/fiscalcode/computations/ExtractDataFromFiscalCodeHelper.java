@@ -1,9 +1,5 @@
 package com.example.fiscalcode_java.fiscalcode.computations;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
 import com.example.fiscalcode_java.exception.FiscalCodeExtractionException;
 import com.example.fiscalcode_java.fiscalcode.constants.DateFormatAndLocaleConstants;
 import com.example.fiscalcode_java.fiscalcode.models.Country;
@@ -15,7 +11,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 

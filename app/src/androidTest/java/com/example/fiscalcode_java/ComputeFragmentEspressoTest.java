@@ -1,6 +1,5 @@
 package com.example.fiscalcode_java;
 
-import android.util.JsonReader;
 import android.widget.DatePicker;
 
 import androidx.test.espresso.contrib.PickerActions;
@@ -8,26 +7,12 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
-import com.example.fiscalcode_java.fiscalcode.models.Town;
-import com.example.fiscalcode_java.fiscalcode.utils.ReadTownListHelper;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-
 import org.hamcrest.Matchers;
 import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 import static androidx.test.espresso.Espresso.onView;
@@ -41,7 +26,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.isNotChecked;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static com.example.fiscalcode_java.TestConstants.INVALID_DOB;
 import static com.example.fiscalcode_java.TestConstants.INVALID_INPUT;
 import static com.example.fiscalcode_java.TestConstants.INVALID_LAST_NAME;
