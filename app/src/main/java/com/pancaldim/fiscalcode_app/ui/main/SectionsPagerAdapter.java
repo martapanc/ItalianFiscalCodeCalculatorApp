@@ -1,4 +1,4 @@
-package com.pancaldim.fiscalcode.ui.main;
+package com.pancaldim.fiscalcode_app.ui.main;
 
 import android.content.Context;
 
@@ -8,10 +8,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.pancaldim.fiscalcode.R;
-import com.pancaldim.fiscalcode.ui.main.compute.ComputeFragment;
-import com.pancaldim.fiscalcode.ui.main.extract.ExtractFragment;
-import com.pancaldim.fiscalcode.ui.main.verify.VerifyFragment;
+import com.pancaldim.fiscalcode_app.R;
+import com.pancaldim.fiscalcode_app.ui.main.compute.ComputeFragment;
+import com.pancaldim.fiscalcode_app.ui.main.extract.ExtractFragment;
+import com.pancaldim.fiscalcode_app.ui.main.verify.VerifyFragment;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 

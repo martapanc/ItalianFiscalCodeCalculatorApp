@@ -1,4 +1,4 @@
-package com.pancaldim.fiscalcode.ui.main.verify;
+package com.pancaldim.fiscalcode_app.ui.main.verify;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -22,13 +22,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.pancaldim.fiscalcode.R;
-import com.pancaldim.fiscalcode.exception.FiscalCodeComputationException;
-import com.pancaldim.fiscalcode.fiscalcode.computations.ComputeFiscalCodeHelper;
-import com.pancaldim.fiscalcode.fiscalcode.models.Country;
-import com.pancaldim.fiscalcode.fiscalcode.models.Town;
-import com.pancaldim.fiscalcode.fiscalcode.utils.ReadTownListHelper;
-import com.pancaldim.fiscalcode.ui.main.compute.ComputeViewModel;
+import com.pancaldim.fiscalcode_app.R;
+import com.pancaldim.fiscalcode_app.exception.FiscalCodeComputationException;
+import com.pancaldim.fiscalcode_app.fiscalcode.computations.ComputeFiscalCodeHelper;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.Country;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.Town;
+import com.pancaldim.fiscalcode_app.fiscalcode.utils.ReadTownListHelper;
+import com.pancaldim.fiscalcode_app.ui.main.compute.ComputeViewModel;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -36,18 +36,18 @@ import java.util.List;
 
 import lombok.SneakyThrows;
 
-import static com.pancaldim.fiscalcode.fiscalcode.constants.ErrorMapConstants.getErrorMap;
-import static com.pancaldim.fiscalcode.fiscalcode.models.InputField.DATE_OF_BIRTH;
-import static com.pancaldim.fiscalcode.fiscalcode.models.InputField.FIRST_NAME;
-import static com.pancaldim.fiscalcode.fiscalcode.models.InputField.FISCAL_CODE;
-import static com.pancaldim.fiscalcode.fiscalcode.models.InputField.LAST_NAME;
-import static com.pancaldim.fiscalcode.fiscalcode.models.InputField.PLACE_OF_BIRTH;
-import static com.pancaldim.fiscalcode.fiscalcode.models.InputField.validateField;
-import static com.pancaldim.fiscalcode.fiscalcode.utils.FragmentHelper.hideVirtualKeyboard;
-import static com.pancaldim.fiscalcode.fiscalcode.utils.FragmentHelper.initCalendar;
-import static com.pancaldim.fiscalcode.fiscalcode.utils.FragmentHelper.setupDateOfBirth;
-import static com.pancaldim.fiscalcode.fiscalcode.utils.FragmentHelper.setupGenderRadioButtons;
-import static com.pancaldim.fiscalcode.fiscalcode.utils.FragmentHelper.setupPlaceOfBirth;
+import static com.pancaldim.fiscalcode_app.fiscalcode.constants.ErrorMapConstants.getErrorMap;
+import static com.pancaldim.fiscalcode_app.fiscalcode.models.InputField.DATE_OF_BIRTH;
+import static com.pancaldim.fiscalcode_app.fiscalcode.models.InputField.FIRST_NAME;
+import static com.pancaldim.fiscalcode_app.fiscalcode.models.InputField.FISCAL_CODE;
+import static com.pancaldim.fiscalcode_app.fiscalcode.models.InputField.LAST_NAME;
+import static com.pancaldim.fiscalcode_app.fiscalcode.models.InputField.PLACE_OF_BIRTH;
+import static com.pancaldim.fiscalcode_app.fiscalcode.models.InputField.validateField;
+import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.hideVirtualKeyboard;
+import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.initCalendar;
+import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.setupDateOfBirth;
+import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.setupGenderRadioButtons;
+import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.setupPlaceOfBirth;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 public class VerifyFragment extends Fragment {

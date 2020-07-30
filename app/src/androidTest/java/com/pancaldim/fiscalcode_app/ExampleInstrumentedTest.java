@@ -1,4 +1,4 @@
-package com.pancaldim.fiscalcode;
+package com.pancaldim.fiscalcode_app;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.fiscalcode_java", appContext.getPackageName());
+        assertEquals("com.pancaldim.fiscalcode_app", appContext.getPackageName());
     }
 }

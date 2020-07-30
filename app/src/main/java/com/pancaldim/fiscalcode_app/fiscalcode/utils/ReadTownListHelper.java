@@ -1,7 +1,7 @@
-package com.pancaldim.fiscalcode.fiscalcode.utils;
+package com.pancaldim.fiscalcode_app.fiscalcode.utils;
 
-import com.pancaldim.fiscalcode.fiscalcode.models.Country;
-import com.pancaldim.fiscalcode.fiscalcode.models.Town;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.Country;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.Town;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

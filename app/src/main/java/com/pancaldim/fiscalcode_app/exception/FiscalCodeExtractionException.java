@@ -1,4 +1,4 @@
-package com.pancaldim.fiscalcode.exception;
+package com.pancaldim.fiscalcode_app.exception;
 
 public class FiscalCodeExtractionException extends Exception {
 

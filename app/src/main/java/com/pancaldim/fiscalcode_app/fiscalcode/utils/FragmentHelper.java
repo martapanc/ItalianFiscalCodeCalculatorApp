@@ -1,4 +1,4 @@
-package com.pancaldim.fiscalcode.fiscalcode.utils;
+package com.pancaldim.fiscalcode_app.fiscalcode.utils;
 
 import android.content.Context;
 import android.text.InputType;
@@ -10,8 +10,8 @@ import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import com.pancaldim.fiscalcode.ui.main.listener.DateOfBirthOnClickListener;
-import com.pancaldim.fiscalcode.ui.main.listener.DateOfBirthWatcher;
+import com.pancaldim.fiscalcode_app.ui.main.listener.DateOfBirthOnClickListener;
+import com.pancaldim.fiscalcode_app.ui.main.listener.DateOfBirthWatcher;
 
 import java.util.Calendar;
 import java.util.Objects;

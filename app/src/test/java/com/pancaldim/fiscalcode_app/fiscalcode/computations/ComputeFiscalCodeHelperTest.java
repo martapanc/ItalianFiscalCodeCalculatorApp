@@ -1,6 +1,6 @@
-package com.pancaldim.fiscalcode.fiscalcode.computations;
+package com.pancaldim.fiscalcode_app.fiscalcode.computations;
 
-import com.pancaldim.fiscalcode.exception.FiscalCodeComputationException;
+import com.pancaldim.fiscalcode_app.exception.FiscalCodeComputationException;
 
 import org.junit.Test;
 

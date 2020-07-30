@@ -1,4 +1,4 @@
-package com.pancaldim.fiscalcode.ui.main.extract;
+package com.pancaldim.fiscalcode_app.ui.main.extract;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -22,15 +22,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.pancaldim.fiscalcode.R;
-import com.pancaldim.fiscalcode.exception.FiscalCodeExtractionException;
-import com.pancaldim.fiscalcode.fiscalcode.computations.ExtractDataFromFiscalCodeHelper;
-import com.pancaldim.fiscalcode.fiscalcode.computations.ValidateInputFields;
-import com.pancaldim.fiscalcode.fiscalcode.models.Country;
-import com.pancaldim.fiscalcode.fiscalcode.models.FiscalCodeData;
-import com.pancaldim.fiscalcode.fiscalcode.models.Gender;
-import com.pancaldim.fiscalcode.fiscalcode.models.InputField;
-import com.pancaldim.fiscalcode.fiscalcode.models.Town;
+import com.pancaldim.fiscalcode_app.R;
+import com.pancaldim.fiscalcode_app.exception.FiscalCodeExtractionException;
+import com.pancaldim.fiscalcode_app.fiscalcode.computations.ExtractDataFromFiscalCodeHelper;
+import com.pancaldim.fiscalcode_app.fiscalcode.computations.ValidateInputFields;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.Country;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.FiscalCodeData;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.Gender;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.InputField;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.Town;
 import com.google.android.material.snackbar.Snackbar;
 import com.leinardi.android.speeddial.SpeedDialActionItem;
 import com.leinardi.android.speeddial.SpeedDialView;
@@ -40,8 +40,8 @@ import java.util.Objects;
 
 import lombok.SneakyThrows;
 
-import static com.pancaldim.fiscalcode.fiscalcode.constants.ErrorMapConstants.getErrorMap;
-import static com.pancaldim.fiscalcode.fiscalcode.utils.FragmentHelper.hideVirtualKeyboard;
+import static com.pancaldim.fiscalcode_app.fiscalcode.constants.ErrorMapConstants.getErrorMap;
+import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.hideVirtualKeyboard;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 public class ExtractFragment extends Fragment {

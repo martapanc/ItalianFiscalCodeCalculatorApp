@@ -1,7 +1,7 @@
-package com.pancaldim.fiscalcode.fiscalcode.computations;
+package com.pancaldim.fiscalcode_app.fiscalcode.computations;
 
-import com.pancaldim.fiscalcode.fiscalcode.constants.DateFormatAndLocaleConstants;
-import com.pancaldim.fiscalcode.fiscalcode.models.InputField;
+import com.pancaldim.fiscalcode_app.fiscalcode.constants.DateFormatAndLocaleConstants;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.InputField;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,10 +10,10 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
 
-import static com.pancaldim.fiscalcode.fiscalcode.computations.FunctionCheckHelper.isAllLetters;
-import static com.pancaldim.fiscalcode.fiscalcode.computations.FunctionCheckHelper.isDateValid;
-import static com.pancaldim.fiscalcode.fiscalcode.computations.FunctionCheckHelper.isFiscalCodeValid;
-import static com.pancaldim.fiscalcode.fiscalcode.computations.FunctionCheckHelper.replaceSpecialChars;
+import static com.pancaldim.fiscalcode_app.fiscalcode.computations.FunctionCheckHelper.isAllLetters;
+import static com.pancaldim.fiscalcode_app.fiscalcode.computations.FunctionCheckHelper.isDateValid;
+import static com.pancaldim.fiscalcode_app.fiscalcode.computations.FunctionCheckHelper.isFiscalCodeValid;
+import static com.pancaldim.fiscalcode_app.fiscalcode.computations.FunctionCheckHelper.replaceSpecialChars;
 
 public class ValidateInputFields {
 

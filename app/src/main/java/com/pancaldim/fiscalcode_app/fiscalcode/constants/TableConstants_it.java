@@ -1,6 +1,6 @@
-package com.pancaldim.fiscalcode.fiscalcode.constants;
+package com.pancaldim.fiscalcode_app.fiscalcode.constants;
 
-import static com.pancaldim.fiscalcode.fiscalcode.constants.TableConstants.HEADER_COLOR;
+import static com.pancaldim.fiscalcode_app.fiscalcode.constants.TableConstants.HEADER_COLOR;
 
 public class TableConstants_it {
 

@@ -1,4 +1,4 @@
-package com.pancaldim.fiscalcode;
+package com.pancaldim.fiscalcode_app;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
-import com.pancaldim.fiscalcode.ui.main.SectionsPagerAdapter;
+import com.pancaldim.fiscalcode_app.ui.main.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {

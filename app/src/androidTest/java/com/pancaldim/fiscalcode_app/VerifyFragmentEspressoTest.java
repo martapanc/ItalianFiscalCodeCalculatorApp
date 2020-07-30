@@ -1,4 +1,4 @@
-package com.pancaldim.fiscalcode;
+package com.pancaldim.fiscalcode_app;
 
 import android.widget.DatePicker;
 
@@ -25,16 +25,16 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static com.pancaldim.fiscalcode.TestConstants.CORRECT_FC;
-import static com.pancaldim.fiscalcode.TestConstants.INCORRECT_FC;
-import static com.pancaldim.fiscalcode.TestConstants.OK;
-import static com.pancaldim.fiscalcode.TestConstants.VALID_DAY;
-import static com.pancaldim.fiscalcode.TestConstants.VALID_FISCAL_CODE;
-import static com.pancaldim.fiscalcode.TestConstants.VALID_LAST_NAME;
-import static com.pancaldim.fiscalcode.TestConstants.VALID_MONTH;
-import static com.pancaldim.fiscalcode.TestConstants.VALID_NAME;
-import static com.pancaldim.fiscalcode.TestConstants.VALID_TOWN;
-import static com.pancaldim.fiscalcode.TestConstants.VALID_YEAR;
+import static com.pancaldim.fiscalcode_app.TestConstants.CORRECT_FC;
+import static com.pancaldim.fiscalcode_app.TestConstants.INCORRECT_FC;
+import static com.pancaldim.fiscalcode_app.TestConstants.OK;
+import static com.pancaldim.fiscalcode_app.TestConstants.VALID_DAY;
+import static com.pancaldim.fiscalcode_app.TestConstants.VALID_FISCAL_CODE;
+import static com.pancaldim.fiscalcode_app.TestConstants.VALID_LAST_NAME;
+import static com.pancaldim.fiscalcode_app.TestConstants.VALID_MONTH;
+import static com.pancaldim.fiscalcode_app.TestConstants.VALID_NAME;
+import static com.pancaldim.fiscalcode_app.TestConstants.VALID_TOWN;
+import static com.pancaldim.fiscalcode_app.TestConstants.VALID_YEAR;
 import static org.hamcrest.Matchers.containsString;
 
 @RunWith(AndroidJUnit4.class)

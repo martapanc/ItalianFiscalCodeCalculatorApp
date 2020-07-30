@@ -1,4 +1,4 @@
-package com.pancaldim.fiscalcode;
+package com.pancaldim.fiscalcode_app;
 
 public class TestConstants {
 

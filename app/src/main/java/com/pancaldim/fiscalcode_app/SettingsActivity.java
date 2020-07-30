@@ -1,4 +1,4 @@
-package com.pancaldim.fiscalcode;
+package com.pancaldim.fiscalcode_app;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -23,7 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
-import com.pancaldim.fiscalcode.fiscalcode.utils.FirebaseHelper;
+import com.pancaldim.fiscalcode_app.fiscalcode.utils.FirebaseHelper;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 

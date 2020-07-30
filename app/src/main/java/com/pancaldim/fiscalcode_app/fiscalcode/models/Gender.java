@@ -1,4 +1,4 @@
-package com.pancaldim.fiscalcode.fiscalcode.models;
+package com.pancaldim.fiscalcode_app.fiscalcode.models;
 
 public enum Gender {
     M, F

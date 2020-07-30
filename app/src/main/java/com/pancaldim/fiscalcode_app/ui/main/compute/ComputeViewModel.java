@@ -1,14 +1,14 @@
-package com.pancaldim.fiscalcode.ui.main.compute;
+package com.pancaldim.fiscalcode_app.ui.main.compute;
 
 import android.content.Context;
 
 import androidx.lifecycle.ViewModel;
 
-import com.pancaldim.fiscalcode.fiscalcode.utils.ReadTownListHelper;
+import com.pancaldim.fiscalcode_app.fiscalcode.utils.ReadTownListHelper;
 
 import java.io.IOException;
 
-import static com.pancaldim.fiscalcode.fiscalcode.constants.DateFormatAndLocaleConstants.getLanguage;
+import static com.pancaldim.fiscalcode_app.fiscalcode.constants.DateFormatAndLocaleConstants.getLanguage;
 
 public class ComputeViewModel extends ViewModel {
 

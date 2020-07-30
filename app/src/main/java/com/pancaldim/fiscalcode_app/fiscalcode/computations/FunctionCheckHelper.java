@@ -1,6 +1,6 @@
-package com.pancaldim.fiscalcode.fiscalcode.computations;
+package com.pancaldim.fiscalcode_app.fiscalcode.computations;
 
-import com.pancaldim.fiscalcode.fiscalcode.constants.DateFormatAndLocaleConstants;
+import com.pancaldim.fiscalcode_app.fiscalcode.constants.DateFormatAndLocaleConstants;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

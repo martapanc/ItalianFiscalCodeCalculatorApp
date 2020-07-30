@@ -1,4 +1,4 @@
-package com.pancaldim.fiscalcode.ui.main.listener;
+package com.pancaldim.fiscalcode_app.ui.main.listener;
 
 import android.app.DatePickerDialog;
 import android.view.View;
@@ -6,14 +6,14 @@ import android.widget.TextView;
 
 import androidx.fragment.app.FragmentActivity;
 
-import com.pancaldim.fiscalcode.R;
+import com.pancaldim.fiscalcode_app.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-import static com.pancaldim.fiscalcode.fiscalcode.constants.DateFormatAndLocaleConstants.DD_MM_YYYY;
-import static com.pancaldim.fiscalcode.fiscalcode.constants.DateFormatAndLocaleConstants.minYear;
+import static com.pancaldim.fiscalcode_app.fiscalcode.constants.DateFormatAndLocaleConstants.DD_MM_YYYY;
+import static com.pancaldim.fiscalcode_app.fiscalcode.constants.DateFormatAndLocaleConstants.minYear;
 
 public class DateOfBirthOnClickListener implements View.OnClickListener {
 

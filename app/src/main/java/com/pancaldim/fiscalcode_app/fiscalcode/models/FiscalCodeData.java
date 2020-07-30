@@ -1,8 +1,8 @@
-package com.pancaldim.fiscalcode.fiscalcode.models;
+package com.pancaldim.fiscalcode_app.fiscalcode.models;
 
 import android.content.res.Resources;
 
-import com.pancaldim.fiscalcode.R;
+import com.pancaldim.fiscalcode_app.R;
 
 import java.text.MessageFormat;
 

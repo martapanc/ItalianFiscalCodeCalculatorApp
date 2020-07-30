@@ -1,4 +1,4 @@
-package com.pancaldim.fiscalcode.fiscalcode.utils;
+package com.pancaldim.fiscalcode_app.fiscalcode.utils;
 
 import android.content.Context;
 import android.util.Log;

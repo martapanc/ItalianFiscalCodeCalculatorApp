@@ -1,17 +1,17 @@
-package com.pancaldim.fiscalcode.ui.main.extract;
+package com.pancaldim.fiscalcode_app.ui.main.extract;
 
 import android.content.Context;
 
 import androidx.lifecycle.ViewModel;
 
-import com.pancaldim.fiscalcode.fiscalcode.models.Country;
-import com.pancaldim.fiscalcode.fiscalcode.models.Town;
-import com.pancaldim.fiscalcode.fiscalcode.utils.ReadTownListHelper;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.Country;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.Town;
+import com.pancaldim.fiscalcode_app.fiscalcode.utils.ReadTownListHelper;
 
 import java.io.IOException;
 import java.util.List;
 
-import static com.pancaldim.fiscalcode.fiscalcode.constants.DateFormatAndLocaleConstants.getLanguage;
+import static com.pancaldim.fiscalcode_app.fiscalcode.constants.DateFormatAndLocaleConstants.getLanguage;
 
 public class ExtractViewModel extends ViewModel {
 

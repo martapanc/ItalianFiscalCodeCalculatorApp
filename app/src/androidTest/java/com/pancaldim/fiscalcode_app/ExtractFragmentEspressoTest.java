@@ -1,4 +1,4 @@
-package com.pancaldim.fiscalcode;
+package com.pancaldim.fiscalcode_app;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
@@ -23,11 +23,11 @@ import static androidx.test.espresso.matcher.ViewMatchers.hasErrorText;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static com.pancaldim.fiscalcode.TestConstants.DAY_RANGE_ERROR;
-import static com.pancaldim.fiscalcode.TestConstants.VALID_DOB_SHORT;
-import static com.pancaldim.fiscalcode.TestConstants.VALID_FISCAL_CODE;
-import static com.pancaldim.fiscalcode.TestConstants.VALID_TOWN;
-import static com.pancaldim.fiscalcode.TestConstants.WRONG_FORMAT;
+import static com.pancaldim.fiscalcode_app.TestConstants.DAY_RANGE_ERROR;
+import static com.pancaldim.fiscalcode_app.TestConstants.VALID_DOB_SHORT;
+import static com.pancaldim.fiscalcode_app.TestConstants.VALID_FISCAL_CODE;
+import static com.pancaldim.fiscalcode_app.TestConstants.VALID_TOWN;
+import static com.pancaldim.fiscalcode_app.TestConstants.WRONG_FORMAT;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
 

@@ -1,4 +1,4 @@
-package com.pancaldim.fiscalcode.ui.main.listener;
+package com.pancaldim.fiscalcode_app.ui.main.listener;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -11,7 +11,7 @@ import java.util.Objects;
 
 import lombok.SneakyThrows;
 
-import static com.pancaldim.fiscalcode.fiscalcode.constants.DateFormatAndLocaleConstants.DD_MM_YYYY;
+import static com.pancaldim.fiscalcode_app.fiscalcode.constants.DateFormatAndLocaleConstants.DD_MM_YYYY;
 
 public class DateOfBirthWatcher implements TextWatcher {
 

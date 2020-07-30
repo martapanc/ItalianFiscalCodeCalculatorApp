@@ -1,27 +1,27 @@
-package com.pancaldim.fiscalcode.fiscalcode.computations;
+package com.pancaldim.fiscalcode_app.fiscalcode.computations;
 
-import com.pancaldim.fiscalcode.exception.FiscalCodeComputationException;
-import com.pancaldim.fiscalcode.fiscalcode.models.Country;
-import com.pancaldim.fiscalcode.fiscalcode.models.Town;
+import com.pancaldim.fiscalcode_app.exception.FiscalCodeComputationException;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.Country;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.Town;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.pancaldim.fiscalcode.fiscalcode.computations.FunctionCheckHelper.CONSONANTS;
-import static com.pancaldim.fiscalcode.fiscalcode.computations.FunctionCheckHelper.howManyLettersOfType;
-import static com.pancaldim.fiscalcode.fiscalcode.computations.FunctionCheckHelper.isAllLetters;
-import static com.pancaldim.fiscalcode.fiscalcode.computations.FunctionCheckHelper.isDateValid;
-import static com.pancaldim.fiscalcode.fiscalcode.computations.FunctionCheckHelper.isTwoLettersAndVowelBeforeConsonant;
-import static com.pancaldim.fiscalcode.fiscalcode.computations.FunctionCheckHelper.isYearValid;
-import static com.pancaldim.fiscalcode.fiscalcode.computations.FunctionCheckHelper.replaceSpecialChars;
-import static com.pancaldim.fiscalcode.fiscalcode.computations.FunctionCheckHelper.swapIfVowelBeforeConsonant;
-import static com.pancaldim.fiscalcode.fiscalcode.computations.NameAndSurnameComputations.pickFirstAndThirdAndFourthConsonant;
-import static com.pancaldim.fiscalcode.fiscalcode.computations.NameAndSurnameComputations.pickFirstConsonantAndFirstTwoVowels;
-import static com.pancaldim.fiscalcode.fiscalcode.computations.NameAndSurnameComputations.pickFirstThreeConsonants;
-import static com.pancaldim.fiscalcode.fiscalcode.computations.NameAndSurnameComputations.pickFirstThreeVowels;
-import static com.pancaldim.fiscalcode.fiscalcode.computations.NameAndSurnameComputations.pickFirstTwoConsonantsAndFirstVowel;
-import static com.pancaldim.fiscalcode.fiscalcode.constants.DateFormatAndLocaleConstants.getMonthCodeMap;
+import static com.pancaldim.fiscalcode_app.fiscalcode.computations.FunctionCheckHelper.CONSONANTS;
+import static com.pancaldim.fiscalcode_app.fiscalcode.computations.FunctionCheckHelper.howManyLettersOfType;
+import static com.pancaldim.fiscalcode_app.fiscalcode.computations.FunctionCheckHelper.isAllLetters;
+import static com.pancaldim.fiscalcode_app.fiscalcode.computations.FunctionCheckHelper.isDateValid;
+import static com.pancaldim.fiscalcode_app.fiscalcode.computations.FunctionCheckHelper.isTwoLettersAndVowelBeforeConsonant;
+import static com.pancaldim.fiscalcode_app.fiscalcode.computations.FunctionCheckHelper.isYearValid;
+import static com.pancaldim.fiscalcode_app.fiscalcode.computations.FunctionCheckHelper.replaceSpecialChars;
+import static com.pancaldim.fiscalcode_app.fiscalcode.computations.FunctionCheckHelper.swapIfVowelBeforeConsonant;
+import static com.pancaldim.fiscalcode_app.fiscalcode.computations.NameAndSurnameComputations.pickFirstAndThirdAndFourthConsonant;
+import static com.pancaldim.fiscalcode_app.fiscalcode.computations.NameAndSurnameComputations.pickFirstConsonantAndFirstTwoVowels;
+import static com.pancaldim.fiscalcode_app.fiscalcode.computations.NameAndSurnameComputations.pickFirstThreeConsonants;
+import static com.pancaldim.fiscalcode_app.fiscalcode.computations.NameAndSurnameComputations.pickFirstThreeVowels;
+import static com.pancaldim.fiscalcode_app.fiscalcode.computations.NameAndSurnameComputations.pickFirstTwoConsonantsAndFirstVowel;
+import static com.pancaldim.fiscalcode_app.fiscalcode.constants.DateFormatAndLocaleConstants.getMonthCodeMap;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 

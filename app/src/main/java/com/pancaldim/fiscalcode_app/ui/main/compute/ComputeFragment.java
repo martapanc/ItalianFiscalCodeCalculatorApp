@@ -1,4 +1,4 @@
-package com.pancaldim.fiscalcode.ui.main.compute;
+package com.pancaldim.fiscalcode_app.ui.main.compute;
 
 import android.app.Dialog;
 import android.content.ClipData;
@@ -26,14 +26,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.pancaldim.fiscalcode.R;
-import com.pancaldim.fiscalcode.exception.FiscalCodeComputationException;
-import com.pancaldim.fiscalcode.fiscalcode.computations.ComputeFiscalCodeHelper;
-import com.pancaldim.fiscalcode.fiscalcode.models.Country;
-import com.pancaldim.fiscalcode.fiscalcode.models.InputField;
-import com.pancaldim.fiscalcode.fiscalcode.models.Town;
-import com.pancaldim.fiscalcode.fiscalcode.utils.FragmentHelper;
-import com.pancaldim.fiscalcode.fiscalcode.utils.ReadTownListHelper;
+import com.pancaldim.fiscalcode_app.R;
+import com.pancaldim.fiscalcode_app.exception.FiscalCodeComputationException;
+import com.pancaldim.fiscalcode_app.fiscalcode.computations.ComputeFiscalCodeHelper;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.Country;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.InputField;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.Town;
+import com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper;
+import com.pancaldim.fiscalcode_app.fiscalcode.utils.ReadTownListHelper;
 import com.google.android.material.snackbar.Snackbar;
 import com.leinardi.android.speeddial.SpeedDialActionItem;
 import com.leinardi.android.speeddial.SpeedDialView;
@@ -45,11 +45,11 @@ import java.util.Objects;
 
 import lombok.SneakyThrows;
 
-import static com.pancaldim.fiscalcode.fiscalcode.constants.ErrorMapConstants.getErrorMap;
-import static com.pancaldim.fiscalcode.fiscalcode.utils.FragmentHelper.initCalendar;
-import static com.pancaldim.fiscalcode.fiscalcode.utils.FragmentHelper.setupDateOfBirth;
-import static com.pancaldim.fiscalcode.fiscalcode.utils.FragmentHelper.setupGenderRadioButtons;
-import static com.pancaldim.fiscalcode.fiscalcode.utils.FragmentHelper.setupPlaceOfBirth;
+import static com.pancaldim.fiscalcode_app.fiscalcode.constants.ErrorMapConstants.getErrorMap;
+import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.initCalendar;
+import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.setupDateOfBirth;
+import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.setupGenderRadioButtons;
+import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.setupPlaceOfBirth;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 public class ComputeFragment extends Fragment {

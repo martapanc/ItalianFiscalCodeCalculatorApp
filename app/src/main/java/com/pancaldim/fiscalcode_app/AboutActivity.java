@@ -1,4 +1,4 @@
-package com.pancaldim.fiscalcode;
+package com.pancaldim.fiscalcode_app;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,12 +13,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.pancaldim.fiscalcode.fiscalcode.constants.TableConstants;
-import com.pancaldim.fiscalcode.fiscalcode.constants.TableConstants_it;
+import com.pancaldim.fiscalcode_app.fiscalcode.constants.TableConstants;
+import com.pancaldim.fiscalcode_app.fiscalcode.constants.TableConstants_it;
 
 import java.util.Objects;
 
-import static com.pancaldim.fiscalcode.fiscalcode.constants.DateFormatAndLocaleConstants.getLanguage;
+import static com.pancaldim.fiscalcode_app.fiscalcode.constants.DateFormatAndLocaleConstants.getLanguage;
 
 public class AboutActivity extends AppCompatActivity {
 

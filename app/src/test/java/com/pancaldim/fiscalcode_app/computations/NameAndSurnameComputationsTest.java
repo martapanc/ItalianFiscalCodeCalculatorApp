@@ -1,6 +1,6 @@
-package com.pancaldim.fiscalcode.computations;
+package com.pancaldim.fiscalcode_app.computations;
 
-import com.pancaldim.fiscalcode.fiscalcode.computations.NameAndSurnameComputations;
+import com.pancaldim.fiscalcode_app.fiscalcode.computations.NameAndSurnameComputations;
 
 import org.junit.Test;
 

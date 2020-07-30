@@ -1,4 +1,4 @@
-package com.pancaldim.fiscalcode.fiscalcode.constants;
+package com.pancaldim.fiscalcode_app.fiscalcode.constants;
 
 import java.util.HashMap;
 import java.util.Locale;

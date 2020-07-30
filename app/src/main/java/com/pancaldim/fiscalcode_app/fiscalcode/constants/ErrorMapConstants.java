@@ -1,6 +1,6 @@
-package com.pancaldim.fiscalcode.fiscalcode.constants;
+package com.pancaldim.fiscalcode_app.fiscalcode.constants;
 
-import com.pancaldim.fiscalcode.R;
+import com.pancaldim.fiscalcode_app.R;
 
 import java.util.HashMap;
 import java.util.Map;

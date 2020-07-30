@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.fiscalcode_java">
+    package="com.pancaldim.fiscalcode_app">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -14,7 +14,7 @@
         android:fullBackupContent="@xml/backup_descriptor">
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.pancaldim.fiscalcode_app.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -25,18 +25,18 @@
         </activity>
 
         <activity
-            android:name=".AboutActivity"
+            android:name="com.pancaldim.fiscalcode_app.AboutActivity"
             android:label="@string/fc_info"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName="com.pancaldim.fiscalcode_app.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.fiscalcode_java.MainActivity" />
+                android:value="com.pancaldim.fiscalcode_app.MainActivity" />
         </activity>
 
         <activity
-            android:name=".SettingsActivity"
+            android:name="com.pancaldim.fiscalcode_app.SettingsActivity"
             android:label="@string/settings"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName="com.pancaldim.fiscalcode_app.MainActivity" />
     </application>
 
 </manifest>

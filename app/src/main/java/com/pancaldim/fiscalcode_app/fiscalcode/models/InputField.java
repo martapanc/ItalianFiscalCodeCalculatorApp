@@ -1,4 +1,4 @@
-package com.pancaldim.fiscalcode.fiscalcode.models;
+package com.pancaldim.fiscalcode_app.fiscalcode.models;
 
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -6,8 +6,8 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.pancaldim.fiscalcode.R;
-import com.pancaldim.fiscalcode.fiscalcode.computations.ValidateInputFields;
+import com.pancaldim.fiscalcode_app.R;
+import com.pancaldim.fiscalcode_app.fiscalcode.computations.ValidateInputFields;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 

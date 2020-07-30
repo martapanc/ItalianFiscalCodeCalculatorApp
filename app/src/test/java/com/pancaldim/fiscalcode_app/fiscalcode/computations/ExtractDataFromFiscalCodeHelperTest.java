@@ -1,7 +1,7 @@
-package com.pancaldim.fiscalcode.fiscalcode.computations;
+package com.pancaldim.fiscalcode_app.fiscalcode.computations;
 
-import com.pancaldim.fiscalcode.exception.FiscalCodeExtractionException;
-import com.pancaldim.fiscalcode.fiscalcode.models.Gender;
+import com.pancaldim.fiscalcode_app.exception.FiscalCodeExtractionException;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.Gender;
 
 import org.junit.Test;
 
