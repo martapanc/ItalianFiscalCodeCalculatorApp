@@ -13,7 +13,7 @@
     <string name="ch1_title"><b>Generazione del codice fiscale</b></string>
     <string name="ch1_text">
         Per le persone fisiche, il codice è composto da 16 caratteri alfanumerici,
-        e viene generato tramite l'algoritmo illustrato di seguito.
+        e viene generato tramite l\'algoritmo illustrato di seguito.
     </string>
 
     <string name="ch_surname_title"><b>Cognome (3 lettere)</b></string>
