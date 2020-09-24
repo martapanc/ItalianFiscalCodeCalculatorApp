@@ -21,4 +21,13 @@
         android:layout_below="@id/privacy_title"
         android:layout_marginBottom="15dp"
         android:text="@string/privacy_1" />
+
+    <TextView
+        android:id="@+id/terms_link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/terms_1"
+        android:layout_marginBottom="20dp"
+        android:text="@string/privacy_link" />
+
 </RelativeLayout>

@@ -43,9 +43,17 @@
         android:text="@string/disclaimer_3" />
 
     <TextView
+        android:id="@+id/terms_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/terms_3"
+        android:layout_marginBottom="20dp"
+        android:text="@string/tc_link" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/terms_4"
         android:gravity="center_horizontal"
         android:text="@string/copyright"
         android:textSize="12sp"
