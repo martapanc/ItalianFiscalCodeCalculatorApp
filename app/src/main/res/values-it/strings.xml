@@ -76,6 +76,7 @@
     <string name="disclaimer_3">L\'uso per scopi illegali di un codice fiscale è vietato e severamente punito dalla legge.
         \nSi declina ogni responsabilità per qualsiasi uso improprio del codice ottenuto tramite <i>Calcolo del Codice Fiscale</i>.
     </string>
+    <string name="tc_link"><a href="https://mpancaldi.co.uk/apps/codice-fiscale/">Condizioni d\'uso complete</a></string>
     <string name="copyright">© Calcolo del Codice Fiscale\nCopyright 2020</string>
 
     <!-- Privacy View -->
@@ -91,13 +92,14 @@
         \n -  codice fiscale
         \n\nnon vengono raccolti né conservati ma sono utilizzati esclusivamente per fornire il servizio.
     </string>
+    <string name="privacy_link"><a href="https://mpancaldi.co.uk/apps/codice-fiscale/">Informativa sulla Privacy completa</a></string>
 
     <!-- Info View -->
     <string name="info">Info</string>
     <string name="info_ul"><u>Informazioni</u></string>
     <string name="info_summary">Informazioni sull\'app</string>
     <string name="version">Versione 1.0</string>
-    <string name="developed_by">Creato e sviluppato da <a href="https://mpancaldi.netlify.app/">Marta Pancaldi</a></string>
+    <string name="developed_by">Creato e sviluppato da <a href="https://mpancaldi.co.uk/">Marta Pancaldi</a></string>
     <string name="review">Se ti piace questa app, mandami un feedback (Impostazioni > Invia feedback) o scrivi una recensione su Play Store!</string>
     <string name="app_icon">Icona app</string>
     <string name="fiscal_code_card">Fac-simile tessera sanitaria</string>

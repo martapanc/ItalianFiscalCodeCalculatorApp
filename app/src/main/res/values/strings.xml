@@ -76,6 +76,7 @@
     <string name="disclaimer_3">The use for illegal purposes of a tax code is severely punished by law,
         therefore we decline any responsibility for any misuse of the code calculated with <i>Compute your Fiscal Code</i>.
     </string>
+    <string name="tc_link"><a href="https://mpancaldi.co.uk/apps/fiscal-code/">Complete Terms &amp; Conditions</a></string>
     <string name="copyright">© Compute your Fiscal Code\nCopyright 2020</string>
 
     <!-- Privacy View -->
@@ -91,13 +92,14 @@
         \n -  tax code
         \n\nare not collected or stored, and are used exclusively to provide the service.
     </string>
+    <string name="privacy_link"><a href="https://mpancaldi.co.uk/apps/fiscal-code/">Complete Privacy Policy</a></string>
 
     <!-- Info View -->
     <string name="info">Info</string>
     <string name="info_ul"><u>Information</u></string>
     <string name="info_summary">App information</string>
     <string name="version">Version 1.0</string>
-    <string name="developed_by">App designed and developed by <a href="https://mpancaldi.netlify.app/">Marta Pancaldi</a></string>
+    <string name="developed_by">App designed and developed by <a href="https://mpancaldi.co.uk/">Marta Pancaldi</a></string>
     <string name="review">If you like this app, send me a feedback (Settings > Send feedback) or leave a review on Play Store!</string>
     <string name="app_icon">App icon</string>
     <string name="fiscal_code_card">Fiscal Code card</string>
