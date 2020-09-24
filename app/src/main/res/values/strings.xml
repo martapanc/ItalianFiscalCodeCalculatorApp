@@ -92,7 +92,7 @@
         \n -  tax code
         \n\nare not collected or stored, and are used exclusively to provide the service.
     </string>
-    <string name="privacy_link"><a href="https://mpancaldi.co.uk/apps/fiscal-code/">Complete Privacy Policy</a></string>
+    <string name="privacy_link"><a href="https://mpancaldi.co.uk/apps/fiscal-code#privacy">Complete Privacy Policy</a></string>
 
     <!-- Info View -->
     <string name="info">Info</string>
