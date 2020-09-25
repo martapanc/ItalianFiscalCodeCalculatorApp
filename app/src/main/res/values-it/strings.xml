@@ -76,7 +76,7 @@
     <string name="disclaimer_3">L\'uso per scopi illegali di un codice fiscale è vietato e severamente punito dalla legge.
         \nSi declina ogni responsabilità per qualsiasi uso improprio del codice ottenuto tramite <i>Calcolo del Codice Fiscale</i>.
     </string>
-    <string name="tc_link"><a href="https://mpancaldi.co.uk/apps/codice-fiscale#tcs">Condizioni d\'uso complete</a></string>
+    <string name="tc_link"><a href="https://mpancaldi.co.uk/apps/codice-fiscale/">Condizioni d\'uso complete</a></string>
     <string name="copyright">© Calcolo del Codice Fiscale\nCopyright 2020</string>
 
     <!-- Privacy View -->
@@ -92,7 +92,7 @@
         \n -  codice fiscale
         \n\nnon vengono raccolti né conservati ma sono utilizzati esclusivamente per fornire il servizio.
     </string>
-    <string name="privacy_link"><a href="https://mpancaldi.co.uk/apps/codice-fiscale/">Informativa sulla Privacy completa</a></string>
+    <string name="privacy_link"><a href="https://mpancaldi.co.uk/apps/codice-fiscale#privacy">Informativa sulla Privacy completa</a></string>
 
     <!-- Info View -->
     <string name="info">Info</string>
