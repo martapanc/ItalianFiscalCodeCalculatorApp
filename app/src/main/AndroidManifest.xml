@@ -25,15 +25,6 @@
         </activity>
 
         <activity
-            android:name="com.pancaldim.fiscalcode_app.AboutActivity"
-            android:label="@string/fc_info"
-            android:parentActivityName="com.pancaldim.fiscalcode_app.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.pancaldim.fiscalcode_app.MainActivity" />
-        </activity>
-
-        <activity
             android:name="com.pancaldim.fiscalcode_app.SettingsActivity"
             android:label="@string/settings"
             android:parentActivityName="com.pancaldim.fiscalcode_app.MainActivity" />

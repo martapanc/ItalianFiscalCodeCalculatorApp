@@ -6,7 +6,7 @@
     <string name="tab_verify">Verify</string>
     <string name="tab_verify_info">Verify a Fiscal Code</string>
     <string name="tab_extract">Estract data</string>
-    <string name="tab_extract_info">Estract data from Fiscal Code</string>
+    <string name="tab_extract_info">Extract data from a F.C.</string>
 
     <!-- Compute, Extract, Verify -->
     <string name="gender_female">Female</string>

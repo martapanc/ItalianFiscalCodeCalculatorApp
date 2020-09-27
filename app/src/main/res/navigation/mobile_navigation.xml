@@ -23,10 +23,10 @@
         android:label="@string/tab_verify_info"
         tools:layout="@layout/fragment_verify" />
 
-    <activity
+    <fragment
         android:id="@+id/nav_about_fc"
-        android:name="com.pancaldim.fiscalcode_app.AboutActivity"
+        android:name="com.pancaldim.fiscalcode_app.ui.main.about.AboutFragment"
         android:label="@string/fc_info"
-        tools:layout="@layout/activity_about" />
+        tools:layout="@layout/fragment_about" />
 
 </navigation>
