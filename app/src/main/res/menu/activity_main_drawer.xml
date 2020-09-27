@@ -3,24 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-<!--    <item android:title="@string/app_name">-->
-<!--        <menu>-->
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/nav_compute"
-                    android:icon="@drawable/ic_account_circle_24px"
-                    android:title="@string/tab_compute" />
-                <item
-                    android:id="@+id/nav_extract"
-                    android:icon="@drawable/ic_cached_24px"
-                    android:title="@string/tab_extract" />
-                <item
-                    android:id="@+id/nav_verify"
-                    android:icon="@drawable/ic_verified_24px"
-                    android:title="@string/tab_verify" />
-            </group>
-<!--        </menu>-->
-<!--    </item>-->
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_compute"
+            android:icon="@drawable/ic_account_circle_24px"
+            android:title="@string/tab_compute" />
+        <item
+            android:id="@+id/nav_extract"
+            android:icon="@drawable/ic_cached_24px"
+            android:title="@string/tab_extract" />
+        <item
+            android:id="@+id/nav_verify"
+            android:icon="@drawable/ic_verified_24px"
+            android:title="@string/tab_verify" />
+    </group>
 
     <item android:title="@string/about">
         <menu>
