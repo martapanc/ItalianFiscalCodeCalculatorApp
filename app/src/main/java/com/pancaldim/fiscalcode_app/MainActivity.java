@@ -5,15 +5,22 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.pancaldim.fiscalcode_app.ui.main.about.AboutFragment;
+import com.pancaldim.fiscalcode_app.ui.main.compute.ComputeFragment;
+import com.pancaldim.fiscalcode_app.ui.main.extract.ExtractFragment;
+import com.pancaldim.fiscalcode_app.ui.main.verify.VerifyFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +36,37 @@ public class MainActivity extends AppCompatActivity {
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment f = null;
+                int itemId = item.getItemId();
+
+                switch (itemId) {
+                    case R.id.compute_fragment:
+                        f = new ComputeFragment();
+                        break;
+                    case R.id.extract_fragment:
+                        f = new ExtractFragment();
+                        break;
+                    case R.id.verify_fragment:
+                        f = new VerifyFragment();
+                        break;
+                    case R.id.about_fragment:
+                        f = new AboutFragment();
+                }
+
+                if (f != null) {
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.frame, f);
+                    transaction.commit();
+                    drawer.closeDrawers();
+                    return true;
+                }
+                return false;
+            }
+        });
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_compute, R.id.nav_extract, R.id.nav_verify, R.id.nav_about_fc)
                 .setOpenableLayout(drawer)
