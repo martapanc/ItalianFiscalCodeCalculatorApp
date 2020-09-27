@@ -2,8 +2,11 @@
     <!-- Main -->
     <string name="app_name">Compute your Fiscal Code</string>
     <string name="tab_compute">Compute</string>
+    <string name="tab_compute_info">Compute a Fiscal Code</string>
     <string name="tab_verify">Verify</string>
+    <string name="tab_verify_info">Verify a Fiscal Code</string>
     <string name="tab_extract">Estract data</string>
+    <string name="tab_extract_info">Estract data from Fiscal Code</string>
 
     <!-- Compute, Extract, Verify -->
     <string name="gender_female">Female</string>
@@ -108,4 +111,14 @@
     <string name="pob_info_text">Enter your Italian town of birth, or the foreign country you were born in.</string>
     <string name="pob_info_close">Got it</string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
 </resources>

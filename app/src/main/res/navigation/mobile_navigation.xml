@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_compute">
+
+    <fragment
+        android:id="@+id/nav_compute"
+        android:name="com.pancaldim.fiscalcode_app.ui.main.compute.ComputeFragment"
+        android:label="@string/tab_compute_info"
+        tools:layout="@layout/fragment_compute" />
+
+    <fragment
+        android:id="@+id/nav_extract"
+        android:name="com.pancaldim.fiscalcode_app.ui.main.extract.ExtractFragment"
+        android:label="@string/tab_extract_info"
+        tools:layout="@layout/fragment_extract" />
+
+    <fragment
+        android:id="@+id/nav_verify"
+        android:name="com.pancaldim.fiscalcode_app.ui.main.verify.VerifyFragment"
+        android:label="@string/tab_verify_info"
+        tools:layout="@layout/fragment_verify" />
+</navigation>
