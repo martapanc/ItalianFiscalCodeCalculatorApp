@@ -23,10 +23,10 @@ public class AboutFragment extends Fragment {
     private static final String TEXT_HTML = "text/html";
     private final String LANGUAGE = getLanguage();
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+//    @Override
+//    public void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//    }
 
     @Nullable
     @Override

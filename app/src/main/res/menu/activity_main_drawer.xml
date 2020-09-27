@@ -28,6 +28,9 @@
                 android:id="@+id/nav_about_fc"
                 android:icon="@drawable/ic_info_24px"
                 android:title="@string/fc_info" />
+            <item android:id="@+id/refresh"
+                android:title="Refresh"
+                android:icon="@drawable/ic_replay_24px" />
         </menu>
     </item>
 </menu>
