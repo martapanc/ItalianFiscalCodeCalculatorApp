@@ -2,8 +2,11 @@
     <!-- Main -->
     <string name="app_name">Compute your Fiscal Code</string>
     <string name="tab_compute">Compute</string>
+    <string name="tab_compute_info">Compute a Fiscal Code</string>
     <string name="tab_verify">Verify</string>
+    <string name="tab_verify_info">Verify a Fiscal Code</string>
     <string name="tab_extract">Estract data</string>
+    <string name="tab_extract_info">Estract data from Fiscal Code</string>
 
     <!-- Compute, Extract, Verify -->
     <string name="gender_female">Female</string>

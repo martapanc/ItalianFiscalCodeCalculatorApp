@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_compute">
 
     <fragment
-        android:id="@+id/nav_home"
+        android:id="@+id/nav_compute"
         android:name="com.pancaldim.fiscalcode_app.ui.main.compute.ComputeFragment"
-        android:label="@string/tab_compute"
+        android:label="@string/tab_compute_info"
         tools:layout="@layout/fragment_compute" />
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_extract"
         android:name="com.pancaldim.fiscalcode_app.ui.main.extract.ExtractFragment"
-        android:label="@string/tab_extract"
+        android:label="@string/tab_extract_info"
         tools:layout="@layout/fragment_extract" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_verify"
         android:name="com.pancaldim.fiscalcode_app.ui.main.verify.VerifyFragment"
-        android:label="@string/tab_verify"
+        android:label="@string/tab_verify_info"
         tools:layout="@layout/fragment_verify" />
 </navigation>

@@ -2,8 +2,11 @@
     <!-- Main -->
     <string name="app_name">Calcolo del Codice Fiscale</string>
     <string name="tab_compute">Calcola</string>
+    <string name="tab_compute_info">Calcola Codice Fiscale</string>
     <string name="tab_verify">Verifica</string>
+    <string name="tab_verify_info">Verifica un Codice Fiscale</string>
     <string name="tab_extract">Estrai dati</string>
+    <string name="tab_extract_info">Estrai dati da un C.F.</string>
 
     <!-- Compute, Extract, Verify -->
     <string name="gender_female">Femmina</string>
