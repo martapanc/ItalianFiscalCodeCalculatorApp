@@ -57,7 +57,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
     implementation 'androidx.preference:preference:1.1.1'
 
     implementation 'com.google.android.material:material:1.2.1'
@@ -88,13 +88,15 @@ dependencies {
     implementation "com.leinardi.android:speed-dial:3.1.1"
 
     implementation 'com.google.firebase:firebase-auth:19.4.0'
-    implementation 'com.google.firebase:firebase-analytics:17.5.0'
-    implementation 'com.google.firebase:firebase-firestore:21.6.0'
+    implementation 'com.google.firebase:firebase-analytics:17.6.0'
+    implementation 'com.google.firebase:firebase-firestore:21.7.1'
 
     implementation 'com.jakewharton.threetenabp:threetenabp:1.2.1'    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
 
-    implementation 'androidx.navigation:navigation-fragment:2.3.0'
-    implementation 'androidx.navigation:navigation-ui:2.3.0'
+    implementation 'androidx.navigation:navigation-fragment:2.3.1'
+    implementation 'androidx.navigation:navigation-ui:2.3.1'
+
+    implementation group: 'net.sf.barcode4j', name: 'barcode4j', version: '2.0'
 
 }
