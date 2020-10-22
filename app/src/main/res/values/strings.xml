@@ -120,5 +120,6 @@
 
     <string name="about">About</string>
     <string name="barcode_output_description">Barcode output</string>
+    <string name="show_barcode">Show barcode</string>
 
 </resources>

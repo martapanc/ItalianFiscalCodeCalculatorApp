@@ -7,6 +7,7 @@
     <color name="textBackground">#D6D7D7</color>
     <color name="black">#000000</color>
     <color name="button">#0141A2</color>
+    <color name="button_grey">#636F87</color>
     <color name="white">#FFFFFF</color>
 
 <!--    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#Fa2e44</color>-->

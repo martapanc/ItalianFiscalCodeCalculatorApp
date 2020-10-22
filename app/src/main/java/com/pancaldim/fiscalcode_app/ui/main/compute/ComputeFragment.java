@@ -73,7 +73,12 @@ public class ComputeFragment extends Fragment {
         setupGenderRadioButtons(root, R.id.com_maleRadioButton, R.id.com_femaleRadioButton);
         setupDateOfBirth(root, computeCalendar, R.id.com_dob_input);
 
-        String[] placesOfBirth = model.getPlaceList(context);
+        String[] placesOfBirth = new String[0];
+        try {
+            placesOfBirth = model.getPlaceList(context);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         ArrayAdapter<String> pobArrayAdapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_list_item_1, placesOfBirth);
         setupPlaceOfBirth(root, pobArrayAdapter, R.id.com_pob_input);
 
@@ -125,8 +130,11 @@ public class ComputeFragment extends Fragment {
                     outputTextView.setText(fiscalCode);
                     outputTextView.setOnClickListener(view1 -> copyFunction(view1, fiscalCode));
 
-                    ImageView barcodeImageView = activity.findViewById(R.id.com_barcodeOutput);
-                    barcodeImageView.setImageBitmap(BarcodeGeneratorUtils.generateCode39BarcodeImage(fiscalCode));
+                    Button showBarcodeButton = activity.findViewById(R.id.com_show_barcode_button);
+                    showBarcodeButton.setVisibility(View.VISIBLE);
+
+//                    ImageView barcodeImageView = activity.findViewById(R.id.com_barcodeOutput);
+//                    barcodeImageView.setImageBitmap(BarcodeGeneratorUtils.generateCode39BarcodeImage(fiscalCode));
 
                 } catch (IOException | InterruptedException | FiscalCodeComputationException e) {
                     int errorMessageId;
@@ -166,6 +174,8 @@ public class ComputeFragment extends Fragment {
             TextView fiscalCodeOutput = activity.findViewById(R.id.com_fiscalCodeOutput);
             fiscalCodeOutput.setText(EMPTY);
             fiscalCodeOutput.setPadding(0, 0, 0, 0);
+            Button showBarcodeOutput = activity.findViewById(R.id.com_show_barcode_button);
+            showBarcodeOutput.setVisibility(View.INVISIBLE);
         };
     }
 
