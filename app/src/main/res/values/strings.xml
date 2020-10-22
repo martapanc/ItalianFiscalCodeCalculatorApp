@@ -119,5 +119,6 @@
     <string name="action_settings">Settings</string>
 
     <string name="about">About</string>
+    <string name="barcode_output_description">Barcode output</string>
 
 </resources>

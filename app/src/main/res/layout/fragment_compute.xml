@@ -193,6 +193,19 @@
         android:textColor="@color/black"
         android:textSize="24sp" />
 
+    <ImageView
+        android:id="@+id/com_barcodeOutput"
+        android:contentDescription="@string/barcode_output_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/com_fiscalCodeOutput"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@color/textBackground"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_send"
         android:layout_width="wrap_content"

@@ -27,6 +27,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.pancaldim.fiscalcode_app.R;
+import com.pancaldim.fiscalcode_app.barcode.BarcodeGenerator;
 import com.pancaldim.fiscalcode_app.exception.FiscalCodeComputationException;
 import com.pancaldim.fiscalcode_app.fiscalcode.computations.ComputeFiscalCodeHelper;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.Country;
@@ -123,6 +124,10 @@ public class ComputeFragment extends Fragment {
                     outputTextView.setPadding(10, 5, 10, 5);
                     outputTextView.setText(fiscalCode);
                     outputTextView.setOnClickListener(view1 -> copyFunction(view1, fiscalCode));
+
+                    ImageView barcodeImageView = activity.findViewById(R.id.com_barcodeOutput);
+                    barcodeImageView.setImageBitmap(BarcodeGenerator.generateCode39BarcodeImage(fiscalCode));
+
                 } catch (IOException | InterruptedException | FiscalCodeComputationException e) {
                     int errorMessageId;
                     try {
