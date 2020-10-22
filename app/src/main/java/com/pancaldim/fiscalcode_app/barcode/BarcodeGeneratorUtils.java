@@ -8,7 +8,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.oned.Code39Writer;
 
 
-public class BarcodeGenerator {
+public class BarcodeGeneratorUtils {
 
     public static Bitmap generateCode39BarcodeImage(String barcodeText) {
         Code39Writer barcodeWriter = new Code39Writer();
