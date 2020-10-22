@@ -26,18 +26,20 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.android.material.snackbar.Snackbar;
+import com.leinardi.android.speeddial.SpeedDialActionItem;
+import com.leinardi.android.speeddial.SpeedDialView;
 import com.pancaldim.fiscalcode_app.R;
-import com.pancaldim.fiscalcode_app.barcode.BarcodeGeneratorUtils;
+import com.pancaldim.fiscalcode_app.ShowBarcodeActivity;
 import com.pancaldim.fiscalcode_app.exception.FiscalCodeComputationException;
 import com.pancaldim.fiscalcode_app.fiscalcode.computations.ComputeFiscalCodeHelper;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.Country;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.FiscalCodeData;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.Gender;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.InputField;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.Town;
 import com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper;
 import com.pancaldim.fiscalcode_app.fiscalcode.utils.ReadTownListHelper;
-import com.google.android.material.snackbar.Snackbar;
-import com.leinardi.android.speeddial.SpeedDialActionItem;
-import com.leinardi.android.speeddial.SpeedDialView;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -123,19 +125,19 @@ public class ComputeFragment extends Fragment {
                     List<Town> towns = ReadTownListHelper.readTowns(activity.getAssets().open(ComputeViewModel.TOWNS_FILE));
                     List<Country> countries = ReadTownListHelper.readCountries(activity.getAssets().open(ComputeViewModel.COUNTRIES_FILE));
                     String fiscalCode = ComputeFiscalCodeHelper.compute(firstName, lastName, dob, gender, pob, towns, countries);
+
                     FragmentHelper.hideVirtualKeyboard(view);
 
-                    TextView outputTextView = activity.findViewById(R.id.com_fiscalCodeOutput);
-                    outputTextView.setPadding(10, 5, 10, 5);
-                    outputTextView.setText(fiscalCode);
-                    outputTextView.setOnClickListener(view1 -> copyFunction(view1, fiscalCode));
+                    FiscalCodeData fiscalCodeData = FiscalCodeData.builder()
+                            .firstNameCode(firstName)
+                            .lastNameCode(lastName)
+                            .gender(Gender.getGender(gender))
+                            .dateOfBirth(dob)
+                            .placeOfBirth(pob)
+                            .fiscalCode(fiscalCode)
+                            .build();
 
-                    Button showBarcodeButton = activity.findViewById(R.id.com_show_barcode_button);
-                    showBarcodeButton.setVisibility(View.VISIBLE);
-
-//                    ImageView barcodeImageView = activity.findViewById(R.id.com_barcodeOutput);
-//                    barcodeImageView.setImageBitmap(BarcodeGeneratorUtils.generateCode39BarcodeImage(fiscalCode));
-
+                    displayOutputAndBarcodeButton(activity, fiscalCodeData);
                 } catch (IOException | InterruptedException | FiscalCodeComputationException e) {
                     int errorMessageId;
                     try {
@@ -147,6 +149,21 @@ public class ComputeFragment extends Fragment {
                 }
             }
         };
+    }
+
+    public void displayOutputAndBarcodeButton(FragmentActivity activity, FiscalCodeData fiscalCodeData) {
+        TextView outputTextView = activity.findViewById(R.id.com_fiscalCodeOutput);
+        outputTextView.setPadding(10, 5, 10, 5);
+        outputTextView.setText(fiscalCodeData.getFiscalCode());
+        outputTextView.setOnClickListener(view -> copyFunction(view, fiscalCodeData.getFiscalCode()));
+
+        Button showBarcodeButton = activity.findViewById(R.id.com_show_barcode_button);
+        showBarcodeButton.setVisibility(View.VISIBLE);
+        showBarcodeButton.setOnClickListener(view -> {
+            Intent showBarcodeIntent = new Intent(view.getContext(), ShowBarcodeActivity.class);
+            showBarcodeIntent.putExtra("fiscalCodeData", fiscalCodeData);
+            startActivityForResult(showBarcodeIntent, 0);
+        });
     }
 
     public View.OnClickListener getResetListener() {
