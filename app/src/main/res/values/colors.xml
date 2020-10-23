@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#00349E</color>
     <color name="colorAccent">#658BD6</color>
     <color name="colorAccentDisabled">#8792A8</color>
+    <color name="colorLight">#D3E2FF</color>
+    <color name="colorLightBorder">#B4CBFA</color>
     <color name="textBackground">#D6D7D7</color>
     <color name="black">#000000</color>
     <color name="button">#0141A2</color>
