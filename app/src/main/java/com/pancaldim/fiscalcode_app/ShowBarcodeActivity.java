@@ -12,12 +12,14 @@ import com.pancaldim.fiscalcode_app.fiscalcode.models.FiscalCodeData;
 
 public class ShowBarcodeActivity extends AppCompatActivity {
 
+    public static final String FISCAL_CODE_DATA_EXTRA_KEY = "fiscalCodeData";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_show_barcode);
 
-        FiscalCodeData fiscalCodeData = (FiscalCodeData) getIntent().getSerializableExtra("fiscalCodeData");
+        FiscalCodeData fiscalCodeData = (FiscalCodeData) getIntent().getSerializableExtra(FISCAL_CODE_DATA_EXTRA_KEY);
 
         if (fiscalCodeData != null) {
             TextView firstNameTextView = findViewById(R.id.brc_first_name_text);

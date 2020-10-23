@@ -48,6 +48,7 @@ import java.util.Objects;
 
 import lombok.SneakyThrows;
 
+import static com.pancaldim.fiscalcode_app.ShowBarcodeActivity.FISCAL_CODE_DATA_EXTRA_KEY;
 import static com.pancaldim.fiscalcode_app.fiscalcode.constants.ErrorMapConstants.getErrorMap;
 import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.initCalendar;
 import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.setupDateOfBirth;
@@ -151,21 +152,6 @@ public class ComputeFragment extends Fragment {
         };
     }
 
-    public void displayOutputAndBarcodeButton(FragmentActivity activity, FiscalCodeData fiscalCodeData) {
-        TextView outputTextView = activity.findViewById(R.id.com_fiscalCodeOutput);
-        outputTextView.setPadding(10, 5, 10, 5);
-        outputTextView.setText(fiscalCodeData.getFiscalCode());
-        outputTextView.setOnClickListener(view -> copyFunction(view, fiscalCodeData.getFiscalCode()));
-
-        Button showBarcodeButton = activity.findViewById(R.id.com_show_barcode_button);
-        showBarcodeButton.setVisibility(View.VISIBLE);
-        showBarcodeButton.setOnClickListener(view -> {
-            Intent showBarcodeIntent = new Intent(view.getContext(), ShowBarcodeActivity.class);
-            showBarcodeIntent.putExtra("fiscalCodeData", fiscalCodeData);
-            startActivityForResult(showBarcodeIntent, 0);
-        });
-    }
-
     public View.OnClickListener getResetListener() {
         return view -> {
             FragmentActivity activity = requireActivity();
@@ -204,6 +190,21 @@ public class ComputeFragment extends Fragment {
             Button closeDialog = dialog.findViewById(R.id.pob_info_close);
             closeDialog.setOnClickListener(v -> dialog.dismiss());
             dialog.show();
+        });
+    }
+
+    public void displayOutputAndBarcodeButton(FragmentActivity activity, FiscalCodeData fiscalCodeData) {
+        TextView outputTextView = activity.findViewById(R.id.com_fiscalCodeOutput);
+        outputTextView.setPadding(10, 5, 10, 5);
+        outputTextView.setText(fiscalCodeData.getFiscalCode());
+        outputTextView.setOnClickListener(view -> copyFunction(view, fiscalCodeData.getFiscalCode()));
+
+        Button showBarcodeButton = activity.findViewById(R.id.com_show_barcode_button);
+        showBarcodeButton.setVisibility(View.VISIBLE);
+        showBarcodeButton.setOnClickListener(view -> {
+            Intent showBarcodeIntent = new Intent(view.getContext(), ShowBarcodeActivity.class);
+            showBarcodeIntent.putExtra(FISCAL_CODE_DATA_EXTRA_KEY, fiscalCodeData);
+            startActivityForResult(showBarcodeIntent, 0);
         });
     }
 
