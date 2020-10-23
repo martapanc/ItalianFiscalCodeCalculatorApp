@@ -4,6 +4,7 @@ import android.content.res.Resources;
 
 import com.pancaldim.fiscalcode_app.R;
 
+import java.io.Serializable;
 import java.text.MessageFormat;
 
 import lombok.Builder;
@@ -11,7 +12,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class FiscalCodeData {
+public class FiscalCodeData implements Serializable {
 
     private String firstNameCode;
     private String lastNameCode;

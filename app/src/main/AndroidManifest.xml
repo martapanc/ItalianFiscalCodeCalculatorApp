@@ -6,12 +6,12 @@
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:fullBackupContent="@xml/backup_descriptor">
+        android:theme="@style/AppTheme">
 
         <activity
             android:name="com.pancaldim.fiscalcode_app.MainActivity"
@@ -23,6 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ShowBarcodeActivity"
+            android:label="Show Barcode"
+            android:parentActivityName=".MainActivity" />
 
         <activity
             android:name="com.pancaldim.fiscalcode_app.SettingsActivity"

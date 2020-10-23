@@ -186,12 +186,26 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/compute_button"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:background="@color/textBackground"
         android:elevation="4dp"
         android:text=""
         android:textColor="@color/black"
         android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/com_show_barcode_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/com_fiscalCodeOutput"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@color/button_grey"
+        android:minHeight="0dp"
+        android:padding="7dp"
+        android:text="@string/show_barcode"
+        android:textColor="@color/white"
+        android:visibility="invisible" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_send"

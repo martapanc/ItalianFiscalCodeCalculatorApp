@@ -26,17 +26,20 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.android.material.snackbar.Snackbar;
+import com.leinardi.android.speeddial.SpeedDialActionItem;
+import com.leinardi.android.speeddial.SpeedDialView;
 import com.pancaldim.fiscalcode_app.R;
+import com.pancaldim.fiscalcode_app.ShowBarcodeActivity;
 import com.pancaldim.fiscalcode_app.exception.FiscalCodeComputationException;
 import com.pancaldim.fiscalcode_app.fiscalcode.computations.ComputeFiscalCodeHelper;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.Country;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.FiscalCodeData;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.Gender;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.InputField;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.Town;
 import com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper;
 import com.pancaldim.fiscalcode_app.fiscalcode.utils.ReadTownListHelper;
-import com.google.android.material.snackbar.Snackbar;
-import com.leinardi.android.speeddial.SpeedDialActionItem;
-import com.leinardi.android.speeddial.SpeedDialView;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -45,6 +48,7 @@ import java.util.Objects;
 
 import lombok.SneakyThrows;
 
+import static com.pancaldim.fiscalcode_app.ShowBarcodeActivity.FISCAL_CODE_DATA_EXTRA_KEY;
 import static com.pancaldim.fiscalcode_app.fiscalcode.constants.ErrorMapConstants.getErrorMap;
 import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.initCalendar;
 import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.setupDateOfBirth;
@@ -72,7 +76,12 @@ public class ComputeFragment extends Fragment {
         setupGenderRadioButtons(root, R.id.com_maleRadioButton, R.id.com_femaleRadioButton);
         setupDateOfBirth(root, computeCalendar, R.id.com_dob_input);
 
-        String[] placesOfBirth = model.getPlaceList(context);
+        String[] placesOfBirth = new String[0];
+        try {
+            placesOfBirth = model.getPlaceList(context);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         ArrayAdapter<String> pobArrayAdapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_list_item_1, placesOfBirth);
         setupPlaceOfBirth(root, pobArrayAdapter, R.id.com_pob_input);
 
@@ -117,12 +126,19 @@ public class ComputeFragment extends Fragment {
                     List<Town> towns = ReadTownListHelper.readTowns(activity.getAssets().open(ComputeViewModel.TOWNS_FILE));
                     List<Country> countries = ReadTownListHelper.readCountries(activity.getAssets().open(ComputeViewModel.COUNTRIES_FILE));
                     String fiscalCode = ComputeFiscalCodeHelper.compute(firstName, lastName, dob, gender, pob, towns, countries);
+
                     FragmentHelper.hideVirtualKeyboard(view);
 
-                    TextView outputTextView = activity.findViewById(R.id.com_fiscalCodeOutput);
-                    outputTextView.setPadding(10, 5, 10, 5);
-                    outputTextView.setText(fiscalCode);
-                    outputTextView.setOnClickListener(view1 -> copyFunction(view1, fiscalCode));
+                    FiscalCodeData fiscalCodeData = FiscalCodeData.builder()
+                            .firstNameCode(firstName)
+                            .lastNameCode(lastName)
+                            .gender(Gender.getGender(gender))
+                            .dateOfBirth(dob)
+                            .placeOfBirth(pob)
+                            .fiscalCode(fiscalCode)
+                            .build();
+
+                    displayOutputAndBarcodeButton(activity, fiscalCodeData);
                 } catch (IOException | InterruptedException | FiscalCodeComputationException e) {
                     int errorMessageId;
                     try {
@@ -161,6 +177,8 @@ public class ComputeFragment extends Fragment {
             TextView fiscalCodeOutput = activity.findViewById(R.id.com_fiscalCodeOutput);
             fiscalCodeOutput.setText(EMPTY);
             fiscalCodeOutput.setPadding(0, 0, 0, 0);
+            Button showBarcodeOutput = activity.findViewById(R.id.com_show_barcode_button);
+            showBarcodeOutput.setVisibility(View.INVISIBLE);
         };
     }
 
@@ -172,6 +190,21 @@ public class ComputeFragment extends Fragment {
             Button closeDialog = dialog.findViewById(R.id.pob_info_close);
             closeDialog.setOnClickListener(v -> dialog.dismiss());
             dialog.show();
+        });
+    }
+
+    public void displayOutputAndBarcodeButton(FragmentActivity activity, FiscalCodeData fiscalCodeData) {
+        TextView outputTextView = activity.findViewById(R.id.com_fiscalCodeOutput);
+        outputTextView.setPadding(10, 5, 10, 5);
+        outputTextView.setText(fiscalCodeData.getFiscalCode());
+        outputTextView.setOnClickListener(view -> copyFunction(view, fiscalCodeData.getFiscalCode()));
+
+        Button showBarcodeButton = activity.findViewById(R.id.com_show_barcode_button);
+        showBarcodeButton.setVisibility(View.VISIBLE);
+        showBarcodeButton.setOnClickListener(view -> {
+            Intent showBarcodeIntent = new Intent(view.getContext(), ShowBarcodeActivity.class);
+            showBarcodeIntent.putExtra(FISCAL_CODE_DATA_EXTRA_KEY, fiscalCodeData);
+            startActivityForResult(showBarcodeIntent, 0);
         });
     }
 

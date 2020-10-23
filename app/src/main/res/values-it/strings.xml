@@ -120,5 +120,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="about">Informazioni</string>
+    <string name="barcode_output_description">Barcode output</string>
+    <string name="show_barcode">Mostra codice a barre</string>
 
 </resources>
