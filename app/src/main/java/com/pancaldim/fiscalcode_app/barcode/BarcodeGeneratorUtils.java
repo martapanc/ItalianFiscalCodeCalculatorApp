@@ -11,7 +11,7 @@ import com.google.zxing.oned.Code39Writer;
 public class BarcodeGeneratorUtils {
 
     private static final int BARCODE_WIDTH = 990;
-    private static final int BARCODE_HEIGHT = 190;
+    private static final int BARCODE_HEIGHT = 250;
 
     public static Bitmap generateCode39BarcodeImage(String barcodeText) {
         Code39Writer barcodeWriter = new Code39Writer();
