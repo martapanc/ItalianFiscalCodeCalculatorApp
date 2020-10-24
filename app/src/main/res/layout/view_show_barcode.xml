@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/view_show_barcode"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -164,5 +166,26 @@
         android:text=""
         android:textColor="@color/black"
         android:textSize="24sp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/brc_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/brc_copy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+    <com.leinardi.android.speeddial.SpeedDialView
+            android:id="@+id/brc_speedDial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            app:sdMainFabClosedBackgroundColor="@color/colorAccent"
+            app:sdMainFabClosedSrc="@drawable/ic_add_24px" />
 
 </RelativeLayout>
