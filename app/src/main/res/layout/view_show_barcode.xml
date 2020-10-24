@@ -8,6 +8,10 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="20dp"
+        android:background="@drawable/barcode_background_border"
         android:id="@+id/fc_data_group">
 
         <TextView
@@ -16,81 +20,97 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
+            android:textSize="15sp"
+            android:textColor="@color/colorPrimaryDark"
             android:ems="7"
             android:text="@string/first_name_label"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/brc_first_name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/black"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="20dp"
             android:layout_toEndOf="@id/brc_first_name_label"
-            android:hint="@string/name_code_hint" />
+            android:hint="@string/name_code_hint"/>
 
         <TextView
             android:id="@+id/brc_last_name_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_below="@id/brc_first_name_label"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:ems="7"
             android:text="@string/last_name_label"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/brc_last_name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/black"
             android:layout_below="@+id/brc_first_name_text"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/brc_last_name_label"
-            android:hint="@string/last_name_code_example" />
+            android:hint="@string/last_name_code_example"/>
 
         <TextView
             android:id="@+id/brc_gender_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_below="@id/brc_last_name_label"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:ems="7"
             android:text="@string/gender_label"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/brc_gender_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/black"
             android:layout_below="@+id/brc_last_name_text"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/brc_gender_label"
-            android:hint="@string/gender_example" />
+            android:hint="@string/gender_example"/>
 
         <TextView
             android:id="@+id/brc_dob_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/brc_gender_label"
+            android:textSize="15sp"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:ems="7"
             android:text="@string/dob_label"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/brc_dob_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/brc_gender_text"
+            android:textSize="15sp"
+            android:textColor="@color/black"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/brc_dob_label"
-            android:hint="@string/dob_example" />
+            android:hint="@string/dob_example"/>
 
         <TextView
             android:id="@+id/brc_pob_label"
@@ -98,20 +118,24 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/brc_dob_label"
             android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_marginEnd="10dp"
             android:ems="7"
             android:text="@string/pob_label"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/brc_pob_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/brc_dob_text"
+            android:textSize="15sp"
+            android:textColor="@color/black"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/brc_pob_label"
-            android:hint="@string/placeOfBirth_hint_2" />
+            android:hint="@string/placeOfBirth_hint_2"/>
 
         <TextView
             android:id="@+id/brc_fc_text"
@@ -119,9 +143,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/brc_pob_text"
             android:layout_centerHorizontal="true"
+            android:background="@drawable/barcode_fc_background"
+            android:padding="7dp"
+            android:textColor="@color/white"
+            android:includeFontPadding="false"
             android:layout_marginTop="20dp"
             android:hint="@string/sample_fiscal_code"
-            android:textSize="24sp" />
+            android:textSize="24sp"/>
     </RelativeLayout>
 
     <ImageView
@@ -135,6 +163,6 @@
         android:contentDescription="@string/barcode_output_description"
         android:text=""
         android:textColor="@color/black"
-        android:textSize="24sp" />
+        android:textSize="24sp"/>
 
 </RelativeLayout>
