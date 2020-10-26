@@ -2,6 +2,8 @@ package com.pancaldim.fiscalcode_app;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -105,6 +107,9 @@ public class ShowBarcodeActivity extends AppCompatActivity {
     private void exportToGallery(String fiscalCode) {
         RelativeLayout relativeLayout = findViewById(R.id.fc_data_group);
         Bitmap bitmap = Bitmap.createBitmap(relativeLayout.getWidth(), relativeLayout.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        canvas.drawColor(Color.BLACK);
+        relativeLayout.draw(canvas);
 
         String rootDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath();
         File fiscalCodeSaveDir = new File(rootDir + "/ComputeFiscalCode");
