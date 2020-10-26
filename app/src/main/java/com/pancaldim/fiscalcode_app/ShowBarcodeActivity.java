@@ -83,6 +83,7 @@ public class ShowBarcodeActivity extends AppCompatActivity {
                     try {
                         saveFunction(root, fiscalCode);
                     } catch (FileNotFoundException e) {
+                        showSnackbarWithMessage(getMessage(R.string.save_error), root);
                         e.printStackTrace();
                     }
                     break;
@@ -98,9 +99,7 @@ public class ShowBarcodeActivity extends AppCompatActivity {
 
     private void saveFunction(View root, String fiscalCode) throws FileNotFoundException {
         exportToGallery(fiscalCode);
-        Snackbar.make(root, "Saved to gallery", Snackbar.LENGTH_LONG)
-                .setAction("action", null)
-                .show();
+        showSnackbarWithMessage(getMessage(R.string.saved_to_gallery), root);
     }
 
     private void shareFunction(View root, CharSequence fiscalCode) {
@@ -114,22 +113,12 @@ public class ShowBarcodeActivity extends AppCompatActivity {
     }
 
     private void exportToGallery(String fiscalCode) throws FileNotFoundException {
-        RelativeLayout relativeLayout = findViewById(R.id.fc_data_group);
-        Bitmap bitmap = Bitmap.createBitmap(relativeLayout.getWidth(), relativeLayout.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        canvas.drawColor(Color.BLACK);
-        relativeLayout.draw(canvas);
-
-//        String path = "/storage/emulated/0/Pictures/ComputeFiscalCode";
-//        String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath() + "/ComputeFiscalCode";;
-//        String path = getExternalFilesDir(Environment.DIRECTORY_PICTURES) + File.separator + "/ComputeFiscalCode";
-//        File outputDir = new File(path);
-//        outputDir.mkdirs();
-//        File newFile = new File(path + File.separator + fiscalCode + "_test.png");
+        Bitmap bitmap = getBitmapFromLayout();
+        final String saveDirectory = getMessage(R.string.save_directory);
 
         if (Build.VERSION.SDK_INT >= 29) {
             ContentValues contentValues = getContentValues();
-            contentValues.put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/" + "ComputeFiscalCode");
+            contentValues.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + File.separator + saveDirectory);
             contentValues.put(MediaStore.Images.Media.IS_PENDING, true);
             Uri uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
             if (uri != null) {
@@ -138,7 +127,7 @@ public class ShowBarcodeActivity extends AppCompatActivity {
                 getContentResolver().update(uri, contentValues, null, null);
             }
         } else {
-            File outputDir = new File(Environment.getExternalStorageState(Environment.getExternalStorageDirectory()) + "/ComputeFiscalCode");
+            File outputDir = new File(Environment.getExternalStorageState(Environment.getExternalStorageDirectory()) + File.separator + saveDirectory);
             if (!outputDir.exists()) {
                 outputDir.mkdirs();
             }
@@ -149,27 +138,15 @@ public class ShowBarcodeActivity extends AppCompatActivity {
             contentValues.put(MediaStore.Images.Media.DATA, newFile.getAbsolutePath());
             getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
         }
-//        ContextWrapper cw = new ContextWrapper(getApplicationContext());
-//        // path to /data/data/yourapp/app_data/imageDir
-//        File directory = cw.getDir("ComputeFC", Context.MODE_PRIVATE);
-//        // Create imageDir
-//        File newFile = new File(directory,fiscalCode + "_test.png");
+    }
 
-
-//        String rootDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath();
-//        File fiscalCodeSaveDir = new File(rootDir + "/ComputeFiscalCode");
-//        fiscalCodeSaveDir.mkdirs();
-//        String fileName = fiscalCode + ".png";
-//        File savedFile = new File(fiscalCodeSaveDir, fileName);
-//
-//        try {
-//            FileOutputStream fos = new FileOutputStream(savedFile);
-//            bitmap.compress(Bitmap.CompressFormat.PNG, 90, fos);
-//            fos.flush();
-//            fos.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+    private Bitmap getBitmapFromLayout() {
+        RelativeLayout relativeLayout = findViewById(R.id.fc_data_group);
+        Bitmap bitmap = Bitmap.createBitmap(relativeLayout.getWidth(), relativeLayout.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        canvas.drawColor(Color.BLACK);
+        relativeLayout.draw(canvas);
+        return bitmap;
     }
 
     private ContentValues getContentValues() {
@@ -181,8 +158,16 @@ public class ShowBarcodeActivity extends AppCompatActivity {
     }
 
     private void saveImageToStream(Bitmap bitmap, OutputStream out) {
-//        FileOutputStream out;
-        //            out = new FileOutputStream(newFile);
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+    }
+
+    private String getMessage(int stringId) {
+        return getResources().getString(stringId);
+    }
+
+    private void showSnackbarWithMessage(String message, View root) {
+        Snackbar.make(root, message, Snackbar.LENGTH_LONG)
+                .setAction("action", null)
+                .show();
     }
 }

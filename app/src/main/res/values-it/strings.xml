@@ -122,5 +122,8 @@
     <string name="about">Informazioni</string>
     <string name="barcode_output_description">Barcode output</string>
     <string name="show_barcode">Mostra codice a barre</string>
+    <string name="save_directory">CalcoloDelCodiceFiscale</string>
+    <string name="saved_to_gallery">Salvato in Galleria immagini</string>
+    <string name="save_error">Errore nel salvataggio dell\'immagine</string>
 
 </resources>
