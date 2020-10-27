@@ -141,10 +141,10 @@ public class ShowBarcodeActivity extends AppCompatActivity {
     }
 
     private Bitmap getBitmapFromLayout() {
-        RelativeLayout relativeLayout = findViewById(R.id.fc_data_group);
+        RelativeLayout relativeLayout = findViewById(R.id.fc_data_barcode_group);
         Bitmap bitmap = Bitmap.createBitmap(relativeLayout.getWidth(), relativeLayout.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
-        canvas.drawColor(Color.BLACK);
+        canvas.drawColor(Color.WHITE);
         relativeLayout.draw(canvas);
         return bitmap;
     }
