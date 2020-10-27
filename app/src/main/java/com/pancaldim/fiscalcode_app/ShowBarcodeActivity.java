@@ -22,7 +22,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
-import com.google.android.material.snackbar.Snackbar;
 import com.leinardi.android.speeddial.SpeedDialActionItem;
 import com.leinardi.android.speeddial.SpeedDialView;
 import com.pancaldim.fiscalcode_app.barcode.BarcodeGeneratorUtils;
@@ -89,9 +88,9 @@ public class ShowBarcodeActivity extends AppCompatActivity {
             switch (actionItem.getId()) {
                 case R.id.brc_save:
                     try {
-                        saveFunction(root);
+                        saveFunction();
                     } catch (IOException e) {
-                        showSnackbarWithMessage(getMessage(R.string.save_error), root);
+                        showToastWithMessage(R.string.save_error);
                         e.printStackTrace();
                     }
                     break;
@@ -100,7 +99,7 @@ public class ShowBarcodeActivity extends AppCompatActivity {
                         Uri uri = saveImageExternal(getBitmapFromLayout(), fiscalCode);
                         shareFunction(uri);
                     } catch (IOException e) {
-                        showSnackbarWithMessage(getMessage(R.string.share_error), root);
+                        showToastWithMessage(R.string.share_error);
                         e.printStackTrace();
                     }
                     break;
@@ -111,7 +110,7 @@ public class ShowBarcodeActivity extends AppCompatActivity {
         });
     }
 
-    private void saveFunction(View root) throws IOException {
+    private void saveFunction() throws IOException {
         Bitmap bitmap = getBitmapFromLayout();
         final String saveDirectory = getMessage(R.string.save_directory);
 
@@ -124,7 +123,7 @@ public class ShowBarcodeActivity extends AppCompatActivity {
                 saveImageToStream(bitmap, getContentResolver().openOutputStream(uri));
                 contentValues.put(MediaStore.Images.Media.IS_PENDING, false);
                 getContentResolver().update(uri, contentValues, null, null);
-                showSnackbarWithMessage(getMessage(R.string.saved_to_gallery), root);
+                showToastWithMessage(R.string.saved_to_gallery);
             }
         } else {
             if (checkSelfPermission(WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
@@ -154,7 +153,7 @@ public class ShowBarcodeActivity extends AppCompatActivity {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 saveToGalleryAPI28();
             } else {
-                Toast.makeText(ShowBarcodeActivity.this, getMessage(R.string.save_permission_error), Toast.LENGTH_LONG).show();
+                showToastWithMessage(R.string.save_permission_error);
             }
         }
     }
@@ -173,9 +172,9 @@ public class ShowBarcodeActivity extends AppCompatActivity {
             ContentValues contentValues = getContentValues();
             contentValues.put(MediaStore.Images.Media.DATA, newFile.getAbsolutePath());
             getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
-            Toast.makeText(ShowBarcodeActivity.this, getMessage(R.string.saved_to_gallery), Toast.LENGTH_LONG).show();
+            showToastWithMessage(R.string.saved_to_gallery);
         } catch (IOException e) {
-            Toast.makeText(ShowBarcodeActivity.this, getMessage(R.string.save_error), Toast.LENGTH_LONG).show();
+            showToastWithMessage(R.string.save_error);
             e.printStackTrace();
         }
     }
@@ -205,7 +204,8 @@ public class ShowBarcodeActivity extends AppCompatActivity {
 
     /**
      * Saves the image as PNG to the app's private external storage folder.
-     * @param bitmap Bitmap to save.
+     *
+     * @param bitmap     Bitmap to save.
      * @param fiscalCode Computer Fiscal Code to be used as file name.
      * @return Uri of the saved file or null
      */
@@ -226,9 +226,7 @@ public class ShowBarcodeActivity extends AppCompatActivity {
         return getResources().getString(stringId);
     }
 
-    private void showSnackbarWithMessage(String message, View root) {
-        Snackbar.make(root, message, Snackbar.LENGTH_LONG)
-                .setAction("action", null)
-                .show();
+    public void showToastWithMessage(int stringId) {
+        Toast.makeText(ShowBarcodeActivity.this, getMessage(stringId), Toast.LENGTH_LONG).show();
     }
 }
