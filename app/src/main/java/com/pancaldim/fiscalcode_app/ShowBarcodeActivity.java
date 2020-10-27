@@ -213,9 +213,7 @@ public class ShowBarcodeActivity extends AppCompatActivity {
         Uri uri;
         try {
             File file = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), fiscalCode + ".png");
-            FileOutputStream stream = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream);
-            stream.close();
+            saveImageToStream(bitmap, new FileOutputStream(file));
             final Context context = getBaseContext();
             uri = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", file);
         } catch (IOException e) {
