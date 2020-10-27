@@ -3,6 +3,7 @@ package com.pancaldim.fiscalcode_app;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -15,8 +16,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 import com.google.android.material.snackbar.Snackbar;
 import com.leinardi.android.speeddial.SpeedDialActionItem;
@@ -25,10 +29,11 @@ import com.pancaldim.fiscalcode_app.barcode.BarcodeGeneratorUtils;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.FiscalCodeData;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class ShowBarcodeActivity extends AppCompatActivity {
 
@@ -84,8 +89,8 @@ public class ShowBarcodeActivity extends AppCompatActivity {
             switch (actionItem.getId()) {
                 case R.id.brc_save:
                     try {
-                        saveFunction(root, fiscalCode);
-                    } catch (FileNotFoundException e) {
+                        saveFunction(root);
+                    } catch (IOException e) {
                         showSnackbarWithMessage(getMessage(R.string.save_error), root);
                         e.printStackTrace();
                     }
@@ -106,9 +111,28 @@ public class ShowBarcodeActivity extends AppCompatActivity {
         });
     }
 
-    private void saveFunction(View root, String fiscalCode) throws FileNotFoundException {
-        exportToGallery(fiscalCode);
-        showSnackbarWithMessage(getMessage(R.string.saved_to_gallery), root);
+    private void saveFunction(View root) throws IOException {
+        Bitmap bitmap = getBitmapFromLayout();
+        final String saveDirectory = getMessage(R.string.save_directory);
+
+        if (Build.VERSION.SDK_INT >= 29) {
+            ContentValues contentValues = getContentValues();
+            contentValues.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + File.separator + saveDirectory);
+            contentValues.put(MediaStore.Images.Media.IS_PENDING, true);
+            Uri uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+            if (uri != null) {
+                saveImageToStream(bitmap, getContentResolver().openOutputStream(uri));
+                contentValues.put(MediaStore.Images.Media.IS_PENDING, false);
+                getContentResolver().update(uri, contentValues, null, null);
+                showSnackbarWithMessage(getMessage(R.string.saved_to_gallery), root);
+            }
+        } else {
+            if (checkSelfPermission(WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                ActivityCompat.requestPermissions(ShowBarcodeActivity.this, new String[]{WRITE_EXTERNAL_STORAGE}, 1);
+            } else {
+                saveToGalleryAPI28();
+            }
+        }
     }
 
     private void shareFunction(Uri uri) {
@@ -122,31 +146,37 @@ public class ShowBarcodeActivity extends AppCompatActivity {
         startActivity(shareIntent);
     }
 
-    private void exportToGallery(String fiscalCode) throws FileNotFoundException {
-        Bitmap bitmap = getBitmapFromLayout();
-        final String saveDirectory = getMessage(R.string.save_directory);
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (Build.VERSION.SDK_INT >= 29) {
-            ContentValues contentValues = getContentValues();
-            contentValues.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + File.separator + saveDirectory);
-            contentValues.put(MediaStore.Images.Media.IS_PENDING, true);
-            Uri uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
-            if (uri != null) {
-                saveImageToStream(bitmap, getContentResolver().openOutputStream(uri));
-                contentValues.put(MediaStore.Images.Media.IS_PENDING, false);
-                getContentResolver().update(uri, contentValues, null, null);
+        if (requestCode == 1) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                saveToGalleryAPI28();
+            } else {
+                Toast.makeText(ShowBarcodeActivity.this, getMessage(R.string.save_permission_error), Toast.LENGTH_LONG).show();
             }
-        } else {
-            File outputDir = new File(Environment.getExternalStorageState(Environment.getExternalStorageDirectory()) + File.separator + saveDirectory);
-            if (!outputDir.exists()) {
-                outputDir.mkdirs();
-            }
-            File newFile = new File(outputDir + File.separator + fiscalCode + ".png");
-            saveImageToStream(bitmap, new FileOutputStream(newFile));
+        }
+    }
 
+    public void saveToGalleryAPI28() {
+        File outputDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) +
+                File.separator + getMessage(R.string.save_directory));
+        if (!outputDir.exists()) {
+            outputDir.mkdirs();
+        }
+        File newFile = new File(outputDir, System.currentTimeMillis() + ".png");
+        FileOutputStream out;
+        try {
+            out = new FileOutputStream(newFile);
+            saveImageToStream(getBitmapFromLayout(), out);
             ContentValues contentValues = getContentValues();
             contentValues.put(MediaStore.Images.Media.DATA, newFile.getAbsolutePath());
             getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+            Toast.makeText(ShowBarcodeActivity.this, getMessage(R.string.saved_to_gallery), Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
+            Toast.makeText(ShowBarcodeActivity.this, getMessage(R.string.save_error), Toast.LENGTH_LONG).show();
+            e.printStackTrace();
         }
     }
 
@@ -167,8 +197,10 @@ public class ShowBarcodeActivity extends AppCompatActivity {
         return contentValues;
     }
 
-    private void saveImageToStream(Bitmap bitmap, OutputStream out) {
+    private void saveImageToStream(Bitmap bitmap, OutputStream out) throws IOException {
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+        out.flush();
+        out.close();
     }
 
     /**
