@@ -126,6 +126,6 @@
     <string name="saved_to_gallery">Salvato in Galleria immagini</string>
     <string name="save_error">Errore nel salvataggio dell\'immagine</string>
     <string name="share_error">Errore nella condivisione dell\'immagine</string>
-    <string name="save_permission_error">Errore di scrittura sullo storage interno: controlla i permessi dell\'app nelle Impostazioni e riprova.</string>
+    <string name="save_permission_error">Errore di scrittura: controlla i permessi dell\'app nelle Impostazioni e riprova.</string>
 
 </resources>
