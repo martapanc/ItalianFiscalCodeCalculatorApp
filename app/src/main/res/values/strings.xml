@@ -121,5 +121,10 @@
     <string name="about">About</string>
     <string name="barcode_output_description">Barcode output</string>
     <string name="show_barcode">Show barcode</string>
+    <string name="save_directory">ComputeYourFiscalCode</string>
+    <string name="saved_to_gallery">Saved to Gallery</string>
+    <string name="save_error">Error saving image to gallery</string>
+    <string name="share_error">Error sharing image</string>
+    <string name="save_permission_error">Couldn\'t write to internal storage: check the app\'s permission in Settings and retry</string>
 
 </resources>

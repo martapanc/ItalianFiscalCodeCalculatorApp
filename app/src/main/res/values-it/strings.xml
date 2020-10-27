@@ -122,5 +122,10 @@
     <string name="about">Informazioni</string>
     <string name="barcode_output_description">Barcode output</string>
     <string name="show_barcode">Mostra codice a barre</string>
+    <string name="save_directory">CalcoloDelCodiceFiscale</string>
+    <string name="saved_to_gallery">Salvato in Galleria immagini</string>
+    <string name="save_error">Errore nel salvataggio dell\'immagine</string>
+    <string name="share_error">Errore nella condivisione dell\'immagine</string>
+    <string name="save_permission_error">Errore di scrittura: controlla i permessi dell\'app nelle Impostazioni e riprova.</string>
 
 </resources>
