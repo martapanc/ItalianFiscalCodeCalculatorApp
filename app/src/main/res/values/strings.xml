@@ -123,6 +123,7 @@
     <string name="show_barcode">Show barcode</string>
     <string name="save_directory">ComputeYourFiscalCode</string>
     <string name="saved_to_gallery">Saved to Gallery</string>
-    <string name="save_error">Error saving file to gallery</string>
+    <string name="save_error">Error saving image to gallery</string>
+    <string name="share_error">Error sharing image</string>
 
 </resources>

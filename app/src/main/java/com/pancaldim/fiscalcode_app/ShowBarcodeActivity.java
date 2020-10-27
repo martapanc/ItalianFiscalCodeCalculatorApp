@@ -1,6 +1,7 @@
 package com.pancaldim.fiscalcode_app;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -16,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 import com.google.android.material.snackbar.Snackbar;
 import com.leinardi.android.speeddial.SpeedDialActionItem;
 import com.leinardi.android.speeddial.SpeedDialView;
@@ -25,6 +27,7 @@ import com.pancaldim.fiscalcode_app.fiscalcode.models.FiscalCodeData;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 
 public class ShowBarcodeActivity extends AppCompatActivity {
@@ -88,7 +91,13 @@ public class ShowBarcodeActivity extends AppCompatActivity {
                     }
                     break;
                 case R.id.brc_share:
-                    shareFunction(root, fiscalCode);
+                    try {
+                        Uri uri = saveImageExternal(getBitmapFromLayout(), fiscalCode);
+                        shareFunction(uri);
+                    } catch (IOException e) {
+                        showSnackbarWithMessage(getMessage(R.string.share_error), root);
+                        e.printStackTrace();
+                    }
                     break;
                 default:
                     return false;
@@ -102,14 +111,15 @@ public class ShowBarcodeActivity extends AppCompatActivity {
         showSnackbarWithMessage(getMessage(R.string.saved_to_gallery), root);
     }
 
-    private void shareFunction(View root, CharSequence fiscalCode) {
+    private void shareFunction(Uri uri) {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, fiscalCode);
-        sendIntent.setType("text/plain");
+        sendIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        sendIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        sendIntent.setType("image/png");
 
         Intent shareIntent = Intent.createChooser(sendIntent, null);
-        root.getContext().startActivity(shareIntent);
+        startActivity(shareIntent);
     }
 
     private void exportToGallery(String fiscalCode) throws FileNotFoundException {
@@ -131,7 +141,7 @@ public class ShowBarcodeActivity extends AppCompatActivity {
             if (!outputDir.exists()) {
                 outputDir.mkdirs();
             }
-            File newFile = new File(outputDir + File.separator + fiscalCode + "_test.png");
+            File newFile = new File(outputDir + File.separator + fiscalCode + ".png");
             saveImageToStream(bitmap, new FileOutputStream(newFile));
 
             ContentValues contentValues = getContentValues();
@@ -159,6 +169,27 @@ public class ShowBarcodeActivity extends AppCompatActivity {
 
     private void saveImageToStream(Bitmap bitmap, OutputStream out) {
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+    }
+
+    /**
+     * Saves the image as PNG to the app's private external storage folder.
+     * @param bitmap Bitmap to save.
+     * @param fiscalCode Computer Fiscal Code to be used as file name.
+     * @return Uri of the saved file or null
+     */
+    private Uri saveImageExternal(Bitmap bitmap, String fiscalCode) throws IOException {
+        Uri uri;
+        try {
+            File file = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), fiscalCode + ".png");
+            FileOutputStream stream = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream);
+            stream.close();
+            final Context context = getBaseContext();
+            uri = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", file);
+        } catch (IOException e) {
+            throw new IOException();
+        }
+        return uri;
     }
 
     private String getMessage(int stringId) {
