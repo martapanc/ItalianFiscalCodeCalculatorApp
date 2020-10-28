@@ -26,6 +26,7 @@ import com.leinardi.android.speeddial.SpeedDialActionItem;
 import com.leinardi.android.speeddial.SpeedDialView;
 import com.pancaldim.fiscalcode_app.barcode.BarcodeGeneratorUtils;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.FiscalCodeData;
+import org.apache.commons.lang3.text.WordUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -49,10 +50,10 @@ public class ShowBarcodeActivity extends AppCompatActivity {
             final String fiscalCode = fiscalCodeData.getFiscalCode();
 
             TextView firstNameTextView = findViewById(R.id.brc_first_name_text);
-            firstNameTextView.setText(fiscalCodeData.getFirstNameCode());
+            firstNameTextView.setText(WordUtils.capitalizeFully(fiscalCodeData.getFirstNameCode()));
 
             TextView lastNameTextView = findViewById(R.id.brc_last_name_text);
-            lastNameTextView.setText(fiscalCodeData.getLastNameCode());
+            lastNameTextView.setText(WordUtils.capitalizeFully(fiscalCodeData.getLastNameCode()));
 
             TextView genderTextView = findViewById(R.id.brc_gender_text);
             genderTextView.setText(fiscalCodeData.getGender().toString());
