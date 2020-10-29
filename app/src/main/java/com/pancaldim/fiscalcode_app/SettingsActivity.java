@@ -84,13 +84,13 @@ public class SettingsActivity extends AppCompatActivity {
                 dialog.setContentView(view);
 
                 // Make Links clickable
+                TextView t2;
                 if (view == R.layout.view_terms) {
-                    TextView t2 = dialog.findViewById(R.id.terms_4);
-                    t2.setMovementMethod(LinkMovementMethod.getInstance());
+                    t2 = dialog.findViewById(R.id.terms_4);
                 } else {
-                    TextView t2 = dialog.findViewById(R.id.terms_link);
-                    t2.setMovementMethod(LinkMovementMethod.getInstance());
+                    t2 = dialog.findViewById(R.id.terms_link);
                 }
+                t2.setMovementMethod(LinkMovementMethod.getInstance());
 
                 dialog.show();
                 return true;

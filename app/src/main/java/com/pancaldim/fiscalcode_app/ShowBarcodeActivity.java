@@ -75,7 +75,6 @@ public class ShowBarcodeActivity extends AppCompatActivity {
     }
 
     private void setupSpeedDial(String fiscalCode) {
-        View root = findViewById(android.R.id.content).getRootView();
         SpeedDialView speedDialView = findViewById(R.id.brc_speedDial);
         final int color = getResources().getColor(R.color.colorAccent, null);
         speedDialView.addActionItem(new SpeedDialActionItem.Builder(R.id.brc_save, R.drawable.ic_save_alt_24px)
