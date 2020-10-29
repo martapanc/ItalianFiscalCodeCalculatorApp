@@ -29,35 +29,35 @@ import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 public class ComputeFiscalCodeHelper {
 
-    public static String computeLastName(String input) throws FiscalCodeComputationException {
-        input = replaceSpecialChars(input.trim());
+    public static String computeLastName(String inputName) throws FiscalCodeComputationException {
+        inputName = replaceSpecialChars(inputName.trim());
 
-        if (isAllLetters(input)) {
+        if (isAllLetters(inputName)) {
             StringBuilder result = new StringBuilder();
-            input = input.toUpperCase();
+            inputName = inputName.toUpperCase();
 
-            if (input.length() < 3) {
-                if (isTwoLettersAndVowelBeforeConsonant(input)) {
-                    result = swapIfVowelBeforeConsonant(input);
+            if (inputName.length() < 3) {
+                if (isTwoLettersAndVowelBeforeConsonant(inputName)) {
+                    result = swapIfVowelBeforeConsonant(inputName);
                 } else {
-                    result = new StringBuilder(input);
+                    result = new StringBuilder(inputName);
                     while (result.length() < 3) {
                         result.append("X");
                     }
                 }
             } else {
-                switch (howManyLettersOfType(input, CONSONANTS)) {
+                switch (howManyLettersOfType(inputName, CONSONANTS)) {
                     case 0:
-                        result.append(pickFirstThreeVowels(input));
+                        result.append(pickFirstThreeVowels(inputName));
                         break;
                     case 1:
-                        result.append(pickFirstConsonantAndFirstTwoVowels(input));
+                        result.append(pickFirstConsonantAndFirstTwoVowels(inputName));
                         break;
                     case 2:
-                        result.append(pickFirstTwoConsonantsAndFirstVowel(input));
+                        result.append(pickFirstTwoConsonantsAndFirstVowel(inputName));
                         break;
                     default:
-                        result.append(pickFirstThreeConsonants(input));
+                        result.append(pickFirstThreeConsonants(inputName));
                 }
             }
             return result.toString();
@@ -172,7 +172,8 @@ public class ComputeFiscalCodeHelper {
     }
 
     public static String computeControlChar(String incompleteFiscalCode) throws InterruptedException, FiscalCodeComputationException {
-        int evenSum = 0, oddSum = 0;
+        int evenSum = 0;
+        int oddSum = 0;
         incompleteFiscalCode = incompleteFiscalCode.toUpperCase();
         if (incompleteFiscalCode.length() == 15) {
             OddThread ot = new OddThread(incompleteFiscalCode, oddSum);
