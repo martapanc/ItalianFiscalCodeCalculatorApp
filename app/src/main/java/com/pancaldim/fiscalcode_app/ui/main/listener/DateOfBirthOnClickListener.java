@@ -3,9 +3,7 @@ package com.pancaldim.fiscalcode_app.ui.main.listener;
 import android.app.DatePickerDialog;
 import android.view.View;
 import android.widget.TextView;
-
 import androidx.fragment.app.FragmentActivity;
-
 import com.pancaldim.fiscalcode_app.R;
 
 import java.text.SimpleDateFormat;
@@ -30,25 +28,28 @@ public class DateOfBirthOnClickListener implements View.OnClickListener {
         Calendar cal = Calendar.getInstance();
         cal.setTime(calendar.getTime());
 
-        FragmentActivity fragmentActivity = (FragmentActivity) view.getContext();
-
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-
-        final TextView dateTextView = view.findViewById(dobInputId);
-        DatePickerDialog datePickerDialog = new DatePickerDialog(fragmentActivity,
-                (datePicker, y, m, d) -> {
-                    SimpleDateFormat sdf = new SimpleDateFormat(DD_MM_YYYY, Locale.ITALY);
-                    Calendar c = Calendar.getInstance();
-                    c.set(y, m, d);
-                    dateTextView.setText(sdf.format(c.getTime()));
-                }, year, month, day);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+            view.getContext(),
+            R.style.SpinnerDatePickerStyle,
+            getOnDateSetListener(view.findViewById(dobInputId)),
+            cal.get(Calendar.YEAR),
+            cal.get(Calendar.MONTH),
+            cal.get(Calendar.DAY_OF_MONTH)
+        );
 
         cal.set(minYear, 0, 1);
         datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
         datePickerDialog.getDatePicker().setMinDate(cal.getTimeInMillis());
         datePickerDialog.setTitle(view.getContext().getString(R.string.dob_label));
         datePickerDialog.show();
+    }
+
+    public DatePickerDialog.OnDateSetListener getOnDateSetListener(TextView dateTextView) {
+        return (datePicker, year, month, day) -> {
+            SimpleDateFormat sdf = new SimpleDateFormat(DD_MM_YYYY, Locale.ITALY);
+            Calendar cal = Calendar.getInstance();
+            cal.set(year, month, day);
+            dateTextView.setText(sdf.format(cal.getTime()));
+        };
     }
 }

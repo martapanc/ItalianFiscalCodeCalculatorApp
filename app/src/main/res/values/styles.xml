@@ -28,4 +28,12 @@
         <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
 <!--        <item name="colorControlNormal">#AD6EF4</item>-->
     </style>
+
+    <style name="SpinnerDatePickerStyle" parent="android:Theme.Material.Dialog">
+        <item name="android:datePickerStyle">@style/SpinnerDatePicker</item>
+    </style>
+
+    <style name="SpinnerDatePicker" parent="android:Widget.Material.DatePicker">
+        <item name="android:datePickerMode">spinner</item>
+    </style>
 </resources>

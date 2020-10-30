@@ -29,7 +29,7 @@ public class FragmentHelper {
 
     public static Calendar initCalendar() {
         Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.YEAR, -30);
+        cal.add(Calendar.YEAR, -40);
         return cal;
     }
 
