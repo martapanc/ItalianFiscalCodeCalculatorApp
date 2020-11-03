@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorSurface">@color/white</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -29,11 +30,11 @@
 <!--        <item name="colorControlNormal">#AD6EF4</item>-->
     </style>
 
-    <style name="SpinnerDatePickerStyle" parent="android:Theme.Material.Dialog">
-        <item name="android:datePickerStyle">@style/SpinnerDatePicker</item>
+    <style name="SpinnerDatePickerStyle" parent="android:Theme.Material.Light.Dialog">
+<!--        <item name="android:datePickerStyle">@style/SpinnerDatePicker</item>-->
     </style>
 
-    <style name="SpinnerDatePicker" parent="android:Widget.Material.DatePicker">
-        <item name="android:datePickerMode">spinner</item>
+    <style name="SpinnerDatePicker" parent="android:Widget.Material.Light.DatePicker">
+<!--        <item name="android:datePickerMode">spinner</item>-->
     </style>
 </resources>

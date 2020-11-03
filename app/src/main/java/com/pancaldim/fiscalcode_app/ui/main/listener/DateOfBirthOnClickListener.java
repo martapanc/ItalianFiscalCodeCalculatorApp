@@ -1,9 +1,12 @@
 package com.pancaldim.fiscalcode_app.ui.main.listener;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.view.View;
 import android.widget.TextView;
 import androidx.fragment.app.FragmentActivity;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialStyledDatePickerDialog;
 import com.pancaldim.fiscalcode_app.R;
 
 import java.text.SimpleDateFormat;
@@ -28,6 +31,8 @@ public class DateOfBirthOnClickListener implements View.OnClickListener {
         Calendar cal = Calendar.getInstance();
         cal.setTime(calendar.getTime());
 
+        MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker();
+        builder.build();
         DatePickerDialog datePickerDialog = new DatePickerDialog(
             view.getContext(),
             R.style.SpinnerDatePickerStyle,
