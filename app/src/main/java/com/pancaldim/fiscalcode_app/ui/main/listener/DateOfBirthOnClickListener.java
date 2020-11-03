@@ -17,6 +17,7 @@ import static com.pancaldim.fiscalcode_app.fiscalcode.constants.DateFormatAndLoc
 
 public class DateOfBirthOnClickListener implements View.OnClickListener {
 
+    private static final int YEAR_CLICKABLE_INDEX = 0;
     private final Calendar calendar;
     private final int dobInputId;
 
@@ -48,6 +49,7 @@ public class DateOfBirthOnClickListener implements View.OnClickListener {
         cal.set(minYear, 0, 1);
         datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
         datePickerDialog.getDatePicker().setMinDate(cal.getTimeInMillis());
+        datePickerDialog.getDatePicker().getTouchables().get(YEAR_CLICKABLE_INDEX).performClick();
         datePickerDialog.setTitle(view.getContext().getString(R.string.dob_label));
         datePickerDialog.show();
     }
