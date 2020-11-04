@@ -17,35 +17,35 @@ import static com.pancaldim.fiscalcode_app.fiscalcode.computations.FunctionCheck
 
 public class ValidateInputFields {
 
-    public static boolean isFieldValid(String input, InputField type, String[] places) {
+    public static boolean isFieldValid(String inputField, InputField type, String[] places) {
         switch (type) {
             case FIRST_NAME:
             case LAST_NAME:
-                return validateName(input);
+                return validateName(inputField);
             case DATE_OF_BIRTH:
-                return validateDateOfBirth(input);
+                return validateDateOfBirth(inputField);
             case PLACE_OF_BIRTH:
-                return validatePlaceOfBirth(input, places);
+                return validatePlaceOfBirth(inputField, places);
             case FISCAL_CODE:
-                return validateFiscalCode(input);
+                return validateFiscalCode(inputField);
             default:
                 return false;
         }
     }
 
-    private static boolean validateFiscalCode(String input) {
-        return isFiscalCodeValid(input);
+    private static boolean validateFiscalCode(String inputFiscalCode) {
+        return isFiscalCodeValid(inputFiscalCode);
     }
 
-    private static boolean validateName(String input) {
-        input = replaceSpecialChars(input).trim();
-        return isAllLetters(input);
+    private static boolean validateName(String inputName) {
+        inputName = replaceSpecialChars(inputName).trim();
+        return isAllLetters(inputName);
     }
 
-    private static boolean validateDateOfBirth(String input) {
+    private static boolean validateDateOfBirth(String inputDate) {
         SimpleDateFormat sdf = new SimpleDateFormat(DateFormatAndLocaleConstants.DD_MM_YYYY, Locale.ITALY);
         try {
-            Date date = sdf.parse(input);
+            Date date = sdf.parse(inputDate);
             Calendar cal = Calendar.getInstance();
             cal.setTime(Objects.requireNonNull(date));
             return isDateValid(cal);
@@ -54,9 +54,9 @@ public class ValidateInputFields {
         }
     }
 
-    private static boolean validatePlaceOfBirth(String input, String[] places) {
+    private static boolean validatePlaceOfBirth(String inputPlace, String[] places) {
         for (String place : places) {
-            if (place.equals(input)) {
+            if (place.equals(inputPlace)) {
                 return true;
             }
         }

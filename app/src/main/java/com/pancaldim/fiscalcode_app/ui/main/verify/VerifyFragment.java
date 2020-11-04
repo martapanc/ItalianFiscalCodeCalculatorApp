@@ -121,7 +121,7 @@ public class VerifyFragment extends Fragment {
                     TextView outputTextView = activity.findViewById(R.id.ver_fiscalCodeOutput);
                     outputTextView.setPadding(10, 5, 10, 5);
 
-                    if (computedFiscalCode.equals(fiscalCode.toUpperCase())) {
+                    if (computedFiscalCode.equalsIgnoreCase(fiscalCode)) {
                         outputTextView.setText(R.string.fiscal_code_is_correct);
                         outputTextView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_check_circle_outline_24px, 0, 0, 0);
                         outputTextView.setCompoundDrawablePadding(activity.getResources().getDimensionPixelOffset(R.dimen.small_padding));

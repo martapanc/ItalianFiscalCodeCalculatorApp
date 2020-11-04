@@ -83,7 +83,7 @@ public class FunctionCheckHelper {
     }
 
     public static String replaceSpecialChars(String input) {
-        //If the name or surname include stressed letters (à,è,ì...) or other special characters (ä,ç,ß,...),
+        // If the name or surname include stressed letters (à,è,ì...) or other special characters (ä,ç,ß,...),
         // this replaces them with corresponding letter (e.g. à = a)
         return input
                 .toUpperCase()

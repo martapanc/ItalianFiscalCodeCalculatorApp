@@ -2,6 +2,7 @@ package com.pancaldim.fiscalcode_app.fiscalcode.computations;
 
 import com.pancaldim.fiscalcode_app.exception.FiscalCodeComputationException;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.Country;
+import com.pancaldim.fiscalcode_app.fiscalcode.models.Gender;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.Town;
 
 import java.util.HashMap;
@@ -22,40 +23,41 @@ import static com.pancaldim.fiscalcode_app.fiscalcode.computations.NameAndSurnam
 import static com.pancaldim.fiscalcode_app.fiscalcode.computations.NameAndSurnameComputations.pickFirstThreeVowels;
 import static com.pancaldim.fiscalcode_app.fiscalcode.computations.NameAndSurnameComputations.pickFirstTwoConsonantsAndFirstVowel;
 import static com.pancaldim.fiscalcode_app.fiscalcode.constants.DateFormatAndLocaleConstants.getMonthCodeMap;
+import static com.pancaldim.fiscalcode_app.fiscalcode.constants.FiscalCodeConstants.getControlCharMap;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 
 public class ComputeFiscalCodeHelper {
 
-    public static String computeLastName(String input) throws FiscalCodeComputationException {
-        input = replaceSpecialChars(input.trim());
+    public static String computeLastName(String inputName) throws FiscalCodeComputationException {
+        inputName = replaceSpecialChars(inputName.trim());
 
-        if (isAllLetters(input)) {
+        if (isAllLetters(inputName)) {
             StringBuilder result = new StringBuilder();
-            input = input.toUpperCase();
+            inputName = inputName.toUpperCase();
 
-            if (input.length() < 3) {
-                if (isTwoLettersAndVowelBeforeConsonant(input)) {
-                    result = swapIfVowelBeforeConsonant(input);
+            if (inputName.length() < 3) {
+                if (isTwoLettersAndVowelBeforeConsonant(inputName)) {
+                    result = swapIfVowelBeforeConsonant(inputName);
                 } else {
-                    result = new StringBuilder(input);
+                    result = new StringBuilder(inputName);
                     while (result.length() < 3) {
                         result.append("X");
                     }
                 }
             } else {
-                switch (howManyLettersOfType(input, CONSONANTS)) {
+                switch (howManyLettersOfType(inputName, CONSONANTS)) {
                     case 0:
-                        result.append(pickFirstThreeVowels(input));
+                        result.append(pickFirstThreeVowels(inputName));
                         break;
                     case 1:
-                        result.append(pickFirstConsonantAndFirstTwoVowels(input));
+                        result.append(pickFirstConsonantAndFirstTwoVowels(inputName));
                         break;
                     case 2:
-                        result.append(pickFirstTwoConsonantsAndFirstVowel(input));
+                        result.append(pickFirstTwoConsonantsAndFirstVowel(inputName));
                         break;
                     default:
-                        result.append(pickFirstThreeConsonants(input));
+                        result.append(pickFirstThreeConsonants(inputName));
                 }
             }
             return result.toString();
@@ -66,6 +68,7 @@ public class ComputeFiscalCodeHelper {
 
     public static String computeFirstName(String inputName) throws FiscalCodeComputationException {
         inputName = replaceSpecialChars(inputName.trim());
+
         if (isAllLetters(inputName)) {
             StringBuilder result = new StringBuilder();
             inputName = inputName.toUpperCase();
@@ -104,12 +107,13 @@ public class ComputeFiscalCodeHelper {
         }
     }
 
-    public static String computeDateOfBirth(String dateString, String gender) throws FiscalCodeComputationException {
-        //TODO: min year should be a static variable for the whole app
+    //TODO: min year should be a static variable for the whole app
+    public static String computeDateOfBirth(String dateString, String genderString) throws FiscalCodeComputationException {
         String[] dateValues = dateString.split("/");
-        String dayString = dateValues[0];
-        String monthString = dateValues[1];
-        String yearString = dateValues[2];
+        final String dayString = dateValues[0];
+        final String monthString = dateValues[1];
+        final String yearString = dateValues[2];
+        final Gender gender = Gender.getGender(genderString);
 
         if (isYearValid(yearString)) {
             if (isDateValid(dayString, monthString, yearString)) {
@@ -129,9 +133,10 @@ public class ComputeFiscalCodeHelper {
                     // get the letter corresponding to the month
                     result += getMonthCodeMap().get(month);
 
-                    if ("f".equals(gender)) {
+
+                    if (Gender.F.equals(gender)) {
                         result += (day + 40);
-                    } else if ("m".equals(gender)) {
+                    } else if (Gender.M.equals(gender)) {
                         result += (day <= 10 ? "0" + day : day);
                     }
                     return result;
@@ -167,35 +172,8 @@ public class ComputeFiscalCodeHelper {
     }
 
     public static String computeControlChar(String incompleteFiscalCode) throws InterruptedException, FiscalCodeComputationException {
-        Map<Integer, String> controlCharMap = new HashMap<>();
-        controlCharMap.put(0, "A");
-        controlCharMap.put(1, "B");
-        controlCharMap.put(2, "C");
-        controlCharMap.put(3, "D");
-        controlCharMap.put(4, "E");
-        controlCharMap.put(5, "F");
-        controlCharMap.put(6, "G");
-        controlCharMap.put(7, "H");
-        controlCharMap.put(8, "I");
-        controlCharMap.put(9, "J");
-        controlCharMap.put(10, "K");
-        controlCharMap.put(11, "L");
-        controlCharMap.put(12, "M");
-        controlCharMap.put(13, "N");
-        controlCharMap.put(14, "O");
-        controlCharMap.put(15, "P");
-        controlCharMap.put(16, "Q");
-        controlCharMap.put(17, "R");
-        controlCharMap.put(18, "S");
-        controlCharMap.put(19, "T");
-        controlCharMap.put(20, "U");
-        controlCharMap.put(21, "V");
-        controlCharMap.put(22, "W");
-        controlCharMap.put(23, "X");
-        controlCharMap.put(24, "Y");
-        controlCharMap.put(25, "Z");
-
-        int evenSum = 0, oddSum = 0;
+        int evenSum = 0;
+        int oddSum = 0;
         incompleteFiscalCode = incompleteFiscalCode.toUpperCase();
         if (incompleteFiscalCode.length() == 15) {
             OddThread ot = new OddThread(incompleteFiscalCode, oddSum);
@@ -212,7 +190,7 @@ public class ComputeFiscalCodeHelper {
 
             // The remainder of the division is the control character
             int sum = (oddSum + evenSum) % 26;
-            return controlCharMap.get(sum);
+            return getControlCharMap().get(sum);
         } else {
             throw new FiscalCodeComputationException("err_fc_char");
         }
