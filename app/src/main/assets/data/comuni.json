@@ -13641,6 +13641,11 @@
             "p": "FI"
         },
         {
+            "cc": "D583",
+            "id": "Figline Valdarno",
+            "p": "FI"
+        },
+        {
             "cc": "D582",
             "id": "Figline Vegliaturo",
             "p": "CS"
@@ -15896,8 +15901,23 @@
             "p": "PA"
         },
         {
+            "cc": "E151",
+            "id": "Gravedona",
+            "p": "CO"
+        },
+        {
             "cc": "M315",
             "id": "Gravedona ed Uniti",
+            "p": "CO"
+        },
+        {
+            "cc": "D986",
+            "id": "Germasino",
+            "p": "CO"
+        },
+        {
+            "cc": "C965",
+            "id": "Consiglio di Rumo",
             "p": "CO"
         },
         {

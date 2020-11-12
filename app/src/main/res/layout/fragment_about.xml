@@ -201,5 +201,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+        <!-- Cases of town name changes -->
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:paddingBottom="5dp"
+                android:text="@string/ch_aggreg_title"
+                android:textSize="16sp" />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:text="@string/ch_aggreg_text" />
+
     </LinearLayout>
 </ScrollView>

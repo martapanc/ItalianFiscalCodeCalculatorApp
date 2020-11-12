@@ -100,4 +100,14 @@
         \nThe control character will then be recalculated.
     </string>
 
+    <string name="ch_aggreg_title"><b>Cases of town name change</b></string>
+    <string name="ch_aggreg_text">
+        It may happen that the list of municipalities (or countries), and therefore of cadastral codes, varies over time, for example if two or more
+        cities are aggregated into a single municipality (e.g. the municipality of Gravedona ed Uniti, formed in 2011 by the merger of the
+        previous towns Consiglio di Rumo, Germasino and Gravedona). In these cases it can happen that a person was born in a town
+        that no longer exists today or no longer has its original name, and therefore that the database of the application, updated with the latest
+        list of municipalities, does not contain it. If your town or country of birth is not on the list, we would be grateful if you would let us know,
+        through a review or an anonymous feedback (Settings > Send Feedback), so that we can add it to the database.
+    </string>
+
 </resources>
