@@ -3246,6 +3246,11 @@
             "p": "CN"
         },
         {
+            "cc": "A806",
+            "id": "Berra",
+            "p": "FE"
+        },
+        {
             "cc": "A809",
             "id": "Bertinoro",
             "p": "FC"
@@ -3954,6 +3959,11 @@
             "cc": "B009",
             "id": "Borgo d'Ale",
             "p": "VC"
+        },
+        {
+            "cc": "M429",
+            "id": "Borgo d'Anaunia",
+            "p": "TN"
         },
         {
             "cc": "B010",
@@ -5919,6 +5929,11 @@
             "cc": "B546",
             "id": "Campolongo Maggiore",
             "p": "VE"
+        },
+        {
+            "cc": "B547",
+            "id": "Campolongo sul Brenta",
+            "p": "VI"
         },
         {
             "cc": "M311",
@@ -9131,6 +9146,11 @@
             "p": "TN"
         },
         {
+            "cc": "C374",
+            "id": "Cismon del Grappa",
+            "p": "VI"
+        },
+        {
             "cc": "C375",
             "id": "Cavallerleone",
             "p": "CN"
@@ -11341,6 +11361,11 @@
             "p": "BS"
         },
         {
+            "cc": "C949",
+            "id": "Conco",
+            "p": "VI"
+        },
+        {
             "cc": "C950",
             "id": "Concordia Sagittaria",
             "p": "VE"
@@ -12101,6 +12126,11 @@
             "p": "VI"
         },
         {
+            "cc": "D157",
+            "id": "Crespano del Grappa",
+            "p": "TV"
+        },
+        {
             "cc": "D159",
             "id": "Crespiatica",
             "p": "LO"
@@ -12844,6 +12874,11 @@
             "cc": "D371",
             "id": "Dro",
             "p": "TN"
+        },
+        {
+            "cc": "D370",
+            "id": "Drizzona",
+            "p": "CR"
         },
         {
             "cc": "D372",
@@ -14169,6 +14204,11 @@
             "cc": "D712",
             "id": "Formigliana",
             "p": "VC"
+        },
+        {
+            "cc": "D713",
+            "id": "Formignana",
+            "p": "FE"
         },
         {
             "cc": "D714",
@@ -17411,6 +17451,11 @@
             "p": "SR"
         },
         {
+            "cc": "C562",
+            "id": "Lentiai",
+            "p": "BL"
+        },
+        {
             "cc": "E535",
             "id": "Leonessa",
             "p": "RI"
@@ -18253,6 +18298,11 @@
         {
             "cc": "M427",
             "id": "Lusiana Conco",
+            "p": "VI"
+        },
+        {
+            "cc": "E762",
+            "id": "Lusiana",
             "p": "VI"
         },
         {
@@ -19311,6 +19361,11 @@
             "p": "CO"
         },
         {
+            "cc": "F019",
+            "id": "Mason Vicentino",
+            "p": "VI"
+        },
+        {
             "cc": "F020",
             "id": "Masone",
             "p": "GE"
@@ -19584,6 +19639,11 @@
             "cc": "F095",
             "id": "Melara",
             "p": "RO"
+        },
+        {
+            "cc": "F094",
+            "id": "Mel",
+            "p": "BL"
         },
         {
             "cc": "F096",
@@ -19889,6 +19949,11 @@
             "cc": "F173",
             "id": "Mezzanego",
             "p": "GE"
+        },
+        {
+            "cc": "F174",
+            "id": "Mezzani",
+            "p": "PR"
         },
         {
             "cc": "F175",
@@ -20349,6 +20414,11 @@
             "cc": "F305",
             "id": "Moltrasio",
             "p": "CO"
+        },
+        {
+            "cc": "F306",
+            "id": "Molvena",
+            "p": "VI"
         },
         {
             "cc": "F307",
@@ -22506,6 +22576,11 @@
             "p": "BS"
         },
         {
+            "cc": "F853",
+            "id": "Nave San Rocco",
+            "p": "TN"
+        },
+        {
             "cc": "F852",
             "id": "Navelli",
             "p": "AQ"
@@ -22924,6 +22999,11 @@
             "cc": "F958",
             "id": "Novedrate",
             "p": "CO"
+        },
+        {
+            "cc": "M430",
+            "id": "Novella",
+            "p": "TN"
         },
         {
             "cc": "F960",
@@ -23989,6 +24069,11 @@
             "cc": "G217",
             "id": "Paderno Franciacorta",
             "p": "BS"
+        },
+        {
+            "cc": "G221",
+            "id": "Paderno del Grappa",
+            "p": "TV"
         },
         {
             "cc": "G222",
@@ -28336,6 +28421,11 @@
             "p": "RC"
         },
         {
+            "cc": "H360",
+            "id": "Ro",
+            "p": "FE"
+        },
+        {
             "cc": "H361",
             "id": "Roana",
             "p": "VI"
@@ -31009,6 +31099,11 @@
             "cc": "I046",
             "id": "San Miniato",
             "p": "PI"
+        },
+        {
+            "cc": "I047",
+            "id": "San Nazario",
+            "p": "VI"
         },
         {
             "cc": "I049",
@@ -34186,6 +34281,11 @@
             "p": "AV"
         },
         {
+            "cc": "I845",
+            "id": "Sorbolo",
+            "p": "PR"
+        },
+        {
             "cc": "M411",
             "id": "Sorbolo Mezzani",
             "p": "PR"
@@ -36371,6 +36471,11 @@
             "p": "FE"
         },
         {
+            "cc": "L390",
+            "id": "Tresigallo",
+            "p": "FE"
+        },
+        {
             "cc": "L392",
             "id": "Tresivio",
             "p": "SO"
@@ -36494,6 +36599,11 @@
             "cc": "L421",
             "id": "Tricesimo",
             "p": "UD"
+        },
+        {
+            "cc": "L422",
+            "id": "Trichiana",
+            "p": "BL"
         },
         {
             "cc": "L423",
@@ -37484,6 +37594,11 @@
             "cc": "C936",
             "id": "Valsolda",
             "p": "CO"
+        },
+        {
+            "cc": "L650",
+            "id": "Valstagna",
+            "p": "VI"
         },
         {
             "cc": "L651",
@@ -38986,6 +39101,11 @@
             "p": "TN"
         },
         {
+            "cc": "M431",
+            "id": "Ville di Fiemme",
+            "p": "TN"
+        },
+        {
             "cc": "L981",
             "id": "Villeneuve",
             "p": "AO"
@@ -39349,6 +39469,11 @@
             "cc": "M138",
             "id": "Zaccanopoli",
             "p": "VV"
+        },
+        {
+            "cc": "M142",
+            "id": "Zambana",
+            "p": "TN"
         },
         {
             "cc": "M139",
