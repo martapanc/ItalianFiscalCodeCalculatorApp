@@ -3361,6 +3361,11 @@
             "p": "VR"
         },
         {
+            "cc": "A838",
+            "id": "Bevilacqua Boschi",
+            "p": "VR"
+        },
+        {
             "cc": "A841",
             "id": "Biancavilla",
             "p": "CT"
@@ -3939,6 +3944,11 @@
             "cc": "B003",
             "id": "Borgiallo",
             "p": "TO"
+        },
+        {
+            "cc": "B004",
+            "id": "Borgio",
+            "p": "SV"
         },
         {
             "cc": "B005",
@@ -5291,9 +5301,14 @@
             "p": "TP"
         },
         {
+            "cc": "B386",
+            "id": "Calatafimi-Segesta",
+            "p": "TP"
+        },
+        {
             "cc": "B388",
-            "id": "Calcata",
-            "p": "VT"
+            "id": "Calavino",
+            "p": "TN"
         },
         {
             "cc": "B389",
@@ -7236,6 +7251,11 @@
             "p": "PI"
         },
         {
+            "cc": "B884",
+            "id": "Casaleggio-Castellazzo",
+            "p": "NO"
+        },
+        {
             "cc": "B885",
             "id": "Casale Monferrato",
             "p": "AL"
@@ -8374,6 +8394,11 @@
             "cc": "C162",
             "id": "Castelletto Monferrato",
             "p": "AL"
+        },
+        {
+            "cc": "C163",
+            "id": "Castelletto Monforte",
+            "p": "CN"
         },
         {
             "cc": "C166",
@@ -11826,6 +11851,11 @@
             "p": "BL"
         },
         {
+            "cc": "D074",
+            "id": "Cortile San Martino",
+            "p": "PR"
+        },
+        {
             "cc": "D075",
             "id": "Cortina sulla strada del vino",
             "p": "BZ"
@@ -13451,6 +13481,11 @@
             "p": "TO"
         },
         {
+            "cc": "D521",
+            "id": "Favria-Oglianico",
+            "p": "TO"
+        },
+        {
             "cc": "D523",
             "id": "Feisoglio",
             "p": "CN"
@@ -14236,6 +14271,11 @@
             "p": "UD"
         },
         {
+            "cc": "D721",
+            "id": "Forni di Val d'Astico",
+            "p": "VI"
+        },
+        {
             "cc": "D725",
             "id": "Forno Canavese",
             "p": "TO"
@@ -14466,6 +14506,11 @@
             "p": "AL"
         },
         {
+            "cc": "D778",
+            "id": "Frassinello Olivola",
+            "p": "AL"
+        },
+        {
             "cc": "D780",
             "id": "Frassineto Po",
             "p": "AL"
@@ -14579,6 +14624,11 @@
             "cc": "D808",
             "id": "Frontone",
             "p": "PU"
+        },
+        {
+            "cc": "D809",
+            "id": "Frontone Serra",
+            "p": "PS"
         },
         {
             "cc": "D810",
@@ -14768,6 +14818,11 @@
         {
             "cc": "D856",
             "id": "Gaiola",
+            "p": "CN"
+        },
+        {
+            "cc": "D857",
+            "id": "Gaiola-Moiola",
             "p": "CN"
         },
         {
@@ -16571,8 +16626,18 @@
             "p": "VV"
         },
         {
+            "cc": "E319",
+            "id": "Ioannis",
+            "p": "UD"
+        },
+        {
             "cc": "E323",
             "id": "Irgoli",
+            "p": "NU"
+        },
+        {
+            "cc": "E324",
+            "id": "Irgoli di Galtelli",
             "p": "NU"
         },
         {
@@ -16891,6 +16956,11 @@
             "p": "SP"
         },
         {
+            "cc": "E461",
+            "id": "Lasino",
+            "p": "TN"
+        },
+        {
             "cc": "E470",
             "id": "La Thuile",
             "p": "AO"
@@ -17013,6 +17083,11 @@
         {
             "cc": "E417",
             "id": "Laino Borgo",
+            "p": "CS"
+        },
+        {
+            "cc": "E418",
+            "id": "Laino Bruzio",
             "p": "CS"
         },
         {
@@ -17334,6 +17409,16 @@
             "cc": "E502",
             "id": "Lazise",
             "p": "VR"
+        },
+        {
+            "cc": "E503",
+            "id": "Villabella",
+            "p": "AL"
+        },
+        {
+            "cc": "E503",
+            "id": "Lazzarone",
+            "p": "AL"
         },
         {
             "cc": "E504",
@@ -20381,6 +20466,11 @@
             "p": "IM"
         },
         {
+            "cc": "F292",
+            "id": "Molino Alzano",
+            "p": "AL"
+        },
+        {
             "cc": "F293",
             "id": "Molino dei Torti",
             "p": "AL"
@@ -20563,6 +20653,11 @@
         {
             "cc": "F338",
             "id": "Monchiero",
+            "p": "CN"
+        },
+        {
+            "cc": "F339",
+            "id": "Novello Monchiero",
             "p": "CN"
         },
         {
@@ -24256,6 +24351,11 @@
             "p": "UD"
         },
         {
+            "cc": "G269",
+            "id": "Palazzo Piverone",
+            "p": "TO"
+        },
+        {
             "cc": "G264",
             "id": "Palazzolo sull'Oglio",
             "p": "BS"
@@ -24761,6 +24861,11 @@
             "p": "TO"
         },
         {
+            "cc": "G401",
+            "id": "Pedanea",
+            "p": "TO"
+        },
+        {
             "cc": "G402",
             "id": "Pedara",
             "p": "CT"
@@ -24984,6 +25089,11 @@
             "cc": "G459",
             "id": "Perloz",
             "p": "AO"
+        },
+        {
+            "cc": "G460",
+            "id": "Perno",
+            "p": "CN"
         },
         {
             "cc": "G461",
@@ -27356,6 +27466,11 @@
             "p": "CN"
         },
         {
+            "cc": "H060",
+            "id": "Priero-Montezemolo",
+            "p": "CN"
+        },
+        {
             "cc": "H062",
             "id": "Prignano Cilento",
             "p": "SA"
@@ -29316,6 +29431,11 @@
             "p": "AN"
         },
         {
+            "cc": "H576",
+            "id": "Rosora Mergo",
+            "p": "AN"
+        },
+        {
             "cc": "H577",
             "id": "Rossa",
             "p": "VC"
@@ -29951,6 +30071,11 @@
             "p": "RC"
         },
         {
+            "cc": "H751",
+            "id": "Samo di Calabria",
+            "p": "RC"
+        },
+        {
             "cc": "H752",
             "id": "Samolaco",
             "p": "SO"
@@ -30448,6 +30573,11 @@
         {
             "cc": "H873",
             "id": "San Gillio",
+            "p": "TO"
+        },
+        {
+            "cc": "H874",
+            "id": "San Gillio Torinese",
             "p": "TO"
         },
         {
@@ -33801,6 +33931,11 @@
             "p": "OR"
         },
         {
+            "cc": "I719",
+            "id": "Siamanna Siapiccia",
+            "p": "CA"
+        },
+        {
             "cc": "I720",
             "id": "Siano",
             "p": "SA"
@@ -34811,6 +34946,11 @@
             "p": "TO"
         },
         {
+            "cc": "I971",
+            "id": "Strambino Romano",
+            "p": "TO"
+        },
+        {
             "cc": "I973",
             "id": "Strangolagalli",
             "p": "FR"
@@ -35038,6 +35178,11 @@
         {
             "cc": "L027",
             "id": "Tagliolo Monferrato",
+            "p": "AL"
+        },
+        {
+            "cc": "L028",
+            "id": "Tagliolo Belforte",
             "p": "AL"
         },
         {
@@ -38041,6 +38186,11 @@
             "p": "CN"
         },
         {
+            "cc": "L759",
+            "id": "Verezzi",
+            "p": "SV"
+        },
+        {
             "cc": "L762",
             "id": "Vergato",
             "p": "BO"
@@ -38581,6 +38731,11 @@
             "p": "LU"
         },
         {
+            "cc": "L927",
+            "id": "Villa Corsione",
+            "p": "AT"
+        },
+        {
             "cc": "L928",
             "id": "Villa Cortese",
             "p": "MI"
@@ -39096,6 +39251,11 @@
             "p": "VI"
         },
         {
+            "cc": "M035",
+            "id": "Villa Volturno",
+            "p": "CE"
+        },
+        {
             "cc": "M363",
             "id": "Ville d'Anaunia",
             "p": "TN"
@@ -39319,6 +39479,11 @@
             "cc": "M098",
             "id": "Viverone",
             "p": "BI"
+        },
+        {
+            "cc": "M099",
+            "id": "Vizze",
+            "p": "BZ"
         },
         {
             "cc": "M100",
