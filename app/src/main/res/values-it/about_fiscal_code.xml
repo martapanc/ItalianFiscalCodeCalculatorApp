@@ -103,8 +103,8 @@
         Il carattere di controllo andrà poi ricalcolato.
     </string>
 
-    <string name="ch_aggreg_title"><b>Casi di cambio nome di Comuni</b></string>
-    <string name="ch_aggreg_text">
+    <string name="ch_suppressed_title"><b>Casi di cambio nome di Comuni</b></string>
+    <string name="ch_suppressed_text">
         Può capitare che la lista dei comuni (o delle nazioni), e quindi di codici catastali, vari nel tempo, ad esempio se due o più
         città vengono aggregate in un solo comune (es: il comune di Gravedona ed Uniti, costituito nel 2011 dalla fusione dei
         precedenti comuni Consiglio di Rumo, Germasino e Gravedona). In questi casi può succedere che una persona sia nata in un comune
