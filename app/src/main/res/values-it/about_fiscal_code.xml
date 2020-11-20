@@ -95,12 +95,22 @@
         - 25 → Z\n
     </string>
     
-    <string name="ch_omo_title"><b>Omocodia</b></string>
-    <string name="ch_omo_text">
+    <string name="ch_identical_title"><b>Omocodia</b></string>
+    <string name="ch_identical_text">
         Nei rari casi in cui due persone risultino avere lo stesso codice fiscale (es. due soggetti con nomi
         e cognomi molto simili, nati lo stesso giorno e nella stessa città), l\'Agenzia delle Entrate
         provvede a sostituire i caratteri numerici a partire da destra, secondo la tabella di seguito.
         Il carattere di controllo andrà poi ricalcolato.
+    </string>
+
+    <string name="ch_suppressed_title"><b>Casi di cambio nome di Comuni</b></string>
+    <string name="ch_suppressed_text">
+        Può capitare che la lista dei comuni (o delle nazioni), e quindi di codici catastali, vari nel tempo, ad esempio se due o più
+        città vengono aggregate in un solo comune (es: il comune di Gravedona ed Uniti, costituito nel 2011 dalla fusione dei
+        precedenti comuni Consiglio di Rumo, Germasino e Gravedona). In questi casi può succedere che una persona sia nata in un comune
+        che oggi non esiste più o che non ha più il suo nome originario, e quindi che il database dell\'applicazione, aggiornato con la più recente
+        lista di comuni, non lo contenga. Se il vostro comune o paese di nascita non è presente nella lista, saremo grati se ce lo segnalaste
+        tramite una recensione o un feedback anonimo (Impostazioni > Invia feedback) e provvedremo ad aggiungerlo.
     </string>
 
 </resources>
