@@ -92,8 +92,8 @@
         - 25 → Z\n
     </string>
 
-    <string name="ch_omo_title"><b>Identical codes</b></string>
-    <string name="ch_omo_text">
+    <string name="ch_identical_title"><b>Identical codes</b></string>
+    <string name="ch_identical_text">
         In the rare cases in which two people are found to have the same fiscal code
         (e.g. two people with very similar first and last names, born on the same day and in the same town),
         the Revenue Agency replaces the numeric characters from the right, according to the table below.

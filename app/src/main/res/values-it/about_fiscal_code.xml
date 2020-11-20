@@ -95,8 +95,8 @@
         - 25 → Z\n
     </string>
     
-    <string name="ch_omo_title"><b>Omocodia</b></string>
-    <string name="ch_omo_text">
+    <string name="ch_identical_title"><b>Omocodia</b></string>
+    <string name="ch_identical_text">
         Nei rari casi in cui due persone risultino avere lo stesso codice fiscale (es. due soggetti con nomi
         e cognomi molto simili, nati lo stesso giorno e nella stessa città), l\'Agenzia delle Entrate
         provvede a sostituire i caratteri numerici a partire da destra, secondo la tabella di seguito.

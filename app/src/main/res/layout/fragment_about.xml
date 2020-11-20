@@ -187,14 +187,14 @@
             android:layout_height="wrap_content"
             android:paddingTop="15dp"
             android:paddingBottom="5dp"
-            android:text="@string/ch_omo_title"
+            android:text="@string/ch_identical_title"
             android:textSize="16sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="15dp"
-            android:text="@string/ch_omo_text" />
+            android:text="@string/ch_identical_text" />
 
         <WebView
             android:id="@+id/omo_table"
