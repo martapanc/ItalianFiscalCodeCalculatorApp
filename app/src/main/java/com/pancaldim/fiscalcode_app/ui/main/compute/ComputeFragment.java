@@ -19,41 +19,42 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
-
 import com.google.android.material.snackbar.Snackbar;
 import com.leinardi.android.speeddial.SpeedDialActionItem;
 import com.leinardi.android.speeddial.SpeedDialView;
 import com.pancaldim.fiscalcode_app.R;
 import com.pancaldim.fiscalcode_app.ShowBarcodeActivity;
 import com.pancaldim.fiscalcode_app.exception.FiscalCodeComputationException;
-import com.pancaldim.fiscalcode_app.fiscalcode.computations.ComputeFiscalCodeHelper;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.Country;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.FiscalCodeData;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.Gender;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.InputField;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.Town;
 import com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper;
-import com.pancaldim.fiscalcode_app.fiscalcode.utils.ReadTownListHelper;
+import lombok.SneakyThrows;
 
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
-import lombok.SneakyThrows;
-
 import static com.pancaldim.fiscalcode_app.ShowBarcodeActivity.FISCAL_CODE_DATA_EXTRA_KEY;
+import static com.pancaldim.fiscalcode_app.fiscalcode.computations.ComputeFiscalCodeHelper.compute;
 import static com.pancaldim.fiscalcode_app.fiscalcode.constants.ErrorMapConstants.getErrorMap;
 import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.initCalendar;
 import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.setupDateOfBirth;
 import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.setupGenderRadioButtons;
 import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.setupPlaceOfBirth;
+import static com.pancaldim.fiscalcode_app.fiscalcode.utils.ReadTownListHelper.openFile;
+import static com.pancaldim.fiscalcode_app.fiscalcode.utils.ReadTownListHelper.readCountriesWithLanguageSupport;
+import static com.pancaldim.fiscalcode_app.fiscalcode.utils.ReadTownListHelper.readTowns;
+import static com.pancaldim.fiscalcode_app.ui.main.compute.ComputeViewModel.COUNTRIES_FILE;
+import static com.pancaldim.fiscalcode_app.ui.main.compute.ComputeViewModel.COUNTRIES_FILE_IT;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 public class ComputeFragment extends Fragment {
@@ -123,9 +124,9 @@ public class ComputeFragment extends Fragment {
                 String pob = pobTextView.getText().toString();
 
                 try {
-                    List<Town> towns = ReadTownListHelper.readTowns(activity.getAssets().open(ComputeViewModel.TOWNS_FILE));
-                    List<Country> countries = ReadTownListHelper.readCountries(activity.getAssets().open(ComputeViewModel.COUNTRIES_FILE));
-                    String fiscalCode = ComputeFiscalCodeHelper.compute(firstName, lastName, dob, gender, pob, towns, countries);
+                    List<Town> towns = readTowns(openFile(activity, ComputeViewModel.TOWNS_FILE));
+                    List<Country> countries = readCountriesWithLanguageSupport(openFile(activity, COUNTRIES_FILE), openFile(activity, COUNTRIES_FILE_IT));
+                    String fiscalCode = compute(firstName, lastName, dob, gender, pob, towns, countries);
 
                     FragmentHelper.hideVirtualKeyboard(view);
 
