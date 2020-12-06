@@ -5,5 +5,4 @@ Android App written in Java
 
 <img src="app/src/main/assets/samples/screenshot_1.jpg" width="24%"/> <img src="app/src/main/assets/samples/screenshot_2.jpg" width="24%"/> <img src="app/src/main/assets/samples/screenshot_3.jpg" width="24%"/> <img src="app/src/main/assets/samples/screenshot_4.jpg" width="24%"/>
 
-
-Tested with Gradle v6.0.1 and v6.7.1
+Tested with Gradle v6.0.1, v6.5 and v6.7.1
