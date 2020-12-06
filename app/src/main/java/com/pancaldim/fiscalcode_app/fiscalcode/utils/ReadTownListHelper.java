@@ -1,5 +1,6 @@
 package com.pancaldim.fiscalcode_app.fiscalcode.utils;
 
+import androidx.fragment.app.FragmentActivity;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.Country;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.Town;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -11,6 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadTownListHelper {
+
+    public static InputStream openFile(FragmentActivity activity, String countriesFile) throws IOException {
+        return activity.getAssets().open(countriesFile);
+    }
 
     public static List<Town> readTowns(InputStream path) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -35,6 +40,12 @@ public class ReadTownListHelper {
                     country.get("continent").asText(),
                     country.get("area").asText()));
         }
+        return countries;
+    }
+
+    public static List<Country> readCountriesWithLanguageSupport(InputStream enPath, InputStream itPath) throws IOException {
+        List<Country> countries = readCountries(enPath);
+        countries.addAll(readCountries(itPath));
         return countries;
     }
 

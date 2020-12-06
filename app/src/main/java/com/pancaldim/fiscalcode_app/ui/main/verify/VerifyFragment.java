@@ -36,6 +36,7 @@ import java.util.List;
 
 import lombok.SneakyThrows;
 
+import static com.pancaldim.fiscalcode_app.fiscalcode.computations.ComputeFiscalCodeHelper.compute;
 import static com.pancaldim.fiscalcode_app.fiscalcode.constants.ErrorMapConstants.getErrorMap;
 import static com.pancaldim.fiscalcode_app.fiscalcode.models.InputField.DATE_OF_BIRTH;
 import static com.pancaldim.fiscalcode_app.fiscalcode.models.InputField.FIRST_NAME;
@@ -48,6 +49,11 @@ import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.initC
 import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.setupDateOfBirth;
 import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.setupGenderRadioButtons;
 import static com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper.setupPlaceOfBirth;
+import static com.pancaldim.fiscalcode_app.fiscalcode.utils.ReadTownListHelper.openFile;
+import static com.pancaldim.fiscalcode_app.fiscalcode.utils.ReadTownListHelper.readCountriesWithLanguageSupport;
+import static com.pancaldim.fiscalcode_app.fiscalcode.utils.ReadTownListHelper.readTowns;
+import static com.pancaldim.fiscalcode_app.ui.main.compute.ComputeViewModel.COUNTRIES_FILE;
+import static com.pancaldim.fiscalcode_app.ui.main.compute.ComputeViewModel.COUNTRIES_FILE_IT;
 import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 public class VerifyFragment extends Fragment {
@@ -113,9 +119,9 @@ public class VerifyFragment extends Fragment {
                 String fiscalCode = fiscalCodeEditText.getText().toString();
 
                 try {
-                    List<Town> towns = ReadTownListHelper.readTowns(activity.getAssets().open(ComputeViewModel.TOWNS_FILE));
-                    List<Country> countries = ReadTownListHelper.readCountries(activity.getAssets().open(ComputeViewModel.COUNTRIES_FILE));
-                    String computedFiscalCode = ComputeFiscalCodeHelper.compute(firstName, lastName, dob, gender, pob, towns, countries);
+                    List<Town> towns = readTowns(activity.getAssets().open(ComputeViewModel.TOWNS_FILE));
+                    List<Country> countries = readCountriesWithLanguageSupport(openFile(activity, COUNTRIES_FILE), openFile(activity, COUNTRIES_FILE_IT));
+                    String computedFiscalCode = compute(firstName, lastName, dob, gender, pob, towns, countries);
 
                     hideVirtualKeyboard(view);
                     TextView outputTextView = activity.findViewById(R.id.ver_fiscalCodeOutput);
