@@ -30,18 +30,15 @@ import com.leinardi.android.speeddial.SpeedDialView;
 import com.pancaldim.fiscalcode_app.R;
 import com.pancaldim.fiscalcode_app.ShowBarcodeActivity;
 import com.pancaldim.fiscalcode_app.exception.FiscalCodeComputationException;
-import com.pancaldim.fiscalcode_app.fiscalcode.computations.ComputeFiscalCodeHelper;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.Country;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.FiscalCodeData;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.Gender;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.InputField;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.Town;
 import com.pancaldim.fiscalcode_app.fiscalcode.utils.FragmentHelper;
-import com.pancaldim.fiscalcode_app.fiscalcode.utils.ReadTownListHelper;
 import lombok.SneakyThrows;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;

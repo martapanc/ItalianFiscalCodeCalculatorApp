@@ -15,26 +15,21 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
-
 import com.pancaldim.fiscalcode_app.R;
 import com.pancaldim.fiscalcode_app.exception.FiscalCodeComputationException;
-import com.pancaldim.fiscalcode_app.fiscalcode.computations.ComputeFiscalCodeHelper;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.Country;
 import com.pancaldim.fiscalcode_app.fiscalcode.models.Town;
-import com.pancaldim.fiscalcode_app.fiscalcode.utils.ReadTownListHelper;
 import com.pancaldim.fiscalcode_app.ui.main.compute.ComputeViewModel;
+import lombok.SneakyThrows;
 
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
-
-import lombok.SneakyThrows;
 
 import static com.pancaldim.fiscalcode_app.fiscalcode.computations.ComputeFiscalCodeHelper.compute;
 import static com.pancaldim.fiscalcode_app.fiscalcode.constants.ErrorMapConstants.getErrorMap;
