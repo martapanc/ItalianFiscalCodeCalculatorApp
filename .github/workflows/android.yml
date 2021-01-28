@@ -22,19 +22,19 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
     
-    - name: Build success
-      uses: bryan-nice/slack-notification@master
-      if: success()
-      env:
-        SLACK_TITLE: "Build succeeded! ✅"
-        SLACK_MESSAGE: |
-          Check the CI logs <https://github.com/martapanc/ItalianFiscalCodeCalculatorApp/actions|here>.
-    
-    - name: Build failure
-      uses: bryan-nice/slack-notification@master
-      if: failure()
-      env:
-        SLACK_TITLE: "Build failed! 🔴"
-        SLACK_MESSAGE: |
-          Check the CI logs <https://github.com/martapanc/ItalianFiscalCodeCalculatorApp/actions|here>.
+#    - name: Build success
+#      uses: bryan-nice/slack-notification@master
+#      if: success()
+#      env:
+#        SLACK_TITLE: "Build succeeded! ✅"
+#        SLACK_MESSAGE: |
+#          Check the CI logs <https://github.com/martapanc/ItalianFiscalCodeCalculatorApp/actions|here>.
+#
+#    - name: Build failure
+#      uses: bryan-nice/slack-notification@master
+#      if: failure()
+#      env:
+#        SLACK_TITLE: "Build failed! 🔴"
+#        SLACK_MESSAGE: |
+#          Check the CI logs <https://github.com/martapanc/ItalianFiscalCodeCalculatorApp/actions|here>.
 
