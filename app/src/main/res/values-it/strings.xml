@@ -58,9 +58,9 @@
     <string name="enter_feedback">Testo del feedback</string>
     <string name="send">Invia</string>
     <string name="cancel">Cancella</string>
-    <string name="feedback_subtitle">Se desideri segnalare un problema, ti preghiamo di essere il più preciso
-        possibile nella descrizione.
-        \nIl feedback è anonimo, e utilizzeremo queste informazioni esclusivamente per migliorare l\'app.
+    <string name="feedback_subtitle">Se desideri segnalare un problema, <b>ti preghiamo di essere il più preciso
+        possibile nella descrizione</b> (es. \"Non trovo la città XXX nella lista\" o \"L\'app non viene visualizzata correttamente sul mio Samsung Galaxy S5 con la versione 10 di Android\").
+        \n\nIl feedback è <b>anonimo</b>, e utilizzeremo queste informazioni esclusivamente per migliorare l\'app.
         Se desiderassi scriverci direttamente, trovi i dettagli nelle Info, o nella nostra pagina su Play Store.
         \nGrazie per il contributo! </string>
     <string name="send_us_feedback"><u>Mandaci un feedback</u></string>
