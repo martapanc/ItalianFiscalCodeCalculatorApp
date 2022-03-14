@@ -42,6 +42,7 @@ public class ComputeFiscalCodeHelperTest {
         assertEquals("59C52", ComputeFiscalCodeHelper.computeDateOfBirth("12/03/1959", "f"));
         assertEquals("40H63", ComputeFiscalCodeHelper.computeDateOfBirth("23/06/1940", "f"));
         assertEquals("80A01", ComputeFiscalCodeHelper.computeDateOfBirth("01/01/1980", "m"));
+        assertEquals("80A10", ComputeFiscalCodeHelper.computeDateOfBirth("10/01/1980", "m"));
     }
 
     @Test
