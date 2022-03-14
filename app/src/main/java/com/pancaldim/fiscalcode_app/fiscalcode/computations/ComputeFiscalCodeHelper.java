@@ -137,7 +137,7 @@ public class ComputeFiscalCodeHelper {
                     if (Gender.F.equals(gender)) {
                         result += (day + 40);
                     } else if (Gender.M.equals(gender)) {
-                        result += (day <= 10 ? "0" + day : day);
+                        result += (day < 10 ? "0" + day : day);
                     }
                     return result;
                 } catch (NumberFormatException e) {
